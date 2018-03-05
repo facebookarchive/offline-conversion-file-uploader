@@ -1,0 +1,29 @@
+================================================================================
+Report of upload-preprocessed command
+================================================================================
+Generated: @generated
+Config: {
+  "accessToken": "<ACCESS_TOKEN_TEST>",
+  "batchSize": 10,
+  "dataSetID": "111111111",
+  "inputFilePath": "e2e-test/case-3-1/preprocess-output.csv",
+  "logging": "verbose",
+  "reportOutputPath": "report.txt",
+  "skipRowsAlreadyUploaded": true
+}
+
+
+================================================================================
+Overview
+================================================================================
+Num all rows: 1000
+Num rows uploaded successfully: 600
+Num rows skipped because of resuming: 400
+
+
+================================================================================
+Invalid Samples
+================================================================================
+Woohoo! No Invalid Sample!
+
+

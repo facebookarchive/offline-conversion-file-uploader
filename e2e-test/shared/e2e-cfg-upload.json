@@ -1,0 +1,20 @@
+{
+  "mockedCalls": [
+    {
+      "params": {
+        "apiPath": "222222222",
+        "method": "GET",
+        "data": {
+          "access_token": "<ACCESS_TOKEN_TEST>",
+          "fields": ["progress", "upload_tag"]
+        }
+      },
+      "result": {
+        "id": "222222222",
+        "progress": [],
+        "upload_tag": "<UPLOAD_TAG_TEST>"
+      }
+    }
+  ],
+  "mockedCallsDumpPath": "api.log"
+}

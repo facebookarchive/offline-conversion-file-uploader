@@ -1,0 +1,38 @@
+{
+  "name": "marketing-data-file-uploader",
+  "version": "2.0.0",
+  "description": "Feed File Uploader for Facebook Offline Conversions API",
+  "main": "index.js",
+  "bin": "cli.js",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "offline",
+    "conversions",
+    "facebook"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.0.6",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^4.17.0",
+    "flow-bin": "^0.63.1",
+    "jest": "^22.0.6",
+    "regenerator-runtime": "^0.11.1"
+  },
+  "dependencies": {
+    "commander": "^2.12.2",
+    "json-stable-stringify": "^1.0.1",
+    "promise": "^8.0.1",
+    "winston": "^2.4.0"
+  },
+  "scripts": {
+    "compile": "./node_modules/.bin/babel src --out-dir lib",
+    "clear": "rm -f *.log preprocess-output.csv preprocessed-events.csv report.txt upload-report.txt preprocess-report.txt",
+    "flow": "flow",
+    "test": "jest"
+  }
+}

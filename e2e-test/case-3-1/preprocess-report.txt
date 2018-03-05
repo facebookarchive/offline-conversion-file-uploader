@@ -1,0 +1,39 @@
+================================================================================
+Report of preprocess command
+================================================================================
+Generated: @generated
+Config: {
+  "customTypeInfo": {},
+  "delimiter": ",",
+  "format": {
+    "event_time": {
+      "timeFormat": "ISO8601"
+    }
+  },
+  "header": true,
+  "inputFilePath": "e2e-test/shared/simple.csv",
+  "logging": "verbose",
+  "mapping": {
+    "0": "match_keys.email",
+    "1": "event_time",
+    "2": "event_name"
+  },
+  "preprocessOutputPath": "preprocess-output.csv",
+  "presetValues": {},
+  "reportOutputPath": "preprocess-report.txt"
+}
+
+
+================================================================================
+Overview
+================================================================================
+Num all rows: 1000
+Num rows preprocessed and hashed successfully: 1000
+
+
+================================================================================
+Invalid Samples
+================================================================================
+Woohoo! No Invalid Sample!
+
+

@@ -1,0 +1,19 @@
+{
+  "delimiter": ",",
+  "header": true,
+  "mapping": {
+    "0": "match_keys.email",
+    "1": "match_keys.phone",
+    "2": "event_time",
+    "3": "event_name",
+    "4": "value",
+    "5": "currency"
+  },
+  "format": {
+    "event_time": {
+      "timeFormat": "unix_time"
+    }
+  },
+  "customTypeInfo": {},
+  "presetValues": {}
+}

@@ -1,0 +1,36 @@
+{
+  "mockedCalls": [
+    {
+      "params": {
+        "apiPath": "111111111/uploads",
+        "method": "GET",
+        "data": {
+          "access_token": "<ACCESS_TOKEN_TEST>",
+          "upload_tag": "simple.csv (58829bytes)",
+          "fields": ["id", "upload_tag", "progress"]
+        }
+      },
+      "result": {
+        "data": [
+          {
+            "id": "222222222",
+            "progress": {
+              "data": [
+                {
+                  "start_inclusive": 29,
+                  "end_exclusive": 11829
+                },
+                {
+                  "start_inclusive": 29529,
+                  "end_exclusive": 41389
+                }
+              ]
+            },
+            "upload_tag": "simple.csv (58829bytes)"
+          }
+        ]
+      }
+    }
+  ],
+  "mockedCallsDumpPath": "api.log"
+}

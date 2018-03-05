@@ -1,0 +1,18 @@
+{
+  "skipRowsAlreadyUploaded": true,
+  "delimiter": ",",
+  "header": true,
+  "mapping": {
+    "0": "match_keys.email",
+    "1": "event_time",
+    "2": "event_name"
+  },
+  "format": {
+    "event_time": {
+      "timeFormat": "ISO8601"
+    }
+  },
+  "customTypeInfo": {},
+  "presetValues": {},
+  "batchSize": 10
+}

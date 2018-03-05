@@ -1,0 +1,48 @@
+{
+  "uploadID": "222222222",
+  "delimiter": ",",
+  "header": true,
+  "mapping": {
+    "0": "match_keys.email",
+    "1": "match_keys.phone",
+    "2": "match_keys.fn",
+    "3": "match_keys.ln",
+    "4": "match_keys.dob",
+    "5": "match_keys.ct",
+    "6": "match_keys.st",
+    "7": "match_keys.zip",
+    "8": "match_keys.country",
+    "9": "event_time",
+    "10": "event_name",
+    "11": "value",
+    "12": "currency",
+    "13": "item_number",
+    "14": "order_id",
+    "15": "custom_data.kcal",
+    "16": "custom_data.rating",
+    "17": "custom_data.food",
+    "18": "custom_data.drink"
+  },
+  "format": {
+    "event_time": {
+      "timeFormat": "ISO8601"
+    },
+    "dob": "MM/DD/YYYY"
+  },
+  "customTypeInfo": {
+    "kcal": {
+      "baseType": "number"
+    },
+    "rating": {
+      "baseType": "number"
+    },
+    "food": {
+      "baseType": "text"
+    },
+    "drink": {
+      "baseType": "text"
+    }
+  },
+  "presetValues": {},
+  "batchSize": 10
+}

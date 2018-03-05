@@ -1,0 +1,23 @@
+{
+  "mockedCallsSimple": [
+    {
+      "params": {
+        "apiPath": "111111111/validate",
+        "method": "POST"
+      },
+      "result": {
+        "total_validated_count": 1000,
+        "events_without_match_keys_count": 0,
+        "match_count": 800,
+        "unique_event_time_of_day_count": 800,
+        "events_lagged_2_days_count": 0,
+        "events_lagged_90_days_count": 0,
+        "events_with_value_count": 0,
+        "unique_value_count": 0,
+        "dataset_not_assigned_to_adaccount": false,
+        "events_before_adaccount_assignment": []
+      }
+    }
+  ],
+  "mockedCallsDumpPath": "api.log"
+}

@@ -1,0 +1,36 @@
+{
+  "mockedCallsSimple": [
+    {
+      "params": {
+        "apiPath": "111111111/validate",
+        "method": "POST"
+      },
+      "result": {
+        "total_validated_count": 665,
+        "events_without_match_keys_count": 50,
+        "match_count": 300,
+        "unique_event_time_of_day_count": 1,
+        "events_lagged_2_days_count": 15,
+        "events_lagged_90_days_count": 50,
+        "events_with_value_count": 200,
+        "unique_value_count": 1,
+        "dataset_not_assigned_to_adaccount": false,
+        "events_before_adaccount_assignment": [
+          {
+            "adaccount_id": "123456",
+            "adaccount_name": "act-123456",
+            "assign_time": 1517443200,
+            "events_before_assignment": 123
+          },
+          {
+            "adaccount_id": "456789",
+            "adaccount_name": "act-456789",
+            "assign_time": 1514764800,
+            "events_before_assignment": 45
+          }
+        ]
+      }
+    }
+  ],
+  "mockedCallsDumpPath": "api.log"
+}

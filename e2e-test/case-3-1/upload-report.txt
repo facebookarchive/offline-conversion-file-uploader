@@ -1,0 +1,28 @@
+================================================================================
+Report of upload-preprocessed command
+================================================================================
+Generated: @generated
+Config: {
+  "accessToken": "<ACCESS_TOKEN_TEST>",
+  "batchSize": 10,
+  "dataSetID": "111111111",
+  "inputFilePath": "preprocess-output.csv",
+  "logging": "verbose",
+  "reportOutputPath": "upload-report.txt",
+  "uploadID": "222222222"
+}
+
+
+================================================================================
+Overview
+================================================================================
+Num all rows: 1000
+Num rows uploaded successfully: 1000
+
+
+================================================================================
+Invalid Samples
+================================================================================
+Woohoo! No Invalid Sample!
+
+

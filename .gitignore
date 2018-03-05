@@ -1,0 +1,9 @@
+.DS_Store
+/lib/
+/node_modules/
+/*.log
+/preprocessed-events.csv
+/preprocess-output.csv
+/report.txt
+/upload-report.txt
+/preprocess-report.txt

@@ -1,0 +1,4542 @@
+ABORTED because more than 10% of the first 1000 rows have errors.
+
+================================================================================
+Report of ABORTED command
+================================================================================
+Generated: @generated
+Config: {
+  "inputFilePath": "e2e-test/case-3-6/preprocess-output.csv",
+  "delimiter": ",",
+  "mapping": {
+    "0": "match_keys.email",
+    "1": "event_time",
+    "2": "value",
+    "3": "event_name",
+    "4": "currency"
+  },
+  "format": {
+    "event_time": {
+      "timeFormat": "unix_time"
+    }
+  },
+  "customTypeInfo": {},
+  "presetValues": {},
+  "header": true,
+  "reportOutputPath": "report.txt"
+}
+
+
+================================================================================
+Invalid data statistics
+================================================================================
+Missing or invalid data
+  500 rows have invalid or missing value.
+
+Columns with errors
+  500 errors on column 2 (value)
+
+
+================================================================================
+Invalid Samples
+================================================================================
+Row 2
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): db04082aa3dde5a78c00deb3dc4b4dd3c0303e8d6468b1928ca7112920008dcd
+          Column 1 (event_time): 1518536603
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 3
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518483473
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 4
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 425cf276cd686319b3594a4f45699e08dd66bad0ba2ed56b8b386804decf8c4f
+          Column 1 (event_time): 1518504373
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 5
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 981869f6c09b0a0b2db6972afb225f780dac6724a3b60c244b4cb2f5577fbb14
+          Column 1 (event_time): 1518481862
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 6
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c0bbebb09dfd19e6117ed3bc7392ba8cfc6e7b476cf64cbbef654f00f571ecea
+          Column 1 (event_time): 1518468930
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 7
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bcff8fd94ea447c2cfb989ce5085ee9a6e345070430d7cb815026c064f6fcc1f
+          Column 1 (event_time): 1518468240
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 8
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ee2d6e463561cd1d22f73c3f42612a33865f4e081c272e10490b350ea3f8182
+          Column 1 (event_time): 1518527608
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 9
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 5d3e9bdd080b1500591ce93d71967fa91ba8316f6b93f3a5f2194b10f9ff11c2
+          Column 1 (event_time): 1518523267
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 10
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 425cf276cd686319b3594a4f45699e08dd66bad0ba2ed56b8b386804decf8c4f
+          Column 1 (event_time): 1518502421
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 11
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518492481
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 12
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): b88effb913fe3041c98d61b05791ac4248161d543e4cf8b7bd6f939db7078323
+          Column 1 (event_time): 1518467834
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 13
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 0467f05cf9c677fba45aea42031913b60c07b673e9cbbef2705a9b028d1865dd
+          Column 1 (event_time): 1518511215
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 14
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 34ace1fec7a4b2c842707ff737b3475510d50c17ccc3e18d59c638b652dc43cd
+          Column 1 (event_time): 1518497759
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 15
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd830af8cb499166f18340e92390d6d5a7c626a81ba98b6da52d94c5ab4d8c90
+          Column 1 (event_time): 1518526869
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 16
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518458123
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 17
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518540121
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 18
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518526667
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 19
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 34ace1fec7a4b2c842707ff737b3475510d50c17ccc3e18d59c638b652dc43cd
+          Column 1 (event_time): 1518511092
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 20
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 7fdb07ccb36565dce526831ca16d76a1d9f3ca67ce5d09a1a2532a757c6c5476
+          Column 1 (event_time): 1518497331
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 21
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1797702440162aceec9c5fbe1c293a2e0a918fa422d91ee9ca4440f5339fc623
+          Column 1 (event_time): 1518524806
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 22
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518498855
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 23
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f3a5dc5e5746160a50bce6cecc8e0a0dd15443ba69a9635da6face344e5ebe01
+          Column 1 (event_time): 1518498070
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 24
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9e0cd3be65f3d4529ae44195649fb41dce7bd97a68fdc4ef14c5ef838a6a4173
+          Column 1 (event_time): 1518481772
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 25
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4e69ad1170036f2e11f518f59d21f6ab60e29de6f98c14e8868a0b803764cc49
+          Column 1 (event_time): 1518494540
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 26
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c926190bd9ed23178eec1876f03cbe57934460f791c42bc9dd814c3d765db499
+          Column 1 (event_time): 1518490085
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 27
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 221f003d1fbc59da9172d894fa65a7a9c37ecb5f7aef8471375ed5eb8578e79a
+          Column 1 (event_time): 1518491605
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 28
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 752e611e89b72b8737089e3d68db0ab2057798dbb67845efb61e337f965a2b13
+          Column 1 (event_time): 1518471515
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 29
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2929ffff0e819e26670c38fb734d02af675d3c5f0b9cc55ba6892d1b17bbb7b3
+          Column 1 (event_time): 1518465216
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 30
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): b88effb913fe3041c98d61b05791ac4248161d543e4cf8b7bd6f939db7078323
+          Column 1 (event_time): 1518490979
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 31
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c818416c95e9e3f0238069530f93731f0bb00cfac8923002631d7a5d875774ee
+          Column 1 (event_time): 1518456037
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 32
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 86589b0ac66a9c57555fe4de3a9adc131ef2080413f3db09507a7460853f8d1d
+          Column 1 (event_time): 1518484487
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 33
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f8be246cfa23afabd12d523273280d73c8bfe8d27072a1a6a07d7c632624048b
+          Column 1 (event_time): 1518480708
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 34
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 452048cc34394c69754d2c9a920b7bbf0cbc4b68c869f657bd409eb40c307be2
+          Column 1 (event_time): 1518534377
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 35
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e24103f351e980a41cfc66b33264b73e1635c3e0050abfbdbc39e4df3ecb4440
+          Column 1 (event_time): 1518528505
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 36
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518507008
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 37
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f3a5dc5e5746160a50bce6cecc8e0a0dd15443ba69a9635da6face344e5ebe01
+          Column 1 (event_time): 1518500728
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 38
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8873700babbaf17b4999759748aecab7f497829c458526f0a6a0c72841c0f5fa
+          Column 1 (event_time): 1518477301
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 39
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfe09c7228d8bada25609b09b361885bee8355dde37ec2a20bca7b5ab5470b41
+          Column 1 (event_time): 1518478358
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 40
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): db04082aa3dde5a78c00deb3dc4b4dd3c0303e8d6468b1928ca7112920008dcd
+          Column 1 (event_time): 1518509394
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 41
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c926190bd9ed23178eec1876f03cbe57934460f791c42bc9dd814c3d765db499
+          Column 1 (event_time): 1518468641
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 42
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 452048cc34394c69754d2c9a920b7bbf0cbc4b68c869f657bd409eb40c307be2
+          Column 1 (event_time): 1518507934
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 43
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 38b8c18f1b047796ec143f22901ff29389f35e3141707c81afaf472cc3b2f10b
+          Column 1 (event_time): 1518528357
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 44
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518504379
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 45
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518492163
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 46
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 5d3e9bdd080b1500591ce93d71967fa91ba8316f6b93f3a5f2194b10f9ff11c2
+          Column 1 (event_time): 1518499888
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 47
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 221f003d1fbc59da9172d894fa65a7a9c37ecb5f7aef8471375ed5eb8578e79a
+          Column 1 (event_time): 1518498767
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 48
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 053909b8ff1c4ff2e7e985bf156f318898be927eb9833d3f06b6e5a5325ab2e3
+          Column 1 (event_time): 1518535387
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 49
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 56cea8eb85ba0853520c028a0ba338083370eb642a6cd637aee406118be10467
+          Column 1 (event_time): 1518518941
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 50
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c926190bd9ed23178eec1876f03cbe57934460f791c42bc9dd814c3d765db499
+          Column 1 (event_time): 1518532294
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 51
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518466037
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 52
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 380a3c42b9fbfdadd2bef7b1276c0948625604a0f24074f122415901dc2c62b4
+          Column 1 (event_time): 1518515072
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 53
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518488287
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 54
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 56cea8eb85ba0853520c028a0ba338083370eb642a6cd637aee406118be10467
+          Column 1 (event_time): 1518478741
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 55
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518462188
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 56
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 379fca7e6c2f171cafd603fe46297b4a3fb7fcd324dfbc981a86210226ef6c90
+          Column 1 (event_time): 1518531538
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 57
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ee2d6e463561cd1d22f73c3f42612a33865f4e081c272e10490b350ea3f8182
+          Column 1 (event_time): 1518496180
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 58
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4b20d223508d40f7c7b5a2cb382540076da8b4b727c23c35ac04e19f1b5bd591
+          Column 1 (event_time): 1518520420
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 59
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518508611
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 60
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518536720
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 61
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 7ce564cd08c6b76cac26016fa73217a9bc8d490d37a34ebb52211c46a1b5179b
+          Column 1 (event_time): 1518535174
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 62
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 92b6c31e83113946d2cf45b18a92bb6f219855571fc6f5cdb3eb00bf98b016aa
+          Column 1 (event_time): 1518456743
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 63
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bcff8fd94ea447c2cfb989ce5085ee9a6e345070430d7cb815026c064f6fcc1f
+          Column 1 (event_time): 1518494331
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 64
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a6b179714ed5130916bea4c1189c68db519d89b14d291c74ad50acba157f2ac6
+          Column 1 (event_time): 1518499450
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 65
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518454969
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 66
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 053909b8ff1c4ff2e7e985bf156f318898be927eb9833d3f06b6e5a5325ab2e3
+          Column 1 (event_time): 1518470709
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 67
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 17fb5514706561f2f19ef5febb552183d10b5c2512693775bbbf14d56703609c
+          Column 1 (event_time): 1518523993
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 68
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f13ddd6ba23d850eea26672f8a37e12c869e710f97b6748cd67efeccead877be
+          Column 1 (event_time): 1518525748
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 69
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518518197
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 70
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518526256
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 71
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 13fdb53b024e4730816fe282483555b35c534bff66dfa58b90eee364e1255db1
+          Column 1 (event_time): 1518509057
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 72
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): db04082aa3dde5a78c00deb3dc4b4dd3c0303e8d6468b1928ca7112920008dcd
+          Column 1 (event_time): 1518466797
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 73
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e9c0fde904f73fe50887d7d381917b7061010f547939153303855db03c6c30c2
+          Column 1 (event_time): 1518537135
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 74
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d13c9749e24637c6e197ee5cac3926612e279a6c0cea5d9b0ce39d8a5b67ffea
+          Column 1 (event_time): 1518504201
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 75
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518515681
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 76
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 56cea8eb85ba0853520c028a0ba338083370eb642a6cd637aee406118be10467
+          Column 1 (event_time): 1518457257
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 77
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 0711760320669d720c417e289a97ed535026ba317d036ed5221ae98ed3cc454e
+          Column 1 (event_time): 1518488615
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 78
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 454b0272ded0e26506e8a28ae795c5dfc2d57cf09ab18d1fc26fb27efdf00efa
+          Column 1 (event_time): 1518489532
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 79
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 380a3c42b9fbfdadd2bef7b1276c0948625604a0f24074f122415901dc2c62b4
+          Column 1 (event_time): 1518490510
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 80
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518521074
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 81
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518498563
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 82
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 49e456dd4efe049a4c49f661a148115361f6c5b2d17c3b2660e680b71fc9c7da
+          Column 1 (event_time): 1518471851
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 83
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 56cea8eb85ba0853520c028a0ba338083370eb642a6cd637aee406118be10467
+          Column 1 (event_time): 1518509741
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 84
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518463854
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 85
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 752e611e89b72b8737089e3d68db0ab2057798dbb67845efb61e337f965a2b13
+          Column 1 (event_time): 1518511748
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 86
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 981869f6c09b0a0b2db6972afb225f780dac6724a3b60c244b4cb2f5577fbb14
+          Column 1 (event_time): 1518498833
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 87
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518528942
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 88
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ee538a6bebde1b1016855291a5fa7c49cb14ea7f52572d5a431cf2d9557870a5
+          Column 1 (event_time): 1518455494
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 89
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a7fe3dba3f3e9f4cf9113bf4bfd72105503056a46ed9d5f2b31b2f66b82bcedc
+          Column 1 (event_time): 1518526969
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 90
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a260424fb39277401a435100bad70fbafd583ee92ea7fb605a143fd55493f530
+          Column 1 (event_time): 1518480976
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 91
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 811a04053654d095d23dbcd58b21cf51bba6103cd36f878ec42c4b3367bf2dbf
+          Column 1 (event_time): 1518483981
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 92
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 379fca7e6c2f171cafd603fe46297b4a3fb7fcd324dfbc981a86210226ef6c90
+          Column 1 (event_time): 1518511591
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 93
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 053909b8ff1c4ff2e7e985bf156f318898be927eb9833d3f06b6e5a5325ab2e3
+          Column 1 (event_time): 1518517036
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 94
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6a6adca4b97e1e240b0f61c70a7186b4f6c5718f118dab714a124f311e50b95
+          Column 1 (event_time): 1518487194
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 95
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518493941
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 96
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 719b03ea6d1152760fb9db5fb900b0f59f2580eff19e1f0b221550dccae18307
+          Column 1 (event_time): 1518477144
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 97
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1786250b66b7d221c1dc2a102530baf9d3de94f05597da75acbc445533791877
+          Column 1 (event_time): 1518503734
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 98
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 454b0272ded0e26506e8a28ae795c5dfc2d57cf09ab18d1fc26fb27efdf00efa
+          Column 1 (event_time): 1518481568
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 99
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518497846
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 100
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 560092f7c8b16fe2e7213157cc61d41dc81603865a6b4739e3a6f70cc23f78a7
+          Column 1 (event_time): 1518512171
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 101
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 064302ef5e5f1a87468cdfc04055a93f4918c48b609336238f51abb2f0f6a66f
+          Column 1 (event_time): 1518496556
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 102
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6584437242562422be0249dedf8e53000991f38865b79d3de30b91fdccad932
+          Column 1 (event_time): 1518481620
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 103
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518510368
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 104
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518540106
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 105
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e330981f0235e31ece6164c343d331411eb9d97eb50cbbeb4594d5c6f6370d67
+          Column 1 (event_time): 1518497468
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 106
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): dec4e568e0bf737e725f1a743c6eb77d8d9edbaa6c532d450b9bb9051416771e
+          Column 1 (event_time): 1518518360
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 107
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 13fdb53b024e4730816fe282483555b35c534bff66dfa58b90eee364e1255db1
+          Column 1 (event_time): 1518522576
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 108
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): fef4b7dded692bc420f2c94c15c733d529250a5921240192cc96957c1e524fb1
+          Column 1 (event_time): 1518528362
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 109
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3cd34fe5156a6c33e915c0372f94628708e295810b0228716a21d89c0b50434d
+          Column 1 (event_time): 1518525589
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 110
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 439f8bd7d469586ab1998c60d354fb0b52328273fde3b96d87d4c138284d963a
+          Column 1 (event_time): 1518534330
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 111
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): dfd2a61a1ff7daffa1279c7afc9b2fc808946afbf139b69e40081d76705c4751
+          Column 1 (event_time): 1518539641
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 112
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 454b0272ded0e26506e8a28ae795c5dfc2d57cf09ab18d1fc26fb27efdf00efa
+          Column 1 (event_time): 1518504203
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 113
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518535030
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 114
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c9493763b7fdfe183565844f074527c6300cc5b29990809b1658adef07f00547
+          Column 1 (event_time): 1518485109
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 115
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 17fb5514706561f2f19ef5febb552183d10b5c2512693775bbbf14d56703609c
+          Column 1 (event_time): 1518463220
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 116
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 323c9bf7cc9afdeba9dc2c5cf70b04b05bbc37f990b26a0f57c9d4096963f807
+          Column 1 (event_time): 1518461212
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 117
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518512918
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 118
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6a6adca4b97e1e240b0f61c70a7186b4f6c5718f118dab714a124f311e50b95
+          Column 1 (event_time): 1518523585
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 119
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 380a3c42b9fbfdadd2bef7b1276c0948625604a0f24074f122415901dc2c62b4
+          Column 1 (event_time): 1518460207
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 120
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 302253ae038b8d9023db5e81ac2cf710c91ba9682de9ce8ddc5dff22d4456c10
+          Column 1 (event_time): 1518493456
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 121
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a7fe3dba3f3e9f4cf9113bf4bfd72105503056a46ed9d5f2b31b2f66b82bcedc
+          Column 1 (event_time): 1518463498
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 122
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 463b2626bb4c3311fed5b700aef8c92aba7d6991917f01f1d90f91a7c2a72ad1
+          Column 1 (event_time): 1518503589
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 123
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518489656
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 124
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f13ddd6ba23d850eea26672f8a37e12c869e710f97b6748cd67efeccead877be
+          Column 1 (event_time): 1518532825
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 125
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518463395
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 126
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 719b03ea6d1152760fb9db5fb900b0f59f2580eff19e1f0b221550dccae18307
+          Column 1 (event_time): 1518468038
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 127
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): b1ccac523f9050f04567f8f91f1ce76a1d677e5ce8d730f80609ae1f7a9b7842
+          Column 1 (event_time): 1518497359
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 128
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1f569f7f14837dda47f32090550b92a81b6db65193abe48a1d2bf0aea8fed895
+          Column 1 (event_time): 1518479477
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 129
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518536276
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 130
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518504236
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 131
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 7fdb07ccb36565dce526831ca16d76a1d9f3ca67ce5d09a1a2532a757c6c5476
+          Column 1 (event_time): 1518483964
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 132
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d1fbd48e18179ab04e1ef1ba5841b6201a6a697ad37f9ba7275c6f45d27da21c
+          Column 1 (event_time): 1518462072
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 133
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): de1b51f3eb8f952c8f0bbff1fe9b1c2ebde3e7ee132daddf7eaaebea17cff829
+          Column 1 (event_time): 1518514789
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 134
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): b1ccac523f9050f04567f8f91f1ce76a1d677e5ce8d730f80609ae1f7a9b7842
+          Column 1 (event_time): 1518478081
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 135
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 79360c5331668a1204f3db33d7c544bbb5d926d46f030b18decde32596040b0a
+          Column 1 (event_time): 1518520764
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 136
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c9493763b7fdfe183565844f074527c6300cc5b29990809b1658adef07f00547
+          Column 1 (event_time): 1518461856
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 137
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 030ec99481e2294ad1e3867dc5c48a74b9c619d6b6e40a4fc82c49e8cb4d29ef
+          Column 1 (event_time): 1518506356
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 138
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c9493763b7fdfe183565844f074527c6300cc5b29990809b1658adef07f00547
+          Column 1 (event_time): 1518471810
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 139
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 79360c5331668a1204f3db33d7c544bbb5d926d46f030b18decde32596040b0a
+          Column 1 (event_time): 1518540756
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 140
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518460477
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 141
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 981869f6c09b0a0b2db6972afb225f780dac6724a3b60c244b4cb2f5577fbb14
+          Column 1 (event_time): 1518536155
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 142
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518512217
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 143
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c745194cea8081505941357dade02ab0437401755193a08fb9e977056d4759b5
+          Column 1 (event_time): 1518504553
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 144
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd830af8cb499166f18340e92390d6d5a7c626a81ba98b6da52d94c5ab4d8c90
+          Column 1 (event_time): 1518475686
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 145
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518497250
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 146
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e7fccc9f33e8de6586730a788848cf260c240a7f910579ebf9d193731f0e43dd
+          Column 1 (event_time): 1518466079
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 147
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518469762
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 148
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ddbd97fbb9b54e248cc6400c914efea3d337285c1b133e2266b405b48e6c603
+          Column 1 (event_time): 1518463828
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 149
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518523813
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 150
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2015452405fbaa35fe0059a44492ac9766b309dd6de1efc13f4929fc77377d7e
+          Column 1 (event_time): 1518471530
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 151
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4581e86891cd365249af2f143322ff7c16a0f3392b41e23f1de78201bc827a07
+          Column 1 (event_time): 1518536216
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 152
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): b88effb913fe3041c98d61b05791ac4248161d543e4cf8b7bd6f939db7078323
+          Column 1 (event_time): 1518470949
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 153
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 560092f7c8b16fe2e7213157cc61d41dc81603865a6b4739e3a6f70cc23f78a7
+          Column 1 (event_time): 1518518967
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 154
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): dfd2a61a1ff7daffa1279c7afc9b2fc808946afbf139b69e40081d76705c4751
+          Column 1 (event_time): 1518464916
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 155
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9a334e525bb85de755d3a25b054d046f1f8ad0f5bb9c993ba980dd85ca9e7eb7
+          Column 1 (event_time): 1518540660
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 156
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 221f003d1fbc59da9172d894fa65a7a9c37ecb5f7aef8471375ed5eb8578e79a
+          Column 1 (event_time): 1518466235
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 157
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f8be246cfa23afabd12d523273280d73c8bfe8d27072a1a6a07d7c632624048b
+          Column 1 (event_time): 1518536408
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 158
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 752e611e89b72b8737089e3d68db0ab2057798dbb67845efb61e337f965a2b13
+          Column 1 (event_time): 1518496231
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 159
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518514329
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 160
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 064302ef5e5f1a87468cdfc04055a93f4918c48b609336238f51abb2f0f6a66f
+          Column 1 (event_time): 1518468153
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 161
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e179c1fc8ea43b856026a3a2733f3a910fa06f49897b95ec209e9a406c425b41
+          Column 1 (event_time): 1518466499
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 162
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 628bd08e2306b2b0cc86f4dc5c311b3a67be6ea685f059e91836e747527bf6bd
+          Column 1 (event_time): 1518531221
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 163
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 811a04053654d095d23dbcd58b21cf51bba6103cd36f878ec42c4b3367bf2dbf
+          Column 1 (event_time): 1518512498
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 164
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 34ace1fec7a4b2c842707ff737b3475510d50c17ccc3e18d59c638b652dc43cd
+          Column 1 (event_time): 1518461507
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 165
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518468209
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 166
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ee2d6e463561cd1d22f73c3f42612a33865f4e081c272e10490b350ea3f8182
+          Column 1 (event_time): 1518479697
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 167
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 452048cc34394c69754d2c9a920b7bbf0cbc4b68c869f657bd409eb40c307be2
+          Column 1 (event_time): 1518535022
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 168
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2015452405fbaa35fe0059a44492ac9766b309dd6de1efc13f4929fc77377d7e
+          Column 1 (event_time): 1518499813
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 169
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfe09c7228d8bada25609b09b361885bee8355dde37ec2a20bca7b5ab5470b41
+          Column 1 (event_time): 1518514240
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 170
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518513150
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 171
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 7ce564cd08c6b76cac26016fa73217a9bc8d490d37a34ebb52211c46a1b5179b
+          Column 1 (event_time): 1518492184
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 172
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 463b2626bb4c3311fed5b700aef8c92aba7d6991917f01f1d90f91a7c2a72ad1
+          Column 1 (event_time): 1518508043
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 173
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518457684
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 174
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 064302ef5e5f1a87468cdfc04055a93f4918c48b609336238f51abb2f0f6a66f
+          Column 1 (event_time): 1518481266
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 175
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bcff8fd94ea447c2cfb989ce5085ee9a6e345070430d7cb815026c064f6fcc1f
+          Column 1 (event_time): 1518502608
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 176
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 811a04053654d095d23dbcd58b21cf51bba6103cd36f878ec42c4b3367bf2dbf
+          Column 1 (event_time): 1518503866
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 177
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): de1b51f3eb8f952c8f0bbff1fe9b1c2ebde3e7ee132daddf7eaaebea17cff829
+          Column 1 (event_time): 1518469976
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 178
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 719b03ea6d1152760fb9db5fb900b0f59f2580eff19e1f0b221550dccae18307
+          Column 1 (event_time): 1518503709
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 179
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e179c1fc8ea43b856026a3a2733f3a910fa06f49897b95ec209e9a406c425b41
+          Column 1 (event_time): 1518536876
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 180
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f8be246cfa23afabd12d523273280d73c8bfe8d27072a1a6a07d7c632624048b
+          Column 1 (event_time): 1518517241
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 181
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518535835
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 182
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e7fccc9f33e8de6586730a788848cf260c240a7f910579ebf9d193731f0e43dd
+          Column 1 (event_time): 1518506812
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 183
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 560092f7c8b16fe2e7213157cc61d41dc81603865a6b4739e3a6f70cc23f78a7
+          Column 1 (event_time): 1518524429
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 184
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 463b2626bb4c3311fed5b700aef8c92aba7d6991917f01f1d90f91a7c2a72ad1
+          Column 1 (event_time): 1518496060
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 185
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ee538a6bebde1b1016855291a5fa7c49cb14ea7f52572d5a431cf2d9557870a5
+          Column 1 (event_time): 1518515554
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 186
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518456740
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 187
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd830af8cb499166f18340e92390d6d5a7c626a81ba98b6da52d94c5ab4d8c90
+          Column 1 (event_time): 1518466614
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 188
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518518118
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 189
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 379fca7e6c2f171cafd603fe46297b4a3fb7fcd324dfbc981a86210226ef6c90
+          Column 1 (event_time): 1518457084
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 190
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518477947
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 191
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518475146
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 192
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9a334e525bb85de755d3a25b054d046f1f8ad0f5bb9c993ba980dd85ca9e7eb7
+          Column 1 (event_time): 1518495546
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 193
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 425cf276cd686319b3594a4f45699e08dd66bad0ba2ed56b8b386804decf8c4f
+          Column 1 (event_time): 1518480619
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 194
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518505639
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 195
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 86589b0ac66a9c57555fe4de3a9adc131ef2080413f3db09507a7460853f8d1d
+          Column 1 (event_time): 1518460092
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 196
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 56cea8eb85ba0853520c028a0ba338083370eb642a6cd637aee406118be10467
+          Column 1 (event_time): 1518532216
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 197
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 0711760320669d720c417e289a97ed535026ba317d036ed5221ae98ed3cc454e
+          Column 1 (event_time): 1518481747
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 198
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518486949
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 199
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518491572
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 200
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9387ae46f7b99dffc2c621fe3dec4ca46bf8b7dcb056e2df65fa5fa7d30b1a6b
+          Column 1 (event_time): 1518529190
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 201
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 030ec99481e2294ad1e3867dc5c48a74b9c619d6b6e40a4fc82c49e8cb4d29ef
+          Column 1 (event_time): 1518489594
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 202
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 752b03df317cd52dbf4932ff5d8f8ddbd121bfc782d8a35546827f19d3c7f076
+          Column 1 (event_time): 1518519172
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 203
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518459264
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 204
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4b20d223508d40f7c7b5a2cb382540076da8b4b727c23c35ac04e19f1b5bd591
+          Column 1 (event_time): 1518536621
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 205
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518493348
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 206
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1fd3e3a861231311a95f4ef7da08aef8500a64fee29a5debdd93718665740e24
+          Column 1 (event_time): 1518473493
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 207
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): de1b51f3eb8f952c8f0bbff1fe9b1c2ebde3e7ee132daddf7eaaebea17cff829
+          Column 1 (event_time): 1518466075
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 208
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3cd34fe5156a6c33e915c0372f94628708e295810b0228716a21d89c0b50434d
+          Column 1 (event_time): 1518513876
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 209
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6787259060e68eb5ecedefb74c9320eb9cab14e1041d562b4e32a26aeefea9e
+          Column 1 (event_time): 1518456580
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 210
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4e69ad1170036f2e11f518f59d21f6ab60e29de6f98c14e8868a0b803764cc49
+          Column 1 (event_time): 1518498489
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 211
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2929ffff0e819e26670c38fb734d02af675d3c5f0b9cc55ba6892d1b17bbb7b3
+          Column 1 (event_time): 1518483530
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 212
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518516537
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 213
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): de1b51f3eb8f952c8f0bbff1fe9b1c2ebde3e7ee132daddf7eaaebea17cff829
+          Column 1 (event_time): 1518532039
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 214
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 92b6c31e83113946d2cf45b18a92bb6f219855571fc6f5cdb3eb00bf98b016aa
+          Column 1 (event_time): 1518537863
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 215
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6584437242562422be0249dedf8e53000991f38865b79d3de30b91fdccad932
+          Column 1 (event_time): 1518460869
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 216
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ecb06bd8a2f862212bde67980d9902a9ffb2704be50bc6164203a42fe1dbc7b9
+          Column 1 (event_time): 1518524934
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 217
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4581e86891cd365249af2f143322ff7c16a0f3392b41e23f1de78201bc827a07
+          Column 1 (event_time): 1518510178
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 218
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518470015
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 219
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 79360c5331668a1204f3db33d7c544bbb5d926d46f030b18decde32596040b0a
+          Column 1 (event_time): 1518529214
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 220
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1797702440162aceec9c5fbe1c293a2e0a918fa422d91ee9ca4440f5339fc623
+          Column 1 (event_time): 1518482860
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 221
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ed623fb8f9790a9673ed1980c86ac09d767db996a4bd30868e035ce32a9e43b
+          Column 1 (event_time): 1518507122
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 222
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518504356
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 223
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518504051
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 224
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 323c9bf7cc9afdeba9dc2c5cf70b04b05bbc37f990b26a0f57c9d4096963f807
+          Column 1 (event_time): 1518534139
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 225
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518460400
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 226
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518537329
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 227
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518477285
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 228
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9e0cd3be65f3d4529ae44195649fb41dce7bd97a68fdc4ef14c5ef838a6a4173
+          Column 1 (event_time): 1518508672
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 229
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 49e456dd4efe049a4c49f661a148115361f6c5b2d17c3b2660e680b71fc9c7da
+          Column 1 (event_time): 1518471677
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 230
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 752e611e89b72b8737089e3d68db0ab2057798dbb67845efb61e337f965a2b13
+          Column 1 (event_time): 1518540094
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 231
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): fef4b7dded692bc420f2c94c15c733d529250a5921240192cc96957c1e524fb1
+          Column 1 (event_time): 1518493604
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 232
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c9493763b7fdfe183565844f074527c6300cc5b29990809b1658adef07f00547
+          Column 1 (event_time): 1518496397
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 233
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518509048
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 234
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c745194cea8081505941357dade02ab0437401755193a08fb9e977056d4759b5
+          Column 1 (event_time): 1518527824
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 235
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3830ebfe71cb9b3363979a982809da80636bfaf0603f73d5a2c130aa01025401
+          Column 1 (event_time): 1518539047
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 236
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9feaa1b50bb794508e213b98a235d9b2e07c891fba59828dd63236d18ca7c277
+          Column 1 (event_time): 1518532404
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 237
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 49e456dd4efe049a4c49f661a148115361f6c5b2d17c3b2660e680b71fc9c7da
+          Column 1 (event_time): 1518457846
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 238
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518492010
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 239
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c818416c95e9e3f0238069530f93731f0bb00cfac8923002631d7a5d875774ee
+          Column 1 (event_time): 1518532093
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 240
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfea2802e10b4de0f4c310b35b670ead212667ad039d1c64d9e4128f37116d25
+          Column 1 (event_time): 1518484006
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 241
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 350650730c5075f0ad76ff651060d53d533453c428affcf7d50181124906448f
+          Column 1 (event_time): 1518539259
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 242
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): fef4b7dded692bc420f2c94c15c733d529250a5921240192cc96957c1e524fb1
+          Column 1 (event_time): 1518477552
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 243
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6787259060e68eb5ecedefb74c9320eb9cab14e1041d562b4e32a26aeefea9e
+          Column 1 (event_time): 1518488369
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 244
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ddbd97fbb9b54e248cc6400c914efea3d337285c1b133e2266b405b48e6c603
+          Column 1 (event_time): 1518527286
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 245
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 379fca7e6c2f171cafd603fe46297b4a3fb7fcd324dfbc981a86210226ef6c90
+          Column 1 (event_time): 1518531028
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 246
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518472758
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 247
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): dec4e568e0bf737e725f1a743c6eb77d8d9edbaa6c532d450b9bb9051416771e
+          Column 1 (event_time): 1518461520
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 248
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8730c6597a161b13419c669ce1cb84ea4b5eacb5d21671dea0e76e85620b6aa6
+          Column 1 (event_time): 1518501338
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 249
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): de1b51f3eb8f952c8f0bbff1fe9b1c2ebde3e7ee132daddf7eaaebea17cff829
+          Column 1 (event_time): 1518492208
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 250
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6787259060e68eb5ecedefb74c9320eb9cab14e1041d562b4e32a26aeefea9e
+          Column 1 (event_time): 1518472332
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 251
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 454b0272ded0e26506e8a28ae795c5dfc2d57cf09ab18d1fc26fb27efdf00efa
+          Column 1 (event_time): 1518463504
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 252
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 357dc69557ba11b39d4aad81efc380ca1cf5cb5fce48075ca66bb8162d24e2e6
+          Column 1 (event_time): 1518456563
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 253
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd830af8cb499166f18340e92390d6d5a7c626a81ba98b6da52d94c5ab4d8c90
+          Column 1 (event_time): 1518477025
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 254
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1fd3e3a861231311a95f4ef7da08aef8500a64fee29a5debdd93718665740e24
+          Column 1 (event_time): 1518459266
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 255
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518472291
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 256
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 425cf276cd686319b3594a4f45699e08dd66bad0ba2ed56b8b386804decf8c4f
+          Column 1 (event_time): 1518500051
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 257
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e330981f0235e31ece6164c343d331411eb9d97eb50cbbeb4594d5c6f6370d67
+          Column 1 (event_time): 1518458059
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 258
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd830af8cb499166f18340e92390d6d5a7c626a81ba98b6da52d94c5ab4d8c90
+          Column 1 (event_time): 1518525794
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 259
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518519971
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 260
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 92b6c31e83113946d2cf45b18a92bb6f219855571fc6f5cdb3eb00bf98b016aa
+          Column 1 (event_time): 1518494708
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 261
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 628bd08e2306b2b0cc86f4dc5c311b3a67be6ea685f059e91836e747527bf6bd
+          Column 1 (event_time): 1518517041
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 262
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1786250b66b7d221c1dc2a102530baf9d3de94f05597da75acbc445533791877
+          Column 1 (event_time): 1518505307
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 263
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518486956
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 264
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 463b2626bb4c3311fed5b700aef8c92aba7d6991917f01f1d90f91a7c2a72ad1
+          Column 1 (event_time): 1518474950
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 265
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): b1ccac523f9050f04567f8f91f1ce76a1d677e5ce8d730f80609ae1f7a9b7842
+          Column 1 (event_time): 1518478081
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 266
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518519608
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 267
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e7fccc9f33e8de6586730a788848cf260c240a7f910579ebf9d193731f0e43dd
+          Column 1 (event_time): 1518468462
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 268
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 6a3b75868b5683a28492b3a88cda8966cee93e1cf52b152844b49457727e0755
+          Column 1 (event_time): 1518526855
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 269
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518467611
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 270
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518536590
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 271
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518511534
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 272
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518519336
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 273
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c745194cea8081505941357dade02ab0437401755193a08fb9e977056d4759b5
+          Column 1 (event_time): 1518470091
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 274
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfea2802e10b4de0f4c310b35b670ead212667ad039d1c64d9e4128f37116d25
+          Column 1 (event_time): 1518527988
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 275
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 62461f896cae6c5673d55ca61d7cc94fceb9b0fb35dda599bab19013dea33c1c
+          Column 1 (event_time): 1518493199
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 276
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 56cea8eb85ba0853520c028a0ba338083370eb642a6cd637aee406118be10467
+          Column 1 (event_time): 1518526821
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 277
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4b20d223508d40f7c7b5a2cb382540076da8b4b727c23c35ac04e19f1b5bd591
+          Column 1 (event_time): 1518509763
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 278
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 981869f6c09b0a0b2db6972afb225f780dac6724a3b60c244b4cb2f5577fbb14
+          Column 1 (event_time): 1518477872
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 279
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518475276
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 280
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518511043
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 281
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 86589b0ac66a9c57555fe4de3a9adc131ef2080413f3db09507a7460853f8d1d
+          Column 1 (event_time): 1518464505
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 282
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518533455
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 283
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a6b179714ed5130916bea4c1189c68db519d89b14d291c74ad50acba157f2ac6
+          Column 1 (event_time): 1518459394
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 284
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 0711760320669d720c417e289a97ed535026ba317d036ed5221ae98ed3cc454e
+          Column 1 (event_time): 1518460609
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 285
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8730c6597a161b13419c669ce1cb84ea4b5eacb5d21671dea0e76e85620b6aa6
+          Column 1 (event_time): 1518472879
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 286
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 379fca7e6c2f171cafd603fe46297b4a3fb7fcd324dfbc981a86210226ef6c90
+          Column 1 (event_time): 1518474759
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 287
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518513652
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 288
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518534885
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 289
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ed623fb8f9790a9673ed1980c86ac09d767db996a4bd30868e035ce32a9e43b
+          Column 1 (event_time): 1518505179
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 290
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518524401
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 291
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9feaa1b50bb794508e213b98a235d9b2e07c891fba59828dd63236d18ca7c277
+          Column 1 (event_time): 1518461947
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 292
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bcff8fd94ea447c2cfb989ce5085ee9a6e345070430d7cb815026c064f6fcc1f
+          Column 1 (event_time): 1518466550
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 293
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6584437242562422be0249dedf8e53000991f38865b79d3de30b91fdccad932
+          Column 1 (event_time): 1518533292
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 294
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 62461f896cae6c5673d55ca61d7cc94fceb9b0fb35dda599bab19013dea33c1c
+          Column 1 (event_time): 1518454833
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 295
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a7fe3dba3f3e9f4cf9113bf4bfd72105503056a46ed9d5f2b31b2f66b82bcedc
+          Column 1 (event_time): 1518471088
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 296
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 62461f896cae6c5673d55ca61d7cc94fceb9b0fb35dda599bab19013dea33c1c
+          Column 1 (event_time): 1518494450
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 297
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4e69ad1170036f2e11f518f59d21f6ab60e29de6f98c14e8868a0b803764cc49
+          Column 1 (event_time): 1518496489
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 298
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 6a3b75868b5683a28492b3a88cda8966cee93e1cf52b152844b49457727e0755
+          Column 1 (event_time): 1518459513
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 299
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4b20d223508d40f7c7b5a2cb382540076da8b4b727c23c35ac04e19f1b5bd591
+          Column 1 (event_time): 1518465258
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 300
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2929ffff0e819e26670c38fb734d02af675d3c5f0b9cc55ba6892d1b17bbb7b3
+          Column 1 (event_time): 1518501650
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 301
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 811a04053654d095d23dbcd58b21cf51bba6103cd36f878ec42c4b3367bf2dbf
+          Column 1 (event_time): 1518496896
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 302
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6a6adca4b97e1e240b0f61c70a7186b4f6c5718f118dab714a124f311e50b95
+          Column 1 (event_time): 1518455320
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 303
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 0711760320669d720c417e289a97ed535026ba317d036ed5221ae98ed3cc454e
+          Column 1 (event_time): 1518498506
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 304
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a7fe3dba3f3e9f4cf9113bf4bfd72105503056a46ed9d5f2b31b2f66b82bcedc
+          Column 1 (event_time): 1518523721
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 305
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f13ddd6ba23d850eea26672f8a37e12c869e710f97b6748cd67efeccead877be
+          Column 1 (event_time): 1518519463
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 306
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2015452405fbaa35fe0059a44492ac9766b309dd6de1efc13f4929fc77377d7e
+          Column 1 (event_time): 1518459685
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 307
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 79360c5331668a1204f3db33d7c544bbb5d926d46f030b18decde32596040b0a
+          Column 1 (event_time): 1518478595
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 308
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518457877
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 309
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 560092f7c8b16fe2e7213157cc61d41dc81603865a6b4739e3a6f70cc23f78a7
+          Column 1 (event_time): 1518512143
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 310
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6584437242562422be0249dedf8e53000991f38865b79d3de30b91fdccad932
+          Column 1 (event_time): 1518502043
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 311
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c818416c95e9e3f0238069530f93731f0bb00cfac8923002631d7a5d875774ee
+          Column 1 (event_time): 1518487692
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 312
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 439f8bd7d469586ab1998c60d354fb0b52328273fde3b96d87d4c138284d963a
+          Column 1 (event_time): 1518509022
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 313
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518477906
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 314
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ed623fb8f9790a9673ed1980c86ac09d767db996a4bd30868e035ce32a9e43b
+          Column 1 (event_time): 1518498131
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 315
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 030ec99481e2294ad1e3867dc5c48a74b9c619d6b6e40a4fc82c49e8cb4d29ef
+          Column 1 (event_time): 1518467788
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 316
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 7fdb07ccb36565dce526831ca16d76a1d9f3ca67ce5d09a1a2532a757c6c5476
+          Column 1 (event_time): 1518473765
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 317
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f13ddd6ba23d850eea26672f8a37e12c869e710f97b6748cd67efeccead877be
+          Column 1 (event_time): 1518533924
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 318
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd93264722b03cdce4d85431574ab052f32531f3408f26ebe2a2456c4cb1d28e
+          Column 1 (event_time): 1518525322
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 319
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518516881
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 320
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): fef4b7dded692bc420f2c94c15c733d529250a5921240192cc96957c1e524fb1
+          Column 1 (event_time): 1518515666
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 321
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 719b03ea6d1152760fb9db5fb900b0f59f2580eff19e1f0b221550dccae18307
+          Column 1 (event_time): 1518520445
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 322
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4581e86891cd365249af2f143322ff7c16a0f3392b41e23f1de78201bc827a07
+          Column 1 (event_time): 1518463187
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 323
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6787259060e68eb5ecedefb74c9320eb9cab14e1041d562b4e32a26aeefea9e
+          Column 1 (event_time): 1518482169
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 324
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 752e611e89b72b8737089e3d68db0ab2057798dbb67845efb61e337f965a2b13
+          Column 1 (event_time): 1518530416
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 325
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3830ebfe71cb9b3363979a982809da80636bfaf0603f73d5a2c130aa01025401
+          Column 1 (event_time): 1518534237
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 326
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): db04082aa3dde5a78c00deb3dc4b4dd3c0303e8d6468b1928ca7112920008dcd
+          Column 1 (event_time): 1518538678
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 327
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd93264722b03cdce4d85431574ab052f32531f3408f26ebe2a2456c4cb1d28e
+          Column 1 (event_time): 1518514782
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 328
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c9493763b7fdfe183565844f074527c6300cc5b29990809b1658adef07f00547
+          Column 1 (event_time): 1518495284
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 329
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 0467f05cf9c677fba45aea42031913b60c07b673e9cbbef2705a9b028d1865dd
+          Column 1 (event_time): 1518497241
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 330
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 628bd08e2306b2b0cc86f4dc5c311b3a67be6ea685f059e91836e747527bf6bd
+          Column 1 (event_time): 1518466864
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 331
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518497025
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 332
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6584437242562422be0249dedf8e53000991f38865b79d3de30b91fdccad932
+          Column 1 (event_time): 1518520556
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 333
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518461148
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 334
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518523988
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 335
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518511416
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 336
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6584437242562422be0249dedf8e53000991f38865b79d3de30b91fdccad932
+          Column 1 (event_time): 1518507760
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 337
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 439f8bd7d469586ab1998c60d354fb0b52328273fde3b96d87d4c138284d963a
+          Column 1 (event_time): 1518476699
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 338
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 379fca7e6c2f171cafd603fe46297b4a3fb7fcd324dfbc981a86210226ef6c90
+          Column 1 (event_time): 1518480111
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 339
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c745194cea8081505941357dade02ab0437401755193a08fb9e977056d4759b5
+          Column 1 (event_time): 1518537666
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 340
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c818416c95e9e3f0238069530f93731f0bb00cfac8923002631d7a5d875774ee
+          Column 1 (event_time): 1518512726
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 341
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c0e4f16bfc2fe4fa16a957e23d9d6b9ec82238847f3ea9696826cfdbc5127c59
+          Column 1 (event_time): 1518474048
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 342
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518499597
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 343
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518473226
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 344
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518527710
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 345
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518533406
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 346
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 981869f6c09b0a0b2db6972afb225f780dac6724a3b60c244b4cb2f5577fbb14
+          Column 1 (event_time): 1518471081
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 347
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518483773
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 348
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 330cb2a2a71e0a549eae61f4c87e9f2985567fb747ef7267aa1689d70745c8b1
+          Column 1 (event_time): 1518497769
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 349
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2929ffff0e819e26670c38fb734d02af675d3c5f0b9cc55ba6892d1b17bbb7b3
+          Column 1 (event_time): 1518508015
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 350
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 357dc69557ba11b39d4aad81efc380ca1cf5cb5fce48075ca66bb8162d24e2e6
+          Column 1 (event_time): 1518494049
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 351
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 719b03ea6d1152760fb9db5fb900b0f59f2580eff19e1f0b221550dccae18307
+          Column 1 (event_time): 1518506083
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 352
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ee2d6e463561cd1d22f73c3f42612a33865f4e081c272e10490b350ea3f8182
+          Column 1 (event_time): 1518499574
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 353
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 064302ef5e5f1a87468cdfc04055a93f4918c48b609336238f51abb2f0f6a66f
+          Column 1 (event_time): 1518530309
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 354
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 752e611e89b72b8737089e3d68db0ab2057798dbb67845efb61e337f965a2b13
+          Column 1 (event_time): 1518528625
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 355
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bcff8fd94ea447c2cfb989ce5085ee9a6e345070430d7cb815026c064f6fcc1f
+          Column 1 (event_time): 1518490976
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 356
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518509428
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 357
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 628bd08e2306b2b0cc86f4dc5c311b3a67be6ea685f059e91836e747527bf6bd
+          Column 1 (event_time): 1518503928
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 358
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ecb06bd8a2f862212bde67980d9902a9ffb2704be50bc6164203a42fe1dbc7b9
+          Column 1 (event_time): 1518529027
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 359
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a6b179714ed5130916bea4c1189c68db519d89b14d291c74ad50acba157f2ac6
+          Column 1 (event_time): 1518497239
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 360
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): dec4e568e0bf737e725f1a743c6eb77d8d9edbaa6c532d450b9bb9051416771e
+          Column 1 (event_time): 1518537375
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 361
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1797702440162aceec9c5fbe1c293a2e0a918fa422d91ee9ca4440f5339fc623
+          Column 1 (event_time): 1518535429
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 362
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 323c9bf7cc9afdeba9dc2c5cf70b04b05bbc37f990b26a0f57c9d4096963f807
+          Column 1 (event_time): 1518463282
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 363
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518488171
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 364
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 981869f6c09b0a0b2db6972afb225f780dac6724a3b60c244b4cb2f5577fbb14
+          Column 1 (event_time): 1518518249
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 365
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9feaa1b50bb794508e213b98a235d9b2e07c891fba59828dd63236d18ca7c277
+          Column 1 (event_time): 1518512825
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 366
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d1fbd48e18179ab04e1ef1ba5841b6201a6a697ad37f9ba7275c6f45d27da21c
+          Column 1 (event_time): 1518460902
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 367
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 452048cc34394c69754d2c9a920b7bbf0cbc4b68c869f657bd409eb40c307be2
+          Column 1 (event_time): 1518499854
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 368
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): b1ccac523f9050f04567f8f91f1ce76a1d677e5ce8d730f80609ae1f7a9b7842
+          Column 1 (event_time): 1518468900
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 369
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 454b0272ded0e26506e8a28ae795c5dfc2d57cf09ab18d1fc26fb27efdf00efa
+          Column 1 (event_time): 1518488031
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 370
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1f569f7f14837dda47f32090550b92a81b6db65193abe48a1d2bf0aea8fed895
+          Column 1 (event_time): 1518500491
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 371
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4581e86891cd365249af2f143322ff7c16a0f3392b41e23f1de78201bc827a07
+          Column 1 (event_time): 1518501170
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 372
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518510231
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 373
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518509912
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 374
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4b20d223508d40f7c7b5a2cb382540076da8b4b727c23c35ac04e19f1b5bd591
+          Column 1 (event_time): 1518492540
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 375
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d13c9749e24637c6e197ee5cac3926612e279a6c0cea5d9b0ce39d8a5b67ffea
+          Column 1 (event_time): 1518509164
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 376
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfea2802e10b4de0f4c310b35b670ead212667ad039d1c64d9e4128f37116d25
+          Column 1 (event_time): 1518513124
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 377
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e7fccc9f33e8de6586730a788848cf260c240a7f910579ebf9d193731f0e43dd
+          Column 1 (event_time): 1518540536
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 378
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 454b0272ded0e26506e8a28ae795c5dfc2d57cf09ab18d1fc26fb27efdf00efa
+          Column 1 (event_time): 1518496491
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 379
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 302253ae038b8d9023db5e81ac2cf710c91ba9682de9ce8ddc5dff22d4456c10
+          Column 1 (event_time): 1518487469
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 380
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 49e456dd4efe049a4c49f661a148115361f6c5b2d17c3b2660e680b71fc9c7da
+          Column 1 (event_time): 1518490576
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 381
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1fd3e3a861231311a95f4ef7da08aef8500a64fee29a5debdd93718665740e24
+          Column 1 (event_time): 1518485690
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 382
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518498760
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 383
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2929ffff0e819e26670c38fb734d02af675d3c5f0b9cc55ba6892d1b17bbb7b3
+          Column 1 (event_time): 1518538351
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 384
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 62461f896cae6c5673d55ca61d7cc94fceb9b0fb35dda599bab19013dea33c1c
+          Column 1 (event_time): 1518529650
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 385
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfe09c7228d8bada25609b09b361885bee8355dde37ec2a20bca7b5ab5470b41
+          Column 1 (event_time): 1518530686
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 386
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518528744
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 387
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 302253ae038b8d9023db5e81ac2cf710c91ba9682de9ce8ddc5dff22d4456c10
+          Column 1 (event_time): 1518504083
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 388
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518538360
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 389
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518456602
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 390
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 0711760320669d720c417e289a97ed535026ba317d036ed5221ae98ed3cc454e
+          Column 1 (event_time): 1518530559
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 391
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518526754
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 392
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 719b03ea6d1152760fb9db5fb900b0f59f2580eff19e1f0b221550dccae18307
+          Column 1 (event_time): 1518533724
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 393
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518512868
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 394
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518524063
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 395
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4581e86891cd365249af2f143322ff7c16a0f3392b41e23f1de78201bc827a07
+          Column 1 (event_time): 1518496103
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 396
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518520865
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 397
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 330cb2a2a71e0a549eae61f4c87e9f2985567fb747ef7267aa1689d70745c8b1
+          Column 1 (event_time): 1518500472
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 398
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e24103f351e980a41cfc66b33264b73e1635c3e0050abfbdbc39e4df3ecb4440
+          Column 1 (event_time): 1518486304
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 399
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 452048cc34394c69754d2c9a920b7bbf0cbc4b68c869f657bd409eb40c307be2
+          Column 1 (event_time): 1518537101
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 400
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 302253ae038b8d9023db5e81ac2cf710c91ba9682de9ce8ddc5dff22d4456c10
+          Column 1 (event_time): 1518496270
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 401
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6584437242562422be0249dedf8e53000991f38865b79d3de30b91fdccad932
+          Column 1 (event_time): 1518489341
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 402
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8730c6597a161b13419c669ce1cb84ea4b5eacb5d21671dea0e76e85620b6aa6
+          Column 1 (event_time): 1518510165
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 403
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9e0cd3be65f3d4529ae44195649fb41dce7bd97a68fdc4ef14c5ef838a6a4173
+          Column 1 (event_time): 1518533957
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 404
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c0e4f16bfc2fe4fa16a957e23d9d6b9ec82238847f3ea9696826cfdbc5127c59
+          Column 1 (event_time): 1518471405
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 405
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518484301
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 406
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518514938
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 407
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6584437242562422be0249dedf8e53000991f38865b79d3de30b91fdccad932
+          Column 1 (event_time): 1518488204
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 408
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd830af8cb499166f18340e92390d6d5a7c626a81ba98b6da52d94c5ab4d8c90
+          Column 1 (event_time): 1518510555
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 409
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): fef4b7dded692bc420f2c94c15c733d529250a5921240192cc96957c1e524fb1
+          Column 1 (event_time): 1518456860
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 410
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518514805
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 411
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e330981f0235e31ece6164c343d331411eb9d97eb50cbbeb4594d5c6f6370d67
+          Column 1 (event_time): 1518515503
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 412
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f8be246cfa23afabd12d523273280d73c8bfe8d27072a1a6a07d7c632624048b
+          Column 1 (event_time): 1518463145
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 413
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518479858
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 414
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8ddbd97fbb9b54e248cc6400c914efea3d337285c1b133e2266b405b48e6c603
+          Column 1 (event_time): 1518520882
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 415
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): b88effb913fe3041c98d61b05791ac4248161d543e4cf8b7bd6f939db7078323
+          Column 1 (event_time): 1518505976
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 416
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd93264722b03cdce4d85431574ab052f32531f3408f26ebe2a2456c4cb1d28e
+          Column 1 (event_time): 1518510234
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 417
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4581e86891cd365249af2f143322ff7c16a0f3392b41e23f1de78201bc827a07
+          Column 1 (event_time): 1518473541
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 418
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518476729
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 419
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518532687
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 420
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): d6787259060e68eb5ecedefb74c9320eb9cab14e1041d562b4e32a26aeefea9e
+          Column 1 (event_time): 1518524187
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 421
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a5c595a7291f4d7c45ddc87d5bb7aa3fdb0d13231cdc213432db37907ed8fd33
+          Column 1 (event_time): 1518455563
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 422
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 7fdb07ccb36565dce526831ca16d76a1d9f3ca67ce5d09a1a2532a757c6c5476
+          Column 1 (event_time): 1518481784
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 423
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfe09c7228d8bada25609b09b361885bee8355dde37ec2a20bca7b5ab5470b41
+          Column 1 (event_time): 1518525375
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 424
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): de1b51f3eb8f952c8f0bbff1fe9b1c2ebde3e7ee132daddf7eaaebea17cff829
+          Column 1 (event_time): 1518509863
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 425
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c9493763b7fdfe183565844f074527c6300cc5b29990809b1658adef07f00547
+          Column 1 (event_time): 1518458482
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 426
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 064302ef5e5f1a87468cdfc04055a93f4918c48b609336238f51abb2f0f6a66f
+          Column 1 (event_time): 1518500980
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 427
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 380a3c42b9fbfdadd2bef7b1276c0948625604a0f24074f122415901dc2c62b4
+          Column 1 (event_time): 1518537074
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 428
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8730c6597a161b13419c669ce1cb84ea4b5eacb5d21671dea0e76e85620b6aa6
+          Column 1 (event_time): 1518521879
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 429
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 6a3b75868b5683a28492b3a88cda8966cee93e1cf52b152844b49457727e0755
+          Column 1 (event_time): 1518467042
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 430
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfe09c7228d8bada25609b09b361885bee8355dde37ec2a20bca7b5ab5470b41
+          Column 1 (event_time): 1518520589
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 431
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518488468
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 432
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518480003
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 433
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 330cb2a2a71e0a549eae61f4c87e9f2985567fb747ef7267aa1689d70745c8b1
+          Column 1 (event_time): 1518510867
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 434
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518530754
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 435
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 379fca7e6c2f171cafd603fe46297b4a3fb7fcd324dfbc981a86210226ef6c90
+          Column 1 (event_time): 1518518822
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 436
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): db04082aa3dde5a78c00deb3dc4b4dd3c0303e8d6468b1928ca7112920008dcd
+          Column 1 (event_time): 1518531836
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 437
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9f06a2ba97b822a7904d1b8d809d990e210f31758882b5cc2e980b00e3a939ea
+          Column 1 (event_time): 1518509455
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 438
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518512293
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 439
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a260424fb39277401a435100bad70fbafd583ee92ea7fb605a143fd55493f530
+          Column 1 (event_time): 1518461514
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 440
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a260424fb39277401a435100bad70fbafd583ee92ea7fb605a143fd55493f530
+          Column 1 (event_time): 1518473354
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 441
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518466340
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 442
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e7fccc9f33e8de6586730a788848cf260c240a7f910579ebf9d193731f0e43dd
+          Column 1 (event_time): 1518520762
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 443
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518475423
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 444
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a6b179714ed5130916bea4c1189c68db519d89b14d291c74ad50acba157f2ac6
+          Column 1 (event_time): 1518475094
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 445
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9f06a2ba97b822a7904d1b8d809d990e210f31758882b5cc2e980b00e3a939ea
+          Column 1 (event_time): 1518467479
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 446
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 34ace1fec7a4b2c842707ff737b3475510d50c17ccc3e18d59c638b652dc43cd
+          Column 1 (event_time): 1518529728
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 447
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518522351
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 448
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518517769
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 449
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518506565
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 450
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e179c1fc8ea43b856026a3a2733f3a910fa06f49897b95ec209e9a406c425b41
+          Column 1 (event_time): 1518462638
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 451
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2015452405fbaa35fe0059a44492ac9766b309dd6de1efc13f4929fc77377d7e
+          Column 1 (event_time): 1518536390
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 452
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bcff8fd94ea447c2cfb989ce5085ee9a6e345070430d7cb815026c064f6fcc1f
+          Column 1 (event_time): 1518507582
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 453
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518484484
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 454
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 030ec99481e2294ad1e3867dc5c48a74b9c619d6b6e40a4fc82c49e8cb4d29ef
+          Column 1 (event_time): 1518536079
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 455
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9e0cd3be65f3d4529ae44195649fb41dce7bd97a68fdc4ef14c5ef838a6a4173
+          Column 1 (event_time): 1518484469
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 456
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518503873
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 457
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4581e86891cd365249af2f143322ff7c16a0f3392b41e23f1de78201bc827a07
+          Column 1 (event_time): 1518460455
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 458
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd93264722b03cdce4d85431574ab052f32531f3408f26ebe2a2456c4cb1d28e
+          Column 1 (event_time): 1518515788
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 459
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 38b8c18f1b047796ec143f22901ff29389f35e3141707c81afaf472cc3b2f10b
+          Column 1 (event_time): 1518540807
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 460
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfe09c7228d8bada25609b09b361885bee8355dde37ec2a20bca7b5ab5470b41
+          Column 1 (event_time): 1518481627
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 461
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ee538a6bebde1b1016855291a5fa7c49cb14ea7f52572d5a431cf2d9557870a5
+          Column 1 (event_time): 1518516710
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 462
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518480995
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 463
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 719b03ea6d1152760fb9db5fb900b0f59f2580eff19e1f0b221550dccae18307
+          Column 1 (event_time): 1518537355
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 464
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 7fdb07ccb36565dce526831ca16d76a1d9f3ca67ce5d09a1a2532a757c6c5476
+          Column 1 (event_time): 1518483308
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 465
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 8730c6597a161b13419c669ce1cb84ea4b5eacb5d21671dea0e76e85620b6aa6
+          Column 1 (event_time): 1518473651
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 466
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 5d3e9bdd080b1500591ce93d71967fa91ba8316f6b93f3a5f2194b10f9ff11c2
+          Column 1 (event_time): 1518464498
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 467
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e91d7b2cea3553a396adc6dbd868fa921b0455ecc73fde96b70ba0799d52fc04
+          Column 1 (event_time): 1518491120
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 468
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): f8be246cfa23afabd12d523273280d73c8bfe8d27072a1a6a07d7c632624048b
+          Column 1 (event_time): 1518465464
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 469
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518539965
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 470
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518483853
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 471
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a260424fb39277401a435100bad70fbafd583ee92ea7fb605a143fd55493f530
+          Column 1 (event_time): 1518482641
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 472
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 9feaa1b50bb794508e213b98a235d9b2e07c891fba59828dd63236d18ca7c277
+          Column 1 (event_time): 1518509761
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 473
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 1fd3e3a861231311a95f4ef7da08aef8500a64fee29a5debdd93718665740e24
+          Column 1 (event_time): 1518467790
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 474
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2929ffff0e819e26670c38fb734d02af675d3c5f0b9cc55ba6892d1b17bbb7b3
+          Column 1 (event_time): 1518536059
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 475
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 4581e86891cd365249af2f143322ff7c16a0f3392b41e23f1de78201bc827a07
+          Column 1 (event_time): 1518511855
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 476
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518496337
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 477
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 0711760320669d720c417e289a97ed535026ba317d036ed5221ae98ed3cc454e
+          Column 1 (event_time): 1518529154
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 478
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 5d3e9bdd080b1500591ce93d71967fa91ba8316f6b93f3a5f2194b10f9ff11c2
+          Column 1 (event_time): 1518485443
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 479
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e7fccc9f33e8de6586730a788848cf260c240a7f910579ebf9d193731f0e43dd
+          Column 1 (event_time): 1518484482
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 480
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 17fb5514706561f2f19ef5febb552183d10b5c2512693775bbbf14d56703609c
+          Column 1 (event_time): 1518474705
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 481
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 34ace1fec7a4b2c842707ff737b3475510d50c17ccc3e18d59c638b652dc43cd
+          Column 1 (event_time): 1518479111
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 482
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 628bd08e2306b2b0cc86f4dc5c311b3a67be6ea685f059e91836e747527bf6bd
+          Column 1 (event_time): 1518469104
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 483
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518465145
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 484
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): db04082aa3dde5a78c00deb3dc4b4dd3c0303e8d6468b1928ca7112920008dcd
+          Column 1 (event_time): 1518459494
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 485
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): cd93264722b03cdce4d85431574ab052f32531f3408f26ebe2a2456c4cb1d28e
+          Column 1 (event_time): 1518482235
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 486
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c9493763b7fdfe183565844f074527c6300cc5b29990809b1658adef07f00547
+          Column 1 (event_time): 1518521096
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 487
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): e8c5acc9f505e0e19f87a377a6944189c5c3fa9953556e245471b1e2e34ea933
+          Column 1 (event_time): 1518537002
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 488
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (event_time): 1518516750
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 489
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 62461f896cae6c5673d55ca61d7cc94fceb9b0fb35dda599bab19013dea33c1c
+          Column 1 (event_time): 1518536339
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 490
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518524491
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 491
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (event_time): 1518534238
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 492
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 2929ffff0e819e26670c38fb734d02af675d3c5f0b9cc55ba6892d1b17bbb7b3
+          Column 1 (event_time): 1518528359
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 493
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 981869f6c09b0a0b2db6972afb225f780dac6724a3b60c244b4cb2f5577fbb14
+          Column 1 (event_time): 1518454690
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 494
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 380a3c42b9fbfdadd2bef7b1276c0948625604a0f24074f122415901dc2c62b4
+          Column 1 (event_time): 1518455894
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 495
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): bfe09c7228d8bada25609b09b361885bee8355dde37ec2a20bca7b5ab5470b41
+          Column 1 (event_time): 1518513006
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 496
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): fef4b7dded692bc420f2c94c15c733d529250a5921240192cc96957c1e524fb1
+          Column 1 (event_time): 1518500922
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 497
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): c0e4f16bfc2fe4fa16a957e23d9d6b9ec82238847f3ea9696826cfdbc5127c59
+          Column 1 (event_time): 1518464085
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 498
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 439f8bd7d469586ab1998c60d354fb0b52328273fde3b96d87d4c138284d963a
+          Column 1 (event_time): 1518482815
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 499
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 719b03ea6d1152760fb9db5fb900b0f59f2580eff19e1f0b221550dccae18307
+          Column 1 (event_time): 1518485574
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 500
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): 064302ef5e5f1a87468cdfc04055a93f4918c48b609336238f51abb2f0f6a66f
+          Column 1 (event_time): 1518492700
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+Row 501
+Rejected due to invalid or missing: value
+--------------------------------------------------------------------------------
+          Column 0 (match_keys.email): a7fe3dba3f3e9f4cf9113bf4bfd72105503056a46ed9d5f2b31b2f66b82bcedc
+          Column 1 (event_time): 1518496521
+[INVALID] Column 2 (value): -1
+          Column 3 (event_name): Purchase
+          Column 4 (currency): USD
+
+

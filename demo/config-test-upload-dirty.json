@@ -1,0 +1,47 @@
+{
+  "skipRowsAlreadyUploaded": true,
+  "delimiter": ",",
+  "header": true,
+  "mapping": {
+    "0": "match_keys.email",
+    "1": "custom_data.food",
+    "2": "order_id",
+    "3": "match_keys.ct",
+    "4": "currency",
+    "5": "match_keys.country",
+    "6": "match_keys.st",
+    "7": "match_keys.zip",
+    "8": "event_time",
+    "9": "value",
+    "10": "event_name",
+    "11": "match_keys.ln",
+    "12": "custom_data.kcal",
+    "13": "item_number",
+    "14": "match_keys.fn",
+    "15": "match_keys.phone",
+    "16": "match_keys.dob",
+    "17": "custom_data.rating",
+    "18": "custom_data.drink"
+  },
+  "format": {
+    "event_time": {
+      "timeFormat": "ISO8601"
+    },
+    "dob": "MM/DD/YYYY"
+  },
+  "customTypeInfo": {
+    "food": {
+      "baseType": "string"
+    },
+    "drink": {
+      "baseType": "string"
+    },
+    "rating": {
+      "baseType": "number"
+    },
+    "kcal": {
+      "baseType": "number"
+    }
+  },
+  "presetValues": {}
+}
