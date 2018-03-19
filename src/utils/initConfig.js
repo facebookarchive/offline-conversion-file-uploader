@@ -344,6 +344,9 @@ function loadConfig(
       JSON.parse(fs.readFileSync(e2eTestConfigFilePathAbs, 'utf8'));
     graphAPI.setupE2E(e2eTestConfig);
     reportUtils.setupE2E();
+    // $FlowFixMe: Mock out this function so event time normalization returns
+    // same result.
+    Date.now = () => 1519862400000;
   }
 
   // Load from config file

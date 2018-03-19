@@ -10,7 +10,7 @@ Offline Conversion Automated Uploader is a command line tool that helps Facebook
 ## Prerequisites
 * An offline event set. [How to create](https://www.facebook.com/business/help/339320669734609)
 * Your offline event file in CSV format. [Examples](https://github.com/facebookincubator/offline-conversion-file-uploader/blob/master/demo/test-event-files.zip)
-* **Strongly recommended:** manually upload your offline events via [UI](https://business.facebook.com/events_manager/?selected_data_sources=DATA_SET) to famaliarize yourself with this product.
+* **Strongly recommended:** manually upload your offline events via [UI](https://business.facebook.com/events_manager/?selected_data_sources=DATA_SET) to familiarize yourself with this product.
 * System user access token. [Follow step 2 and 3 of this guide.](https://developers.facebook.com/docs/marketing-api/offline-conversions). Not required if you only use this tool to hash the data.
 
 ## How to use
@@ -27,7 +27,7 @@ npm run compile
 
 ###Examples
 
-Before uploading real data, you can create a test data set and upload some toy data to familiarize yourself with this tool. Take a look at this [guide](https://github.com/facebookincubator/offline-conversion-file-uploader/blob/master/demo/demo.md) and have a try.
+Before uploading real data, you can create a test data set and upload some test data to familiarize yourself with this tool. Take a look at this [guide](https://github.com/facebookincubator/offline-conversion-file-uploader/blob/master/demo/demo.md) and have a try.
 
 ### Run Command
 
@@ -43,7 +43,7 @@ See the **Commands** section for details of each command. See the previous secti
 
 ### Schedule
 
-Once you make sure an upload is made successfully, you can automate your upload by scheduling the command. We recommand to use **crontab** for POSIX systems, and use **Powershell** and **Task Scheduler** for Windows.
+Once you make sure an upload is made successfully, you can automate your upload by scheduling the command. We recommend to use **crontab** for POSIX systems, and use **Powershell** and **Task Scheduler** for Windows.
 
 ## Commands
 |Command|Description|Options (Required options are in bold)|
@@ -133,7 +133,7 @@ The key of `mapping` is the index of column, starting with 0. The value of mappi
 | value             | Required if exists event having `Purchase` as `event_name`. Optional for other cases. | Value of conversion event. Required for Purchase event. We do not accept 0 and negative values. Example: `16.00`. |
 | currency          | Required if `value` is mapped. Can be either specified in `mapping` of in `presetValues`. | Three-letter ISO currency for this conversion event. Required when and only when value presents. |
 | order_id          | Optional but recommended. Required if `item_number` is mapped. | The unique ID associated with each of your transactions.     |
-| item_number       | Optional.                                                    | Item number is to distinguish different items with in same order. |
+| item_number       | Optional.                                                    | Item number is to distinguish different items within same order. |
 | custom_data.XXXXX | Optional.                                                    | Additional information about the conversion event. For example, send store location ID as custom_data.location_id. |
 
 We also provide a `presetValues` option for your convenience if your CSV file does not contain a column for `event_name` or `currency`. For example, if all of your events are purchases and uses USD as currency, you can use the following presetValues:
@@ -188,11 +188,11 @@ The last piece of mapping is `customTypeInfo`. If you don't map any custom data 
 
 ###Resuming Support
 
-Resuming is a way to ensure each row is uploaded once and only once, regardless of process or machine crash, or network failsures. The following prerequisites should be satisfied to support resuming:
+Resuming is a way to ensure each row is uploaded once and only once, regardless of process or machine crashes, or network failures. The following prerequisites should be satisfied to support resuming:
 
-- You use different file names for each input file. A way to guarantee that is to add a date stamp at each file. For example, you use `Offline conversions 2018-03-01.csv` to represent sales happen that day (or that week).
+- You should use different file names for each input file. A way to guarantee that is to add a date stamp at each file. For example, you use `Offline conversions 2018-03-01.csv` to represent sales happen that day (or that week).
 - Once the input file is generated, you don't change it.
-- The antipattern is to use one file name for all events, and you update the file for new events. **Don't do this.**
+- The anti-pattern is to use one file name for all events, and you update the file for new events. **Don't do this.**
 
 Then when you call the script to upload the events, make sure:
 
