@@ -541,7 +541,14 @@ async function checkAccessTokenAndDataSetID(
   dataSetID: string,
 ) {
   try {
-    await graphAPI(dataSetID, 'GET', {accessToken, fields: ['id']});
+    await graphAPI(
+      dataSetID,
+      'GET',
+      {
+        access_token: accessToken,
+        fields: ['id'],
+      },
+    );
   } catch (error) {
     winston.error(
       `Failed to read data set ${dataSetID} using access token ${accessToken}. `
