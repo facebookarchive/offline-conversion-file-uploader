@@ -62,7 +62,7 @@ test('GET without params and with valid response', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'GET',
-    path: 'https://graph.facebook.com/v2.10/123456',
+    path: 'https://graph.facebook.com/v3.0/123456',
   });
   const res = {
     setEncoding: jest.fn(),
@@ -88,7 +88,7 @@ test('GET with params, make sure they are encoded', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'GET',
-    path: 'https://graph.facebook.com/v2.10/123456?x=1&y=2&%E4%BD%A0=%E5%A5%BD',
+    path: 'https://graph.facebook.com/v3.0/123456?x=1&y=2&%E4%BD%A0=%E5%A5%BD',
   });
 });
 
@@ -219,7 +219,7 @@ test('POST with params', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'POST',
-    path: 'https://graph.facebook.com/v2.10/123456',
+    path: 'https://graph.facebook.com/v3.0/123456',
     headers: {
       'Content-Type': 'application/json',
       'Content-Length': Buffer.byteLength(JSON.stringify(params)),

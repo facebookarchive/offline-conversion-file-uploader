@@ -18,7 +18,7 @@ const SignalsUploaderLibrary = require('../uploader/SignalsUploaderLibrary');
 const winston = require('winston');
 
 const {
-  AdsSignalsEventTypes,
+  OfflineStandardEventsEnum,
   getSignalsSchemaSummary,
   SignalDateFormats,
   SignalsCurrencyCodes,
@@ -217,10 +217,10 @@ function checkPresetValues(
         );
       }
       const value = presetValues[propPath];
-      if (!Object.values(AdsSignalsEventTypes).includes(value)) {
+      if (!Object.values(OfflineStandardEventsEnum).includes(value)) {
         throw new Error(
           `Invalid value '${value}' for 'presetValues.event_name', acceptable `
-          + `event_name: ${Object.values(AdsSignalsEventTypes).join(', ')}.`
+          + `event_name: ${Object.values(OfflineStandardEventsEnum).join(', ')}.`
         );
       }
     } else if (propPath === 'currency') {

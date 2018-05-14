@@ -100,7 +100,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 79);
+/******/ 	return __webpack_require__(__webpack_require__.s = 80);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -112,7 +112,7 @@ module.exports =
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var STRIP_MODES = __webpack_require__(78);
+var STRIP_MODES = __webpack_require__(79);
 
 var SHA_256_REGEX = /^[a-f0-9]{64}$/i;
 var TRIM_REGEX = /^\s+|\s+$/g;
@@ -788,7 +788,13 @@ function doResolve(fn, promise) {
 "use strict";
 
 
-module.exports = ['MM-DD-YYYY', 'MM/DD/YYYY', 'MMDDYYYY', 'DD-MM-YYYY', 'DD/MM/YYYY', 'DDMMYYYY', 'YYYY-MM-DD', 'YYYY/MM/DD', 'YYYYMMDD', 'MM-DD-YY', 'MM/DD/YY', 'MMDDYY', 'DD-MM-YY', 'DD/MM/YY', 'DDMMYY', 'YY-MM-DD', 'YY/MM/DD', 'YYMMDD'];
+var _module$exports;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var SignalBaseTypes = __webpack_require__(28);
+
+module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(47)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(48)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(49)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(50)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(51)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(12)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(52)), _defineProperty(_module$exports, SignalBaseTypes.JSON_LIST, __webpack_require__(53)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(54)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(13)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(55)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(56)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(57)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(58)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(20)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(59)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(21)), _module$exports);
 
 /***/ }),
 /* 7 */
@@ -797,25 +803,10 @@ module.exports = ['MM-DD-YYYY', 'MM/DD/YYYY', 'MMDDYYYY', 'DD-MM-YYYY', 'DD/MM/Y
 "use strict";
 
 
-var _module$exports;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var SignalBaseTypes = __webpack_require__(28);
-
-module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(47)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(48)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(49)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(50)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(51)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(12)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(53)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(13)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(54)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(55)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(57)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(20)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(58)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(52)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(21)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(56)), _module$exports);
+module.exports = ['MM-DD-YYYY', 'MM/DD/YYYY', 'MMDDYYYY', 'DD-MM-YYYY', 'DD/MM/YYYY', 'DDMMYYYY', 'YYYY-MM-DD', 'YYYY/MM/DD', 'YYYYMMDD', 'MM-DD-YY', 'MM/DD/YY', 'MMDDYY', 'DD-MM-YY', 'DD/MM/YY', 'DDMMYY', 'YY-MM-DD', 'YY/MM/DD', 'YYMMDD'];
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = Object.freeze({ "RULE": "rule", "PROP": "prop" });
-
-/***/ }),
-/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -826,11 +817,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var SignalsNormalizationErrorLevel = __webpack_require__(29);
-var SignalsNormalizationErrorScope = __webpack_require__(8);
+var SignalsNormalizationErrorScope = __webpack_require__(9);
 var SignalsNormalizationPropError = __webpack_require__(30);
 var SignalsValidationUtils = __webpack_require__(0);
 
-var ruleChecker = __webpack_require__(59);
+var ruleChecker = __webpack_require__(60);
 
 var addValueAtPath = SignalsValidationUtils.addValueAtPath,
     hasProp = SignalsValidationUtils.hasProp,
@@ -1190,6 +1181,15 @@ function normalizeSignal(signal, schema, normalizers, transformers, mapping, inf
 module.exports = normalizeSignal;
 
 /***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = Object.freeze({ "RULE": "rule", "PROP": "prop" });
+
+/***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1216,8 +1216,8 @@ module.exports = SignalsNumberNormalizationErrorTypes;
 "use strict";
 
 
-var SignalDateFormats = __webpack_require__(6);
-var SignalDateMonthFormats = __webpack_require__(60);
+var SignalDateFormats = __webpack_require__(7);
+var SignalDateMonthFormats = __webpack_require__(61);
 var SignalsValidationUtils = __webpack_require__(0);
 
 var normalizeSignalsEnumType = __webpack_require__(12);
@@ -1576,10 +1576,10 @@ module.exports = normalize;
 
 
 var Immutable = __webpack_require__(35);
-var SignalsUploaderColumnMapperConstants = __webpack_require__(62);
+var SignalsUploaderColumnMapperConstants = __webpack_require__(63);
 
 var getSchemaSummary = __webpack_require__(18);
-var getSignalsNormalizationErrorSummary = __webpack_require__(61);
+var getSignalsNormalizationErrorSummary = __webpack_require__(62);
 
 var COLUMN_MAPPING_ERROR_THRESHOLD = 0.95;
 
@@ -1850,9 +1850,9 @@ module.exports = SignalsUploaderErrorReportGenerator;
 "use strict";
 
 
-var SignalsUploaderAdvancedErrorReportGenerator = __webpack_require__(63);
+var SignalsUploaderAdvancedErrorReportGenerator = __webpack_require__(64);
 var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(23);
-var SignalsUploaderWLALErrorReportGenerator = __webpack_require__(64);
+var SignalsUploaderWLALErrorReportGenerator = __webpack_require__(65);
 
 function createSignalsUploaderErrorReportGenerator(config) {
   switch (config.type) {
@@ -1875,7 +1875,7 @@ module.exports = createSignalsUploaderErrorReportGenerator;
 "use strict";
 
 
-module.exports = __webpack_require__(89)
+module.exports = __webpack_require__(90)
 
 
 /***/ }),
@@ -2149,6 +2149,8 @@ var trim = SignalsValidationUtils.trim;
 
 var CURRENCY_CODES_AND_SYMBOLS = ['ALL', 'AFN', 'ARS', 'AWG', 'AUD', 'AZN', 'BSD', 'BBD', 'BYR', 'BZD', 'BMD', 'BOB', 'BAM', 'BWP', 'BGN', 'BRL', 'BND', 'KHR', 'CAD', 'KYD', 'CLP', 'CNY', 'COP', 'CRC', 'HRK', 'CUP', 'CZK', 'DKK', 'DOP', 'XCD', 'EGP', 'SVC', 'EEK', 'EUR', 'FKP', 'FJD', 'GHC', 'GIP', 'GTQ', 'GGP', 'GYD', 'HNL', 'HKD', 'HUF', 'ISK', 'INR', 'IDR', 'IRR', 'IMP', 'ILS', 'JMD', 'JPY', 'JEP', 'KES', 'KZT', 'KPW', 'KRW', 'KGS', 'LAK', 'LVL', 'LBP', 'LRD', 'LTL', 'MKD', 'MYR', 'MUR', 'MXN', 'MNT', 'MZN', 'NAD', 'NPR', 'ANG', 'NZD', 'NIO', 'NGN', 'NOK', 'OMR', 'PKR', 'PAB', 'PYG', 'PEN', 'PHP', 'PLN', 'QAR', 'RON', 'RUB', 'RMB', 'SHP', 'SAR', 'RSD', 'SCR', 'SGD', 'SBD', 'SOS', 'ZAR', 'LKR', 'SEK', 'CHF', 'SRD', 'SYP', 'TZS', 'TWD', 'THB', 'TTD', 'TRY', 'TRL', 'TVD', 'UGX', 'UAH', 'GBP', 'USD', 'UYU', 'UZS', 'VEF', 'VND', 'YER', 'ZWD', 'L', '\u060B', '$', '\u0192', '\u20BC', 'p.', 'BZ$', 'Bs.', 'KM', 'P', '\u043B\u0432', 'R$', '\u17DB', '\xA5', '\u20A1', 'kn', '\u20B1', 'K\u010D', 'kr', 'RD$', '\xA3', '\u20AC', '\u20B5', 'Q', 'Ft', '\u20B9', 'Rp', '\uFDFC', '\u20AA', 'J$', 'KSh', '\u20A9', '\u20AD', 'Ls', 'Lt', '\u0434\u0435\u043D', 'RM', '\u20A8', '\u20AE', 'MT', 'C$', '\u20A6', 'B/.', 'Gs', 'S/.', 'z\u0142', 'lei', '\u20BD', '\uFFE5', '\u0414\u0438\u043D.', 'S', 'R', 'TSh', 'NT$', '\u0E3F', 'TT$', '\u20BA', '\u20A4', 'USh', '\u20B4', '$U', 'Bs', '\u20AB', 'Z$'];
 
+var DEFAULT_DECIMAL_REPRESENTATION = '.';
+
 function replaceCharAt(str, index, newChar) {
   if (index < 0 || index >= str.length) {
     return str;
@@ -2160,7 +2162,7 @@ function i18nNumberNormalize(maybeNumber) {
   var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
-  var decimalPointChar = additionalInfo.decimalPointChar != null ? additionalInfo.decimalPointChar : '.';
+  var decimalPointChar = additionalInfo.decimalPointChar != null ? additionalInfo.decimalPointChar : DEFAULT_DECIMAL_REPRESENTATION;
   var standizedNumber = maybeNumber;
   if (decimalPointChar === ',') {
     if (maybeNumber.indexOf('.') !== -1) {
@@ -2211,7 +2213,9 @@ function trimCurrencyNormalize(trimmedInput) {
 
 function normalize(input) {
   var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments[2];
+  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
+    decimalPointChar: DEFAULT_DECIMAL_REPRESENTATION
+  };
 
   var result = null;
 
@@ -2269,7 +2273,7 @@ module.exports = normalize;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var sha256 = __webpack_require__(92);
+var sha256 = __webpack_require__(93);
 var SignalsValidationUtils = __webpack_require__(0);
 
 var hasProp = SignalsValidationUtils.hasProp,
@@ -2608,7 +2612,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var abstractMethod = __webpack_require__(2);
-var createSignalsUploaderReader = __webpack_require__(80);
+var createSignalsUploaderReader = __webpack_require__(81);
 
 var SignalsUploaderTask = function () {
   function SignalsUploaderTask(source, chunkSize, logger) {
@@ -2676,11 +2680,11 @@ var SignalsUploaderTask = function () {
       }
 
       while (this._reader.hasNextChunk() && this.__shouldReadNextChunk()) {
-        this._reader.nextChunk().done(function (chunk) {
+        this._reader.nextChunk().then(function (chunk) {
           if (_this2.__running()) {
             _this2.__onChunk(chunk);
           }
-        }, function (error) {
+        }).catch(function (error) {
           return _this2.__stopAndReject(error);
         });
       }
@@ -2768,7 +2772,7 @@ function getByPath(root, path, fallbackValue) {
   for (var i = 0; i < path.length; i++) {
     var segment = path[i];
 
-    if (current && typeof current !== 'string' && segment in current) {
+    if (current && typeof current !== 'string' && typeof current !== 'number' && segment in current) {
       current = current[segment];
     } else {
       return fallbackValue;
@@ -2786,7 +2790,7 @@ module.exports = getByPath;
 "use strict";
 
 
-module.exports = Object.freeze({ "CURRENCY_CODE": "currency_code", "DATE": "date", "DATE_MONTH": "date_month", "EMAIL": "email", "ENUM": "enum", "NUMBER": "number", "STRING": "string", "TIMESTAMP": "timestamp", "UNIX_TIME": "unix_time", "PHONE_NUMBER": "phone_number", "POSTAL_CODE": "postal_code", "ANY": "any", "LIST": "LIST", "BOOL": "bool", "FBID": "fbid", "VALUE": "value", "SHA256": "sha256" });
+module.exports = Object.freeze({ "ANY": "any", "BOOL": "bool", "CURRENCY_CODE": "currency_code", "DATE": "date", "DATE_MONTH": "date_month", "EMAIL": "email", "ENUM": "enum", "FBID": "fbid", "JSON_LIST": "json_list", "LIST": "LIST", "NUMBER": "number", "PHONE_NUMBER": "phone_number", "POSTAL_CODE": "postal_code", "SHA256": "sha256", "STRING": "string", "TIMESTAMP": "timestamp", "UNIX_TIME": "unix_time", "VALUE": "value" });
 
 /***/ }),
 /* 29 */
@@ -2813,7 +2817,7 @@ module.exports = Object.freeze({ "INVALID": "invalid", "TOO_MANY": "too-many", "
 "use strict";
 
 
-var SignalsUploaderUIWorker = __webpack_require__(75);
+var SignalsUploaderUIWorker = __webpack_require__(76);
 
 function createSignalsUploaderWorker(handler) {
   return new SignalsUploaderUIWorker(handler);
@@ -2905,7 +2909,7 @@ function requestFlush() {
         if (!domain) {
            
            
-            domain = __webpack_require__(93);
+            domain = __webpack_require__(94);
         }
         domain.active = process.domain = null;
     }
@@ -7902,329 +7906,609 @@ module.exports = keyMirror;
 
 
 var SignalsEventDataSchema = {
-  additionalInfoURL: 'https://www.facebook.com/help/606443329504150',
-  id: 'event_data_schema',
-  version: '0.0.2',
-  exampleFiles: {
-    csv: 'https://www.facebook.com/images/ads/signals/example_files/example_events_file.csv'
+  "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
+  "id": "event_data_schema",
+  "version": "0.0.2",
+  "exampleFiles": {
+    "csv": "https://www.facebook.com/images/ads/signals/example_files/example_events_file.csv"
   },
-  validIf: {
-    rule: 'meetAll',
-    args: [{
-      rule: 'meetAll',
-      args: [{
-        rule: 'propValid',
-        name: 'valid_event_time',
-        args: 'event_time'
+  "validIf": {
+    "rule": "meetAll",
+    "args": [{
+      "rule": "meetAll",
+      "args": [{
+        "rule": "propValid",
+        "name": "valid_event_time",
+        "args": "event_time"
       }, {
-        rule: 'propValid',
-        name: 'valid_event_name',
-        args: 'event_name'
+        "rule": "propValid",
+        "name": "valid_event_name",
+        "args": "event_name"
       }, {
-        rule: 'dependentProps',
-        name: 'require_value_and_currency_if_purchase',
-        args: [{
-          rule: 'propValueIs',
-          args: ['event_name', 'Purchase']
-        }, ['value', 'currency']]
+        "rule": "dependentProps",
+        "name": "require_value_and_currency_if_purchase",
+        "args": [{
+          "rule": "propValueIs",
+          "args": ["event_name", "Purchase"]
+        }, ["value", "currency"]]
       }, {
-        rule: 'dependentProps',
-        name: 'require_currency_if_value',
-        args: [{
-          rule: 'propValid',
-          args: 'value'
-        }, ['currency']]
+        "rule": "dependentProps",
+        "name": "require_currency_if_value",
+        "args": [{
+          "rule": "propValid",
+          "args": "value"
+        }, ["currency"]]
       }, {
-        rule: 'dependentProps',
-        name: 'require_value_if_currency',
-        args: [{
-          rule: 'propValid',
-          args: 'currency'
-        }, ['value']]
+        "rule": "dependentProps",
+        "name": "require_value_if_currency",
+        "args": [{
+          "rule": "propValid",
+          "args": "currency"
+        }, ["value"]]
       }]
     }, {
-      rule: 'meetAll',
-      args: [{
-        rule: 'dependentProps',
-        name: 'require_content_type_if_content_ids',
-        args: [{
-          rule: 'propValid',
-          args: 'content_ids'
-        }, ['content_type']]
+      "rule": "meetAll",
+      "args": [{
+        "rule": "dependentProps",
+        "name": "require_content_type_if_content_ids",
+        "args": [{
+          "rule": "propValid",
+          "args": "content_ids"
+        }, ["content_type"]]
       }]
     }]
   },
-  props: [{
-    key: 'event_time',
-    label: 'Event Time',
-    examples: ['2016-06-20T03:21:48+01:00', '2016-06-20T03:21:48', '1459315678', 'mm/dd/yyyy', '+ 15 more'],
-    typeParams: {
-      rejectTimeBefore: 63072000000
+  "props": [{
+    "key": "event_time",
+    "label": "Event Time",
+    "examples": ["2016-06-20T03:21:48+01:00", "2016-06-20T03:21:48", "1459315678", "mm/dd/yyyy", "+ 15 more"],
+    "typeParams": {
+      "rejectTimeBefore": 63072000000
     },
-    type: 'unix_time'
+    "type": "unix_time"
   }, {
-    key: 'event_name',
-    label: 'Event Name',
-    formats: ['AddPaymentInfo', 'AddToCart', 'AddToWishlist', 'CompleteRegistration', 'InitiateCheckout', 'Lead', 'Purchase', 'Search', 'ViewContent', 'Other'],
-    type: 'enum',
-    typeParams: {
-      caseInsensitive: true,
-      options: ['AddPaymentInfo', 'AddToCart', 'AddToWishlist', 'CompleteRegistration', 'InitiateCheckout', 'Lead', 'Purchase', 'Search', 'ViewContent', 'Other'],
-      rejectHashed: true
+    "key": "event_name",
+    "label": "Event Name",
+    "formats": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "InitiateCheckout", "Lead", "Purchase", "Search", "ViewContent", "Other"],
+    "type": "enum",
+    "typeParams": {
+      "caseInsensitive": true,
+      "options": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "InitiateCheckout", "Lead", "Purchase", "Search", "ViewContent", "Other"],
+      "rejectHashed": true
     },
-    maxCountOfExamplesToShow: 30
+    "maxCountOfExamplesToShow": 30
   }, {
-    key: 'match_keys',
-    label: 'Match keys',
-    type: {
-      additionalInfoURL: 'https://www.facebook.com/help/606443329504150',
-      id: 'extended_pii_schema',
-      version: '0.2.0',
-      type: 'pii_keys',
-      exampleFiles: {
-        csv: 'https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv'
+    "key": "match_keys",
+    "label": "Match keys",
+    "type": {
+      "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
+      "id": "extended_pii_schema",
+      "version": "0.2.0",
+      "type": "pii_keys",
+      "exampleFiles": {
+        "csv": "https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv"
       },
-      validIf: {
-        rule: 'minValidProps',
-        args: 1
+      "validIf": {
+        "rule": "minValidProps",
+        "args": 1
       },
-      transform: ['processPIISignalBeforeUpload'],
-      props: [{
-        key: 'email',
-        maxOccurrence: 3,
-        label: 'Email',
-        examples: ['Emily@example.com', 'John@example.com', 'Helena@example.com'],
-        type: 'email'
+      "transform": ["processPIISignalBeforeUpload"],
+      "props": [{
+        "key": "email",
+        "maxOccurrence": 3,
+        "label": "Email",
+        "examples": ["Emily@example.com", "John@example.com", "Helena@example.com"],
+        "type": "email"
       }, {
-        key: 'phone',
-        maxOccurrence: 3,
-        label: 'Phone Number',
-        examples: ['1(222)333-4444', '001(222)333-4444', '+12223334444'],
-        type: 'phone_number'
+        "key": "phone",
+        "maxOccurrence": 3,
+        "label": "Phone Number",
+        "examples": ["1(222)333-4444", "001(222)333-4444", "+12223334444"],
+        "type": "phone_number"
       }, {
-        key: 'madid',
-        label: 'Mobile Advertiser ID',
-        formats: ["Android's Advertising ID(AAID)", "Apple's Advertising Identifier(IDFA)"],
-        type: 'string',
-        typeParams: {
-          lowercase: true,
-          strip: 'whitespace_only',
-          test: '^([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}|[a-zA-Z0-9]{6}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{13})$'
+        "key": "madid",
+        "label": "Mobile Advertiser ID",
+        "formats": ["Android's Advertising ID(AAID)", "Apple's Advertising Identifier(IDFA)"],
+        "type": "string",
+        "typeParams": {
+          "lowercase": true,
+          "strip": "whitespace_only",
+          "test": "^([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}|[a-zA-Z0-9]{6}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{13})$"
         }
       }, {
-        key: 'fn',
-        label: 'First Name',
-        examples: ['John', 'F.', 'Fr&eacute;d&eacute;drique'],
-        type: 'string',
-        typeParams: {
-          lowercase: true,
-          strip: 'whitespace_and_punctuation'
+        "key": "fn",
+        "label": "First Name",
+        "examples": ["John", "F.", "Fr&eacute;d&eacute;drique"],
+        "type": "string",
+        "typeParams": {
+          "lowercase": true,
+          "strip": "whitespace_and_punctuation"
         }
       }, {
-        key: 'ln',
-        label: 'Last Name',
-        examples: ['Smith', 'S&oslash;rensen', 'Jacobs-Anderson'],
-        type: 'string',
-        typeParams: {
-          lowercase: true,
-          strip: 'whitespace_and_punctuation'
+        "key": "ln",
+        "label": "Last Name",
+        "examples": ["Smith", "S&oslash;rensen", "Jacobs-Anderson"],
+        "type": "string",
+        "typeParams": {
+          "lowercase": true,
+          "strip": "whitespace_and_punctuation"
         }
       }, {
-        key: 'zip',
-        label: 'ZIP/Postal Code',
-        examples: ['94025', '94025-3215', 'L3T 5M7'],
-        type: 'postal_code'
+        "key": "zip",
+        "label": "ZIP/Postal Code",
+        "examples": ["94025", "94025-3215", "L3T 5M7"],
+        "type": "postal_code"
       }, {
-        key: 'ct',
-        label: 'City',
-        examples: ['Menlo Park', 'Seattle', 'London'],
-        type: 'string',
-        typeParams: {
-          lowercase: true,
-          strip: 'all_non_latin_alpha_numeric',
-          test: '^[a-z]+'
+        "key": "ct",
+        "label": "City",
+        "examples": ["Menlo Park", "Seattle", "London"],
+        "type": "string",
+        "typeParams": {
+          "lowercase": true,
+          "strip": "all_non_latin_alpha_numeric",
+          "test": "^[a-z]+"
         }
       }, {
-        key: 'st',
-        label: 'State/Province',
-        examples: ['CA', 'Califonia', 'Texas'],
-        type: 'string',
-        typeParams: {
-          lowercase: true,
-          strip: 'all_non_latin_alpha_numeric',
-          test: '^[a-z]+'
+        "key": "st",
+        "label": "State/Province",
+        "examples": ["CA", "Califonia", "Texas"],
+        "type": "string",
+        "typeParams": {
+          "lowercase": true,
+          "strip": "all_non_latin_alpha_numeric",
+          "test": "^[a-z]+"
         }
       }, {
-        key: 'country',
-        label: 'Country',
-        examples: ['US', 'GB', 'FR'],
-        type: 'string',
-        typeParams: {
-          lowercase: true,
-          strip: 'whitespace_only',
-          test: '^[a-zA-Z]{2,2}'
+        "key": "country",
+        "label": "Country",
+        "examples": ["US", "GB", "FR"],
+        "type": "string",
+        "typeParams": {
+          "lowercase": true,
+          "strip": "whitespace_only",
+          "test": "^[a-zA-Z]{2,2}"
         }
       }, {
-        key: 'dob',
-        label: 'Date of Birth',
-        examples: ['mm/dd/yyyy', 'mm/dd/yy', 'yyyy-mm-dd', '+ 15 more'],
-        type: 'date',
-        typeParams: {
-          rejectHashed: true
+        "key": "dob",
+        "label": "Date of Birth",
+        "examples": ["mm/dd/yyyy", "mm/dd/yy", "yyyy-mm-dd", "+ 15 more"],
+        "type": "date",
+        "typeParams": {
+          "rejectHashed": true
         }
       }, {
-        key: 'doby',
-        label: 'Year of Birth',
-        type: 'string',
-        typeParams: {
-          test: '^[0-9]{4,4}$'
+        "key": "doby",
+        "label": "Year of Birth",
+        "type": "string",
+        "typeParams": {
+          "test": "^[0-9]{4,4}$"
         },
-        examples: ['1978', '1962', '1990']
+        "examples": ["1978", "1962", "1990"]
       }, {
-        key: 'gen',
-        label: 'Gender',
-        examples: ['M', 'F'],
-        type: 'enum',
-        typeParams: {
-          lowercase: true,
-          options: ['f', 'm']
+        "key": "gen",
+        "label": "Gender",
+        "examples": ["M", "F"],
+        "type": "enum",
+        "typeParams": {
+          "lowercase": true,
+          "options": ["f", "m"]
         }
       }, {
-        key: 'age',
-        label: 'Age',
-        examples: [65, 42, 21],
-        type: 'number',
-        typeParams: {
-          min: 0
+        "key": "age",
+        "label": "Age",
+        "examples": [65, 42, 21],
+        "type": "number",
+        "typeParams": {
+          "min": 0
         }
       }, {
-        key: 'appuid',
-        label: 'Facebook App User ID',
-        examples: ['1234567890', '1443637309', '1234567892'],
-        type: 'fbid',
-        typeParams: {
-          scoped: true,
-          rejectHashed: true
+        "key": "appuid",
+        "label": "Facebook App User ID",
+        "examples": ["1234567890", "1443637309", "1234567892"],
+        "type": "fbid",
+        "typeParams": {
+          "scoped": true,
+          "rejectHashed": true
         }
       }, {
-        key: 'fi',
-        noUI: true,
-        label: 'First name initial',
-        type: 'string',
-        typeParams: {
-          lowercase: true,
-          strip: 'whitespace_only',
-          test: '^[a-z]{1,1}$'
+        "key": "fi",
+        "noUI": true,
+        "label": "First name initial",
+        "type": "string",
+        "typeParams": {
+          "lowercase": true,
+          "strip": "whitespace_only",
+          "test": "^[a-z]{1,1}$"
         }
       }, {
-        key: 'f5first',
-        noUI: true,
-        label: 'First five letters of first name',
-        type: 'string',
-        typeParams: {
-          lowercase: true,
-          strip: 'whitespace_only',
-          test: '^[a-z]{5,5}$'
+        "key": "f5first",
+        "noUI": true,
+        "label": "First five letters of first name",
+        "type": "string",
+        "typeParams": {
+          "lowercase": true,
+          "strip": "whitespace_only",
+          "test": "^[a-z]{5,5}$"
         }
       }, {
-        key: 'f5last',
-        noUI: true,
-        label: 'First five letters of last name',
-        type: 'string',
-        typeParams: {
-          lowercase: true,
-          strip: 'whitespace_only',
-          test: '^[a-z]{5,5}$'
+        "key": "f5last",
+        "noUI": true,
+        "label": "First five letters of last name",
+        "type": "string",
+        "typeParams": {
+          "lowercase": true,
+          "strip": "whitespace_only",
+          "test": "^[a-z]{5,5}$"
         }
       }, {
-        key: 'pageuid',
-        label: 'Facebook Page User ID',
-        examples: ['1234567890', '1443637309', '1234567892'],
-        type: 'fbid',
-        typeParams: {
-          scoped: true,
-          rejectHashed: true
+        "key": "pageuid",
+        "label": "Facebook Page User ID",
+        "examples": ["1234567890", "1443637309", "1234567892"],
+        "type": "fbid",
+        "typeParams": {
+          "scoped": true,
+          "rejectHashed": true
         }
       }, {
-        key: 'extern_id',
-        label: 'External ID',
-        description: 'Advertiser-specific or third-party ID',
-        examples: ['ABX1234', '99931356', '12XYZ981'],
-        type: 'string',
-        typeParams: {
-          doNotHash: true,
-          test: '^(?!\\s*$).+'
+        "key": "extern_id",
+        "label": "External ID",
+        "description": "Advertiser-specific or third-party ID",
+        "examples": ["ABX1234", "99931356", "12XYZ981"],
+        "type": "string",
+        "typeParams": {
+          "doNotHash": true,
+          "test": "^(?!\\s*$).+"
         }
       }, {
-        key: 'lead_id',
-        label: 'Lead ID',
-        description: 'Facebook Lead ID',
-        examples: ['7543756327866', '4234567890123', 'l:4234567890123'],
-        type: 'fbid',
-        typeParams: {
-          rejectHashed: true,
-          stripPrefix: true
+        "key": "lead_id",
+        "label": "Lead ID",
+        "description": "Facebook Lead ID",
+        "examples": ["7543756327866", "4234567890123", "l:4234567890123"],
+        "type": "fbid",
+        "typeParams": {
+          "rejectHashed": true,
+          "stripPrefix": true
         }
       }],
-      baseSchema: {
-        id: 'basic_pii_schema',
-        version: '0.0.1'
+      "baseSchema": {
+        "id": "basic_pii_schema",
+        "version": "0.0.1"
       }
     }
   }, {
-    key: 'custom_data',
-    label: 'CustomData',
-    type: {
-      canHaveExtraProps: true
+    "key": "custom_data",
+    "label": "CustomData",
+    "type": {
+      "canHaveExtraProps": true
     }
   }, {
-    key: 'value',
-    label: 'Value',
-    examples: ['2534'],
-    type: 'number',
-    typeParams: {
-      moreThan: 0,
-      rejectHashed: true
+    "key": "value",
+    "label": "Value",
+    "examples": ["2534"],
+    "type": "number",
+    "typeParams": {
+      "moreThan": 0,
+      "rejectHashed": true
     }
   }, {
-    key: 'currency',
-    label: 'Currency',
-    examples: ['USD', 'HUF'],
-    type: 'currency_code'
+    "key": "currency",
+    "label": "Currency",
+    "examples": ["USD", "HUF"],
+    "type": "currency_code"
   }, {
-    key: 'order_id',
-    label: 'Order ID',
-    examples: ['ABC123', '123DEF'],
-    type: 'string'
+    "key": "order_id",
+    "label": "Order ID",
+    "examples": ["ABC123", "123DEF"],
+    "type": "string"
   }, {
-    key: 'item_number',
-    label: 'Item Number',
-    examples: ['1', 'A2'],
-    type: 'string'
+    "key": "item_number",
+    "label": "Item Number",
+    "examples": ["1", "A2"],
+    "type": "string"
   }, {
-    key: 'content_type',
-    label: 'Content Type',
-    type: 'LIST',
-    typeParams: {
-      rejectEmptyList: true,
-      rejectHashed: true,
-      caseInsensitiveElements: true,
-      options: ['product', 'product_group', 'fb_product', 'destination', 'flight', 'hotel', 'home_listing', 'auto_offer', 'vehicle', 'vehicle_offer', 'test_vertical']
+    "key": "content_type",
+    "label": "Content Type",
+    "type": "LIST",
+    "typeParams": {
+      "rejectEmptyList": true,
+      "rejectHashed": true,
+      "caseInsensitiveElements": true,
+      "options": ["product", "product_group", "fb_product", "destination", "flight", "hotel", "home_listing", "home_service_provider", "auto_offer", "vehicle", "vehicle_offer", "media_title", "test_vertical"]
     },
-    examples: ['product', ['product'], ['product', 'destination']]
+    "examples": ["product", ["product", "destination"], "[product]", "[product, destination]"]
   }, {
-    key: 'content_ids',
-    label: 'Content Ids',
-    examples: [['1'], ['2', 'A3']],
-    type: 'LIST',
-    typeParams: {
-      rejectEmptyList: true,
-      rejectHashed: true
+    "key": "content_ids",
+    "label": "Content Ids",
+    "examples": [["1"], ["2", "A3"]],
+    "type": "LIST",
+    "typeParams": {
+      "rejectEmptyList": true,
+      "rejectHashed": true
     }
+  }, {
+    "key": "catalog_auto_population_info",
+    "label": "Catalog Auto Population Info JSON",
+    "type": "json_list",
+    "typeParams": {
+      "maxItemsAllowed": 100,
+      "nestedPropSchema": {
+        "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
+        "id": "catalog_auto_population_info_schema",
+        "version": "0.0.1",
+        "type": "catalog_auto_population_info_keys",
+        "exampleFiles": {
+          "csv": "https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv"
+        },
+        "validIf": {
+          "rule": "meetAll",
+          "args": [{
+            "rule": "propValid",
+            "name": "valid_currency",
+            "args": "currency"
+          }, {
+            "rule": "propValid",
+            "name": "valid_description",
+            "args": "description"
+          }, {
+            "rule": "propValid",
+            "name": "valid_image_url",
+            "args": "image_url"
+          }, {
+            "rule": "propValid",
+            "name": "valid_name",
+            "args": "name"
+          }, {
+            "rule": "propValid",
+            "name": "valid_price",
+            "args": "price"
+          }, {
+            "rule": "propValid",
+            "name": "valid_retailer_id",
+            "args": "retailer_id"
+          }, {
+            "rule": "propValid",
+            "name": "valid_url",
+            "args": "url"
+          }, {
+            "rule": "meetAny",
+            "args": [{
+              "rule": "propValid",
+              "name": "valid_brand",
+              "args": "brand"
+            }, {
+              "rule": "propValid",
+              "name": "valid_gtin",
+              "args": "gtin"
+            }, {
+              "rule": "propValid",
+              "name": "valid_mpn",
+              "args": "manufacturer_part_number"
+            }]
+          }]
+        },
+        "props": [{
+          "key": "availability",
+          "label": "Product Availability",
+          "formats": ["in stock", "out of stock", "preorder", "available for order", "discontinued", ""],
+          "type": "enum",
+          "typeParams": {
+            "caseInsensitive": true,
+            "options": ["in stock", "out of stock", "preorder", "available for order", "discontinued", ""],
+            "rejectHashed": true
+          },
+          "maxCountOfExamplesToShow": 5
+        }, {
+          "key": "brand",
+          "label": "Product Brand",
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "category",
+          "label": "Google Product Category",
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "currency",
+          "label": "Product Price Currency",
+          "examples": ["USD", "HUF"],
+          "type": "currency_code"
+        }, {
+          "key": "condition",
+          "label": "Product Condition",
+          "formats": ["new", "refurbished", "used", "cpo", ""],
+          "type": "enum",
+          "typeParams": {
+            "caseInsensitive": true,
+            "options": ["new", "refurbished", "used", "cpo", ""],
+            "rejectHashed": true
+          },
+          "maxCountOfExamplesToShow": 5
+        }, {
+          "key": "description",
+          "label": "Product Description",
+          "examples": ["A Wild Pikachu", "Groot Chia Pet"],
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "gtin",
+          "label": "Product GTIN",
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "image_url",
+          "label": "Product Image URL",
+          "examples": ["https://www.facebook.com/t_shirt_image_001.jpg"],
+          "type": "string",
+          "typeParams": {
+            "test": "^https?\\:\\/\\/.*"
+          }
+        }, {
+          "key": "manufacturer_part_number",
+          "label": "Product Manufacturer Part Number",
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "name",
+          "label": "Product Name",
+          "examples": ["Product Name"],
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "price",
+          "label": "Product Price",
+          "examples": ["2534"],
+          "type": "number",
+          "typeParams": {
+            "integer": true,
+            "moreThan": 0,
+            "rejectHashed": true
+          }
+        }, {
+          "key": "product_type",
+          "label": "Product Type",
+          "examples": ["Pet Pedometers", "Drum Pedals"],
+          "type": "string"
+        }, {
+          "key": "retailer_id",
+          "label": "Unique Product ID",
+          "examples": ["retailer_item_id_1", "content_id_1"],
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "url",
+          "label": "Product URL",
+          "examples": ["https://www.facebook.com/facebook_t_shirt"],
+          "type": "string",
+          "typeParams": {
+            "test": "^https?\\:\\/\\/.*"
+          }
+        }, {
+          "key": "visibility",
+          "label": "Product Visibility",
+          "formats": ["", "staging", "published", "hidden", "whitelist_only"],
+          "type": "enum",
+          "typeParams": {
+            "caseInsensitive": true,
+            "options": ["", "staging", "published", "hidden", "whitelist_only"],
+            "rejectHashed": true
+          },
+          "maxCountOfExamplesToShow": 5
+        }]
+      }
+    },
+    "examples": ["[{\"availability\":\"in stock\",\"brand\":\"Facebook\",\"category\":\"2271\",\"condition\":\"new\",\"currency\":\"USD\",\"description\":\"A vibrant crewneck for all shapes and sizes.\",\"image_url\":\"https:\\/\\/www.facebook.com\\/t_shirt_image_001.jpg\",\"name\":\"Facebook T-Shirt (Unisex)\",\"price\":999,\"product_type\":\"Apparel & Accessories > Clothing > Shirts\",\"retailer_id\":\"FB_product_1234\",\"url\":\"https:\\/\\/www.facebook.com\\/t_shirt_001.jpg\"}]"]
+  }, {
+    "key": "contents",
+    "label": "Contents",
+    "type": "json_list",
+    "typeParams": {
+      "maxItemsAllowed": 100,
+      "nestedPropSchema": {
+        "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
+        "id": "oc_contents_schema",
+        "version": "0.0.1",
+        "exampleFiles": {
+          "csv": "https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv"
+        },
+        "validIf": {
+          "rule": "meetAll",
+          "args": [{
+            "rule": "dependentProps",
+            "name": "require_content_type_if_content_ids",
+            "args": [{
+              "rule": "propValid",
+              "args": "content_ids"
+            }, ["content_type"]]
+          }, {
+            "rule": "dependentProps",
+            "name": "require_currency_if_value",
+            "args": [{
+              "rule": "propValid",
+              "args": "value"
+            }, ["currency"]]
+          }, {
+            "rule": "dependentProps",
+            "name": "require_value_if_currency",
+            "args": [{
+              "rule": "propValid",
+              "args": "currency"
+            }, ["value"]]
+          }]
+        },
+        "props": [{
+          "key": "content_type",
+          "label": "Content Type",
+          "type": "LIST",
+          "typeParams": {
+            "rejectEmptyList": true,
+            "rejectHashed": true,
+            "caseInsensitiveElements": true,
+            "options": ["product", "product_group", "fb_product", "destination", "flight", "hotel", "home_listing", "home_service_provider", "auto_offer", "vehicle", "vehicle_offer", "media_title", "test_vertical"]
+          },
+          "examples": ["product", ["product", "destination"], "[product]", "[product, destination]"]
+        }, {
+          "key": "content_ids",
+          "label": "Content Ids",
+          "examples": [["2", "A3"]],
+          "type": "LIST",
+          "typeParams": {
+            "rejectEmptyList": true,
+            "rejectHashed": true
+          }
+        }, {
+          "key": "value",
+          "label": "Value",
+          "examples": ["2534"],
+          "type": "number",
+          "typeParams": {
+            "moreThan": 0,
+            "rejectHashed": true
+          }
+        }, {
+          "key": "currency",
+          "label": "Currency",
+          "examples": ["USD", "HUF"],
+          "type": "currency_code"
+        }, {
+          "key": "item_number",
+          "label": "Item Number",
+          "examples": ["1", "A2"],
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "quantity",
+          "label": "Quantity",
+          "examples": ["1"],
+          "type": "number",
+          "typeParams": {
+            "integer": true,
+            "moreThan": 0,
+            "rejectHashed": true
+          }
+        }]
+      }
+    },
+    "examples": ["[{\"content_type\":\"product\",\"content_ids\":\"[123, 345]\",\"item_number\":\"1\",\"value\":20,\"currency\":\"USD\",\"quantity\":1}]"]
   }],
-  baseSchema: {
-    id: 'event_data_schema',
-    version: '0.0.1'
+  "baseSchema": {
+    "id": "event_data_schema",
+    "version": "0.0.1"
   }
 };
 
@@ -9536,9 +9820,9 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
       var _loop = function _loop() {
         var nextBatch = _this2._batchQueue.splice(0, 1)[0];
         _this2._numBatchesSending++;
-        _this2._sendBatch(nextBatch, _this2._numRetriesForAPIError, _this2._numRetriesForNetworkError).done(function () {
+        _this2._sendBatch(nextBatch, _this2._numRetriesForAPIError, _this2._numRetriesForNetworkError).then(function () {
           _this2._onBatchSent(nextBatch, true);
-        }, function (error) {
+        }).catch(function (error) {
           _this2._onBatchSent(nextBatch, false);
         });
       };
@@ -9557,7 +9841,7 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
       var _this3 = this;
 
       return new Promise(function (resolve, reject) {
-        _this3._batchSender(batch, _this3._accessToken).done(function () {
+        _this3._batchSender(batch, _this3._accessToken).then(function () {
           if (_this3._offline) {
             _this3._offline = false;
             _this3._networkStatusUpdater(false);
@@ -9572,7 +9856,7 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
             });
           }
           resolve();
-        }, function (error) {
+        }).catch(function (error) {
           if (error.is_network_error) {
             if (!_this3._offline) {
               _this3._offline = true;
@@ -9581,7 +9865,7 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
             }
             if (retriesLeftForNetworkError !== 0) {
               setTimeout(function () {
-                _this3._sendBatch(batch, retriesLeftForAPIError, retriesLeftForNetworkError - 1).done(resolve, reject);
+                _this3._sendBatch(batch, retriesLeftForAPIError, retriesLeftForNetworkError - 1).then(resolve).catch(reject);
               }, _this3._retryIntervalForNetworkError);
             } else {
               _this3.__logError('signals-uploader-v2-upload-batch-fail-network', error, {
@@ -9602,7 +9886,7 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
             }
             if (retriesLeftForAPIError !== 0) {
               setTimeout(function () {
-                _this3._sendBatch(batch, retriesLeftForAPIError - 1, retriesLeftForNetworkError).done(resolve, reject);
+                _this3._sendBatch(batch, retriesLeftForAPIError - 1, retriesLeftForNetworkError).then(resolve).catch(reject);
               }, _this3._retryIntervalForAPIError);
             } else {
               _this3.__logError('signals-uploader-v2-upload-batch-fail-api', error, {
@@ -9703,7 +9987,7 @@ module.exports = SignalsUploaderUploadTask;
 "use strict";
 
 
-module.exports = Object.freeze({ "ADD_PAYMENT_INFO": "AddPaymentInfo", "ADD_TO_CART": "AddToCart", "ADD_TO_WISHLIST": "AddToWishlist", "COMPLETE_REGISTRATION": "CompleteRegistration", "INITIATE_CHECKOUT": "InitiateCheckout", "LEAD": "Lead", "PURCHASE": "Purchase", "SEARCH": "Search", "VIEW_CONTENT": "ViewContent", "OTHER": "Other" });
+module.exports = Object.freeze({ "ADD_PAYMENT_INFO": "AddPaymentInfo", "ADD_TO_CART": "AddToCart", "ADD_TO_WISHLIST": "AddToWishlist", "COMPLETE_REGISTRATION": "CompleteRegistration", "INITIATE_CHECKOUT": "InitiateCheckout", "LEAD": "Lead", "OTHER": "Other", "PURCHASE": "Purchase", "SEARCH": "Search", "VIEW_CONTENT": "ViewContent" });
 
 /***/ }),
 /* 46 */
@@ -9957,6 +10241,111 @@ module.exports = normalize;
 "use strict";
 
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var SignalsBaseTypeNormalizers = __webpack_require__(6);
+var SignalsValidationUtils = __webpack_require__(0);
+
+var normalizeSignal = __webpack_require__(8);
+
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
+
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    nestedPropSchema: null
+  };
+
+  var results = null;
+  var rejectEmptyList = params.rejectEmptyList,
+      maxItemsAllowed = params.maxItemsAllowed,
+      nestedPropSchema = params.nestedPropSchema;
+
+
+  if (Array.isArray(input)) {
+    var inputTypes = new Set(input.map(function (potential_result) {
+      return typeof potential_result === 'undefined' ? 'undefined' : _typeof(potential_result);
+    }));
+    if (inputTypes.size !== 1) {
+      results = null;
+    } else {
+      switch (inputTypes.values().next().value) {
+        case 'string':
+          try {
+
+            results = input.map(function (potential_result) {
+              return JSON.parse(potential_result);
+            });
+          } catch (err) {
+            results = null;
+          }
+          break;
+        default:
+          results = null;
+      }
+    }
+  } else if (typeof input === 'string') {
+    if (looksLikeHashed(input)) {
+      results = null;
+    } else {
+      input = input.trim();
+      if (input.length === 0) {
+        results = [];
+      } else {
+
+        if (input[0] !== '[' && input[input.length - 1] !== ']') {
+          input = '[' + input + ']';
+        }
+
+        try {
+          results = JSON.parse(input);
+
+          results = Array.isArray(results) ? results : null;
+        } catch (err) {
+          results = null;
+        }
+      }
+    }
+  }
+
+  var additionalInfo = null;
+  if (results != null) {
+    if (rejectEmptyList && results.length === 0 || maxItemsAllowed && results.length > maxItemsAllowed || nestedPropSchema == null) {
+      results = null;
+    } else {
+      results = results.map(function (result) {
+        return normalizeSignal(result, nestedPropSchema, SignalsBaseTypeNormalizers, {}, null, null, null);
+      });
+      additionalInfo = results.map(function (result) {
+        return {
+          missingRequiredProps: result.missingRequiredProps,
+          notFoundProps: result.notFoundProps
+        };
+      });
+      results = results.map(function (result) {
+        return result.normalizedValue;
+      });
+      results = results.every(function (result) {
+        return result != null;
+      }) ? results : null;
+    }
+  }
+
+  return {
+    additionalInfo: additionalInfo,
+    normalizedValue: results
+  };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var SignalsValidationUtils = __webpack_require__(0);
 
 var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
@@ -10022,7 +10411,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10030,7 +10419,7 @@ module.exports = normalize;
 
 var SignalsValidationUtils = __webpack_require__(0);
 
-var isInternationalPhoneNumber = __webpack_require__(77);
+var isInternationalPhoneNumber = __webpack_require__(78);
 var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
 
 
@@ -10057,7 +10446,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10090,7 +10479,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10114,7 +10503,7 @@ function normalize(input, params) {
 module.exports = normalize;
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10166,7 +10555,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10208,7 +10597,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10220,10 +10609,10 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 var SignalsValidationUtils = __webpack_require__(0);
 var SignalsNormalizationErrorLevel = __webpack_require__(29);
-var SignalsNormalizationErrorScope = __webpack_require__(8);
+var SignalsNormalizationErrorScope = __webpack_require__(9);
 
 var getByPath = __webpack_require__(27);
-var nullthrows = __webpack_require__(85);
+var nullthrows = __webpack_require__(86);
 
 var throwFatalError = SignalsValidationUtils.throwFatalError;
 
@@ -10381,25 +10770,25 @@ function checkRule(value, schema, ruleSpecs) {
 module.exports = checkRule;
 
 /***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalDateFormats = __webpack_require__(6);
-
-module.exports = SignalDateFormats.concat(['YYMM', 'MMYY', 'YYYYMM', 'MMYYYY', 'YYYY-MM', 'MM-YYYY', 'YY-MM', 'MM-YY', 'YYYY/MM', 'MM/YYYY', 'YY/MM', 'MM/YY']);
-
-/***/ }),
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var SignalDateFormats = __webpack_require__(7);
+
+module.exports = SignalDateFormats.concat(['YYMM', 'MMYY', 'YYYYMM', 'MMYYYY', 'YYYY-MM', 'MM-YYYY', 'YY-MM', 'MM-YY', 'YYYY/MM', 'MM/YYYY', 'YY/MM', 'MM/YY']);
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var Immutable = __webpack_require__(35);
-var SignalsNormalizationErrorScope = __webpack_require__(8);
+var SignalsNormalizationErrorScope = __webpack_require__(9);
 
 var List = Immutable.List;
 
@@ -10478,13 +10867,13 @@ function getSignalsNormalizationErrorSummary(results) {
 module.exports = getSignalsNormalizationErrorSummary;
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var keyMirrorRecursive = __webpack_require__(84);
+var keyMirrorRecursive = __webpack_require__(85);
 
 var SignalsUploaderColumnMapperConstants = keyMirrorRecursive({
   CUSTOM_COLUMN_TYPE_VALUE: '',
@@ -10503,7 +10892,7 @@ var SignalsUploaderColumnMapperConstants = keyMirrorRecursive({
 module.exports = SignalsUploaderColumnMapperConstants;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10521,7 +10910,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsNormalizationErrorScope = __webpack_require__(8);
+var SignalsNormalizationErrorScope = __webpack_require__(9);
 var SignalsNormalizationPropError = __webpack_require__(30);
 var SignalsUploaderErrorReportGenerator = __webpack_require__(15);
 
@@ -10758,7 +11147,7 @@ var SignalsUploaderAdvancedErrorReportGenerator = function (_SignalsUploaderErro
 module.exports = SignalsUploaderAdvancedErrorReportGenerator;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10897,7 +11286,7 @@ var SignalsUploaderWLALErrorReportGenerator = function (_SignalsUploaderDefau) {
 module.exports = SignalsUploaderWLALErrorReportGenerator;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11024,7 +11413,7 @@ var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderConstructBatchJob;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11125,7 +11514,7 @@ var SignalsUploaderDelimiterDetectJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderDelimiterDetectJob;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11135,13 +11524,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var SignalsUploaderConstructBatchJob = __webpack_require__(65);
-var SignalsUploaderDelimiterDetectJob = __webpack_require__(66);
-var SignalsUploaderMappingDetectJob = __webpack_require__(68);
-var SignalsUploaderNormalizeBatchJob = __webpack_require__(69);
-var SignalsUploaderPreviewJob = __webpack_require__(70);
-var SignalsUploaderPreviewV2Job = __webpack_require__(71);
-var SignalsUploaderSampleFetchJob = __webpack_require__(72);
+var SignalsUploaderConstructBatchJob = __webpack_require__(66);
+var SignalsUploaderDelimiterDetectJob = __webpack_require__(67);
+var SignalsUploaderMappingDetectJob = __webpack_require__(69);
+var SignalsUploaderNormalizeBatchJob = __webpack_require__(70);
+var SignalsUploaderPreviewJob = __webpack_require__(71);
+var SignalsUploaderPreviewV2Job = __webpack_require__(72);
+var SignalsUploaderSampleFetchJob = __webpack_require__(73);
 
 var invariant = __webpack_require__(1);
 
@@ -11199,7 +11588,7 @@ var SignalsUploaderJobManager = function () {
 module.exports = SignalsUploaderJobManager;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11218,8 +11607,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var SignalBaseTypes = __webpack_require__(28);
-var SignalDateFormats = __webpack_require__(6);
-var SignalsBaseTypeNormalizers = __webpack_require__(7);
+var SignalDateFormats = __webpack_require__(7);
+var SignalsBaseTypeNormalizers = __webpack_require__(6);
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
 var SignalsUploaderCSVParser = __webpack_require__(4);
 
@@ -11443,7 +11832,7 @@ var SignalsUploaderMappingDetectJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderMappingDetectJob;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11457,12 +11846,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsBaseTypeNormalizers = __webpack_require__(7);
+var SignalsBaseTypeNormalizers = __webpack_require__(6);
 var SignalsUploaderJob = __webpack_require__(24);
 var SignalsUploaderUtils = __webpack_require__(14);
 
 var createSignalsUploaderErrorReportGenerator = __webpack_require__(16);
-var normalizeSignal = __webpack_require__(9);
+var normalizeSignal = __webpack_require__(8);
 var processPIISignalBeforeUpload = __webpack_require__(22);
 
 var arrayToObject = SignalsUploaderUtils.arrayToObject,
@@ -11534,7 +11923,7 @@ var SignalsUploaderNormalizeBatchJob = function (_SignalsUploaderJob) {
 module.exports = SignalsUploaderNormalizeBatchJob;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11548,7 +11937,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsBaseTypeNormalizers = __webpack_require__(7);
+var SignalsBaseTypeNormalizers = __webpack_require__(6);
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
 var SignalsUploaderCSVParser = __webpack_require__(4);
 var SignalsUploaderUtils = __webpack_require__(14);
@@ -11556,7 +11945,7 @@ var SignalsUploaderUtils = __webpack_require__(14);
 var arrayToObject = SignalsUploaderUtils.arrayToObject;
 
 
-var normalizeSignal = __webpack_require__(9);
+var normalizeSignal = __webpack_require__(8);
 
 var SignalsUploaderPreviewJob = function (_SignalsUploaderChunk) {
   _inherits(SignalsUploaderPreviewJob, _SignalsUploaderChunk);
@@ -11639,7 +12028,7 @@ var SignalsUploaderPreviewJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderPreviewJob;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11653,14 +12042,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsBaseTypeNormalizers = __webpack_require__(7);
+var SignalsBaseTypeNormalizers = __webpack_require__(6);
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
 var SignalsUploaderCSVParser = __webpack_require__(4);
 var SignalsUploaderErrorReportGenerator = __webpack_require__(15);
 var SignalsUploaderUtils = __webpack_require__(14);
 
 var createSignalsUploaderErrorReportGenerator = __webpack_require__(16);
-var normalizeSignal = __webpack_require__(9);
+var normalizeSignal = __webpack_require__(8);
 var processPIISignalBeforeUpload = __webpack_require__(22);
 
 var arrayToObject = SignalsUploaderUtils.arrayToObject,
@@ -11765,7 +12154,7 @@ var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderPreviewV2Job;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11874,7 +12263,7 @@ var SignalsUploaderSampleFetchJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderSampleFetchJob;
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11888,7 +12277,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderReader = __webpack_require__(74);
+var SignalsUploaderReader = __webpack_require__(75);
 
 var invariant = __webpack_require__(1);
 
@@ -11969,7 +12358,7 @@ module.exports = SignalsUploaderNodeJSFileReader;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12023,7 +12412,7 @@ var SignalsUploaderReader = function () {
 module.exports = SignalsUploaderReader;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12037,8 +12426,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderJobManager = __webpack_require__(67);
-var SignalsUploaderWorker = __webpack_require__(76);
+var SignalsUploaderJobManager = __webpack_require__(68);
+var SignalsUploaderWorker = __webpack_require__(77);
 
 var SignalsUploaderUIWorker = function (_SignalsUploaderWorke) {
   _inherits(SignalsUploaderUIWorker, _SignalsUploaderWorke);
@@ -12069,7 +12458,7 @@ var SignalsUploaderUIWorker = function (_SignalsUploaderWorke) {
 module.exports = SignalsUploaderUIWorker;
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12104,7 +12493,7 @@ var SignalsUploaderWorker = function () {
 module.exports = SignalsUploaderWorker;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12135,7 +12524,7 @@ function isInternationalPhoneNumber(number) {
 module.exports = isInternationalPhoneNumber;
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12144,14 +12533,14 @@ module.exports = isInternationalPhoneNumber;
 module.exports = Object.freeze({ "WHITESPACE_ONLY": "whitespace_only", "WHITESPACE_AND_PUNCTUATION": "whitespace_and_punctuation", "ALL_NON_LATIN_ALPHA_NUMERIC": "all_non_latin_alpha_numeric" });
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var AdsSignalsEventTypes = __webpack_require__(45);
-var SignalDateFormats = __webpack_require__(6);
+var OfflineStandardEventsEnum = __webpack_require__(45);
+var SignalDateFormats = __webpack_require__(7);
 var SignalsBasicPIISchema = __webpack_require__(38);
 var SignalsCurrencyCodes = __webpack_require__(19);
 var SignalsDSDITestUploadUtils = __webpack_require__(39);
@@ -12166,7 +12555,7 @@ var SignalTimestampFormats = __webpack_require__(41);
 var getSignalsSchemaSummary = __webpack_require__(18);
 
 module.exports = {
-  AdsSignalsEventTypes: AdsSignalsEventTypes,
+  OfflineStandardEventsEnum: OfflineStandardEventsEnum,
   SignalDateFormats: SignalDateFormats,
   SignalsBasicPIISchema: SignalsBasicPIISchema,
   SignalsCurrencyCodes: SignalsCurrencyCodes,
@@ -12178,20 +12567,19 @@ module.exports = {
   SignalsUploaderSampleFetchTask: SignalsUploaderSampleFetchTask,
   SignalsUploaderUploadTask: SignalsUploaderUploadTask,
   SignalTimestampFormats: SignalTimestampFormats,
-
   getSignalsSchemaSummary: getSignalsSchemaSummary
 };
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SignalsUploaderNodeJSFileReader = __webpack_require__(73);
+var SignalsUploaderNodeJSFileReader = __webpack_require__(74);
 
-var fs = __webpack_require__(94);
+var fs = __webpack_require__(95);
 
 function createSignalsUploaderReader(source, chunkSize) {
   return new SignalsUploaderNodeJSFileReader(source, chunkSize, 'utf8', fs);
@@ -12200,7 +12588,7 @@ function createSignalsUploaderReader(source, chunkSize) {
 module.exports = createSignalsUploaderReader;
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12262,7 +12650,7 @@ RawTask.prototype.call = function () {
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports) {
 
 !function(globals) {
@@ -12301,7 +12689,7 @@ if (typeof module !== 'undefined' && module.exports) {
 }(this);
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports) {
 
 !function(globals) {
@@ -12335,7 +12723,7 @@ if (typeof module !== 'undefined' && module.exports) {
 }(this);
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12382,7 +12770,7 @@ function isObject(obj) {
 module.exports = keyMirrorRecursive;
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12398,7 +12786,7 @@ var nullthrows = function nullthrows(x) {
 module.exports = nullthrows;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12418,7 +12806,7 @@ Promise.prototype.done = function (onFulfilled, onRejected) {
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12528,7 +12916,7 @@ Promise.prototype['catch'] = function (onRejected) {
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12551,22 +12939,22 @@ Promise.prototype['finally'] = function (f) {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = __webpack_require__(5);
-__webpack_require__(86);
-__webpack_require__(88);
 __webpack_require__(87);
-__webpack_require__(90);
+__webpack_require__(89);
+__webpack_require__(88);
 __webpack_require__(91);
+__webpack_require__(92);
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12576,7 +12964,7 @@ __webpack_require__(91);
 
 
 var Promise = __webpack_require__(5);
-var asap = __webpack_require__(81);
+var asap = __webpack_require__(82);
 
 module.exports = Promise;
 
@@ -12701,7 +13089,7 @@ Promise.prototype.nodeify = function (callback, ctx) {
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12770,7 +13158,7 @@ Promise.disableSynchronous = function() {
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(globals) {
@@ -12779,8 +13167,8 @@ Promise.disableSynchronous = function() {
 var _imports = {}
 
 if (typeof module !== 'undefined' && module.exports) {
-  _imports.bytesToHex = __webpack_require__(82).bytesToHex
-  _imports.convertString = __webpack_require__(83)
+  _imports.bytesToHex = __webpack_require__(83).bytesToHex
+  _imports.convertString = __webpack_require__(84)
   module.exports = sha256
 } else {
   _imports.bytesToHex = globals.convertHex.bytesToHex
@@ -12922,13 +13310,13 @@ sha256.x2 = function(message, options) {
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports) {
 
 module.exports = require("domain");
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
