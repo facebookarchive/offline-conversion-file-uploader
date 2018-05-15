@@ -100,7 +100,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 80);
+/******/ 	return __webpack_require__(__webpack_require__.s = 81);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -112,7 +112,7 @@ module.exports =
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var STRIP_MODES = __webpack_require__(79);
+var STRIP_MODES = __webpack_require__(80);
 
 var SHA_256_REGEX = /^[a-f0-9]{64}$/i;
 var TRIM_REGEX = /^\s+|\s+$/g;
@@ -273,7 +273,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderJob = __webpack_require__(24);
+var SignalsUploaderJob = __webpack_require__(37);
 
 var abstractMethod = __webpack_require__(2);
 var invariant = __webpack_require__(1);
@@ -576,7 +576,7 @@ module.exports = SignalsUploaderCSVParser;
 "use strict";
 
 
-var asap = __webpack_require__(32);
+var asap = __webpack_require__(44);
 
 function noop() {}
 
@@ -788,25 +788,10 @@ function doResolve(fn, promise) {
 "use strict";
 
 
-var _module$exports;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var SignalBaseTypes = __webpack_require__(28);
-
-module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(47)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(48)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(49)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(50)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(51)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(12)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(52)), _defineProperty(_module$exports, SignalBaseTypes.JSON_LIST, __webpack_require__(53)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(54)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(13)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(55)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(56)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(57)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(58)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(20)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(59)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(21)), _module$exports);
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 module.exports = ['MM-DD-YYYY', 'MM/DD/YYYY', 'MMDDYYYY', 'DD-MM-YYYY', 'DD/MM/YYYY', 'DDMMYYYY', 'YYYY-MM-DD', 'YYYY/MM/DD', 'YYYYMMDD', 'MM-DD-YY', 'MM/DD/YY', 'MMDDYY', 'DD-MM-YY', 'DD/MM/YY', 'DDMMYY', 'YY-MM-DD', 'YY/MM/DD', 'YYMMDD'];
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -816,12 +801,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var SignalsNormalizationErrorLevel = __webpack_require__(29);
-var SignalsNormalizationErrorScope = __webpack_require__(9);
-var SignalsNormalizationPropError = __webpack_require__(30);
+var SignalsNormalizationErrorLevel = __webpack_require__(41);
+var SignalsNormalizationErrorScope = __webpack_require__(12);
+var SignalsNormalizationPropError = __webpack_require__(42);
 var SignalsValidationUtils = __webpack_require__(0);
 
-var ruleChecker = __webpack_require__(60);
+var ruleChecker = __webpack_require__(61);
 
 var addValueAtPath = SignalsValidationUtils.addValueAtPath,
     hasProp = SignalsValidationUtils.hasProp,
@@ -1181,46 +1166,32 @@ function normalizeSignal(signal, schema, normalizers, transformers, mapping, inf
 module.exports = normalizeSignal;
 
 /***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _module$exports;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var SignalBaseTypes = __webpack_require__(19);
+
+module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(23)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(24)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(25)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(9)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(26)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(27)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(10)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(28)), _defineProperty(_module$exports, SignalBaseTypes.JSON_LIST, __webpack_require__(60)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(29)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(30)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(31)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(32)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(33)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(14)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(34)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(15)), _module$exports);
+
+/***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = Object.freeze({ "RULE": "rule", "PROP": "prop" });
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var keyMirror = __webpack_require__(34);
-
-var SignalsNumberNormalizationErrorTypes = keyMirror({
-  EMPTY: null,
-  NON_INTEGER: null,
-  NON_NUMERIC: null,
-  INVALID_SEPARATOR: null,
-  TOO_BIG: null,
-  TOO_SMALL: null
-});
-
-module.exports = SignalsNumberNormalizationErrorTypes;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalDateFormats = __webpack_require__(7);
-var SignalDateMonthFormats = __webpack_require__(61);
+var SignalDateFormats = __webpack_require__(6);
+var SignalDateMonthFormats = __webpack_require__(62);
 var SignalsValidationUtils = __webpack_require__(0);
 
-var normalizeSignalsEnumType = __webpack_require__(12);
+var normalizeSignalsEnumType = __webpack_require__(10);
 
 var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
     trim = SignalsValidationUtils.trim;
@@ -1435,7 +1406,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 12 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1499,7 +1470,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 13 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1509,7 +1480,7 @@ var _require = __webpack_require__(0),
     looksLikeHashed = _require.looksLikeHashed,
     trim = _require.trim;
 
-var SignalsNumberNormalizationErrorTypes = __webpack_require__(10);
+var SignalsNumberNormalizationErrorTypes = __webpack_require__(13);
 
 function normalize(input) {
   var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -1569,17 +1540,265 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = Object.freeze({ "RULE": "rule", "PROP": "prop" });
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var keyMirror = __webpack_require__(46);
+
+var SignalsNumberNormalizationErrorTypes = keyMirror({
+  EMPTY: null,
+  NON_INTEGER: null,
+  NON_NUMERIC: null,
+  INVALID_SEPARATOR: null,
+  TOO_BIG: null,
+  TOO_SMALL: null
+});
+
+module.exports = SignalsNumberNormalizationErrorTypes;
+
+/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Immutable = __webpack_require__(35);
-var SignalsUploaderColumnMapperConstants = __webpack_require__(63);
+var SignalsTimestampNormalizationErrorTypes = __webpack_require__(59);
 
-var getSchemaSummary = __webpack_require__(18);
-var getSignalsNormalizationErrorSummary = __webpack_require__(62);
+var normalizeSignalsDateType = __webpack_require__(9);
+var normalizeSignalsNumberType = __webpack_require__(11);
+
+var ONE_HOUR_IN_MS = 1 * 60 * 60 * 1000;
+var ISO_WITH_TZ_REGEX = /[+-]\d{2}:\d{2}|Z$/;
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  var result = null;
+  var wasImplicitTimezone = false;
+  var errorType = void 0;
+
+  var rejectTimeBefore = params.rejectTimeBefore;
+  var timeFormat = additionalInfo.timeFormat,
+      timeZone = additionalInfo.timeZone,
+      allowFutureTimes = additionalInfo.allowFutureTimes;
+
+
+  if (input != null && (typeof input === 'string' || typeof input === 'number')) {
+    if (timeFormat == null || timeFormat === 'unix_time') {
+      var maybeNum = normalizeSignalsNumberType(input, {
+        rejectHashed: true
+      }).normalizedValue;
+
+      if (maybeNum != null && typeof maybeNum !== 'string') {
+        if (timeFormat === 'unix_time') {
+          maybeNum *= 1000;
+        }
+        result = new Date(maybeNum).getTime();
+      }
+    } else if (timeFormat === 'ISO8601' && typeof input === 'string') {
+
+      result = new Date(input).getTime();
+
+      wasImplicitTimezone = ISO_WITH_TZ_REGEX.test(input);
+    } else {
+
+      var tmpResult = normalizeSignalsDateType(input, { rejectHashed: true }, timeFormat).normalizedValue;
+
+      if (tmpResult != null) {
+
+        var y = tmpResult.slice(0, 4);
+        var m = tmpResult.slice(4, 6);
+        var d = tmpResult.slice(6, 8);
+
+        result = new Date(y + '-' + m + '-' + d).getTime();
+      }
+    }
+  }
+
+  var now = Date.now();
+  if (result != null && (isNaN(result) || allowFutureTimes !== true && result > now || rejectTimeBefore != null && result < now - rejectTimeBefore || result % 1 !== 0)) {
+    if (allowFutureTimes !== true && result > now) {
+      errorType = SignalsTimestampNormalizationErrorTypes.REJECT_FUTURE;
+    }
+    if (rejectTimeBefore != null && result < now - rejectTimeBefore) {
+      errorType = SignalsTimestampNormalizationErrorTypes.REJECT_TOO_EARLY;
+    }
+    result = null;
+  } else if (result != null && timeZone != null && !wasImplicitTimezone) {
+    var timeZoneOffset = normalizeSignalsNumberType(timeZone, {
+      rejectHashed: true
+    }).normalizedValue;
+
+    if (timeZoneOffset != null && typeof timeZoneOffset === 'number') {
+      result -= timeZoneOffset * ONE_HOUR_IN_MS;
+    }
+  }
+
+  return {
+    normalizedValue: result,
+    additionalInfo: errorType != null ? { errorType: errorType } : null
+  };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var normalizeSignalsNumberType = __webpack_require__(11);
+var SignalsValidationUtils = __webpack_require__(0);
+var SignalsNumberNormalizationErrorTypes = __webpack_require__(13);
+
+var trim = SignalsValidationUtils.trim;
+
+
+var CURRENCY_CODES_AND_SYMBOLS = ['ALL', 'AFN', 'ARS', 'AWG', 'AUD', 'AZN', 'BSD', 'BBD', 'BYR', 'BZD', 'BMD', 'BOB', 'BAM', 'BWP', 'BGN', 'BRL', 'BND', 'KHR', 'CAD', 'KYD', 'CLP', 'CNY', 'COP', 'CRC', 'HRK', 'CUP', 'CZK', 'DKK', 'DOP', 'XCD', 'EGP', 'SVC', 'EEK', 'EUR', 'FKP', 'FJD', 'GHC', 'GIP', 'GTQ', 'GGP', 'GYD', 'HNL', 'HKD', 'HUF', 'ISK', 'INR', 'IDR', 'IRR', 'IMP', 'ILS', 'JMD', 'JPY', 'JEP', 'KES', 'KZT', 'KPW', 'KRW', 'KGS', 'LAK', 'LVL', 'LBP', 'LRD', 'LTL', 'MKD', 'MYR', 'MUR', 'MXN', 'MNT', 'MZN', 'NAD', 'NPR', 'ANG', 'NZD', 'NIO', 'NGN', 'NOK', 'OMR', 'PKR', 'PAB', 'PYG', 'PEN', 'PHP', 'PLN', 'QAR', 'RON', 'RUB', 'RMB', 'SHP', 'SAR', 'RSD', 'SCR', 'SGD', 'SBD', 'SOS', 'ZAR', 'LKR', 'SEK', 'CHF', 'SRD', 'SYP', 'TZS', 'TWD', 'THB', 'TTD', 'TRY', 'TRL', 'TVD', 'UGX', 'UAH', 'GBP', 'USD', 'UYU', 'UZS', 'VEF', 'VND', 'YER', 'ZWD', 'L', '\u060B', '$', '\u0192', '\u20BC', 'p.', 'BZ$', 'Bs.', 'KM', 'P', '\u043B\u0432', 'R$', '\u17DB', '\xA5', '\u20A1', 'kn', '\u20B1', 'K\u010D', 'kr', 'RD$', '\xA3', '\u20AC', '\u20B5', 'Q', 'Ft', '\u20B9', 'Rp', '\uFDFC', '\u20AA', 'J$', 'KSh', '\u20A9', '\u20AD', 'Ls', 'Lt', '\u0434\u0435\u043D', 'RM', '\u20A8', '\u20AE', 'MT', 'C$', '\u20A6', 'B/.', 'Gs', 'S/.', 'z\u0142', 'lei', '\u20BD', '\uFFE5', '\u0414\u0438\u043D.', 'S', 'R', 'TSh', 'NT$', '\u0E3F', 'TT$', '\u20BA', '\u20A4', 'USh', '\u20B4', '$U', 'Bs', '\u20AB', 'Z$'];
+
+var DEFAULT_DECIMAL_REPRESENTATION = '.';
+
+function replaceCharAt(str, index, newChar) {
+  if (index < 0 || index >= str.length) {
+    return str;
+  }
+  return str.substr(0, index) + newChar + str.substr(index + 1);
+}
+
+function i18nNumberNormalize(maybeNumber) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  var decimalPointChar = additionalInfo.decimalPointChar != null ? additionalInfo.decimalPointChar : DEFAULT_DECIMAL_REPRESENTATION;
+  var standizedNumber = maybeNumber;
+  if (decimalPointChar === ',') {
+    if (maybeNumber.indexOf('.') !== -1) {
+      return {
+        normalizedValue: null,
+        additionalInfo: {
+          errorType: SignalsNumberNormalizationErrorTypes.INVALID_SEPARATOR
+        }
+      };
+    }
+    var decimalPointIdx = maybeNumber.lastIndexOf(',');
+    standizedNumber = replaceCharAt(maybeNumber, decimalPointIdx, '.');
+  } else {
+    if (maybeNumber.indexOf(',') !== -1) {
+      return {
+        normalizedValue: null,
+        additionalInfo: {
+          errorType: SignalsNumberNormalizationErrorTypes.INVALID_SEPARATOR
+        }
+      };
+    }
+  }
+  return normalizeSignalsNumberType(standizedNumber, params, additionalInfo);
+}
+
+function trimCurrencyNormalize(trimmedInput) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  var maybeNumberStartsWithCurrency = CURRENCY_CODES_AND_SYMBOLS.map(function (currency) {
+    if (trimmedInput.startsWith(currency) || trimmedInput.toUpperCase().startsWith(currency)) {
+      var maybeNumber = trimmedInput.substring(currency.length);
+      return i18nNumberNormalize(maybeNumber, params, additionalInfo);
+    }
+    return { normalizedValue: null };
+  });
+
+  var maybeNumberEndsWithCurrency = CURRENCY_CODES_AND_SYMBOLS.map(function (currency) {
+    if (trimmedInput.endsWith(currency) || trimmedInput.toUpperCase().endsWith(currency)) {
+      var maybeNumber = trimmedInput.substring(0, trimmedInput.length - currency.length);
+      return i18nNumberNormalize(maybeNumber, params, additionalInfo);
+    }
+    return { normalizedValue: null };
+  });
+
+  return maybeNumberStartsWithCurrency.concat(maybeNumberEndsWithCurrency);
+}
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
+    decimalPointChar: DEFAULT_DECIMAL_REPRESENTATION
+  };
+
+  var result = null;
+
+  if (input == null || input === '') {
+    result = {
+      normalizedValue: null,
+      additionalInfo: {
+        errorType: SignalsNumberNormalizationErrorTypes.EMPTY
+      }
+    };
+    return result;
+  }
+
+  if (typeof input === 'string') {
+    var normalizedNumberResult = i18nNumberNormalize(input, params, additionalInfo);
+
+    if (normalizedNumberResult.normalizedValue != null || normalizedNumberResult.additionalInfo && normalizedNumberResult.additionalInfo.errorType != null && normalizedNumberResult.additionalInfo.errorType !== SignalsNumberNormalizationErrorTypes.NON_NUMERIC) {
+      result = normalizedNumberResult;
+    } else {
+      var trimmedInput = trim(input);
+
+      if (typeof trimmedInput === 'string') {
+        var trimCurrencyNormalizeResult = trimCurrencyNormalize(trimmedInput, params, additionalInfo);
+
+        result = trimCurrencyNormalizeResult.find(function (x) {
+          return x.normalizedValue != null;
+        });
+
+        if (result == null) {
+
+          result = trimCurrencyNormalizeResult.find(function (x) {
+            return x.additionalInfo && x.additionalInfo.errorType && x.additionalInfo.errorType != null;
+          });
+        }
+      }
+    }
+  }
+
+  return result != null ? result : {
+    normalizedValue: null,
+    additionalInfo: {
+      errorType: SignalsNumberNormalizationErrorTypes.NON_NUMERIC
+    }
+  };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Immutable = __webpack_require__(47);
+var SignalsUploaderColumnMapperConstants = __webpack_require__(64);
+
+var getSchemaSummary = __webpack_require__(21);
+var getSignalsNormalizationErrorSummary = __webpack_require__(63);
 
 var COLUMN_MAPPING_ERROR_THRESHOLD = 0.95;
 
@@ -1804,7 +2023,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1844,15 +2063,15 @@ var SignalsUploaderErrorReportGenerator = function () {
 module.exports = SignalsUploaderErrorReportGenerator;
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SignalsUploaderAdvancedErrorReportGenerator = __webpack_require__(64);
-var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(23);
-var SignalsUploaderWLALErrorReportGenerator = __webpack_require__(65);
+var SignalsUploaderAdvancedErrorReportGenerator = __webpack_require__(65);
+var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(36);
+var SignalsUploaderWLALErrorReportGenerator = __webpack_require__(66);
 
 function createSignalsUploaderErrorReportGenerator(config) {
   switch (config.type) {
@@ -1869,17 +2088,26 @@ function createSignalsUploaderErrorReportGenerator(config) {
 module.exports = createSignalsUploaderErrorReportGenerator;
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(90)
+module.exports = Object.freeze({ "ANY": "any", "BOOL": "bool", "CURRENCY_CODE": "currency_code", "DATE": "date", "DATE_MONTH": "date_month", "EMAIL": "email", "ENUM": "enum", "FBID": "fbid", "JSON_LIST": "json_list", "LIST": "LIST", "NUMBER": "number", "PHONE_NUMBER": "phone_number", "POSTAL_CODE": "postal_code", "SHA256": "sha256", "STRING": "string", "TIMESTAMP": "timestamp", "UNIX_TIME": "unix_time", "VALUE": "value" });
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(91)
 
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2035,7 +2263,7 @@ function getSchemaSummary(schema) {
 module.exports = getSchemaSummary;
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2046,226 +2274,493 @@ var VALID_CURRENCY_CODES = ['AED', 'ARS', 'AUD', 'BOB', 'BRL', 'CAD', 'CHF', 'CL
 module.exports = { VALID_CURRENCY_CODES: VALID_CURRENCY_CODES };
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SignalsTimestampNormalizationErrorTypes = __webpack_require__(46);
-
-var normalizeSignalsDateType = __webpack_require__(11);
-var normalizeSignalsNumberType = __webpack_require__(13);
-
-var ONE_HOUR_IN_MS = 1 * 60 * 60 * 1000;
-var ISO_WITH_TZ_REGEX = /[+-]\d{2}:\d{2}|Z$/;
-
 function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-  var result = null;
-  var wasImplicitTimezone = false;
-  var errorType = void 0;
-
-  var rejectTimeBefore = params.rejectTimeBefore;
-  var timeFormat = additionalInfo.timeFormat,
-      timeZone = additionalInfo.timeZone,
-      allowFutureTimes = additionalInfo.allowFutureTimes;
-
-
-  if (input != null && (typeof input === 'string' || typeof input === 'number')) {
-    if (timeFormat == null || timeFormat === 'unix_time') {
-      var maybeNum = normalizeSignalsNumberType(input, {
-        rejectHashed: true
-      }).normalizedValue;
-
-      if (maybeNum != null && typeof maybeNum !== 'string') {
-        if (timeFormat === 'unix_time') {
-          maybeNum *= 1000;
-        }
-        result = new Date(maybeNum).getTime();
-      }
-    } else if (timeFormat === 'ISO8601' && typeof input === 'string') {
-
-      result = new Date(input).getTime();
-
-      wasImplicitTimezone = ISO_WITH_TZ_REGEX.test(input);
-    } else {
-
-      var tmpResult = normalizeSignalsDateType(input, { rejectHashed: true }, timeFormat).normalizedValue;
-
-      if (tmpResult != null) {
-
-        var y = tmpResult.slice(0, 4);
-        var m = tmpResult.slice(4, 6);
-        var d = tmpResult.slice(6, 8);
-
-        result = new Date(y + '-' + m + '-' + d).getTime();
-      }
-    }
-  }
-
-  var now = Date.now();
-  if (result != null && (isNaN(result) || allowFutureTimes !== true && result > now || rejectTimeBefore != null && result < now - rejectTimeBefore || result % 1 !== 0)) {
-    if (allowFutureTimes !== true && result > now) {
-      errorType = SignalsTimestampNormalizationErrorTypes.REJECT_FUTURE;
-    }
-    if (rejectTimeBefore != null && result < now - rejectTimeBefore) {
-      errorType = SignalsTimestampNormalizationErrorTypes.REJECT_TOO_EARLY;
-    }
-    result = null;
-  } else if (result != null && timeZone != null && !wasImplicitTimezone) {
-    var timeZoneOffset = normalizeSignalsNumberType(timeZone, {
-      rejectHashed: true
-    }).normalizedValue;
-
-    if (timeZoneOffset != null && typeof timeZoneOffset === 'number') {
-      result -= timeZoneOffset * ONE_HOUR_IN_MS;
-    }
-  }
-
-  return {
-    normalizedValue: result,
-    additionalInfo: errorType != null ? { errorType: errorType } : null
-  };
+  return { normalizedValue: input };
 }
 
 module.exports = normalize;
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var normalizeSignalsNumberType = __webpack_require__(13);
 var SignalsValidationUtils = __webpack_require__(0);
-var SignalsNumberNormalizationErrorTypes = __webpack_require__(10);
 
-var trim = SignalsValidationUtils.trim;
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
 
-
-var CURRENCY_CODES_AND_SYMBOLS = ['ALL', 'AFN', 'ARS', 'AWG', 'AUD', 'AZN', 'BSD', 'BBD', 'BYR', 'BZD', 'BMD', 'BOB', 'BAM', 'BWP', 'BGN', 'BRL', 'BND', 'KHR', 'CAD', 'KYD', 'CLP', 'CNY', 'COP', 'CRC', 'HRK', 'CUP', 'CZK', 'DKK', 'DOP', 'XCD', 'EGP', 'SVC', 'EEK', 'EUR', 'FKP', 'FJD', 'GHC', 'GIP', 'GTQ', 'GGP', 'GYD', 'HNL', 'HKD', 'HUF', 'ISK', 'INR', 'IDR', 'IRR', 'IMP', 'ILS', 'JMD', 'JPY', 'JEP', 'KES', 'KZT', 'KPW', 'KRW', 'KGS', 'LAK', 'LVL', 'LBP', 'LRD', 'LTL', 'MKD', 'MYR', 'MUR', 'MXN', 'MNT', 'MZN', 'NAD', 'NPR', 'ANG', 'NZD', 'NIO', 'NGN', 'NOK', 'OMR', 'PKR', 'PAB', 'PYG', 'PEN', 'PHP', 'PLN', 'QAR', 'RON', 'RUB', 'RMB', 'SHP', 'SAR', 'RSD', 'SCR', 'SGD', 'SBD', 'SOS', 'ZAR', 'LKR', 'SEK', 'CHF', 'SRD', 'SYP', 'TZS', 'TWD', 'THB', 'TTD', 'TRY', 'TRL', 'TVD', 'UGX', 'UAH', 'GBP', 'USD', 'UYU', 'UZS', 'VEF', 'VND', 'YER', 'ZWD', 'L', '\u060B', '$', '\u0192', '\u20BC', 'p.', 'BZ$', 'Bs.', 'KM', 'P', '\u043B\u0432', 'R$', '\u17DB', '\xA5', '\u20A1', 'kn', '\u20B1', 'K\u010D', 'kr', 'RD$', '\xA3', '\u20AC', '\u20B5', 'Q', 'Ft', '\u20B9', 'Rp', '\uFDFC', '\u20AA', 'J$', 'KSh', '\u20A9', '\u20AD', 'Ls', 'Lt', '\u0434\u0435\u043D', 'RM', '\u20A8', '\u20AE', 'MT', 'C$', '\u20A6', 'B/.', 'Gs', 'S/.', 'z\u0142', 'lei', '\u20BD', '\uFFE5', '\u0414\u0438\u043D.', 'S', 'R', 'TSh', 'NT$', '\u0E3F', 'TT$', '\u20BA', '\u20A4', 'USh', '\u20B4', '$U', 'Bs', '\u20AB', 'Z$'];
-
-var DEFAULT_DECIMAL_REPRESENTATION = '.';
-
-function replaceCharAt(str, index, newChar) {
-  if (index < 0 || index >= str.length) {
-    return str;
-  }
-  return str.substr(0, index) + newChar + str.substr(index + 1);
-}
-
-function i18nNumberNormalize(maybeNumber) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-  var decimalPointChar = additionalInfo.decimalPointChar != null ? additionalInfo.decimalPointChar : DEFAULT_DECIMAL_REPRESENTATION;
-  var standizedNumber = maybeNumber;
-  if (decimalPointChar === ',') {
-    if (maybeNumber.indexOf('.') !== -1) {
-      return {
-        normalizedValue: null,
-        additionalInfo: {
-          errorType: SignalsNumberNormalizationErrorTypes.INVALID_SEPARATOR
-        }
-      };
-    }
-    var decimalPointIdx = maybeNumber.lastIndexOf(',');
-    standizedNumber = replaceCharAt(maybeNumber, decimalPointIdx, '.');
-  } else {
-    if (maybeNumber.indexOf(',') !== -1) {
-      return {
-        normalizedValue: null,
-        additionalInfo: {
-          errorType: SignalsNumberNormalizationErrorTypes.INVALID_SEPARATOR
-        }
-      };
-    }
-  }
-  return normalizeSignalsNumberType(standizedNumber, params, additionalInfo);
-}
-
-function trimCurrencyNormalize(trimmedInput) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-  var maybeNumberStartsWithCurrency = CURRENCY_CODES_AND_SYMBOLS.map(function (currency) {
-    if (trimmedInput.startsWith(currency) || trimmedInput.toUpperCase().startsWith(currency)) {
-      var maybeNumber = trimmedInput.substring(currency.length);
-      return i18nNumberNormalize(maybeNumber, params, additionalInfo);
-    }
-    return { normalizedValue: null };
-  });
-
-  var maybeNumberEndsWithCurrency = CURRENCY_CODES_AND_SYMBOLS.map(function (currency) {
-    if (trimmedInput.endsWith(currency) || trimmedInput.toUpperCase().endsWith(currency)) {
-      var maybeNumber = trimmedInput.substring(0, trimmedInput.length - currency.length);
-      return i18nNumberNormalize(maybeNumber, params, additionalInfo);
-    }
-    return { normalizedValue: null };
-  });
-
-  return maybeNumberStartsWithCurrency.concat(maybeNumberEndsWithCurrency);
-}
 
 function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
-    decimalPointChar: DEFAULT_DECIMAL_REPRESENTATION
-  };
+  if (input == null) {
+    return { normalizedValue: null };
+  }
 
-  var result = null;
-
-  if (input == null || input === '') {
-    result = {
-      normalizedValue: null,
-      additionalInfo: {
-        errorType: SignalsNumberNormalizationErrorTypes.EMPTY
-      }
-    };
-    return result;
+  if (typeof input === 'boolean') {
+    return { normalizedValue: input };
   }
 
   if (typeof input === 'string') {
-    var normalizedNumberResult = i18nNumberNormalize(input, params, additionalInfo);
-
-    if (normalizedNumberResult.normalizedValue != null || normalizedNumberResult.additionalInfo && normalizedNumberResult.additionalInfo.errorType != null && normalizedNumberResult.additionalInfo.errorType !== SignalsNumberNormalizationErrorTypes.NON_NUMERIC) {
-      result = normalizedNumberResult;
-    } else {
-      var trimmedInput = trim(input);
-
-      if (typeof trimmedInput === 'string') {
-        var trimCurrencyNormalizeResult = trimCurrencyNormalize(trimmedInput, params, additionalInfo);
-
-        result = trimCurrencyNormalizeResult.find(function (x) {
-          return x.normalizedValue != null;
-        });
-
-        if (result == null) {
-
-          result = trimCurrencyNormalizeResult.find(function (x) {
-            return x.additionalInfo && x.additionalInfo.errorType && x.additionalInfo.errorType != null;
-          });
-        }
-      }
+    var inputLowerCase = input.toLowerCase();
+    if (inputLowerCase === 'true' || inputLowerCase === 'yes' || inputLowerCase === '1') {
+      return { normalizedValue: true };
     }
+    if (inputLowerCase === 'false' || inputLowerCase === 'no' || inputLowerCase === '0') {
+      return { normalizedValue: false };
+    }
+    if (looksLikeHashed(input)) {
+      return { normalizedValue: input };
+    }
+    return { normalizedValue: null };
   }
 
-  return result != null ? result : {
-    normalizedValue: null,
-    additionalInfo: {
-      errorType: SignalsNumberNormalizationErrorTypes.NON_NUMERIC
+  if (typeof input === 'number') {
+    if (input === 1) {
+      return { normalizedValue: true };
     }
-  };
+    if (input === 0) {
+      return { normalizedValue: false };
+    }
+    return { normalizedValue: null };
+  }
+
+  return { normalizedValue: null };
 }
 
 module.exports = normalize;
 
 /***/ }),
-/* 22 */
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsCurrencyCodes = __webpack_require__(22);
+
+var normalizeSignalsEnumType = __webpack_require__(10);
+
+var VALID_CURRENCY_CODES = SignalsCurrencyCodes.VALID_CURRENCY_CODES;
+
+
+function normalize(input) {
+  return normalizeSignalsEnumType(input, {
+    uppercase: true,
+    options: VALID_CURRENCY_CODES,
+    rejectHashed: true
+  });
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var normalizeSignalsDateType = __webpack_require__(9);
+
+function normalizeSignalsDateMonthType(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var additionalInfo = arguments[2];
+
+  params.allowMonthOnly = true;
+  return normalizeSignalsDateType(input, params, additionalInfo);
+}
+
+module.exports = normalizeSignalsDateMonthType;
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsValidationUtils = __webpack_require__(0);
+
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
+    trim = SignalsValidationUtils.trim;
+
+
+var EMAIL_RE = /^[\w!#\$%&'\*\+\/\=\?\^`\{\|\}~\-]+(:?\.[\w!#\$%&'\*\+\/\=\?\^`\{\|\}~\-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?$/i;
+
+function isEmail(email) {
+  return EMAIL_RE.test(email);
+}
+
+function normalize(input) {
+  var result = null;
+
+  if (input != null) {
+    if (looksLikeHashed(input)) {
+      result = input;
+    } else if (typeof input === 'string') {
+      var cleanedUp = trim(input.toLowerCase());
+      result = isEmail(cleanedUp) ? cleanedUp : null;
+    }
+  }
+
+  return { normalizedValue: result };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsValidationUtils = __webpack_require__(0);
+
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
+
+
+var LEAD_ID_PREFIX = 'l:';
+
+var ALL_DIGIT_REGEX = /^[0-9]+$/;
+
+var MAX_FBID = '18446744073709551615';
+
+function isValueWithinUint64Range(value) {
+  if (value.length < MAX_FBID.length) {
+    return true;
+  }
+  if (value.length > MAX_FBID.length) {
+    return false;
+  }
+  for (var i = 0; i < value.length; i++) {
+    if (value[i] < MAX_FBID[i]) {
+      return true;
+    }
+    if (value[i] > MAX_FBID[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var additionalInfo = arguments[2];
+
+  if (typeof input === 'number') {
+    input = String(input);
+  }
+
+  if (typeof input !== 'string') {
+    return {
+      normalizedValue: null
+    };
+  }
+
+  if (looksLikeHashed(input) && !params.rejectHashed) {
+    return {
+      normalizedValue: input
+    };
+  }
+
+  var nonPrefixedInput = input;
+  if (params.stripPrefix && typeof nonPrefixedInput === 'string' && nonPrefixedInput.slice(0, LEAD_ID_PREFIX.length) === LEAD_ID_PREFIX) {
+    nonPrefixedInput = nonPrefixedInput.substring(LEAD_ID_PREFIX.length);
+  }
+
+  if (!ALL_DIGIT_REGEX.test(nonPrefixedInput) || !isValueWithinUint64Range(nonPrefixedInput)) {
+    return {
+      normalizedValue: null
+    };
+  }
+
+  if (params.scoped) {
+    var appIDs = additionalInfo;
+    if (appIDs != null && Array.isArray(appIDs) && appIDs.some(function (id) {
+      return normalize(id, { rejectHashed: true }).normalizedValue != null;
+    })) {
+      return {
+        normalizedValue: nonPrefixedInput
+      };
+    } else {
+      return {
+        normalizedValue: null
+      };
+    }
+  }
+
+  return { normalizedValue: nonPrefixedInput };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsValidationUtils = __webpack_require__(0);
+
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
+
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var result = null;
+
+  var rejectEmptyList = params.rejectEmptyList,
+      maxItemsAllowed = params.maxItemsAllowed,
+      options = params.options,
+      rejectHashed = params.rejectHashed,
+      caseInsensitiveElements = params.caseInsensitiveElements;
+
+
+  if (Array.isArray(input)) {
+    result = input;
+  } else if (typeof input === 'string') {
+    if (looksLikeHashed(input)) {
+      result = rejectHashed ? null : input;
+    } else {
+      input = input.trim();
+      if (input.length === 0) {
+        result = [];
+      } else {
+        if (input.length >= 2 && input[0] === '[' && input[input.length - 1] === ']') {
+          input = input.slice(1, input.length - 1);
+        }
+
+        result = input.split(',').map(function (segment) {
+          return segment.trim().replace(/^\'(.*)\'$|^\"(.*)\"$/, '$1$2');
+        }).filter(function (item) {
+          return item.length !== 0;
+        });
+      }
+    }
+  }
+  if (options && result !== null) {
+    var options_set = void 0;
+    if (caseInsensitiveElements) {
+      options_set = new Set(options.map(function (option) {
+        return option.toLowerCase();
+      }));
+    } else {
+      options_set = new Set(options);
+    }
+    result = !Array.isArray(result) || result.some(function (item) {
+      return !options_set.has(caseInsensitiveElements ? String(item).toLowerCase() : String(item));
+    }) ? null : result;
+  }
+
+  if (result) {
+    if (rejectEmptyList && result.length === 0 || maxItemsAllowed && result.length > maxItemsAllowed) {
+      result = null;
+    }
+  }
+
+  return { normalizedValue: result };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsValidationUtils = __webpack_require__(0);
+
+var isInternationalPhoneNumber = __webpack_require__(79);
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
+
+
+var PHONE_DROP_PREFIX_ZEROS = /^0*/;
+var PHONE_IGNORE_CHAR_SET = /[\-@#<>'",; ]|\(|\)|\+|[a-z]/gi;
+
+function normalize(input) {
+  var result = null;
+
+  if (input != null) {
+    if (looksLikeHashed(input)) {
+      result = input;
+    } else {
+      var str = String(input);
+      if (isInternationalPhoneNumber(str)) {
+        result = str.replace(PHONE_IGNORE_CHAR_SET, '').replace(PHONE_DROP_PREFIX_ZEROS, '');
+      }
+    }
+  }
+
+  return { normalizedValue: result };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsValidationUtils = __webpack_require__(0);
+
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
+    trim = SignalsValidationUtils.trim;
+
+
+function normalize(input) {
+  var result = null;
+
+  if (input != null && typeof input === 'string') {
+    if (looksLikeHashed(input)) {
+      result = input;
+    } else {
+      var maybeZIP = trim(String(input).toLowerCase().split('-', 1)[0]);
+
+      if (maybeZIP.length >= 2) {
+        result = maybeZIP;
+      }
+    }
+  }
+
+  return { normalizedValue: result };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsValidationUtils = __webpack_require__(0);
+
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
+
+
+function normalize(input, params) {
+  if (typeof input !== 'string' || !looksLikeHashed(input)) {
+    return { normalizedValue: null };
+  }
+  if (params && params.options && params.options.indexOf(input) < 0) {
+    return { normalizedValue: null };
+  }
+  return { normalizedValue: input };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsValidationUtils = __webpack_require__(0);
+
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
+    strip = SignalsValidationUtils.strip;
+
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var result = null;
+
+  if (input != null) {
+    if (looksLikeHashed(input) && typeof input === 'string') {
+      if (!params.rejectHashed) {
+        result = input;
+      }
+    } else {
+      var str = String(input);
+
+      if (params.strip != null) {
+        str = strip(str, params.strip);
+      }
+
+      if (params.lowercase) {
+        str = str.toLowerCase();
+      } else if (params.uppercase) {
+        str = str.toUpperCase();
+      }
+
+      if (params.truncate) {
+        str = str.substring(0, params.truncate);
+      }
+
+      if (params.test) {
+        result = new RegExp(params.test).test(str) ? str : null;
+      } else {
+        result = str;
+      }
+    }
+  }
+  return { normalizedValue: result };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var normalizeSignalsTimestampType = __webpack_require__(14);
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  if (input == null) {
+    return {
+      normalizedValue: null
+    };
+  }
+
+  var newAdditionalInfo = additionalInfo ? _extends({}, additionalInfo) : {};
+  newAdditionalInfo.timeFormat = newAdditionalInfo.timeFormat || 'unix_time';
+
+  var tmpResult = normalizeSignalsTimestampType(input, params, newAdditionalInfo);
+
+  if (tmpResult.normalizedValue != null) {
+    var result = Math.round(tmpResult.normalizedValue / 1000);
+    return {
+      normalizedValue: result,
+      additionalInfo: tmpResult.additionalInfo
+    };
+  } else {
+    return {
+      normalizedValue: null,
+      additionalInfo: tmpResult.additionalInfo
+    };
+  }
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2273,7 +2768,7 @@ module.exports = normalize;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var sha256 = __webpack_require__(93);
+var sha256 = __webpack_require__(94);
 var SignalsValidationUtils = __webpack_require__(0);
 
 var hasProp = SignalsValidationUtils.hasProp,
@@ -2358,7 +2853,7 @@ function processPIISignalBeforeUpload(signal, schema) {
 module.exports = processPIISignalBeforeUpload;
 
 /***/ }),
-/* 23 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2374,7 +2869,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderErrorReportGenerator = __webpack_require__(15);
+var SignalsUploaderErrorReportGenerator = __webpack_require__(17);
 
 var invariant = __webpack_require__(1);
 
@@ -2477,7 +2972,7 @@ var SignalsUploaderDefaultErrorReportGenerator = function (_SignalsUploaderError
 module.exports = SignalsUploaderDefaultErrorReportGenerator;
 
 /***/ }),
-/* 24 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2514,7 +3009,7 @@ var SignalsUploaderJob = function () {
 module.exports = SignalsUploaderJob;
 
 /***/ }),
-/* 25 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2528,10 +3023,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderTask = __webpack_require__(26);
+var SignalsUploaderTask = __webpack_require__(39);
 
 var abstractMethod = __webpack_require__(2);
-var createSignalsUploaderWorker = __webpack_require__(31);
+var createSignalsUploaderWorker = __webpack_require__(43);
 
 var SignalsUploaderSingleWorkerTask = function (_SignalsUploaderTask) {
   _inherits(SignalsUploaderSingleWorkerTask, _SignalsUploaderTask);
@@ -2601,7 +3096,7 @@ var SignalsUploaderSingleWorkerTask = function (_SignalsUploaderTask) {
 module.exports = SignalsUploaderSingleWorkerTask;
 
 /***/ }),
-/* 26 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2612,7 +3107,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var abstractMethod = __webpack_require__(2);
-var createSignalsUploaderReader = __webpack_require__(81);
+var createSignalsUploaderReader = __webpack_require__(82);
 
 var SignalsUploaderTask = function () {
   function SignalsUploaderTask(source, chunkSize, logger) {
@@ -2758,10 +3253,10 @@ var SignalsUploaderTask = function () {
 }();
 
 module.exports = SignalsUploaderTask;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
-/* 27 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2784,16 +3279,7 @@ function getByPath(root, path, fallbackValue) {
 module.exports = getByPath;
 
 /***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = Object.freeze({ "ANY": "any", "BOOL": "bool", "CURRENCY_CODE": "currency_code", "DATE": "date", "DATE_MONTH": "date_month", "EMAIL": "email", "ENUM": "enum", "FBID": "fbid", "JSON_LIST": "json_list", "LIST": "LIST", "NUMBER": "number", "PHONE_NUMBER": "phone_number", "POSTAL_CODE": "postal_code", "SHA256": "sha256", "STRING": "string", "TIMESTAMP": "timestamp", "UNIX_TIME": "unix_time", "VALUE": "value" });
-
-/***/ }),
-/* 29 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2802,7 +3288,7 @@ module.exports = Object.freeze({ "ANY": "any", "BOOL": "bool", "CURRENCY_CODE": 
 module.exports = Object.freeze({ "REJECT": "reject", "WARNING": "warning" });
 
 /***/ }),
-/* 30 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2811,13 +3297,13 @@ module.exports = Object.freeze({ "REJECT": "reject", "WARNING": "warning" });
 module.exports = Object.freeze({ "INVALID": "invalid", "TOO_MANY": "too-many", "SOME_INVALID": "some-invalid" });
 
 /***/ }),
-/* 31 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SignalsUploaderUIWorker = __webpack_require__(76);
+var SignalsUploaderUIWorker = __webpack_require__(77);
 
 function createSignalsUploaderWorker(handler) {
   return new SignalsUploaderUIWorker(handler);
@@ -2826,7 +3312,7 @@ function createSignalsUploaderWorker(handler) {
 module.exports = createSignalsUploaderWorker;
 
 /***/ }),
-/* 32 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2909,7 +3395,7 @@ function requestFlush() {
         if (!domain) {
            
            
-            domain = __webpack_require__(94);
+            domain = __webpack_require__(95);
         }
         domain.active = process.domain = null;
     }
@@ -2933,7 +3419,7 @@ function requestFlush() {
 
 
 /***/ }),
-/* 33 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2973,13 +3459,13 @@ function invariant(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 /***/ }),
-/* 34 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var invariant = __webpack_require__(33);
+var invariant = __webpack_require__(45);
 
 var keyMirror = function keyMirror(obj) {
   var ret = {};
@@ -2997,7 +3483,7 @@ var keyMirror = function keyMirror(obj) {
 module.exports = keyMirror;
 
 /***/ }),
-/* 35 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
@@ -7899,7 +8385,7 @@ module.exports = keyMirror;
 }));
 
 /***/ }),
-/* 36 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8515,276 +9001,469 @@ var SignalsEventDataSchema = {
 module.exports = SignalsEventDataSchema;
 
 /***/ }),
-/* 37 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = {
-  additionalInfoURL: 'https://www.facebook.com/help/606443329504150',
-  id: 'event_data_schema',
-  version: '0.0.2',
-  exampleFiles: {
-    csv: 'https://www.facebook.com/images/ads/signals/example_files/example_events_file.csv'
+  "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
+  "id": "event_data_schema",
+  "version": "0.0.2",
+  "exampleFiles": {
+    "csv": "https://www.facebook.com/images/ads/signals/example_files/example_events_file.csv"
   },
-  validIf: {
-    rule: 'meetAll',
-    args: [{
-      rule: 'meetAll',
-      args: [{
-        rule: 'propValid',
-        name: 'valid_event_time',
-        args: 'event_time'
+  "validIf": {
+    "rule": "meetAll",
+    "args": [{
+      "rule": "meetAll",
+      "args": [{
+        "rule": "propValid",
+        "name": "valid_event_time",
+        "args": "event_time"
       }, {
-        rule: 'propValid',
-        name: 'valid_event_name',
-        args: 'event_name'
+        "rule": "propValid",
+        "name": "valid_event_name",
+        "args": "event_name"
       }, {
-        rule: 'dependentProps',
-        name: 'require_value_and_currency_if_purchase',
-        args: [{
-          rule: 'propValueIs',
-          args: ['event_name', 'Purchase']
-        }, ['value', 'currency']]
+        "rule": "dependentProps",
+        "name": "require_value_and_currency_if_purchase",
+        "args": [{
+          "rule": "propValueIs",
+          "args": ["event_name", "Purchase"]
+        }, ["value", "currency"]]
       }, {
-        rule: 'dependentProps',
-        name: 'require_currency_if_value',
-        args: [{
-          rule: 'propValid',
-          args: 'value'
-        }, ['currency']]
+        "rule": "dependentProps",
+        "name": "require_currency_if_value",
+        "args": [{
+          "rule": "propValid",
+          "args": "value"
+        }, ["currency"]]
       }, {
-        rule: 'dependentProps',
-        name: 'require_value_if_currency',
-        args: [{
-          rule: 'propValid',
-          args: 'currency'
-        }, ['value']]
+        "rule": "dependentProps",
+        "name": "require_value_if_currency",
+        "args": [{
+          "rule": "propValid",
+          "args": "currency"
+        }, ["value"]]
       }]
     }, {
-      rule: 'meetAll',
-      args: [{
-        rule: 'dependentProps',
-        name: 'require_content_type_if_content_ids',
-        args: [{
-          rule: 'propValid',
-          args: 'content_ids'
-        }, ['content_type']]
+      "rule": "meetAll",
+      "args": [{
+        "rule": "dependentProps",
+        "name": "require_content_type_if_content_ids",
+        "args": [{
+          "rule": "propValid",
+          "args": "content_ids"
+        }, ["content_type"]]
+      }]
+    }, {
+      "rule": "meetAll",
+      "args": [{
+        "rule": "propValid",
+        "name": "valid_match_keys",
+        "args": "match_keys"
       }]
     }]
   },
-  props: [{
-    key: 'event_time',
-    label: 'Event Time',
-    examples: ['2016-06-20T03:21:48+01:00', '2016-06-20T03:21:48', '1459315678', 'mm/dd/yyyy', '+ 15 more'],
-    typeParams: {
-      rejectTimeBefore: 63072000000
+  "props": [{
+    "key": "event_time",
+    "label": "Event Time",
+    "examples": ["2016-06-20T03:21:48+01:00", "2016-06-20T03:21:48", "1459315678", "mm/dd/yyyy", "+ 15 more"],
+    "typeParams": {
+      "rejectTimeBefore": 63072000000
     },
-    type: 'unix_time'
+    "type": "unix_time"
   }, {
-    key: 'event_name',
-    label: 'Event Name',
-    formats: ['AddPaymentInfo', 'AddToCart', 'AddToWishlist', 'CompleteRegistration', 'InitiateCheckout', 'Lead', 'Purchase', 'Search', 'ViewContent', 'Other'],
-    type: 'enum',
-    typeParams: {
-      caseInsensitive: true,
-      options: ['AddPaymentInfo', 'AddToCart', 'AddToWishlist', 'CompleteRegistration', 'InitiateCheckout', 'Lead', 'Purchase', 'Search', 'ViewContent', 'Other'],
-      rejectHashed: true
-    },
-    maxCountOfExamplesToShow: 30
-  }, {
-    key: 'match_keys',
-    label: 'Match keys',
-    type: {
-      id: 'extended_pii_schema',
-      version: '0.2.0',
-      type: 'pii_keys',
-      validIf: {
-        rule: 'minValidProps',
-        args: 1
+    "key": "match_keys",
+    "label": "Match keys",
+    "type": {
+      "id": "extended_pii_schema",
+      "version": "0.2.0",
+      "type": "pii_keys",
+      "validIf": {
+        "rule": "minValidProps",
+        "args": 1
       },
-      props: [{
-        key: 'email',
-        maxOccurrence: 3,
-        label: 'Email',
-        type: 'sha256'
+      "props": [{
+        "key": "email",
+        "maxOccurrence": 3,
+        "label": "Email",
+        "type": "sha256"
       }, {
-        key: 'phone',
-        maxOccurrence: 3,
-        label: 'Phone',
-        type: 'sha256'
+        "key": "phone",
+        "maxOccurrence": 3,
+        "label": "Phone",
+        "type": "sha256"
       }, {
-        key: 'madid',
-        label: 'Mobile advertiser ID',
-        type: 'sha256'
+        "key": "madid",
+        "label": "Mobile advertiser ID",
+        "type": "sha256"
       }, {
-        key: 'fn',
-        label: 'First name',
-        type: 'sha256'
+        "key": "fn",
+        "label": "First name",
+        "type": "sha256"
       }, {
-        key: 'fi',
-        label: 'First name initial',
-        type: 'sha256'
+        "key": "fi",
+        "label": "First name initial",
+        "type": "sha256"
       }, {
-        key: 'f5first',
-        label: 'First five letters of first name',
-        type: 'sha256'
+        "key": "f5first",
+        "label": "First five letters of first name",
+        "type": "sha256"
       }, {
-        key: 'ln',
-        label: 'Last name',
-        type: 'sha256'
+        "key": "ln",
+        "label": "Last name",
+        "type": "sha256"
       }, {
-        key: 'f5last',
-        label: 'First five letters of last name',
-        type: 'sha256'
+        "key": "f5last",
+        "label": "First five letters of last name",
+        "type": "sha256"
       }, {
-        key: 'ct',
-        label: 'City',
-        type: 'sha256'
+        "key": "ct",
+        "label": "City",
+        "type": "sha256"
       }, {
-        key: 'st',
-        label: 'State/Province',
-        type: 'sha256'
+        "key": "st",
+        "label": "State/Province",
+        "type": "sha256"
       }, {
-        key: 'country',
-        label: 'Country',
-        type: 'sha256'
+        "key": "country",
+        "label": "Country",
+        "type": "sha256"
       }, {
-        key: 'zip',
-        label: 'ZIP/Postal Code',
-        type: 'sha256'
+        "key": "zip",
+        "label": "ZIP/Postal Code",
+        "type": "sha256"
       }, {
-        key: 'gen',
-        label: 'Gender',
-        type: 'sha256',
-        typeParams: {
-          options: ['252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111', '62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a']
+        "key": "gen",
+        "label": "Gender",
+        "type": "sha256",
+        "typeParams": {
+          "options": ["252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111", "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"]
         }
       }, {
-        key: 'doby',
-        label: 'Year of birth',
-        type: 'sha256',
-        typeParams: {
-          options: ['e41d64db5703c6440b5c714d57251a845bc0bd241480b41a4e7fd3e052f85a82', 'a56b54e1c5933a83f79b301d0c08410a5617b868120da82b7e088c42a5a8025c', '489ca219174f91b48313c188f4c998a5413fcaf194a93fd8e24bbdb178dc8f3a', '262b06d105e1c865b01c3e0a74291cdae511ef15f3d456e14fbe2dffd9efe3b9', '90bbc9533a02213ffdf4d1482eb9b97a5feec554e33641d40f24777cbe5a8341', '56a3a46a3ba4fb713fd3e4cfa51a5748abf2c2662fefb0b5a863fdef34572255', 'a486e5558353d0a590552ea5e0b0ccf4d2d9a1ea92d319b2ad5711e9ba10deb1', '4332cd76590d0efdbd8d067acf531546da2ba0a67c538440e7defedbea48d1dc', '00f6112fe58387958ef80793a34746429f40c97fe7b51d6a576705acbf8fc6af', '8e614d39a1f1279958da1c9f7e8df51db4aabca8cc3a3e84f8c3dc5f88e1fcfb', 'a64332fe1df1790cb79d428bf5b5767ddd589b1cca825cb1b9eb30f7e9aaee03', 'dc4bc886825c446e6ae02d4d0c6a8787af0395079effcc3afc0f8bdc40cbd161', 'a991b89eed28e85e1a7238873f922290111049668c680a68ee15201a611219b3', '3b1fba0616142d348bd8a977e3aa3d65dab82a5ac11ed16d4e22ff5460458d4f', 'fb4a379d44cab4220bc5596ffa1f8eb9b169ba098d2c98b20d110881c92b9299', '811af1590c16fc90322a05ab17f360939077f63f674a7e0550732a36050444ac', 'c30c6b3aa67e27e0fc807ab96edfc920b08ca09b98c942a593aff6c832957388', '464d14ace7f6789141d13ed416c881c1bfcf7203c5965e332edda90f171815a7', '54e87e2783378cd883fb63bea84e2ecdd554b0646ec35a12d6df365ccad3c68b', '274dfec6e079fb08d6b5771537c54d3f0bd36c64c3d8ed0a4e6d2f201b489274', '6b5f40c09215713a1fa83ea2de2adcae17e605b8958a2d7379e15b561687ee8f', 'd982309a461bcc3abc15489201522c8df291aa650eabafda45f1583b03992cc9', '2c1f3f5f6523af84fde4af934caa1126ae6bcebacd36e397fbddcb8a620c1d73', 'd42ed19c0d9c80706b6b1484a97cf8634285d753ac079717aee8c651d54caef3', '3849ba084da2faea804918e8d999dee3f176659e0216debcccbf86b3e6b769ef', '80f8ded29fa2e922c77b98ea8f229ef65ea360daf5d1c9e05b80539e502b5621', '255ac64f2a9b374157860601793d61491c561c29df77cbf82d4610772937ce59', '3d5d2c29712a98874d8142d229c4bce09158a144ad376c2b68411f240878a9c1', 'aef662afc24b5edde66ab972975340f6a9963eb766261e6bf43ffdb56b6d2a3f', '639c1115ab55d139a527f7bb3c1a9570bb60cf96f5c13bdaa41a7264a74e748f', '70fa656aa0391eb9ef7bbc9c7e6771ec09e7d5d7ab1fcbbde2480d21263ee79a', '5c06e46c5e47cfacad16ce1e37f17c09fdbc7072c567613e0b8112173f688a65', '01a0123885ebec5b37b52ddc058c20d052525c654b69e7b7bfd5feb291428bba', 'c8c817e80216ce409c63a735acdd40fb7b023bcca6e87b6fc89973c447b6a858', '914c948388ae30bdb0179a2f7bc91836d6af004171af735188fc1b69c286c864', '2e355fa8b5acf07f4608835401e5a6144f25c505ed9d2689f93df6382890a79c', '3f46bdea034f311a14efe877f5592d84a7a6c97d9b917be3f55573311e6cdda7', 'c6f5c46f9e3daea6422f8a004682a5de6f6946a9cfb7c9ca71912c029a981403', '6eac02c2ab0dc9378be87d5d04da2fd747fb2340dad4977778defee7da92f657', '94ad0b5b0a595b7eaafe9404423d8543b4c8dcfc26ecffb44f6894e2ca46fd61', 'd0ab864a17dbd8a07dda05a58ac74d4894b7effa8e1c5152d71adf8b1fcc24d9', '5933b0b35d5d3e9d1f53fbce9403c5672883fff37f429dc1da26881f47415672', '7fb754c0792cd52ea50ce5b8862b5b07d5aa45af1dbfa035f862cdb6a030b427', '66a7a5807c3130eb2d0b55bb260a6a001b9d62095c94b753cbb215f3e4f099e1', 'f513a0aa4f8f39744c6fddf2b5eb18cc1eac55ca866a1b243d835362a023f243', '060672b8531404f598515957df33d6387e0647cbc382d35ef286fa3466362384', '8ba5ef4e282bf7bc5cf13f731a1b9f525bd3b1f69cbfa24c1c69c303c0ac7019', '8eec27653c19ed078b2f3bae16ff901d16347d7917d2b8e2317914e2437bf324', '03b0bd366e8184f8d871c3a7c7cc26c73c25b54ff54c64b28b10b898242cdc8a', '82887006d04d939ffca870bc268a940df6cf01dbdf12e228ccf476d07d7c9424', '3f5f3806e425deac33023e9764d08ac98397e6f1bc8599743cbb15a9cfdf8929', '3510a92fc7dd04f69b1aeeef5489ef168dbf1d9c4d528b8f4af4240a8b295ab4', '6ed701cfedb16ebd91b2d185383115c6f9ce12f2f9c744d7d605be0002109362', '592fbed6f4ef4a643b0c5dec00a9a32f69a4027aedb972265cd9237b7b31d564', '98f3aaa79f6ba1759e046f873955785d869eec78b60ff7ad2f1bb62d50ea8a0a', 'b53a7292b38e011dbe6efc79c22d028ddd364da2e6b9aa182915572742330ea9', '04aa39fcb509e7842f0bd5b135b6181b0b57c8a74422838362f430351fc364f2', 'd212b2ac736e3f60408ffe9fbc1d26ae901f8f477fb8b08ec03c9d6b0208ac2b', '522e6198a268c62c01c9944cc2c06902d8308d65e6444eb8ad10bbe98dc362b6', '5c0b1ae7ef3b0e1552cd215596a4449a8bcd5d060f18511da8e63b87f67c11f6', '6606753e5a126d7068012a526d44c3eb2f7fcd09d5faeb30c77dbfd87ca7e758', 'f7ac69722a0706c533afa393b1574a761a073df0a8280094d3500a4bbc9c2877', '9aec25da37c5143655198925302a995797eeef538933800b67b87c48de7ad120', '59279341ea59fbf34025024596b670b6df2c9f80e71b9ad19aea71ba43b083fc', 'ed823ec32c5d4e9ca9dd968bb0fe9366b7d904ce0cae615308ddd5b89f0e6a3a', 'd7c7673ba8ca7b0f04b1af4df026cbea7fed5b8acf59b27d33ef988c60eff054', 'c00cf031587d12c309358e85de8876b2738d3ef2cadd88db6b07318ea0ba8973', '50828327cbf487d99d22c77ef8f980e5d7c8b93e2a1d1b084e2dc6760240e738', 'a48622b535728587fd351763d1296c7ec9cb5bc6743d5f22b011d5b5c3ef688f', 'fd21cc3cb5062bc4ac714c489e1ca0e37a577c19ba23b0d00e9767f598d37636', 'ad1f3889d0032e7c2791053060e4c044837353325fbd42cdeeef65638ed31c2a', '2b5d2ba5803e6fe3a2bc08b5f3965f47a92918a9c44b8090618d5d5a2876cf8c', '0a95adbf8581859ae0cc477127abeaf4ad89916405c41855af8fbc482e1634e8', '9baed8fceea6e36d36670d72429d909547165efc038c293a14a41ef2edf83141', 'ec54e99514663edb97adef400fbf34a77daae108303d3da8008a7dfb4cdf0f52', '20ee235b5de5b36244da6f9aa1cbdd032a90867ba92276ccc8c38c0d0d57fcec', '4c3aada37cf7fd3819b2da502a15f78f7ce5a2ce6d584b630344ff00dffc74ac', '576c85c584f60555c2a024cbb99dfbbdb5f58c3bdcf28dbc8ea315fd46a388f3', '46635b56d3c7f0b7bb26adae2a1692debbfd145d4a0986a9137fe91e73e70360', '11d1ff4edd53407199c92b00cbc3abe8c9c5d5bed4414ad07b55c896b0e7a713', '051c2e380d07844ffaca43743957f8c0efe2bdf74c6c1e6a9dcccb8d1a3c596b', 'a78f19952edd18bf02b3c9eb704b088e2120941d6acb22f6f795c42796e60252', '48deb732e8de8fe7995bbc2816520798fcab815f62165af4d53bbc24434c963e', '52bb7cc738dbf5e5eee2c76754d87904e6750c63eda5e0a866197d2e16d9c142', '4dea5c7cb70f50322ec9d734aa4aa078be9227c05251e18991c596f387552370', '78e370b587b145920213731b7c7c725e512b3b6577c51c800218a7c764c532ae', '8f8472a2f6ec348bfc7577a035c7f34a04c62f0c757b54687e1175236dcf393b', '744b93f9950fc38dad705556931ea48193b99dcb191cc9bd77097f65fbe2f0b8', '8266498d969081c29737b8daeb5b51d60e56d008fff243a39d16c3032d42f6cf', '9113b98df80f877c7a2ee5d865a04c9514b4e9bf25a49d315b0b15f115d2f0d2', 'a7be8e1fe282a37cd666e0632b17d933fa13f21addf4798fc0455bc166e2488c', '8e9b669109df89620b94f2387dc53206a82ddc71d658f8f7a2b3a9b417370d3e', '3f83e9ad5be63bd5bf2fd009fffe6b7dd4066243975bc962edc37459c17e65b9', '8e71b24534e9f3fb3a71263359fed2b7ffb008265e0d34383e319f1b6f5c08f2', '1bc3201a9f24a2fe48f634f90d406aaf6cbf5e36e292870ecba98d74b065ee1b', 'e78f27ab3ef177a9926e6b90e572b9853ce6cf4d87512836e9ae85807ec9d7fe', '3d1e557b540ac045b3b327994a351f08a443f9216f9b2b8d3a0f42b58671ac83', '0985b889a1fe4f4e1fb925061ac6fb2247f10875f5fcbe63eec2ab55ed68970e', 'd54123de468bd42ea00dafbd777f85fe5fa1ff6404d9838c007953c25c92a1c5', 'ce8457d59078a699acb70416f88155a96a906b7b7aad43708402e3a3bcc8a4b4', '81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9', '85d6385b945c0d602103db39b0b654b2af93b5127938e26a959c123f0789b948', '6c94e35ccc352d4e9ef0b99562cff995a5741ce8de8ad11b568892934daee366', '77459b9b941bcb4714d0c121313c900ecf30541d158eb2b9b178cdb8eca6457e', '483029d526219f816e8e8f6a9de07b422633dba180ffc26faac22862a017519f', 'a20a2b7bb0842d5cf8a0c06c626421fd51ec103925c1819a51271f2779afa730', '6f6a4e56098cfd9af29e3ae549503b370211a4e94421457fe4cfd39a38a1fa08', 'f1cfa5ebb149e8099d561aae57beed6c68f990f45a910ea9d7b460dbcc5350be', 'e5e53c784d5d49de1cabb6e904bf3380026aadcb9769775a268dd304dd9aa2df', 'f37f3f2b0dc57a86dee4ba6ff855283bb4d2f0dea1c5bd1b708853444c2ffcec', '7d12ba56e9f8b3dc64f77c87318c4f37bc12cfbf1a37573cdf3e4fa683f20155', '72d1b5da6eeaf1789df86487da50ad5e9dadb5ffaecb56b6de592aa286c9c1b8', '4b9a7f50c0bb198c6f5414c5a8459f5d216d34ab521ea94c060ea35cac66f900', '7931aa2a1bed855457d1ddf6bc06ab4406a9fba0579045a4d6ff78f9c07c440f', '96da37e95d5cc34fe3bef6c89428df859b8a217630d0c664da1daf1539caacf5', 'a85e9db4851f7cd3efb8db7bf69a07cfb97bc528b72785a9cff7bdfef7e2279d', 'da6e2f539726fabd1f8cd7c9469a22b36769137975b28abc65fe2dc29e659b77', '46e67c525617663b392a53c0e94ba79e62db62a851fb175ae87756d4e73c9718', '152e69cf3c8e76c8d8b0aed924ddd1708e4c68624611af33d52c2c2814dd5df9', '023e33504ab909cf87a6f4e4e545090e40bdc0a2153e5b68b19f7fad2b737904', '73a2af8864fc500fa49048bf3003776c19938f360e56bd03663866fb3087884a', '1bea20e1df19b12013976de2b5e0e3d1fb4ba088b59fe53642c324298b21ffd9', 'b1ab1e892617f210425f658cf1d361b5489028c8771b56d845fe1c62c1fbc8b0', 'd398b29d3dbbb9bf201d4c7e1c19ff9d43c15fd45a0cec46fbe9885ec3f6e97f', '6557739a67283a8de383fc5c0997fbec7c5721a46f28f3235fc9607598d9016b', 'b2b2f104d32c638903e151a9b20d6e27b41d8c0c84cf8458738f83ca2f1dd744', '158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab', '5313e5bf17148de844ff74be3663d47c6e361ca469b30a36337701233c89a15e', '6ae9e4d22c4670b9140fc378214b3274fb3f64d16058717f974515000680b24c', '8f0f97e140e126a4404a09eb1e14a53b7c742701c4290a5d1702d14daec22ee8', '8e1f192fe25ad49be764c3f55c68beb32f7aa66f85344e026b76cfaaa1d3d88a']
+        "key": "doby",
+        "label": "Year of birth",
+        "type": "sha256",
+        "typeParams": {
+          "options": ["e41d64db5703c6440b5c714d57251a845bc0bd241480b41a4e7fd3e052f85a82", "a56b54e1c5933a83f79b301d0c08410a5617b868120da82b7e088c42a5a8025c", "489ca219174f91b48313c188f4c998a5413fcaf194a93fd8e24bbdb178dc8f3a", "262b06d105e1c865b01c3e0a74291cdae511ef15f3d456e14fbe2dffd9efe3b9", "90bbc9533a02213ffdf4d1482eb9b97a5feec554e33641d40f24777cbe5a8341", "56a3a46a3ba4fb713fd3e4cfa51a5748abf2c2662fefb0b5a863fdef34572255", "a486e5558353d0a590552ea5e0b0ccf4d2d9a1ea92d319b2ad5711e9ba10deb1", "4332cd76590d0efdbd8d067acf531546da2ba0a67c538440e7defedbea48d1dc", "00f6112fe58387958ef80793a34746429f40c97fe7b51d6a576705acbf8fc6af", "8e614d39a1f1279958da1c9f7e8df51db4aabca8cc3a3e84f8c3dc5f88e1fcfb", "a64332fe1df1790cb79d428bf5b5767ddd589b1cca825cb1b9eb30f7e9aaee03", "dc4bc886825c446e6ae02d4d0c6a8787af0395079effcc3afc0f8bdc40cbd161", "a991b89eed28e85e1a7238873f922290111049668c680a68ee15201a611219b3", "3b1fba0616142d348bd8a977e3aa3d65dab82a5ac11ed16d4e22ff5460458d4f", "fb4a379d44cab4220bc5596ffa1f8eb9b169ba098d2c98b20d110881c92b9299", "811af1590c16fc90322a05ab17f360939077f63f674a7e0550732a36050444ac", "c30c6b3aa67e27e0fc807ab96edfc920b08ca09b98c942a593aff6c832957388", "464d14ace7f6789141d13ed416c881c1bfcf7203c5965e332edda90f171815a7", "54e87e2783378cd883fb63bea84e2ecdd554b0646ec35a12d6df365ccad3c68b", "274dfec6e079fb08d6b5771537c54d3f0bd36c64c3d8ed0a4e6d2f201b489274", "6b5f40c09215713a1fa83ea2de2adcae17e605b8958a2d7379e15b561687ee8f", "d982309a461bcc3abc15489201522c8df291aa650eabafda45f1583b03992cc9", "2c1f3f5f6523af84fde4af934caa1126ae6bcebacd36e397fbddcb8a620c1d73", "d42ed19c0d9c80706b6b1484a97cf8634285d753ac079717aee8c651d54caef3", "3849ba084da2faea804918e8d999dee3f176659e0216debcccbf86b3e6b769ef", "80f8ded29fa2e922c77b98ea8f229ef65ea360daf5d1c9e05b80539e502b5621", "255ac64f2a9b374157860601793d61491c561c29df77cbf82d4610772937ce59", "3d5d2c29712a98874d8142d229c4bce09158a144ad376c2b68411f240878a9c1", "aef662afc24b5edde66ab972975340f6a9963eb766261e6bf43ffdb56b6d2a3f", "639c1115ab55d139a527f7bb3c1a9570bb60cf96f5c13bdaa41a7264a74e748f", "70fa656aa0391eb9ef7bbc9c7e6771ec09e7d5d7ab1fcbbde2480d21263ee79a", "5c06e46c5e47cfacad16ce1e37f17c09fdbc7072c567613e0b8112173f688a65", "01a0123885ebec5b37b52ddc058c20d052525c654b69e7b7bfd5feb291428bba", "c8c817e80216ce409c63a735acdd40fb7b023bcca6e87b6fc89973c447b6a858", "914c948388ae30bdb0179a2f7bc91836d6af004171af735188fc1b69c286c864", "2e355fa8b5acf07f4608835401e5a6144f25c505ed9d2689f93df6382890a79c", "3f46bdea034f311a14efe877f5592d84a7a6c97d9b917be3f55573311e6cdda7", "c6f5c46f9e3daea6422f8a004682a5de6f6946a9cfb7c9ca71912c029a981403", "6eac02c2ab0dc9378be87d5d04da2fd747fb2340dad4977778defee7da92f657", "94ad0b5b0a595b7eaafe9404423d8543b4c8dcfc26ecffb44f6894e2ca46fd61", "d0ab864a17dbd8a07dda05a58ac74d4894b7effa8e1c5152d71adf8b1fcc24d9", "5933b0b35d5d3e9d1f53fbce9403c5672883fff37f429dc1da26881f47415672", "7fb754c0792cd52ea50ce5b8862b5b07d5aa45af1dbfa035f862cdb6a030b427", "66a7a5807c3130eb2d0b55bb260a6a001b9d62095c94b753cbb215f3e4f099e1", "f513a0aa4f8f39744c6fddf2b5eb18cc1eac55ca866a1b243d835362a023f243", "060672b8531404f598515957df33d6387e0647cbc382d35ef286fa3466362384", "8ba5ef4e282bf7bc5cf13f731a1b9f525bd3b1f69cbfa24c1c69c303c0ac7019", "8eec27653c19ed078b2f3bae16ff901d16347d7917d2b8e2317914e2437bf324", "03b0bd366e8184f8d871c3a7c7cc26c73c25b54ff54c64b28b10b898242cdc8a", "82887006d04d939ffca870bc268a940df6cf01dbdf12e228ccf476d07d7c9424", "3f5f3806e425deac33023e9764d08ac98397e6f1bc8599743cbb15a9cfdf8929", "3510a92fc7dd04f69b1aeeef5489ef168dbf1d9c4d528b8f4af4240a8b295ab4", "6ed701cfedb16ebd91b2d185383115c6f9ce12f2f9c744d7d605be0002109362", "592fbed6f4ef4a643b0c5dec00a9a32f69a4027aedb972265cd9237b7b31d564", "98f3aaa79f6ba1759e046f873955785d869eec78b60ff7ad2f1bb62d50ea8a0a", "b53a7292b38e011dbe6efc79c22d028ddd364da2e6b9aa182915572742330ea9", "04aa39fcb509e7842f0bd5b135b6181b0b57c8a74422838362f430351fc364f2", "d212b2ac736e3f60408ffe9fbc1d26ae901f8f477fb8b08ec03c9d6b0208ac2b", "522e6198a268c62c01c9944cc2c06902d8308d65e6444eb8ad10bbe98dc362b6", "5c0b1ae7ef3b0e1552cd215596a4449a8bcd5d060f18511da8e63b87f67c11f6", "6606753e5a126d7068012a526d44c3eb2f7fcd09d5faeb30c77dbfd87ca7e758", "f7ac69722a0706c533afa393b1574a761a073df0a8280094d3500a4bbc9c2877", "9aec25da37c5143655198925302a995797eeef538933800b67b87c48de7ad120", "59279341ea59fbf34025024596b670b6df2c9f80e71b9ad19aea71ba43b083fc", "ed823ec32c5d4e9ca9dd968bb0fe9366b7d904ce0cae615308ddd5b89f0e6a3a", "d7c7673ba8ca7b0f04b1af4df026cbea7fed5b8acf59b27d33ef988c60eff054", "c00cf031587d12c309358e85de8876b2738d3ef2cadd88db6b07318ea0ba8973", "50828327cbf487d99d22c77ef8f980e5d7c8b93e2a1d1b084e2dc6760240e738", "a48622b535728587fd351763d1296c7ec9cb5bc6743d5f22b011d5b5c3ef688f", "fd21cc3cb5062bc4ac714c489e1ca0e37a577c19ba23b0d00e9767f598d37636", "ad1f3889d0032e7c2791053060e4c044837353325fbd42cdeeef65638ed31c2a", "2b5d2ba5803e6fe3a2bc08b5f3965f47a92918a9c44b8090618d5d5a2876cf8c", "0a95adbf8581859ae0cc477127abeaf4ad89916405c41855af8fbc482e1634e8", "9baed8fceea6e36d36670d72429d909547165efc038c293a14a41ef2edf83141", "ec54e99514663edb97adef400fbf34a77daae108303d3da8008a7dfb4cdf0f52", "20ee235b5de5b36244da6f9aa1cbdd032a90867ba92276ccc8c38c0d0d57fcec", "4c3aada37cf7fd3819b2da502a15f78f7ce5a2ce6d584b630344ff00dffc74ac", "576c85c584f60555c2a024cbb99dfbbdb5f58c3bdcf28dbc8ea315fd46a388f3", "46635b56d3c7f0b7bb26adae2a1692debbfd145d4a0986a9137fe91e73e70360", "11d1ff4edd53407199c92b00cbc3abe8c9c5d5bed4414ad07b55c896b0e7a713", "051c2e380d07844ffaca43743957f8c0efe2bdf74c6c1e6a9dcccb8d1a3c596b", "a78f19952edd18bf02b3c9eb704b088e2120941d6acb22f6f795c42796e60252", "48deb732e8de8fe7995bbc2816520798fcab815f62165af4d53bbc24434c963e", "52bb7cc738dbf5e5eee2c76754d87904e6750c63eda5e0a866197d2e16d9c142", "4dea5c7cb70f50322ec9d734aa4aa078be9227c05251e18991c596f387552370", "78e370b587b145920213731b7c7c725e512b3b6577c51c800218a7c764c532ae", "8f8472a2f6ec348bfc7577a035c7f34a04c62f0c757b54687e1175236dcf393b", "744b93f9950fc38dad705556931ea48193b99dcb191cc9bd77097f65fbe2f0b8", "8266498d969081c29737b8daeb5b51d60e56d008fff243a39d16c3032d42f6cf", "9113b98df80f877c7a2ee5d865a04c9514b4e9bf25a49d315b0b15f115d2f0d2", "a7be8e1fe282a37cd666e0632b17d933fa13f21addf4798fc0455bc166e2488c", "8e9b669109df89620b94f2387dc53206a82ddc71d658f8f7a2b3a9b417370d3e", "3f83e9ad5be63bd5bf2fd009fffe6b7dd4066243975bc962edc37459c17e65b9", "8e71b24534e9f3fb3a71263359fed2b7ffb008265e0d34383e319f1b6f5c08f2", "1bc3201a9f24a2fe48f634f90d406aaf6cbf5e36e292870ecba98d74b065ee1b", "e78f27ab3ef177a9926e6b90e572b9853ce6cf4d87512836e9ae85807ec9d7fe", "3d1e557b540ac045b3b327994a351f08a443f9216f9b2b8d3a0f42b58671ac83", "0985b889a1fe4f4e1fb925061ac6fb2247f10875f5fcbe63eec2ab55ed68970e", "d54123de468bd42ea00dafbd777f85fe5fa1ff6404d9838c007953c25c92a1c5", "ce8457d59078a699acb70416f88155a96a906b7b7aad43708402e3a3bcc8a4b4", "81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9", "85d6385b945c0d602103db39b0b654b2af93b5127938e26a959c123f0789b948", "6c94e35ccc352d4e9ef0b99562cff995a5741ce8de8ad11b568892934daee366", "77459b9b941bcb4714d0c121313c900ecf30541d158eb2b9b178cdb8eca6457e", "483029d526219f816e8e8f6a9de07b422633dba180ffc26faac22862a017519f", "a20a2b7bb0842d5cf8a0c06c626421fd51ec103925c1819a51271f2779afa730", "6f6a4e56098cfd9af29e3ae549503b370211a4e94421457fe4cfd39a38a1fa08", "f1cfa5ebb149e8099d561aae57beed6c68f990f45a910ea9d7b460dbcc5350be", "e5e53c784d5d49de1cabb6e904bf3380026aadcb9769775a268dd304dd9aa2df", "f37f3f2b0dc57a86dee4ba6ff855283bb4d2f0dea1c5bd1b708853444c2ffcec", "7d12ba56e9f8b3dc64f77c87318c4f37bc12cfbf1a37573cdf3e4fa683f20155", "72d1b5da6eeaf1789df86487da50ad5e9dadb5ffaecb56b6de592aa286c9c1b8", "4b9a7f50c0bb198c6f5414c5a8459f5d216d34ab521ea94c060ea35cac66f900", "7931aa2a1bed855457d1ddf6bc06ab4406a9fba0579045a4d6ff78f9c07c440f", "96da37e95d5cc34fe3bef6c89428df859b8a217630d0c664da1daf1539caacf5", "a85e9db4851f7cd3efb8db7bf69a07cfb97bc528b72785a9cff7bdfef7e2279d", "da6e2f539726fabd1f8cd7c9469a22b36769137975b28abc65fe2dc29e659b77", "46e67c525617663b392a53c0e94ba79e62db62a851fb175ae87756d4e73c9718", "152e69cf3c8e76c8d8b0aed924ddd1708e4c68624611af33d52c2c2814dd5df9", "023e33504ab909cf87a6f4e4e545090e40bdc0a2153e5b68b19f7fad2b737904", "73a2af8864fc500fa49048bf3003776c19938f360e56bd03663866fb3087884a", "1bea20e1df19b12013976de2b5e0e3d1fb4ba088b59fe53642c324298b21ffd9", "b1ab1e892617f210425f658cf1d361b5489028c8771b56d845fe1c62c1fbc8b0", "d398b29d3dbbb9bf201d4c7e1c19ff9d43c15fd45a0cec46fbe9885ec3f6e97f", "6557739a67283a8de383fc5c0997fbec7c5721a46f28f3235fc9607598d9016b", "b2b2f104d32c638903e151a9b20d6e27b41d8c0c84cf8458738f83ca2f1dd744", "158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab", "5313e5bf17148de844ff74be3663d47c6e361ca469b30a36337701233c89a15e", "6ae9e4d22c4670b9140fc378214b3274fb3f64d16058717f974515000680b24c", "8f0f97e140e126a4404a09eb1e14a53b7c742701c4290a5d1702d14daec22ee8", "8e1f192fe25ad49be764c3f55c68beb32f7aa66f85344e026b76cfaaa1d3d88a"]
         }
       }, {
-        key: 'dobm',
-        label: 'Month of birth',
-        type: 'sha256',
-        typeParams: {
-          options: ['938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4', 'a953f09a1b6b6725b81956e9ad0b1eb49e3ad40004c04307ef8af6246a054116', '0b8efa5a3bf104413a725c6ff0459a6be12b1fd33314cbb138745baf39504ae5', '6cd5b6e51936a442b973660c21553dd22bd72ddc8751132a943475288113b4c0', 'c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2', 'aacd834b5cdc64a329e27649143406dd068306542988dfc250d6184745894849', '19b100ab7725c612f3d80ff203ca53cea5cadaafae3bf0f88f0fb4089fe08815', '323783be9a53a31e158ec9600626a4703e99f4e183bc1acb8772cbdf5c3a1ece', '3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105', '4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5', '4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8', '6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918']
+        "key": "dobm",
+        "label": "Month of birth",
+        "type": "sha256",
+        "typeParams": {
+          "options": ["938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "a953f09a1b6b6725b81956e9ad0b1eb49e3ad40004c04307ef8af6246a054116", "0b8efa5a3bf104413a725c6ff0459a6be12b1fd33314cbb138745baf39504ae5", "6cd5b6e51936a442b973660c21553dd22bd72ddc8751132a943475288113b4c0", "c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2", "aacd834b5cdc64a329e27649143406dd068306542988dfc250d6184745894849", "19b100ab7725c612f3d80ff203ca53cea5cadaafae3bf0f88f0fb4089fe08815", "323783be9a53a31e158ec9600626a4703e99f4e183bc1acb8772cbdf5c3a1ece", "3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105", "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5", "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8", "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918"]
         }
       }, {
-        key: 'dobd',
-        label: 'Day of birth',
-        type: 'sha256',
-        typeParams: {
-          options: ['938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4', 'a953f09a1b6b6725b81956e9ad0b1eb49e3ad40004c04307ef8af6246a054116', '0b8efa5a3bf104413a725c6ff0459a6be12b1fd33314cbb138745baf39504ae5', '6cd5b6e51936a442b973660c21553dd22bd72ddc8751132a943475288113b4c0', 'c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2', 'aacd834b5cdc64a329e27649143406dd068306542988dfc250d6184745894849', '19b100ab7725c612f3d80ff203ca53cea5cadaafae3bf0f88f0fb4089fe08815', '323783be9a53a31e158ec9600626a4703e99f4e183bc1acb8772cbdf5c3a1ece', '3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105', '4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5', '4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8', '6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918', '3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278', '8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61', 'e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb', 'b17ef6d19c7a5b1ee83b907c595526dcb1eb06db8227d650d5dda0a9f4ce8cd9', '4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3', '4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a', '9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767', 'f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b', '6f4b6612125fb3a0daecd2799dfd6c9c299424fd920f9b308110a2c1fbd8f443', '785f3ec7eb32f30b90cd0fcf3657d388b5ff4297f2f9716ff66e9b69c05ddd09', '535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790', 'c2356069e9d1e79ca924378153cfbbfb4d4416b1f99d41a2940bfdb66c5319db', 'b7a56873cd771f2c446d369b649430b65a756ba278ff97ec81bb6f55b2e73569', '5f9c4ab08cac7457e9111a30e4664920607ea2c115a1433d7be98e97e64244ca', '670671cd97404156226e507973f2ab8330d3022ca96e0c93bdbdb320c41adcaf', '59e19706d51d39f66711c2653cd7eb1291c94d9b55eb14bda74ce4dc636d015a', '35135aaa6cc23891b40cb3f378c53a17a1127210ce60e125ccf03efcfdaec458', '624b60c58c9d8bfb6ff1886c2fd605d2adeb6ea4da576068201b6c6958ce93f4', 'eb1e33e8a81b697b75855af6bfcdbcbf7cbbde9f94962ceaec1ed8af21f5a50f']
+        "key": "dobd",
+        "label": "Day of birth",
+        "type": "sha256",
+        "typeParams": {
+          "options": ["938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "a953f09a1b6b6725b81956e9ad0b1eb49e3ad40004c04307ef8af6246a054116", "0b8efa5a3bf104413a725c6ff0459a6be12b1fd33314cbb138745baf39504ae5", "6cd5b6e51936a442b973660c21553dd22bd72ddc8751132a943475288113b4c0", "c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2", "aacd834b5cdc64a329e27649143406dd068306542988dfc250d6184745894849", "19b100ab7725c612f3d80ff203ca53cea5cadaafae3bf0f88f0fb4089fe08815", "323783be9a53a31e158ec9600626a4703e99f4e183bc1acb8772cbdf5c3a1ece", "3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105", "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5", "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8", "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918", "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278", "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61", "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb", "b17ef6d19c7a5b1ee83b907c595526dcb1eb06db8227d650d5dda0a9f4ce8cd9", "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3", "4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a", "9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767", "f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b", "6f4b6612125fb3a0daecd2799dfd6c9c299424fd920f9b308110a2c1fbd8f443", "785f3ec7eb32f30b90cd0fcf3657d388b5ff4297f2f9716ff66e9b69c05ddd09", "535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790", "c2356069e9d1e79ca924378153cfbbfb4d4416b1f99d41a2940bfdb66c5319db", "b7a56873cd771f2c446d369b649430b65a756ba278ff97ec81bb6f55b2e73569", "5f9c4ab08cac7457e9111a30e4664920607ea2c115a1433d7be98e97e64244ca", "670671cd97404156226e507973f2ab8330d3022ca96e0c93bdbdb320c41adcaf", "59e19706d51d39f66711c2653cd7eb1291c94d9b55eb14bda74ce4dc636d015a", "35135aaa6cc23891b40cb3f378c53a17a1127210ce60e125ccf03efcfdaec458", "624b60c58c9d8bfb6ff1886c2fd605d2adeb6ea4da576068201b6c6958ce93f4", "eb1e33e8a81b697b75855af6bfcdbcbf7cbbde9f94962ceaec1ed8af21f5a50f"]
         }
       }, {
-        key: 'appuid',
-        label: 'Facebook App User ID (Not Hashed)',
-        examples: ['1234567890', '1443637309', '1234567892'],
-        type: 'fbid',
-        typeParams: {
-          scoped: true,
-          rejectHashed: true
+        "key": "appuid",
+        "label": "Facebook App User ID (Not Hashed)",
+        "examples": ["1234567890", "1443637309", "1234567892"],
+        "type": "fbid",
+        "typeParams": {
+          "scoped": true,
+          "rejectHashed": true
         }
       }, {
-        key: 'pageuid',
-        label: 'Facebook Page User ID (Not Hashed)',
-        examples: ['1234567890', '1443637309', '1234567892'],
-        type: 'fbid',
-        typeParams: {
-          scoped: true,
-          rejectHashed: true
+        "key": "pageuid",
+        "label": "Facebook Page User ID (Not Hashed)",
+        "examples": ["1234567890", "1443637309", "1234567892"],
+        "type": "fbid",
+        "typeParams": {
+          "scoped": true,
+          "rejectHashed": true
         }
       }, {
-        key: 'extern_id',
-        label: 'External ID',
-        description: 'Advertiser-specific or third-party ID',
-        examples: ['ABX1234', '99931356', '12XYZ981'],
-        type: 'string',
-        typeParams: {
-          doNotHash: true,
-          test: '^(?!\\s*$).+'
+        "key": "extern_id",
+        "label": "External ID",
+        "description": "Advertiser-specific or third-party ID",
+        "examples": ["ABX1234", "99931356", "12XYZ981"],
+        "type": "string",
+        "typeParams": {
+          "doNotHash": true,
+          "test": "^(?!\\s*$).+"
         }
       }, {
-        key: 'lead_id',
-        label: 'Lead ID',
-        description: 'Facebook Lead ID',
-        examples: ['7543756327866', '4234567890123', 'l:4234567890123'],
-        type: 'fbid',
-        typeParams: {
-          rejectHashed: true,
-          stripPrefix: true
+        "key": "lead_id",
+        "label": "Lead ID",
+        "description": "Facebook Lead ID",
+        "examples": ["7543756327866", "4234567890123", "l:4234567890123"],
+        "type": "fbid",
+        "typeParams": {
+          "rejectHashed": true,
+          "stripPrefix": true
         }
       }],
-      baseSchema: {
-        id: 'hashed_basic_pii_schema',
-        version: '0.0.1'
+      "baseSchema": {
+        "id": "hashed_basic_pii_schema",
+        "version": "0.0.1"
       }
     }
   }, {
-    key: 'custom_data',
-    label: 'CustomData',
-    type: {
-      canHaveExtraProps: true
+    "key": "custom_data",
+    "label": "CustomData",
+    "type": {
+      "canHaveExtraProps": true
     }
   }, {
-    key: 'value',
-    label: 'Value',
-    examples: ['2534'],
-    type: 'number',
-    typeParams: {
-      moreThan: 0,
-      rejectHashed: true
+    "key": "value",
+    "label": "Value",
+    "examples": ["2534"],
+    "type": "number",
+    "typeParams": {
+      "moreThan": 0,
+      "rejectHashed": true
     }
   }, {
-    key: 'currency',
-    label: 'Currency',
-    examples: ['USD', 'HUF'],
-    type: 'currency_code'
+    "key": "currency",
+    "label": "Currency",
+    "examples": ["USD", "HUF"],
+    "type": "currency_code"
   }, {
-    key: 'order_id',
-    label: 'Order ID',
-    examples: ['ABC123', '123DEF'],
-    type: 'string'
+    "key": "order_id",
+    "label": "Order ID",
+    "examples": ["ABC123", "123DEF"],
+    "type": "string"
   }, {
-    key: 'item_number',
-    label: 'Item Number',
-    examples: ['1', 'A2'],
-    type: 'string'
+    "key": "item_number",
+    "label": "Item Number",
+    "examples": ["1", "A2"],
+    "type": "string"
   }, {
-    key: 'content_type',
-    label: 'Content Type',
-    type: 'LIST',
-    typeParams: {
-      rejectEmptyList: true,
-      rejectHashed: true,
-      caseInsensitiveElements: true,
-      options: ['product', 'product_group', 'fb_product', 'destination', 'flight', 'hotel', 'home_listing', 'home_service_provider', 'auto_offer', 'vehicle', 'vehicle_offer', 'test_vertical']
+    "key": "event_name",
+    "label": "Event Name",
+    "formats": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "InitiateCheckout", "Lead", "Purchase", "Search", "ViewContent", "Other"],
+    "type": "enum",
+    "typeParams": {
+      "caseInsensitive": true,
+      "options": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "InitiateCheckout", "Lead", "Purchase", "Search", "ViewContent", "Other"],
+      "rejectHashed": true
     },
-    examples: ['product', ['product'], ['product', 'destination']]
+    "maxCountOfExamplesToShow": 30
   }, {
-    key: 'content_ids',
-    label: 'Content Ids',
-    examples: [['1'], ['2', 'A3']],
-    type: 'LIST',
-    typeParams: {
-      rejectEmptyList: true,
-      rejectHashed: true
+    "key": "content_type",
+    "label": "Content Type",
+    "type": "LIST",
+    "typeParams": {
+      "rejectEmptyList": true,
+      "rejectHashed": true,
+      "caseInsensitiveElements": true,
+      "options": ["product", "product_group", "fb_product", "destination", "flight", "hotel", "home_listing", "home_service_provider", "auto_offer", "vehicle", "vehicle_offer", "media_title", "test_vertical"]
+    },
+    "examples": ["product", ["product", "destination"], "[product]", "[product, destination]"]
+  }, {
+    "key": "content_ids",
+    "label": "Content Ids",
+    "examples": [["1"], ["2", "A3"]],
+    "type": "LIST",
+    "typeParams": {
+      "rejectEmptyList": true,
+      "rejectHashed": true
     }
+  }, {
+    "key": "catalog_auto_population_info",
+    "label": "Catalog Auto Population Info JSON",
+    "type": "json_list",
+    "typeParams": {
+      "maxItemsAllowed": 100,
+      "nestedPropSchema": {
+        "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
+        "id": "catalog_auto_population_info_schema",
+        "version": "0.0.1",
+        "type": "catalog_auto_population_info_keys",
+        "exampleFiles": {
+          "csv": "https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv"
+        },
+        "validIf": {
+          "rule": "meetAll",
+          "args": [{
+            "rule": "propValid",
+            "name": "valid_currency",
+            "args": "currency"
+          }, {
+            "rule": "propValid",
+            "name": "valid_description",
+            "args": "description"
+          }, {
+            "rule": "propValid",
+            "name": "valid_image_url",
+            "args": "image_url"
+          }, {
+            "rule": "propValid",
+            "name": "valid_name",
+            "args": "name"
+          }, {
+            "rule": "propValid",
+            "name": "valid_price",
+            "args": "price"
+          }, {
+            "rule": "propValid",
+            "name": "valid_retailer_id",
+            "args": "retailer_id"
+          }, {
+            "rule": "propValid",
+            "name": "valid_url",
+            "args": "url"
+          }, {
+            "rule": "meetAny",
+            "args": [{
+              "rule": "propValid",
+              "name": "valid_brand",
+              "args": "brand"
+            }, {
+              "rule": "propValid",
+              "name": "valid_gtin",
+              "args": "gtin"
+            }, {
+              "rule": "propValid",
+              "name": "valid_mpn",
+              "args": "manufacturer_part_number"
+            }]
+          }]
+        },
+        "props": [{
+          "key": "availability",
+          "label": "Product Availability",
+          "formats": ["in stock", "out of stock", "preorder", "available for order", "discontinued", ""],
+          "type": "enum",
+          "typeParams": {
+            "caseInsensitive": true,
+            "options": ["in stock", "out of stock", "preorder", "available for order", "discontinued", ""],
+            "rejectHashed": true
+          },
+          "maxCountOfExamplesToShow": 5
+        }, {
+          "key": "brand",
+          "label": "Product Brand",
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "category",
+          "label": "Google Product Category",
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "currency",
+          "label": "Product Price Currency",
+          "examples": ["USD", "HUF"],
+          "type": "currency_code"
+        }, {
+          "key": "condition",
+          "label": "Product Condition",
+          "formats": ["new", "refurbished", "used", "cpo", ""],
+          "type": "enum",
+          "typeParams": {
+            "caseInsensitive": true,
+            "options": ["new", "refurbished", "used", "cpo", ""],
+            "rejectHashed": true
+          },
+          "maxCountOfExamplesToShow": 5
+        }, {
+          "key": "description",
+          "label": "Product Description",
+          "examples": ["A Wild Pikachu", "Groot Chia Pet"],
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "gtin",
+          "label": "Product GTIN",
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "image_url",
+          "label": "Product Image URL",
+          "examples": ["https://www.facebook.com/t_shirt_image_001.jpg"],
+          "type": "string",
+          "typeParams": {
+            "test": "^https?\\:\\/\\/.*"
+          }
+        }, {
+          "key": "manufacturer_part_number",
+          "label": "Product Manufacturer Part Number",
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "name",
+          "label": "Product Name",
+          "examples": ["Product Name"],
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "price",
+          "label": "Product Price",
+          "examples": ["2534"],
+          "type": "number",
+          "typeParams": {
+            "integer": true,
+            "moreThan": 0,
+            "rejectHashed": true
+          }
+        }, {
+          "key": "product_type",
+          "label": "Product Type",
+          "examples": ["Pet Pedometers", "Drum Pedals"],
+          "type": "string"
+        }, {
+          "key": "retailer_id",
+          "label": "Unique Product ID",
+          "examples": ["retailer_item_id_1", "content_id_1"],
+          "type": "string",
+          "typeParams": {
+            "test": "\\S"
+          }
+        }, {
+          "key": "url",
+          "label": "Product URL",
+          "examples": ["https://www.facebook.com/facebook_t_shirt"],
+          "type": "string",
+          "typeParams": {
+            "test": "^https?\\:\\/\\/.*"
+          }
+        }, {
+          "key": "visibility",
+          "label": "Product Visibility",
+          "formats": ["", "staging", "published", "hidden", "whitelist_only"],
+          "type": "enum",
+          "typeParams": {
+            "caseInsensitive": true,
+            "options": ["", "staging", "published", "hidden", "whitelist_only"],
+            "rejectHashed": true
+          },
+          "maxCountOfExamplesToShow": 5
+        }]
+      }
+    },
+    "examples": ["[{\"availability\":\"in stock\",\"brand\":\"Facebook\",\"category\":\"2271\",\"condition\":\"new\",\"currency\":\"USD\",\"description\":\"A vibrant crewneck for all shapes and sizes.\",\"image_url\":\"https:\\/\\/www.facebook.com\\/t_shirt_image_001.jpg\",\"name\":\"Facebook T-Shirt (Unisex)\",\"price\":999,\"product_type\":\"Apparel & Accessories > Clothing > Shirts\",\"retailer_id\":\"FB_product_1234\",\"url\":\"https:\\/\\/www.facebook.com\\/t_shirt_001.jpg\"}]"]
   }],
-  baseSchema: {
-    id: 'event_data_schema',
-    version: '0.0.1'
+  "baseSchema": {
+    "id": "event_data_schema",
+    "version": "0.0.1"
   }
 };
 
 /***/ }),
-/* 38 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8963,7 +9642,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 39 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8981,6 +9660,7 @@ function getTestUploadResult(numRowsProcessed, normalizerSettings, normalization
     matchCount: validateResult.match_count,
     uniqueEventTimeOfDayCount: validateResult.unique_event_time_of_day_count,
     eventsLagged2DaysCount: validateResult.events_lagged_2_days_count,
+    eventsLagged7DaysCount: validateResult.events_lagged_7_days_count,
     eventsLagged90DaysCount: validateResult.events_lagged_90_days_count,
     eventsWithValueCount: validateResult.events_with_value_count,
     uniqueValueCount: validateResult.unique_value_count,
@@ -9055,7 +9735,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 40 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9076,7 +9756,7 @@ var ERROR_WEIGHT = {
   NO_MATCH_KEYS_LOW: 800000,
   ITEMNUM_NO_ORDERID: 100000,
   NONUNIQUE_ORDERID_ITEMNUM: 200000,
-  LAGGED_MORE_THAN_2_DAYS: -10000,
+  LAGGED_MORE_THAN_7_DAYS: -10000,
   INACCURATE_EVENT_TIME: 0,
   SAME_VALUE_FOR_ALL_EVENTS: 0,
   BEFORE_AD_ACCOUNT_ASSIGNMENT: 0,
@@ -9159,14 +9839,14 @@ var EventsLagged90DaysIssueChecker = function EventsLagged90DaysIssueChecker(res
   } : null;
 };
 
-var EventsLagged2DaysIssueChecker = function EventsLagged2DaysIssueChecker(result) {
+var EventsLagged7DaysIssueChecker = function EventsLagged7DaysIssueChecker(result) {
   var serverResult = result.serverSideValidationResult;
-  return serverResult.eventsLagged2DaysCount > 0 ? {
+  return serverResult.eventsLagged7DaysCount > 0 ? {
     level: 'recommendation',
-    weight: ERROR_WEIGHT.LAGGED_MORE_THAN_2_DAYS + serverResult.eventsLagged2DaysCount,
+    weight: ERROR_WEIGHT.LAGGED_MORE_THAN_7_DAYS + serverResult.eventsLagged7DaysCount,
     issue: {
-      type: 'events-lagged-2d',
-      count: serverResult.eventsLagged2DaysCount
+      type: 'events-lagged-7d',
+      count: serverResult.eventsLagged7DaysCount
     }
   } : null;
 };
@@ -9345,7 +10025,7 @@ var IssueCheckers = {
   LowPiiRateIssueChecker: LowPiiRateIssueChecker,
   NotAssignedToAdAccountIssueChecker: NotAssignedToAdAccountIssueChecker,
   EventsLagged90DaysIssueChecker: EventsLagged90DaysIssueChecker,
-  EventsLagged2DaysIssueChecker: EventsLagged2DaysIssueChecker,
+  EventsLagged7DaysIssueChecker: EventsLagged7DaysIssueChecker,
   InaccurateEventTimeIssueChecker: InaccurateEventTimeIssueChecker,
   SameValueIssueChecker: SameValueIssueChecker,
   EventsBeforeAdAccountAssignmentIssueChecker: EventsBeforeAdAccountAssignmentIssueChecker,
@@ -9403,7 +10083,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 41 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9412,7 +10092,7 @@ module.exports = {
 module.exports = ['ISO8601', 'unix_time', 'MM-DD-YYYY', 'MM/DD/YYYY', 'MMDDYYYY', 'DD-MM-YYYY', 'DD/MM/YYYY', 'DDMMYYYY', 'YYYY-MM-DD', 'YYYY/MM/DD', 'YYYYMMDD', 'MM-DD-YY', 'MM/DD/YY', 'MMDDYY', 'DD-MM-YY', 'DD/MM/YY', 'DDMMYY', 'YY-MM-DD', 'YY/MM/DD', 'YYMMDD'];
 
 /***/ }),
-/* 42 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9426,7 +10106,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderSingleWorkerTask = __webpack_require__(25);
+var SignalsUploaderSingleWorkerTask = __webpack_require__(38);
 
 var SignalsUploaderPreviewV2Task = function (_SignalsUploaderSingl) {
   _inherits(SignalsUploaderPreviewV2Task, _SignalsUploaderSingl);
@@ -9508,7 +10188,7 @@ var SignalsUploaderPreviewV2Task = function (_SignalsUploaderSingl) {
 module.exports = SignalsUploaderPreviewV2Task;
 
 /***/ }),
-/* 43 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9522,7 +10202,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderSingleWorkerTask = __webpack_require__(25);
+var SignalsUploaderSingleWorkerTask = __webpack_require__(38);
 
 var SignalsUploaderSampleFetchTask = function (_SignalsUploaderSingl) {
   _inherits(SignalsUploaderSampleFetchTask, _SignalsUploaderSingl);
@@ -9595,7 +10275,7 @@ var SignalsUploaderSampleFetchTask = function (_SignalsUploaderSingl) {
 module.exports = SignalsUploaderSampleFetchTask;
 
 /***/ }),
-/* 44 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9609,10 +10289,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderTask = __webpack_require__(26);
+var SignalsUploaderTask = __webpack_require__(39);
 
-var createSignalsUploaderErrorReportGenerator = __webpack_require__(16);
-var createSignalsUploaderWorker = __webpack_require__(31);
+var createSignalsUploaderErrorReportGenerator = __webpack_require__(18);
+var createSignalsUploaderWorker = __webpack_require__(43);
 var invariant = __webpack_require__(1);
 
 var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
@@ -9978,10 +10658,10 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
 }(SignalsUploaderTask);
 
 module.exports = SignalsUploaderUploadTask;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
-/* 45 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9990,13 +10670,28 @@ module.exports = SignalsUploaderUploadTask;
 module.exports = Object.freeze({ "ADD_PAYMENT_INFO": "AddPaymentInfo", "ADD_TO_CART": "AddToCart", "ADD_TO_WISHLIST": "AddToWishlist", "COMPLETE_REGISTRATION": "CompleteRegistration", "INITIATE_CHECKOUT": "InitiateCheckout", "LEAD": "Lead", "OTHER": "Other", "PURCHASE": "Purchase", "SEARCH": "Search", "VIEW_CONTENT": "ViewContent" });
 
 /***/ }),
-/* 46 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var keyMirror = __webpack_require__(34);
+var _module$exports;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var SignalBaseTypes = __webpack_require__(19);
+
+module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(23)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(24)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(25)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(9)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(26)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(27)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(10)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(28)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(29)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(30)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(31)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(32)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(33)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(14)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(34)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(15)), _module$exports);
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var keyMirror = __webpack_require__(46);
 
 var SignalsTimestampNormalizationErrorTypes = keyMirror({
   REJECT_TOO_EARLY: null,
@@ -10006,236 +10701,7 @@ var SignalsTimestampNormalizationErrorTypes = keyMirror({
 module.exports = SignalsTimestampNormalizationErrorTypes;
 
 /***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function normalize(input) {
-  return { normalizedValue: input };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsValidationUtils = __webpack_require__(0);
-
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
-
-
-function normalize(input) {
-  if (input == null) {
-    return { normalizedValue: null };
-  }
-
-  if (typeof input === 'boolean') {
-    return { normalizedValue: input };
-  }
-
-  if (typeof input === 'string') {
-    var inputLowerCase = input.toLowerCase();
-    if (inputLowerCase === 'true' || inputLowerCase === 'yes' || inputLowerCase === '1') {
-      return { normalizedValue: true };
-    }
-    if (inputLowerCase === 'false' || inputLowerCase === 'no' || inputLowerCase === '0') {
-      return { normalizedValue: false };
-    }
-    if (looksLikeHashed(input)) {
-      return { normalizedValue: input };
-    }
-    return { normalizedValue: null };
-  }
-
-  if (typeof input === 'number') {
-    if (input === 1) {
-      return { normalizedValue: true };
-    }
-    if (input === 0) {
-      return { normalizedValue: false };
-    }
-    return { normalizedValue: null };
-  }
-
-  return { normalizedValue: null };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsCurrencyCodes = __webpack_require__(19);
-
-var normalizeSignalsEnumType = __webpack_require__(12);
-
-var VALID_CURRENCY_CODES = SignalsCurrencyCodes.VALID_CURRENCY_CODES;
-
-
-function normalize(input) {
-  return normalizeSignalsEnumType(input, {
-    uppercase: true,
-    options: VALID_CURRENCY_CODES,
-    rejectHashed: true
-  });
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var normalizeSignalsDateType = __webpack_require__(11);
-
-function normalizeSignalsDateMonthType(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments[2];
-
-  params.allowMonthOnly = true;
-  return normalizeSignalsDateType(input, params, additionalInfo);
-}
-
-module.exports = normalizeSignalsDateMonthType;
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsValidationUtils = __webpack_require__(0);
-
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
-    trim = SignalsValidationUtils.trim;
-
-
-var EMAIL_RE = /^[\w!#\$%&'\*\+\/\=\?\^`\{\|\}~\-]+(:?\.[\w!#\$%&'\*\+\/\=\?\^`\{\|\}~\-]+)*@(?:[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9\-]*[a-z0-9])?$/i;
-
-function isEmail(email) {
-  return EMAIL_RE.test(email);
-}
-
-function normalize(input) {
-  var result = null;
-
-  if (input != null) {
-    if (looksLikeHashed(input)) {
-      result = input;
-    } else if (typeof input === 'string') {
-      var cleanedUp = trim(input.toLowerCase());
-      result = isEmail(cleanedUp) ? cleanedUp : null;
-    }
-  }
-
-  return { normalizedValue: result };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsValidationUtils = __webpack_require__(0);
-
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
-
-
-var LEAD_ID_PREFIX = 'l:';
-
-var ALL_DIGIT_REGEX = /^[0-9]+$/;
-
-var MAX_FBID = '18446744073709551615';
-
-function isValueWithinUint64Range(value) {
-  if (value.length < MAX_FBID.length) {
-    return true;
-  }
-  if (value.length > MAX_FBID.length) {
-    return false;
-  }
-  for (var i = 0; i < value.length; i++) {
-    if (value[i] < MAX_FBID[i]) {
-      return true;
-    }
-    if (value[i] > MAX_FBID[i]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments[2];
-
-  if (typeof input === 'number') {
-    input = String(input);
-  }
-
-  if (typeof input !== 'string') {
-    return {
-      normalizedValue: null
-    };
-  }
-
-  if (looksLikeHashed(input) && !params.rejectHashed) {
-    return {
-      normalizedValue: input
-    };
-  }
-
-  var nonPrefixedInput = input;
-  if (params.stripPrefix && typeof nonPrefixedInput === 'string' && nonPrefixedInput.slice(0, LEAD_ID_PREFIX.length) === LEAD_ID_PREFIX) {
-    nonPrefixedInput = nonPrefixedInput.substring(LEAD_ID_PREFIX.length);
-  }
-
-  if (!ALL_DIGIT_REGEX.test(nonPrefixedInput) || !isValueWithinUint64Range(nonPrefixedInput)) {
-    return {
-      normalizedValue: null
-    };
-  }
-
-  if (params.scoped) {
-    var appIDs = additionalInfo;
-    if (appIDs != null && Array.isArray(appIDs) && appIDs.some(function (id) {
-      return normalize(id, { rejectHashed: true }).normalizedValue != null;
-    })) {
-      return {
-        normalizedValue: nonPrefixedInput
-      };
-    } else {
-      return {
-        normalizedValue: null
-      };
-    }
-  }
-
-  return { normalizedValue: nonPrefixedInput };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 53 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10243,10 +10709,10 @@ module.exports = normalize;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var SignalsBaseTypeNormalizers = __webpack_require__(6);
+var SignalsBaseTypeJSONListNestableNormalizers = __webpack_require__(58);
 var SignalsValidationUtils = __webpack_require__(0);
 
-var normalizeSignal = __webpack_require__(8);
+var normalizeSignal = __webpack_require__(7);
 
 var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
 
@@ -10290,7 +10756,7 @@ function normalize(input) {
     } else {
       input = input.trim();
       if (input.length === 0) {
-        results = [];
+        results = null;
       } else {
 
         if (input[0] !== '[' && input[input.length - 1] !== ']') {
@@ -10314,7 +10780,7 @@ function normalize(input) {
       results = null;
     } else {
       results = results.map(function (result) {
-        return normalizeSignal(result, nestedPropSchema, SignalsBaseTypeNormalizers, {}, null, null, null);
+        return normalizeSignal(result, nestedPropSchema, SignalsBaseTypeJSONListNestableNormalizers, {}, null, null, null);
       });
       additionalInfo = results.map(function (result) {
         return {
@@ -10340,264 +10806,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsValidationUtils = __webpack_require__(0);
-
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
-
-
-function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  var result = null;
-
-  var rejectEmptyList = params.rejectEmptyList,
-      maxItemsAllowed = params.maxItemsAllowed,
-      options = params.options,
-      rejectHashed = params.rejectHashed,
-      caseInsensitiveElements = params.caseInsensitiveElements;
-
-
-  if (Array.isArray(input)) {
-    result = input;
-  } else if (typeof input === 'string') {
-    if (looksLikeHashed(input)) {
-      result = rejectHashed ? null : input;
-    } else {
-      input = input.trim();
-      if (input.length === 0) {
-        result = [];
-      } else {
-        if (input.length >= 2 && input[0] === '[' && input[input.length - 1] === ']') {
-          input = input.slice(1, input.length - 1);
-        }
-
-        result = input.split(',').map(function (segment) {
-          return segment.trim().replace(/^\'(.*)\'$|^\"(.*)\"$/, '$1$2');
-        }).filter(function (item) {
-          return item.length !== 0;
-        });
-      }
-    }
-  }
-  if (options && result !== null) {
-    var options_set = void 0;
-    if (caseInsensitiveElements) {
-      options_set = new Set(options.map(function (option) {
-        return option.toLowerCase();
-      }));
-    } else {
-      options_set = new Set(options);
-    }
-    result = !Array.isArray(result) || result.some(function (item) {
-      return !options_set.has(caseInsensitiveElements ? String(item).toLowerCase() : String(item));
-    }) ? null : result;
-  }
-
-  if (result) {
-    if (rejectEmptyList && result.length === 0 || maxItemsAllowed && result.length > maxItemsAllowed) {
-      result = null;
-    }
-  }
-
-  return { normalizedValue: result };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsValidationUtils = __webpack_require__(0);
-
-var isInternationalPhoneNumber = __webpack_require__(78);
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
-
-
-var PHONE_DROP_PREFIX_ZEROS = /^0*/;
-var PHONE_IGNORE_CHAR_SET = /[\-@#<>'",; ]|\(|\)|\+|[a-z]/gi;
-
-function normalize(input) {
-  var result = null;
-
-  if (input != null) {
-    if (looksLikeHashed(input)) {
-      result = input;
-    } else {
-      var str = String(input);
-      if (isInternationalPhoneNumber(str)) {
-        result = str.replace(PHONE_IGNORE_CHAR_SET, '').replace(PHONE_DROP_PREFIX_ZEROS, '');
-      }
-    }
-  }
-
-  return { normalizedValue: result };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsValidationUtils = __webpack_require__(0);
-
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
-    trim = SignalsValidationUtils.trim;
-
-
-function normalize(input) {
-  var result = null;
-
-  if (input != null && typeof input === 'string') {
-    if (looksLikeHashed(input)) {
-      result = input;
-    } else {
-      var maybeZIP = trim(String(input).toLowerCase().split('-', 1)[0]);
-
-      if (maybeZIP.length >= 2) {
-        result = maybeZIP;
-      }
-    }
-  }
-
-  return { normalizedValue: result };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsValidationUtils = __webpack_require__(0);
-
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
-
-
-function normalize(input, params) {
-  if (typeof input !== 'string' || !looksLikeHashed(input)) {
-    return { normalizedValue: null };
-  }
-  if (params && params.options && params.options.indexOf(input) < 0) {
-    return { normalizedValue: null };
-  }
-  return { normalizedValue: input };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsValidationUtils = __webpack_require__(0);
-
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
-    strip = SignalsValidationUtils.strip;
-
-
-function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  var result = null;
-
-  if (input != null) {
-    if (looksLikeHashed(input) && typeof input === 'string') {
-      if (!params.rejectHashed) {
-        result = input;
-      }
-    } else {
-      var str = String(input);
-
-      if (params.strip != null) {
-        str = strip(str, params.strip);
-      }
-
-      if (params.lowercase) {
-        str = str.toLowerCase();
-      } else if (params.uppercase) {
-        str = str.toUpperCase();
-      }
-
-      if (params.truncate) {
-        str = str.substring(0, params.truncate);
-      }
-
-      if (params.test) {
-        result = new RegExp(params.test).test(str) ? str : null;
-      } else {
-        result = str;
-      }
-    }
-  }
-  return { normalizedValue: result };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var normalizeSignalsTimestampType = __webpack_require__(20);
-
-function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-  if (input == null) {
-    return {
-      normalizedValue: null
-    };
-  }
-
-  var newAdditionalInfo = additionalInfo ? _extends({}, additionalInfo) : {};
-  newAdditionalInfo.timeFormat = newAdditionalInfo.timeFormat || 'unix_time';
-
-  var tmpResult = normalizeSignalsTimestampType(input, params, newAdditionalInfo);
-
-  if (tmpResult.normalizedValue != null) {
-    var result = Math.round(tmpResult.normalizedValue / 1000);
-    return {
-      normalizedValue: result,
-      additionalInfo: tmpResult.additionalInfo
-    };
-  } else {
-    return {
-      normalizedValue: null,
-      additionalInfo: tmpResult.additionalInfo
-    };
-  }
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10608,11 +10817,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 var SignalsValidationUtils = __webpack_require__(0);
-var SignalsNormalizationErrorLevel = __webpack_require__(29);
-var SignalsNormalizationErrorScope = __webpack_require__(9);
+var SignalsNormalizationErrorLevel = __webpack_require__(41);
+var SignalsNormalizationErrorScope = __webpack_require__(12);
 
-var getByPath = __webpack_require__(27);
-var nullthrows = __webpack_require__(86);
+var getByPath = __webpack_require__(40);
+var nullthrows = __webpack_require__(87);
 
 var throwFatalError = SignalsValidationUtils.throwFatalError;
 
@@ -10770,25 +10979,25 @@ function checkRule(value, schema, ruleSpecs) {
 module.exports = checkRule;
 
 /***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalDateFormats = __webpack_require__(7);
-
-module.exports = SignalDateFormats.concat(['YYMM', 'MMYY', 'YYYYMM', 'MMYYYY', 'YYYY-MM', 'MM-YYYY', 'YY-MM', 'MM-YY', 'YYYY/MM', 'MM/YYYY', 'YY/MM', 'MM/YY']);
-
-/***/ }),
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Immutable = __webpack_require__(35);
-var SignalsNormalizationErrorScope = __webpack_require__(9);
+var SignalDateFormats = __webpack_require__(6);
+
+module.exports = SignalDateFormats.concat(['YYMM', 'MMYY', 'YYYYMM', 'MMYYYY', 'YYYY-MM', 'MM-YYYY', 'YY-MM', 'MM-YY', 'YYYY/MM', 'MM/YYYY', 'YY/MM', 'MM/YY']);
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Immutable = __webpack_require__(47);
+var SignalsNormalizationErrorScope = __webpack_require__(12);
 
 var List = Immutable.List;
 
@@ -10867,13 +11076,13 @@ function getSignalsNormalizationErrorSummary(results) {
 module.exports = getSignalsNormalizationErrorSummary;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var keyMirrorRecursive = __webpack_require__(85);
+var keyMirrorRecursive = __webpack_require__(86);
 
 var SignalsUploaderColumnMapperConstants = keyMirrorRecursive({
   CUSTOM_COLUMN_TYPE_VALUE: '',
@@ -10892,7 +11101,7 @@ var SignalsUploaderColumnMapperConstants = keyMirrorRecursive({
 module.exports = SignalsUploaderColumnMapperConstants;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10910,9 +11119,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsNormalizationErrorScope = __webpack_require__(9);
-var SignalsNormalizationPropError = __webpack_require__(30);
-var SignalsUploaderErrorReportGenerator = __webpack_require__(15);
+var SignalsNormalizationErrorScope = __webpack_require__(12);
+var SignalsNormalizationPropError = __webpack_require__(42);
+var SignalsUploaderErrorReportGenerator = __webpack_require__(17);
 
 var invariant = __webpack_require__(1);
 
@@ -11147,7 +11356,7 @@ var SignalsUploaderAdvancedErrorReportGenerator = function (_SignalsUploaderErro
 module.exports = SignalsUploaderAdvancedErrorReportGenerator;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11165,12 +11374,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SignalsNumberNormalizationErrorTypes = __webpack_require__(10);
-var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(23);
+var SignalsNumberNormalizationErrorTypes = __webpack_require__(13);
+var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(36);
 
-var getByPath = __webpack_require__(27);
+var getByPath = __webpack_require__(40);
 var invariant = __webpack_require__(1);
-var normalizeSignalsValueType = __webpack_require__(21);
+var normalizeSignalsValueType = __webpack_require__(15);
 
 var VALUE_ERROR_LABEL = (_VALUE_ERROR_LABEL = {}, _defineProperty(_VALUE_ERROR_LABEL, SignalsNumberNormalizationErrorTypes.EMPTY, 'empty cell'), _defineProperty(_VALUE_ERROR_LABEL, SignalsNumberNormalizationErrorTypes.INVALID_SEPARATOR, 'invalid separators'), _defineProperty(_VALUE_ERROR_LABEL, SignalsNumberNormalizationErrorTypes.NON_NUMERIC, 'non-numeric value'), _defineProperty(_VALUE_ERROR_LABEL, SignalsNumberNormalizationErrorTypes.TOO_SMALL, 'negative'), _VALUE_ERROR_LABEL);
 
@@ -11286,7 +11495,7 @@ var SignalsUploaderWLALErrorReportGenerator = function (_SignalsUploaderDefau) {
 module.exports = SignalsUploaderWLALErrorReportGenerator;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11413,7 +11622,7 @@ var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderConstructBatchJob;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11514,7 +11723,7 @@ var SignalsUploaderDelimiterDetectJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderDelimiterDetectJob;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11524,13 +11733,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var SignalsUploaderConstructBatchJob = __webpack_require__(66);
-var SignalsUploaderDelimiterDetectJob = __webpack_require__(67);
-var SignalsUploaderMappingDetectJob = __webpack_require__(69);
-var SignalsUploaderNormalizeBatchJob = __webpack_require__(70);
-var SignalsUploaderPreviewJob = __webpack_require__(71);
-var SignalsUploaderPreviewV2Job = __webpack_require__(72);
-var SignalsUploaderSampleFetchJob = __webpack_require__(73);
+var SignalsUploaderConstructBatchJob = __webpack_require__(67);
+var SignalsUploaderDelimiterDetectJob = __webpack_require__(68);
+var SignalsUploaderMappingDetectJob = __webpack_require__(70);
+var SignalsUploaderNormalizeBatchJob = __webpack_require__(71);
+var SignalsUploaderPreviewJob = __webpack_require__(72);
+var SignalsUploaderPreviewV2Job = __webpack_require__(73);
+var SignalsUploaderSampleFetchJob = __webpack_require__(74);
 
 var invariant = __webpack_require__(1);
 
@@ -11588,7 +11797,7 @@ var SignalsUploaderJobManager = function () {
 module.exports = SignalsUploaderJobManager;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11606,9 +11815,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SignalBaseTypes = __webpack_require__(28);
-var SignalDateFormats = __webpack_require__(7);
-var SignalsBaseTypeNormalizers = __webpack_require__(6);
+var SignalBaseTypes = __webpack_require__(19);
+var SignalDateFormats = __webpack_require__(6);
+var SignalsBaseTypeNormalizers = __webpack_require__(8);
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
 var SignalsUploaderCSVParser = __webpack_require__(4);
 
@@ -11832,7 +12041,7 @@ var SignalsUploaderMappingDetectJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderMappingDetectJob;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11846,13 +12055,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsBaseTypeNormalizers = __webpack_require__(6);
-var SignalsUploaderJob = __webpack_require__(24);
-var SignalsUploaderUtils = __webpack_require__(14);
+var SignalsBaseTypeNormalizers = __webpack_require__(8);
+var SignalsUploaderJob = __webpack_require__(37);
+var SignalsUploaderUtils = __webpack_require__(16);
 
-var createSignalsUploaderErrorReportGenerator = __webpack_require__(16);
-var normalizeSignal = __webpack_require__(8);
-var processPIISignalBeforeUpload = __webpack_require__(22);
+var createSignalsUploaderErrorReportGenerator = __webpack_require__(18);
+var normalizeSignal = __webpack_require__(7);
+var processPIISignalBeforeUpload = __webpack_require__(35);
 
 var arrayToObject = SignalsUploaderUtils.arrayToObject,
     getMappingWithPreset = SignalsUploaderUtils.getMappingWithPreset,
@@ -11923,7 +12132,7 @@ var SignalsUploaderNormalizeBatchJob = function (_SignalsUploaderJob) {
 module.exports = SignalsUploaderNormalizeBatchJob;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11937,15 +12146,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsBaseTypeNormalizers = __webpack_require__(6);
+var SignalsBaseTypeNormalizers = __webpack_require__(8);
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
 var SignalsUploaderCSVParser = __webpack_require__(4);
-var SignalsUploaderUtils = __webpack_require__(14);
+var SignalsUploaderUtils = __webpack_require__(16);
 
 var arrayToObject = SignalsUploaderUtils.arrayToObject;
 
 
-var normalizeSignal = __webpack_require__(8);
+var normalizeSignal = __webpack_require__(7);
 
 var SignalsUploaderPreviewJob = function (_SignalsUploaderChunk) {
   _inherits(SignalsUploaderPreviewJob, _SignalsUploaderChunk);
@@ -12028,7 +12237,7 @@ var SignalsUploaderPreviewJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderPreviewJob;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12042,15 +12251,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsBaseTypeNormalizers = __webpack_require__(6);
+var SignalsBaseTypeNormalizers = __webpack_require__(8);
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
 var SignalsUploaderCSVParser = __webpack_require__(4);
-var SignalsUploaderErrorReportGenerator = __webpack_require__(15);
-var SignalsUploaderUtils = __webpack_require__(14);
+var SignalsUploaderErrorReportGenerator = __webpack_require__(17);
+var SignalsUploaderUtils = __webpack_require__(16);
 
-var createSignalsUploaderErrorReportGenerator = __webpack_require__(16);
-var normalizeSignal = __webpack_require__(8);
-var processPIISignalBeforeUpload = __webpack_require__(22);
+var createSignalsUploaderErrorReportGenerator = __webpack_require__(18);
+var normalizeSignal = __webpack_require__(7);
+var processPIISignalBeforeUpload = __webpack_require__(35);
 
 var arrayToObject = SignalsUploaderUtils.arrayToObject,
     getMappingWithPreset = SignalsUploaderUtils.getMappingWithPreset,
@@ -12154,7 +12363,7 @@ var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderPreviewV2Job;
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12263,7 +12472,7 @@ var SignalsUploaderSampleFetchJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderSampleFetchJob;
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12277,7 +12486,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderReader = __webpack_require__(75);
+var SignalsUploaderReader = __webpack_require__(76);
 
 var invariant = __webpack_require__(1);
 
@@ -12355,10 +12564,10 @@ var SignalsUploaderNodeJSFileReader = function (_SignalsUploaderReade) {
 }(SignalsUploaderReader);
 
 module.exports = SignalsUploaderNodeJSFileReader;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12412,7 +12621,7 @@ var SignalsUploaderReader = function () {
 module.exports = SignalsUploaderReader;
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12426,8 +12635,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderJobManager = __webpack_require__(68);
-var SignalsUploaderWorker = __webpack_require__(77);
+var SignalsUploaderJobManager = __webpack_require__(69);
+var SignalsUploaderWorker = __webpack_require__(78);
 
 var SignalsUploaderUIWorker = function (_SignalsUploaderWorke) {
   _inherits(SignalsUploaderUIWorker, _SignalsUploaderWorke);
@@ -12458,7 +12667,7 @@ var SignalsUploaderUIWorker = function (_SignalsUploaderWorke) {
 module.exports = SignalsUploaderUIWorker;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12493,7 +12702,7 @@ var SignalsUploaderWorker = function () {
 module.exports = SignalsUploaderWorker;
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12504,33 +12713,24 @@ var NORWAY_NUMBER_RE = /^47\d{8}$/;
 var INTL_NUMBER_RE = /^\d{1,4}\(?\d{2,3}\)?\d{4,}$/;
 
 function isInternationalPhoneNumber(number) {
-  number = number.replace(/[\-\s]+/g, '').replace(/^\+?0{0,2}/, '');
+  var trimmedNumber = number.replace(/[\-\s]+/g, '').replace(/^\+?0{0,2}/, '');
 
-  if (number.startsWith('0')) {
+  if (trimmedNumber.startsWith('0')) {
     return false;
   }
 
-  if (number.startsWith('1')) {
-    return US_NUMBER_RE.test(number);
+  if (trimmedNumber.startsWith('1')) {
+    return US_NUMBER_RE.test(trimmedNumber);
   }
 
-  if (number.startsWith('47')) {
-    return NORWAY_NUMBER_RE.test(number);
+  if (trimmedNumber.startsWith('47')) {
+    return NORWAY_NUMBER_RE.test(trimmedNumber);
   }
 
-  return INTL_NUMBER_RE.test(number);
+  return INTL_NUMBER_RE.test(trimmedNumber);
 }
 
 module.exports = isInternationalPhoneNumber;
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = Object.freeze({ "WHITESPACE_ONLY": "whitespace_only", "WHITESPACE_AND_PUNCTUATION": "whitespace_and_punctuation", "ALL_NON_LATIN_ALPHA_NUMERIC": "all_non_latin_alpha_numeric" });
 
 /***/ }),
 /* 80 */
@@ -12539,20 +12739,29 @@ module.exports = Object.freeze({ "WHITESPACE_ONLY": "whitespace_only", "WHITESPA
 "use strict";
 
 
-var OfflineStandardEventsEnum = __webpack_require__(45);
-var SignalDateFormats = __webpack_require__(7);
-var SignalsBasicPIISchema = __webpack_require__(38);
-var SignalsCurrencyCodes = __webpack_require__(19);
-var SignalsDSDITestUploadUtils = __webpack_require__(39);
-var SignalsDSDITestUploadWarnings = __webpack_require__(40);
-var SignalsEventDataSchema = __webpack_require__(36);
-var SignalsHashedEventDataSchema = __webpack_require__(37);
-var SignalsUploaderPreviewV2Task = __webpack_require__(42);
-var SignalsUploaderSampleFetchTask = __webpack_require__(43);
-var SignalsUploaderUploadTask = __webpack_require__(44);
-var SignalTimestampFormats = __webpack_require__(41);
+module.exports = Object.freeze({ "WHITESPACE_ONLY": "whitespace_only", "WHITESPACE_AND_PUNCTUATION": "whitespace_and_punctuation", "ALL_NON_LATIN_ALPHA_NUMERIC": "all_non_latin_alpha_numeric" });
 
-var getSignalsSchemaSummary = __webpack_require__(18);
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var OfflineStandardEventsEnum = __webpack_require__(57);
+var SignalDateFormats = __webpack_require__(6);
+var SignalsBasicPIISchema = __webpack_require__(50);
+var SignalsCurrencyCodes = __webpack_require__(22);
+var SignalsDSDITestUploadUtils = __webpack_require__(51);
+var SignalsDSDITestUploadWarnings = __webpack_require__(52);
+var SignalsEventDataSchema = __webpack_require__(48);
+var SignalsHashedEventDataSchema = __webpack_require__(49);
+var SignalsUploaderPreviewV2Task = __webpack_require__(54);
+var SignalsUploaderSampleFetchTask = __webpack_require__(55);
+var SignalsUploaderUploadTask = __webpack_require__(56);
+var SignalTimestampFormats = __webpack_require__(53);
+
+var getSignalsSchemaSummary = __webpack_require__(21);
 
 module.exports = {
   OfflineStandardEventsEnum: OfflineStandardEventsEnum,
@@ -12571,15 +12780,15 @@ module.exports = {
 };
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SignalsUploaderNodeJSFileReader = __webpack_require__(74);
+var SignalsUploaderNodeJSFileReader = __webpack_require__(75);
 
-var fs = __webpack_require__(95);
+var fs = __webpack_require__(96);
 
 function createSignalsUploaderReader(source, chunkSize) {
   return new SignalsUploaderNodeJSFileReader(source, chunkSize, 'utf8', fs);
@@ -12588,13 +12797,13 @@ function createSignalsUploaderReader(source, chunkSize) {
 module.exports = createSignalsUploaderReader;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var rawAsap = __webpack_require__(32);
+var rawAsap = __webpack_require__(44);
 var freeTasks = [];
 
 module.exports = asap;
@@ -12650,7 +12859,7 @@ RawTask.prototype.call = function () {
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports) {
 
 !function(globals) {
@@ -12689,7 +12898,7 @@ if (typeof module !== 'undefined' && module.exports) {
 }(this);
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports) {
 
 !function(globals) {
@@ -12723,13 +12932,13 @@ if (typeof module !== 'undefined' && module.exports) {
 }(this);
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var invariant = __webpack_require__(33);
+var invariant = __webpack_require__(45);
 
 function keyMirrorRecursive(obj, prefix) {
   return keyMirrorRecursiveInternal(obj, prefix);
@@ -12770,7 +12979,7 @@ function isObject(obj) {
 module.exports = keyMirrorRecursive;
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12786,7 +12995,7 @@ var nullthrows = function nullthrows(x) {
 module.exports = nullthrows;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12806,7 +13015,7 @@ Promise.prototype.done = function (onFulfilled, onRejected) {
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12916,7 +13125,7 @@ Promise.prototype['catch'] = function (onRejected) {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12939,22 +13148,22 @@ Promise.prototype['finally'] = function (f) {
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = __webpack_require__(5);
-__webpack_require__(87);
-__webpack_require__(89);
 __webpack_require__(88);
-__webpack_require__(91);
+__webpack_require__(90);
+__webpack_require__(89);
 __webpack_require__(92);
+__webpack_require__(93);
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12964,7 +13173,7 @@ __webpack_require__(92);
 
 
 var Promise = __webpack_require__(5);
-var asap = __webpack_require__(82);
+var asap = __webpack_require__(83);
 
 module.exports = Promise;
 
@@ -13089,7 +13298,7 @@ Promise.prototype.nodeify = function (callback, ctx) {
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13158,7 +13367,7 @@ Promise.disableSynchronous = function() {
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(globals) {
@@ -13167,8 +13376,8 @@ Promise.disableSynchronous = function() {
 var _imports = {}
 
 if (typeof module !== 'undefined' && module.exports) {
-  _imports.bytesToHex = __webpack_require__(83).bytesToHex
-  _imports.convertString = __webpack_require__(84)
+  _imports.bytesToHex = __webpack_require__(84).bytesToHex
+  _imports.convertString = __webpack_require__(85)
   module.exports = sha256
 } else {
   _imports.bytesToHex = globals.convertHex.bytesToHex
@@ -13310,13 +13519,13 @@ sha256.x2 = function(message, options) {
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports) {
 
 module.exports = require("domain");
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");

@@ -77,6 +77,24 @@ describe('checkConfigForRawEventData', () => {
         ['1', 'A2'],
         ['product', 'destination'],
         ['1', '2,A3'],
+        [
+          '[]',
+          JSON.stringify([{
+            availability: 'in stock',
+            brand: 'Sample Brand',
+            category: 'Clothing & Accessories > Clothing > Dresses',
+            currency: 'USD',
+            condition: 'new',
+            description: 'A Sample Catalog Auto Population Item',
+            image_url: 'https://www.facebook.com/sample_csv_item.jpg',
+            name: 'Sample Catalog Auto Population Item',
+            price: 199,
+            product_type: 'Clothing & Accessories > Clothing > Dresses',
+            retailer_id: 'sample_retailer_id_1',
+            url: 'https://www.facebook.com/sample_csv_item',
+            visibility: 'published',
+          }]),
+        ],
       ],
       false,
       {
@@ -106,6 +124,7 @@ describe('checkConfigForRawEventData', () => {
         '23': 'item_number',
         '24': 'content_type',
         '25': 'content_ids',
+        '26': 'catalog_auto_population_info',
       },
       {
         event_time: {
@@ -1135,6 +1154,25 @@ describe('checkAndDeriveConfigForPreprocessedEventData', () => {
       ['item_number', '1', 'A2'],
       ['content_type', 'product', 'destination'],
       ['content_ids', '1', '2,A3'],
+      [
+        'catalog_auto_population_info',
+        `"${JSON.stringify([])}"`,
+        `"${JSON.stringify([{
+          availability: 'in stock',
+          brand: 'Sample Brand',
+          category: 'Clothing & Accessories > Clothing > Dresses',
+          currency: 'USD',
+          condition: 'new',
+          description: 'A Sample Catalog Auto Population Item',
+          image_url: 'https://www.facebook.com/sample_csv_item.jpg',
+          name: 'Sample Catalog Auto Population Item',
+          price: 199,
+          product_type: 'Clothing & Accessories > Clothing > Dresses',
+          retailer_id: 'sample_retailer_id_1',
+          url: 'https://www.facebook.com/sample_csv_item',
+          visibility: 'published',
+        }]).replace(/\"/g, '""')}"`,
+      ],
     ])).toEqual({
       mapping: {
         '0': 'match_keys.email',
@@ -1167,6 +1205,7 @@ describe('checkAndDeriveConfigForPreprocessedEventData', () => {
         '27': 'item_number',
         '28': 'content_type',
         '29': 'content_ids',
+        '30': 'catalog_auto_population_info',
       },
       customTypeInfo: {},
     });

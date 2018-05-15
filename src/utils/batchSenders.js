@@ -176,6 +176,8 @@ function getCSVRowFromEventObject(
     // normalized into an array.
     if (column === 'content_ids' && Array.isArray(value)) {
       value = value.map(v => String(v)).join(',');
+    } else if (column === 'catalog_auto_population_info') {
+      value = JSON.stringify(value);
     } else {
       value = String(value);
     }

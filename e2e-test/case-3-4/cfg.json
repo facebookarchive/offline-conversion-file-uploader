@@ -21,7 +21,8 @@
     "15": "custom_data.kcal",
     "16": "custom_data.rating",
     "17": "custom_data.food",
-    "18": "custom_data.drink"
+    "18": "custom_data.drink",
+    "19": "catalog_auto_population_info"
   },
   "format": {
     "event_time": {

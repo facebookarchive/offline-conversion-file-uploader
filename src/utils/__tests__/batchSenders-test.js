@@ -407,4 +407,96 @@ hashed-email-3,Lead,1000002,product,
 `;
     expect(output).toBe(expectedOutput);
   });
+
+  it('should output catalog_auto_population_info properly', async () => {
+    const {sender} = getPseudoBatchSenderForPreprocessing(
+      'path/to/preprocessed.csv',
+      {
+        '0': 'match_keys.email',
+        '1': 'event_name',
+        '2': 'event_time',
+        '3': 'catalog_auto_population_info',
+      },
+      {},
+      {},
+    );
+    const sample_auto_population_item_1 = {
+      availability: 'in stock',
+      brand: 'Sample Brand',
+      category: 'Clothing & Accessories > Clothing > Dresses',
+      currency: 'USD',
+      condition: 'new',
+      description: 'A Sample Catalog Auto Population Item',
+      image_url: 'https://www.facebook.com/sample_csv_item.jpg',
+      name: 'Sample Catalog Auto Population Item',
+      price: 199,
+      product_type: 'Clothing & Accessories > Clothing > Dresses',
+      retailer_id: 'sample_retailer_id_1',
+      url: 'https://www.facebook.com/sample_csv_item',
+      visibility: 'published',
+    };
+    const sample_auto_population_item_2 = {
+      availability: 'in stock',
+      brand: 'Sample Brand',
+      category: 'Clothing & Accessories > Clothing > Dresses',
+      currency: 'USD',
+      condition: 'new',
+      description: 'A Sample Catalog Auto Population Item',
+      image_url: 'https://www.facebook.com/sample_csv_item.jpg',
+      name: 'Sample Catalog Auto Population Item',
+      price: 199,
+      product_type: 'Clothing & Accessories > Clothing > Dresses',
+      retailer_id: 'sample_retailer_id_2',
+      url: 'https://www.facebook.com/sample_csv_item',
+      visibility: 'published',
+    };
+    await sender({
+      start: 0,
+      end: 30,
+      rows: [
+        {
+          event_name: 'Lead',
+          event_time: 1000000,
+          match_keys: {
+            email: 'hashed-email-1',
+          },
+          catalog_auto_population_info: JSON.stringify([]),
+        },
+        {
+          event_name: 'Lead',
+          event_time: 1000001,
+          match_keys: {
+            email: 'hashed-email-2',
+          },
+          catalog_auto_population_info: JSON.stringify([
+            sample_auto_population_item_1,
+          ]),
+        },
+        {
+          event_name: 'Lead',
+          event_time: 1000002,
+          match_keys: {
+            email: 'hashed-email-3',
+          },
+          catalog_auto_population_info: JSON.stringify([
+            sample_auto_population_item_1,
+            sample_auto_population_item_2,
+          ]),
+        },
+      ],
+    });
+    const output = require('fs').getContentForPath('path/to/preprocessed.csv');
+    const expectedOutput =
+`match_keys.email,event_name,event_time,catalog_auto_population_info
+hashed-email-1,Lead,1000000,\"\"\"[]\"\"\"
+hashed-email-2,Lead,1000001,\"\"\"${JSON.stringify([
+  sample_auto_population_item_1,
+]).replace(/\"/g, '\\\"\"')}\"\"\"
+hashed-email-3,Lead,1000002,\"\"\"${JSON.stringify([
+  sample_auto_population_item_1,
+  sample_auto_population_item_2,
+]).replace(/\"/g, '\\\"\"')}\"\"\"
+`;
+    expect(output).toBe(expectedOutput);
+  });
 });
