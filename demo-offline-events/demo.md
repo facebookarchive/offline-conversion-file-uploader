@@ -1,12 +1,11 @@
 # Get Prepared
 
-Fill the placeholder in the following script and then execute. The script installs and compiles the tool, and set the necessary parameter(data set ID and access token) for demo.
+Fill the placeholder in the following script and then execute. The script installs and compiles the tool, and set the necessary parameter (data set ID and access token) for demo.
 
 ```
-cd mdfu-v2
 npm install
 npm run compile
-cd demo; unzip test-event-files.zip; cd ..
+cd demo-offline-events; unzip test-event-files.zip; cd ..
 export data_set_id='YOUR_DATA_SET_ID_HERE'
 export access_token='YOUR_ACCESS_TOKEN_HERE'
 ```
@@ -19,8 +18,8 @@ export access_token='YOUR_ACCESS_TOKEN_HERE'
 
 ```
 node lib/cli.js upload \
-  --configFilePath demo/config-test-upload.json \
-  --inputFilePath demo/test-events.csv \
+  --configFilePath demo-offline-events/config-test-upload.json \
+  --inputFilePath demo-offline-events/test-events.csv \
   --accessToken $access_token \
   --dataSetID $data_set_id
 ```
@@ -31,8 +30,8 @@ The script will guarantee that each row is uploaded once and only once.
 
 ```
 node lib/cli.js upload \
-  --configFilePath demo/config-test-upload-1m.json \
-  --inputFilePath demo/test-events-1m.csv \
+  --configFilePath demo-offline-events/config-test-upload-1m.json \
+  --inputFilePath demo-offline-events/test-events-1m.csv \
   --accessToken $access_token \
   --dataSetID $data_set_id
 ```
@@ -42,8 +41,8 @@ The uploader script can handle all kinds of dirty input.
 
 ```
 node lib/cli.js upload \
-  --configFilePath demo/config-test-upload-dirty.json \
-  --inputFilePath demo/test-events-dirty.csv \
+  --configFilePath demo-offline-events/config-test-upload-dirty.json \
+  --inputFilePath demo-offline-events/test-events-dirty.csv \
   --accessToken $access_token \
   --dataSetID $data_set_id
 ```
@@ -54,8 +53,8 @@ node lib/cli.js upload \
 
 ```
 node lib/cli.js validate \
-  --configFilePath demo/config-test-validate-1m.json \
-  --inputFilePath demo/test-events-1m.csv \
+  --configFilePath demo-offline-events/config-test-validate-1m.json \
+  --inputFilePath demo-offline-events/test-events-1m.csv \
   --accessToken $access_token \
   --dataSetID $data_set_id
 ```
@@ -64,8 +63,8 @@ node lib/cli.js validate \
 
 ```
 node lib/cli.js validate \
-  --configFilePath demo/config-test-validate-dirty.json \
-  --inputFilePath demo/test-events-dirty.csv \
+  --configFilePath demo-offline-events/config-test-validate-dirty.json \
+  --inputFilePath demo-offline-events/test-events-dirty.csv \
   --accessToken $access_token \
   --dataSetID $data_set_id
 ```
@@ -76,8 +75,8 @@ node lib/cli.js validate \
 
 ```
 node lib/cli.js preprocess \
-  --configFilePath demo/config-test-preprocess.json \
-  --inputFilePath demo/test-events.csv \
+  --configFilePath demo-offline-events/config-test-preprocess.json \
+  --inputFilePath demo-offline-events/test-events.csv \
   --preprocessOutputPath preprocessed-events.csv \
   --reportOutputPath preprocess-report.txt \
 && node lib/cli.js upload-preprocessed \
@@ -91,8 +90,8 @@ node lib/cli.js preprocess \
 
 ```
 node lib/cli.js preprocess \
-  --configFilePath demo/config-test-preprocess-1m.json \
-  --inputFilePath demo/test-events-1m.csv \
+  --configFilePath demo-offline-events/config-test-preprocess-1m.json \
+  --inputFilePath demo-offline-events/test-events-1m.csv \
   --preprocessOutputPath preprocessed-events-1m.csv \
   --reportOutputPath preprocess-report.txt \
 && node lib/cli.js upload-preprocessed \
@@ -106,8 +105,8 @@ node lib/cli.js preprocess \
 
 ```
 node lib/cli.js preprocess \
-  --configFilePath demo/config-test-preprocess-dirty.json \
-  --inputFilePath demo/test-events-dirty.csv \
+  --configFilePath demo-offline-events/config-test-preprocess-dirty.json \
+  --inputFilePath demo-offline-events/test-events-dirty.csv \
   --preprocessOutputPath preprocessed-events-dirty.csv \
   --reportOutputPath preprocess-report.txt \
 && node lib/cli.js upload-preprocessed \

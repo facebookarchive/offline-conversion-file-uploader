@@ -1,0 +1,8 @@
+{
+  "delimiter": ",",
+  "header": true,
+  "mapping": {
+    "0": "match_keys.email"
+  },
+  "format": {}
+}
