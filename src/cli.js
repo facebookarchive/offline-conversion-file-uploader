@@ -22,4 +22,8 @@ commander
   )
   .command('preprocess', 'Preprocess the offline event file and export it.')
   .command('upload-preprocessed', 'Upload the preprocessed offline event file.')
+  .command(
+    'upload-audience',
+    'Hash and upload file to add/remove users from custom audience.',
+  )
   .parse(process.argv);
