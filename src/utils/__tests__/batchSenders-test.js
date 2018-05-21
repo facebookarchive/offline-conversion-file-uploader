@@ -60,13 +60,14 @@ beforeEach(() => {
 const batchSenders = require('../batchSenders');
 
 const {
-  getBatchSender,
+  getCustomAudienceBatchSender,
+  getOfflineEventsBatchSender,
   getPseudoBatchSenderForPreprocessing,
 } = batchSenders;
 
-test('getBatchSender without progress tracking', async () => {
+test('getOfflineEventsBatchSender without progress tracking', async () => {
   const graphAPI = require('../graphAPI');
-  const sender = getBatchSender(
+  const sender = getOfflineEventsBatchSender(
     '<ACCESS_TOKEN>',
     '111111',
     '222222',
@@ -78,6 +79,7 @@ test('getBatchSender without progress tracking', async () => {
     end: 30,
     rows: [{mock: 'row1'}, {mock: 'row2'}],
   });
+  sendPromise1.catch(jest.fn());
   expect(graphAPI.hasRequest()).toBe(true);
   expect(graphAPI.getLastRequest().argv).toEqual({
     path: '111111/events',
@@ -111,6 +113,267 @@ test('getBatchSender without progress tracking', async () => {
   await expect(sendPromise1).rejects.toThrow();
 
   expect(graphAPI.hasRequest()).toBe(false);
+});
+
+describe('getCustomAudienceBatchSender', async () => {
+  const configs = [
+    {
+      description: 'Add ordinary audience',
+      method: 'POST',
+      mapping: {
+        '0': 'email',
+        '1': 'phone',
+      },
+      rows: [
+        {email: '<EMAIL>'},
+        {phone: '<PHONE>'},
+      ],
+      expectedSchema: ['EMAIL', 'PHONE'],
+      expectedData: [
+        ['<EMAIL>', ''],
+        ['', '<PHONE>'],
+      ],
+    },
+    {
+      description: 'Remove ordinary audience',
+      method: 'DELETE',
+      mapping: {
+        '0': 'email',
+        '1': 'phone',
+      },
+      rows: [
+        {email: '<EMAIL>', phone: '<PHONE>'},
+      ],
+      expectedSchema: ['EMAIL', 'PHONE'],
+      expectedData: [
+        ['<EMAIL>', '<PHONE>'],
+      ],
+    },
+    {
+      description: 'Add ordinary audience with age & dob',
+      method: 'DELETE',
+      mapping: {
+        '0': 'dob',
+        '1': 'age',
+      },
+      rows: [
+        {doby: '<DOBY>', dobm: '<DOBM>', dobd: '<DOBD>'},
+      ],
+      expectedSchema: ['DOBY', 'DOBM', 'DOBD'],
+      expectedData: [
+        ['<DOBY>', '<DOBM>', '<DOBD>'],
+      ],
+    },
+    {
+      description: 'Add ordinary audience with fn, ln, dob',
+      method: 'POST',
+      mapping: {
+        '0': 'fn',
+        '1': 'ln',
+        '2': 'dob',
+      },
+      rows: [
+        {
+          fn: '<FN>',
+          f5first: '<F5FIRST>',
+          fi: '<FI>',
+          ln: '<LN>',
+          f5last: '<F5LAST>',
+          doby: '<DOBY>',
+          dobm: '<DOBM>',
+          dobd: '<DOBD>',
+        },
+      ],
+      expectedSchema: [
+        'FN',
+        'FI',
+        'F5FIRST',
+        'LN',
+        'F5LAST',
+        'DOBY',
+        'DOBM',
+        'DOBD',
+      ],
+      expectedData: [
+        [
+          '<FN>',
+          '<FI>',
+          '<F5FIRST>',
+          '<LN>',
+          '<F5LAST>',
+          '<DOBY>',
+          '<DOBM>',
+          '<DOBD>',
+        ],
+      ],
+    },
+    {
+      description: 'Add ordinary audience with more than one emails/phones',
+      method: 'POST',
+      mapping: {
+        '0': 'email',
+        '1': 'phone',
+        '2': 'email',
+        '3': 'phone',
+      },
+      rows: [
+        {email: '<EMAIL>', phone: '<PHONE>'},
+        {email: ['<EMAIL>'], phone: ['<PHONE>']},
+        {email: ['<EMAIL1>', '<EMAIL2>'], phone: ['<PHONE1>', '<PHONE2>']},
+        {email: ['<EMAIL>'], phone: []},
+        {phone: '<PHONE>'}
+      ],
+      expectedSchema: ['EMAIL', 'PHONE', 'EMAIL', 'PHONE'],
+      expectedData: [
+        ['<EMAIL>', '<PHONE>', '', ''],
+        ['<EMAIL>', '<PHONE>', '', ''],
+        ['<EMAIL1>', '<PHONE1>', '<EMAIL2>', '<PHONE2>'],
+        ['<EMAIL>', '', '', ''],
+        ['', '<PHONE>', '', ''],
+      ],
+    },
+    {
+      description: 'Add ordinary audience with appIDs/pageIDs',
+      method: 'POST',
+      mapping: {
+        '0': 'pageuid',
+        '1': 'appuid',
+      },
+      rows: [
+        {pageuid: '<PAGEUID>'},
+        {appuid: '<APPUID>'},
+      ],
+      pageIDs: ['<PAGEID>'],
+      appIDs: ['<APPID>'],
+      expectedSchema: ['PAGEUID', 'APPUID'],
+      expectedData: [
+        ['<PAGEUID>', ''],
+        ['', '<APPUID>'],
+      ],
+    },
+    {
+      description: 'Add WLAL audience',
+      method: 'POST',
+      mapping: {
+        '0': 'match_keys.email',
+        '1': 'match_keys.phone',
+        '2': 'lookalike_value',
+      },
+      rows: [
+        {match_keys: {email: '<EMAIL>'}, lookalike_value: 1},
+        {match_keys: {phone: '<PHONE>'}, lookalike_value: 2},
+      ],
+      expectedSchema: ['EMAIL', 'PHONE', 'LOOKALIKE_VALUE'],
+      expectedData: [
+        ['<EMAIL>', '', 1],
+        ['', '<PHONE>', 2],
+      ],
+    },
+    {
+      description: 'Remove WLAL audience',
+      method: 'DELETE',
+      mapping: {
+        '0': 'match_keys.email',
+        '1': 'match_keys.phone',
+        '2': 'lookalike_value',
+      },
+      rows: [
+        {match_keys: {email: '<EMAIL>', phone: '<PHONE>'}, lookalike_value: 1},
+      ],
+      expectedSchema: ['EMAIL', 'PHONE', 'LOOKALIKE_VALUE'],
+      expectedData: [
+        ['<EMAIL>', '<PHONE>', 1],
+      ],
+    },
+    {
+      description: 'Add WLAL audience without match_keys prefix',
+      method: 'POST',
+      mapping: {
+        '0': 'email',
+        '1': 'phone',
+        '2': 'lookalike_value',
+      },
+      rows: [
+        {match_keys: {email: '<EMAIL>'}, lookalike_value: 1},
+        {match_keys: {phone: '<PHONE>'}, lookalike_value: 2},
+      ],
+      expectedSchema: ['EMAIL', 'PHONE', 'LOOKALIKE_VALUE'],
+      expectedData: [
+        ['<EMAIL>', '', 1],
+        ['', '<PHONE>', 2],
+      ],
+    },
+  ];
+
+  configs.map(cfg =>
+    it(cfg.description, async () => {
+      const graphAPI = require('../graphAPI');
+      const {
+        batchSender,
+        lastDummyBatchSender,
+      } = getCustomAudienceBatchSender(
+        '<ACCESS_TOKEN>',
+        '<AUDIENCE_ID>',
+        123456, // Session ID.
+        cfg.mapping,
+        cfg.method,
+        cfg.appIDs || null,
+        cfg.pageIDs || null,
+      );
+
+      const sendPromise1 = batchSender({
+        start: 0,
+        end: 10,
+        rows: cfg.rows,
+      });
+
+      expect(graphAPI.hasRequest()).toBe(true);
+      expect(graphAPI.getLastRequest().argv).toEqual({
+        path: '<AUDIENCE_ID>/users',
+        method: cfg.method,
+        params: {
+          access_token: '<ACCESS_TOKEN>',
+          payload: {
+            schema: cfg.expectedSchema,
+            data: cfg.expectedData,
+            app_ids: cfg.appIDs || null,
+            page_ids: cfg.pageIDs || null,
+          },
+          session: {
+            last_batch_flag: false,
+            session_id: 123456,
+          }
+        },
+      });
+      await graphAPI.resolveLastRequest();
+      await sendPromise1;
+
+      const sendPromise2 =  lastDummyBatchSender();
+      expect(graphAPI.hasRequest()).toBe(true);
+      expect(graphAPI.getLastRequest().argv).toEqual({
+        path: '<AUDIENCE_ID>/users',
+        method: cfg.method,
+        params: {
+          access_token: '<ACCESS_TOKEN>',
+          payload: {
+            schema: cfg.expectedSchema,
+            data: [cfg.expectedSchema.map(() => '1')],
+            app_ids: cfg.appIDs || null,
+            page_ids: cfg.pageIDs || null,
+          },
+          session: {
+            batch_seq: 1,
+            last_batch_flag: true,
+            session_id: 123456,
+          }
+        },
+      });
+      await graphAPI.resolveLastRequest();
+      await sendPromise2;
+
+      expect(graphAPI.hasRequest()).toBe(false);
+    }),
+  );
 });
 
 describe('getPseudoBatchSenderForPreprocessing', async () => {

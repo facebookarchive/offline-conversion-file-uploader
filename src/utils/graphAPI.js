@@ -51,7 +51,7 @@ function getErrorFromAPIResponse(response: any): ?Object {
 
 function graphAPIReal(
   apiPath: string,
-  method: 'GET' | 'POST',
+  method: 'GET' | 'POST' | 'DELETE',
   data: ?Object,
 ): Promise<Object> {
   return new Promise((resolve, reject) => {
@@ -79,7 +79,7 @@ function graphAPIReal(
         ...baseParams,
         path,
       };
-    } else if (method === 'POST') {
+    } else if (method === 'POST' || method === 'DELETE') {
       let headers;
       if (data != null) {
         jsonData = stringify(data);
@@ -147,7 +147,7 @@ const MOCK_API_LATENCY_MAX = 100;
 
 function graphAPIForE2ETest(
   apiPath: string,
-  method: 'GET' | 'POST',
+  method: 'GET' | 'POST' | 'DELETE',
   data: ?Object,
 ): Promise<Object> {
   const key = stringify({apiPath, method, data});
@@ -177,7 +177,7 @@ function setupE2E(config: {
   mockedCalls?: ?Array<{
     params: {
       apiPath: string,
-      method: 'GET' | 'POST',
+      method: 'GET' | 'POST' | 'DELETE',
       data: ?Object,
     },
     result: any,
@@ -185,7 +185,7 @@ function setupE2E(config: {
   mockedCallsSimple?: ?Array<{
     params: {
       apiPath: string,
-      method: 'GET' | 'POST',
+      method: 'GET' | 'POST' | 'DELETE',
     },
     result: any,
   }>,
@@ -210,7 +210,7 @@ let apiImpl = graphAPIReal;
 
 function graphAPI(
   apiPath: string,
-  method: 'GET' | 'POST',
+  method: 'GET' | 'POST' | 'DELETE',
   data: ?Object,
 ): Promise<Object> {
   return apiImpl(apiPath, method, data);

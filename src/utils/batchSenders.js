@@ -18,6 +18,7 @@ const winston = require('winston');
 const {EOL} = os;
 
 const ERROR_CODE_PROGRESS_OVERLAP = 2044011;
+const UINT_MAX = 4294967296;
 
 type Batch = {
   start: number,
@@ -27,7 +28,36 @@ type Batch = {
 
 type BatchSender = (batch: Batch) => Promise<void>;
 
-function getBatchSender(
+function getGraphAPICallbacks(
+  resolve: () => void,
+  reject: (error: Error) => void,
+  batch: Batch,
+): {
+  thenCallback: () => void,
+  catchCallback: (error: Error) => void,
+} {
+  const thenCallback = () => {
+    winston.debug(`Batch [${batch.start}, ${batch.end}): sent`);
+    resolve();
+  };
+  const catchCallback = error => {
+    if ((error: Object).is_network_error) {
+      winston.warn(`Batch [${batch.start}, ${batch.end}): network error`);
+    } else {
+      winston.warn(
+        `Batch [${batch.start}, ${batch.end}): API error: ` +
+        `${error.message || 'Unknown error'}`,
+      );
+    }
+    reject(error);
+  };
+  return {
+    thenCallback,
+    catchCallback,
+  };
+}
+
+function getOfflineEventsBatchSender(
   accessToken: string,
   dataSetID: string,
   uploadID: string,
@@ -51,39 +81,170 @@ function getBatchSender(
           end_exclusive: batch.end,
         };
       }
-      graphAPI(
-        `${dataSetID}/events`,
-        'POST',
-        params,
-      ).done(
-        () => {
-          winston.debug(`Batch [${batch.start}, ${batch.end}): sent`);
-          resolve();
-        },
-        error => {
-          if (error.is_network_error) {
-            winston.warn(`Batch [${batch.start}, ${batch.end}): network error`);
-          } else {
-            winston.warn(
-              `Batch [${batch.start}, ${batch.end}): API error: ` +
-              `${error.message || 'Unknown error'}`,
-            );
-          }
-          reject(error);
-        },
-      );
+      const {
+        thenCallback,
+        catchCallback,
+      } = getGraphAPICallbacks(resolve, reject, batch);
+      graphAPI(`${dataSetID}/events`, 'POST', params)
+        .catch(catchCallback)
+        .then(thenCallback);
       winston.debug(`Batch [${batch.start}, ${batch.end}): sending`);
     });
   };
 }
 
-function getColumnsFromMappings(
+function getColumnsFromMappingsForCustomAudience(
+  mapping: Object,
+): Array<string> {
+  const mappedPropKeys = Object.values(mapping)
+    .filter(propPath => {
+      return (
+        propPath != null &&
+        typeof propPath === 'string' &&
+        propPath.trim().length > 0
+      );
+    })
+    .map(propPath => {
+      const parts = String(propPath).split('.');
+      return parts[parts.length - 1];
+    });
+
+  const apiSchema = [];
+  mappedPropKeys.forEach(propKey => {
+    switch (propKey) {
+      case 'dob':
+        apiSchema.push('doby', 'dobm', 'dobd');
+        break;
+
+      case 'fn':
+        apiSchema.push('fn', 'fi', 'f5first');
+        break;
+
+      case 'ln':
+        apiSchema.push('ln', 'f5last');
+        break;
+
+      case 'age':
+        apiSchema.push('doby');
+        break;
+
+      default:
+        apiSchema.push(propKey);
+    }
+  });
+
+  const apiSchemaWithDuplicateDobyRemoved = [];
+  let dobyPushed = false;
+  apiSchema.forEach(propKey => {
+    if (propKey === 'doby') {
+      if (!dobyPushed) {
+        dobyPushed = true;
+        apiSchemaWithDuplicateDobyRemoved.push(propKey);
+      }
+    } else {
+      apiSchemaWithDuplicateDobyRemoved.push(propKey);
+    }
+  });
+
+  return apiSchemaWithDuplicateDobyRemoved;
+}
+
+function getCustomAudienceBatchSender(
+  accessToken: string,
+  audienceID: string,
+  sessionID: ?number,
+  mapping: Object,
+  method: 'POST' | 'DELETE',
+  appIDs: ?Array<string>,
+  pageIDs: ?Array<string>,
+): {
+  batchSender: BatchSender,
+  lastDummyBatchSender: () => Promise<void>,
+} {
+  if (sessionID == null) {
+    sessionID = Math.floor(Math.random() * UINT_MAX);
+  }
+  const columns = getColumnsFromMappingsForCustomAudience(mapping);
+  const schema = columns.map(column => column.toUpperCase());
+  const batchSender = (batch: Batch) => {
+    return new Promise((resolve, reject) => {
+      const data = batch.rows.map(row => {
+        const normalizedValue = JSON.parse(JSON.stringify(row));
+        return columns.map(propKey => {
+          propKey = propKey.toLowerCase();
+          let value, parent;
+          if (normalizedValue[propKey] != null) {
+            value = normalizedValue[propKey];
+            parent = normalizedValue;
+          } else if (
+            normalizedValue.match_keys != null &&
+            normalizedValue.match_keys[propKey]
+          ) {
+            value = normalizedValue.match_keys[propKey];
+            parent = normalizedValue.match_keys;
+          }
+          if (Array.isArray(value)) {
+            value = value.shift();
+          } else if (parent != null) {
+            parent[propKey] = null;
+          }
+          return value || '';
+        });
+      });
+      const params: Object = {
+        access_token: accessToken,
+        payload: {
+          app_ids: appIDs,
+          page_ids: pageIDs,
+          schema,
+          data,
+        },
+        session: {
+          last_batch_flag: false,
+          session_id: sessionID,
+        },
+      };
+      const {
+        thenCallback,
+        catchCallback,
+      } = getGraphAPICallbacks(resolve, reject, batch);
+      graphAPI(`${audienceID}/users`, method, params)
+        .catch(catchCallback)
+        .then(thenCallback);
+      winston.debug(`Batch [${batch.start}, ${batch.end}): sending`);
+    });
+  };
+  const lastDummyBatchSender = () => {
+    const params: Object = {
+      access_token: accessToken,
+      payload: {
+        app_ids: appIDs,
+        page_ids: pageIDs,
+        schema,
+        // A row of dummy data (non zero) as payload.
+        data: [schema.map(() => '1')],
+      },
+      session: {
+        batch_seq: 1,
+        last_batch_flag: true,
+        session_id: sessionID,
+      },
+    };
+    return graphAPI(`${audienceID}/users`, method, params);
+  };
+  return {
+    batchSender,
+    lastDummyBatchSender,
+  };
+}
+
+function getColumnsFromMappingsForOfflineEvents(
   mappings: Object,
   presetValues: {event_name?: ?string, currency?: ?string},
 ): Array<string> {
   const columns = [];
   Object.values(mappings).forEach(mapping => {
-    switch (mapping) {
+    switch (String(mapping).toLowerCase()) {
       case 'match_keys.fn':
         columns.push('match_keys.fn');
         columns.push('match_keys.fi');
@@ -202,7 +363,10 @@ function getPseudoBatchSenderForPreprocessing(
   fd: number,
   sender: BatchSender,
 } {
-  const columns = getColumnsFromMappings(mappings, presetValues);
+  const columns = getColumnsFromMappingsForOfflineEvents(
+    mappings,
+    presetValues,
+  );
   const header = getHeaderFromColumns(columns, customTypeInfo);
 
   const fd = fs.openSync(outputPath, 'w');
@@ -238,7 +402,10 @@ function shouldIgnoreAPIErrorFn(error: {error_subcode: number}): boolean {
 }
 
 module.exports = {
-  getBatchSender,
+  getColumnsFromMappingsForCustomAudience,
+  getCustomAudienceBatchSender,
+  getColumnsFromMappingsForOfflineEvents,
+  getOfflineEventsBatchSender,
   getPseudoBatchSenderForPreprocessing,
   shouldIgnoreAPIErrorFn,
 };

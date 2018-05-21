@@ -32,7 +32,7 @@ const {
   printOverviewForUpload,
 } = reportUtils;
 const {
-  checkAccessTokenAndDataSetID,
+  checkAccessTokenAndEnt,
   checkAndDeriveConfigForPreprocessedEventData,
   fetchSamples,
   validateSampleRowsAndStopIfTooManyErrors,
@@ -75,7 +75,11 @@ async function main() {
     return;
   }
 
-  await checkAccessTokenAndDataSetID(config.accessToken, config.dataSetID);
+  await checkAccessTokenAndEnt(
+    config.accessToken,
+    config.dataSetID,
+    'dataSetID',
+  );
 
   const {
     uploadID,
@@ -110,7 +114,7 @@ async function main() {
     24, // max num batches in buffer
     12, // max num batches sending in parallel
     1, // concurrrent normalizers, not supported in MDFU.
-    batchSenders.getBatchSender(
+    batchSenders.getOfflineEventsBatchSender(
       config.accessToken,
       config.dataSetID,
       uploadID,

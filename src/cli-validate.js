@@ -41,7 +41,7 @@ const {
   EOL,
 } = reportUtils;
 const {
-  checkAccessTokenAndDataSetID,
+  checkAccessTokenAndEnt,
   fetchSamplesAndCheckConfigForRawEventData,
 } = configUtils;
 
@@ -54,7 +54,11 @@ async function main() {
   winston.info('Config and logger initialized.');
 
   await fetchSamplesAndCheckConfigForRawEventData(config);
-  await checkAccessTokenAndDataSetID(config.accessToken, config.dataSetID);
+  await checkAccessTokenAndEnt(
+    config.accessToken,
+    config.dataSetID,
+    'dataSetID',
+  );
 
   const normalizerSettings = {
     schema: SignalsEventDataSchema,

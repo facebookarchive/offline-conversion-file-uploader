@@ -536,23 +536,25 @@ function checkAndDeriveConfigForPreprocessedEventData(
   return {mapping, customTypeInfo};
 }
 
-async function checkAccessTokenAndDataSetID(
+async function checkAccessTokenAndEnt(
   accessToken: string,
-  dataSetID: string,
-) {
+  entID: string,
+  entKey: string,
+  fields: Array<string> = ['id'],
+): Promise<Object> {
   try {
-    await graphAPI(
-      dataSetID,
+    return await graphAPI(
+      entID,
       'GET',
       {
         access_token: accessToken,
-        fields: ['id'],
+        fields,
       },
     );
   } catch (error) {
     winston.error(
-      `Failed to read data set ${dataSetID} using access token ${accessToken}. `
-      + 'Please make sure dataSetID and accessToken are setup properly. '
+      `Failed to read ${entID} using access token ${accessToken}. `
+      + `Please make sure ${entKey} and accessToken are setup properly. `
       + 'Also, network or firewall issues may also cause the error. '
       + 'Please make sure your network is connected and whitelist Facebook '
       + 'API server IPs in your firewall settings. Use '
@@ -560,11 +562,12 @@ async function checkAccessTokenAndDataSetID(
       + 'to list all Facebook IPs.'
     );
     process.exit(1);
+    throw error;
   }
 }
 
 module.exports = {
-  checkAccessTokenAndDataSetID,
+  checkAccessTokenAndEnt,
   checkAndDeriveConfigForPreprocessedEventData,
   checkConfigForRawEventData,
   fetchSamples,
