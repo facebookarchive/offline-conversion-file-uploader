@@ -50,6 +50,26 @@ function normalizeBoolean(input: any): ?any {
   return input && input != '0' && input != 'false';
 }
 
+function normalizeArrayOfFBID(input: any): ?any {
+  if (!Array.isArray(input)) {
+    return null;
+  }
+  if (input.some(id => normalizeFBID(id) == null)) {
+    return null;
+  }
+  return input;
+}
+
+function normalizeAdAccountID(input: any): ?any {
+  if (typeof input !== 'string') {
+    return null;
+  }
+  if (input.startsWith('act_')) {
+    input = input.substring(4);
+  }
+  return /^\d+$/.test(input) ? input : null;
+}
+
 function normalizePath(input: any): ?any {
   return (typeof input === 'string' && input.length > 0)
     ? path.relative(process.cwd(), path.resolve(input))
@@ -225,6 +245,40 @@ const ALL_CONFIG_OPTIONS: {[string]: Option} = {
     default: 'report.txt',
     normalize: normalizePath,
   },
+  adAccountID: {
+    cliOption: [
+      '--adAccountID <adAccountID>',
+      'ID of your ad account if you are creating a new audience with this '
+      + 'upload.',
+    ],
+    optional: true,
+    normalize: normalizeAdAccountID,
+  },
+  customAudienceID: {
+    cliOption: [
+      '--customAudienceID <customAudienceID>',
+      'ID of your custom audience if you are uploading to an existing '
+      + 'audience.',
+    ],
+    optional: true,
+    normalize: normalizeFBID,
+  },
+  removeUsers: {
+    cliOption: [
+      '--removeUsers',
+      'Remove uploaded users from custom audience.',
+    ],
+    default: false,
+    normalize: normalizeBoolean,
+  },
+  appIDs: {
+    optional: true,
+    normalize: normalizeArrayOfFBID,
+  },
+  pageIDs: {
+    optional: true,
+    normalize: normalizeArrayOfFBID,
+  },
 };
 
 function filterConfigOptions(
@@ -316,6 +370,27 @@ const OPTIONS_FOR_UPLOAD_PREPROCESSED = filterConfigOptions(
   ],
 );
 
+const OPTIONS_FOR_UPLOAD_AUDIENCE = filterConfigOptions(
+  ALL_CONFIG_OPTIONS,
+  [
+    'accessToken',
+    'adAccountID',
+    'appIDs',
+    'batchSize',
+    'customAudienceID',
+    'delimiter',
+    'format',
+    'header',
+    'ignoreSampleErrors',
+    'inputFilePath',
+    'logging',
+    'mapping',
+    'pageIDs',
+    'removeUsers',
+    'reportOutputPath',
+  ],
+);
+
 function loadConfig(
   configOptions: {[string]: Option},
   argv: Array<string>,
@@ -344,9 +419,11 @@ function loadConfig(
       JSON.parse(fs.readFileSync(e2eTestConfigFilePathAbs, 'utf8'));
     graphAPI.setupE2E(e2eTestConfig);
     reportUtils.setupE2E();
-    // $FlowFixMe: Mock out this function so event time normalization returns
-    // same result.
+    /* $FlowFixMe: Mock out this function so event time normalization returns
+     same result. */
     Date.now = () => 1519862400000;
+    /* $FlowFixMe: Mock out this function session ID stays the same. */
+    Math.random = () => 0.5;
   }
 
   // Load from config file
@@ -461,4 +538,5 @@ module.exports = {
   OPTIONS_FOR_VALIDATE,
   OPTIONS_FOR_PREPROCESS,
   OPTIONS_FOR_UPLOAD_PREPROCESSED,
+  OPTIONS_FOR_UPLOAD_AUDIENCE,
 };

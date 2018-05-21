@@ -95,6 +95,7 @@ const {
   OPTIONS_FOR_VALIDATE,
   OPTIONS_FOR_PREPROCESS,
   OPTIONS_FOR_UPLOAD_PREPROCESSED,
+  OPTIONS_FOR_UPLOAD_AUDIENCE,
 } = initConfig;
 
 describe('general functionality', () => {
@@ -374,11 +375,12 @@ describe('upload', () => {
       delimiter: '\t',
       format: {event_time: {timeFormat: 'ISO8601', timeZone: 0}},
       header: true,
+      ignoreSampleErrors: true,
       logging: 'info',
       namespaceID: '666666',
       presetValues: {currency: 'USD'},
-      skipRowsAlreadyUploaded: false,
       reportOutputPath: 'myreport.txt',
+      skipRowsAlreadyUploaded: false,
     };
     require('fs').mockFile('resolved/cfg', JSON.stringify(params));
     expect(loadConfig(
@@ -544,6 +546,7 @@ describe('validate', () => {
       {skipRowsAlreadyUploaded: true},
       {batchSize: 500},
       {preprocessOutputPath: 'hashed.csv'},
+      {ignoreSampleErrors: true},
     ];
     unsupportedParams.forEach((param, i) => {
       require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({
@@ -594,9 +597,10 @@ describe('preprocess', () => {
       delimiter: '\t',
       format: {event_time: {timeFormat: 'ISO8601', timeZone: 0}},
       header: true,
+      ignoreSampleErrors: true,
       logging: 'info',
-      presetValues: {currency: 'USD'},
       preprocessOutputPath: 'hashed.csv',
+      presetValues: {currency: 'USD'},
       reportOutputPath: 'myreport.txt',
     };
     require('fs').mockFile('resolved/cfg', JSON.stringify(params));
@@ -690,6 +694,7 @@ describe('upload-preprocessed', () => {
       namespaceID: '666666',
       skipRowsAlreadyUploaded: true,
       reportOutputPath: 'myreport.txt',
+      ignoreSampleErrors: true,
     };
     require('fs').mockFile('resolved/cfg', JSON.stringify(params));
     expect(loadConfig(
@@ -723,6 +728,117 @@ describe('upload-preprocessed', () => {
     unsupportedParams.forEach((param, i) => {
       expect(() => loadConfig(
         OPTIONS_FOR_UPLOAD_PREPROCESSED,
+        ['--configFilePath', `cfg-${i}`],
+      )).not.toThrow();
+    });
+    expect(console.warn).toHaveBeenCalledTimes(unsupportedParams.length);
+  });
+});
+
+describe('upload-audience', () => {
+  const baseParams = {
+    accessToken: '<ACCESS_TOKEN>',
+    inputFilePath: 'input.csv',
+    mapping: {},
+  };
+
+  it('minimum', () => {
+    require('fs').mockFile('resolved/cfg', JSON.stringify({
+      ...baseParams,
+    }));
+    expect(loadConfig(
+      OPTIONS_FOR_UPLOAD_AUDIENCE,
+      ['--configFilePath', 'cfg'],
+    )).toEqual({
+      ...baseParams,
+      batchSize: 2000,
+      delimiter: ',',
+      format: {},
+      header: false,
+      inputFilePath: 'resolved/input.csv',
+      logging: 'verbose',
+      removeUsers: false,
+      reportOutputPath: 'resolved/report.txt',
+    });
+    expect(console.warn).not.toHaveBeenCalled();
+  });
+
+  it('all available options', () => {
+    const params = {
+      ...baseParams,
+      ignoreSampleErrors: true,
+      batchSize: 500,
+      delimiter: '\t',
+      format: {dob: 'MM/DD/YYYY'},
+      header: true,
+      logging: 'info',
+      reportOutputPath: 'myreport.txt',
+      removeUsers: true,
+      adAccountID: 'act_123',
+      customAudienceID: '123456',
+      appIDs: ['111', '222'],
+      pageIDs: ['333', '444'],
+    };
+    require('fs').mockFile('resolved/cfg', JSON.stringify(params));
+    expect(loadConfig(
+      OPTIONS_FOR_UPLOAD_AUDIENCE,
+      ['--configFilePath', 'cfg'],
+    )).toEqual({
+      ...params,
+      adAccountID: '123',
+      inputFilePath: 'resolved/input.csv',
+      reportOutputPath: 'resolved/myreport.txt',
+    });
+    expect(console.warn).not.toHaveBeenCalled();
+  });
+
+  it('reject invalid options', () => {
+    const invalidParams = [
+      {adAccountID: 'act_abc'},
+      {adAccountID: 'abc'},
+      {customAudienceID: 'act_123'},
+      {customAudienceID: 'abc'},
+      {appIDs: ['111', 'xyz']},
+      {appIDs: '111'},
+      {pageIDs: ['xyz', '444']},
+      {pageIDs: '444'},
+    ];
+    invalidParams.forEach((param, i) => {
+      require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({
+        ...baseParams,
+        ...param,
+      }));
+    });
+    invalidParams.forEach((param, i) => {
+      expect(() => loadConfig(
+        OPTIONS_FOR_UPLOAD_AUDIENCE,
+        ['--configFilePath', `cfg-${i}`],
+      )).toThrow();
+    });
+  });
+
+  it('warn about unsupported options', () => {
+    const unsupportedParams = [
+      {dataSetID: '123'},
+      {uploadTag: 'upload-tag'},
+      {uploadTagPrefix: 'upload-tag-prefix'},
+      {uploadID: '123'},
+      {skipRowsAlreadyUploaded: true},
+      {customTypeInfo: {}},
+      {presetValues: {}},
+      {namespaceID: '123'},
+      {numRowsToValidate: 500},
+      {preprocessOutputPath: 'hashed.csv'},
+    ];
+    unsupportedParams.forEach((param, i) => {
+      require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({
+        ...baseParams,
+        ...param,
+      }));
+    });
+    unsupportedParams.forEach((param, i) => {
+      expect(() => loadConfig(
+        OPTIONS_FOR_UPLOAD_AUDIENCE,
         ['--configFilePath', `cfg-${i}`],
       )).not.toThrow();
     });

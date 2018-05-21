@@ -1,24 +1,24 @@
 /*!
  * BSD License
- * 
+ *
  * For SignalsUploader software
- * 
+ *
  * Copyright (c) 2016-present, Facebook, Inc. All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- * 
+ *
  *  * Redistributions of source code must retain the above copyright notice, this
  *    list of conditions and the following disclaimer.
- * 
+ *
  *  * Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
- * 
+ *
  *  * Neither the name Facebook nor the names of its contributors may be used to
  *    endorse or promote products derived from this software without specific
  *    prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,7 +29,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  * @nolint
  * @haste-ignore
  * @generated
@@ -100,7 +100,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 81);
+/******/ 	return __webpack_require__(__webpack_require__.s = 82);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -112,7 +112,7 @@ module.exports =
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var STRIP_MODES = __webpack_require__(80);
+var STRIP_MODES = __webpack_require__(81);
 
 var SHA_256_REGEX = /^[a-f0-9]{64}$/i;
 var TRIM_REGEX = /^\s+|\s+$/g;
@@ -703,7 +703,7 @@ function handleResolved(self, deferred) {
   });
 }
 function resolve(self, newValue) {
- 
+
   if (newValue === self) {
     return reject(
       self,
@@ -806,7 +806,7 @@ var SignalsNormalizationErrorScope = __webpack_require__(12);
 var SignalsNormalizationPropError = __webpack_require__(42);
 var SignalsValidationUtils = __webpack_require__(0);
 
-var ruleChecker = __webpack_require__(61);
+var ruleChecker = __webpack_require__(62);
 
 var addValueAtPath = SignalsValidationUtils.addValueAtPath,
     hasProp = SignalsValidationUtils.hasProp,
@@ -1178,7 +1178,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var SignalBaseTypes = __webpack_require__(19);
 
-module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(23)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(24)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(25)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(9)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(26)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(27)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(10)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(28)), _defineProperty(_module$exports, SignalBaseTypes.JSON_LIST, __webpack_require__(60)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(29)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(30)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(31)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(32)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(33)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(14)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(34)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(15)), _module$exports);
+module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(23)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(24)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(25)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(9)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(26)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(27)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(10)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(28)), _defineProperty(_module$exports, SignalBaseTypes.JSON_LIST, __webpack_require__(61)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(29)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(30)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(31)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(32)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(33)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(14)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(34)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(15)), _module$exports);
 
 /***/ }),
 /* 9 */
@@ -1188,7 +1188,7 @@ module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalB
 
 
 var SignalDateFormats = __webpack_require__(6);
-var SignalDateMonthFormats = __webpack_require__(62);
+var SignalDateMonthFormats = __webpack_require__(63);
 var SignalsValidationUtils = __webpack_require__(0);
 
 var normalizeSignalsEnumType = __webpack_require__(10);
@@ -1575,7 +1575,7 @@ module.exports = SignalsNumberNormalizationErrorTypes;
 "use strict";
 
 
-var SignalsTimestampNormalizationErrorTypes = __webpack_require__(59);
+var SignalsTimestampNormalizationErrorTypes = __webpack_require__(60);
 
 var normalizeSignalsDateType = __webpack_require__(9);
 var normalizeSignalsNumberType = __webpack_require__(11);
@@ -1795,10 +1795,10 @@ module.exports = normalize;
 
 
 var Immutable = __webpack_require__(47);
-var SignalsUploaderColumnMapperConstants = __webpack_require__(64);
+var SignalsUploaderColumnMapperConstants = __webpack_require__(65);
 
 var getSchemaSummary = __webpack_require__(21);
-var getSignalsNormalizationErrorSummary = __webpack_require__(63);
+var getSignalsNormalizationErrorSummary = __webpack_require__(64);
 
 var COLUMN_MAPPING_ERROR_THRESHOLD = 0.95;
 
@@ -2069,9 +2069,9 @@ module.exports = SignalsUploaderErrorReportGenerator;
 "use strict";
 
 
-var SignalsUploaderAdvancedErrorReportGenerator = __webpack_require__(65);
+var SignalsUploaderAdvancedErrorReportGenerator = __webpack_require__(66);
 var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(36);
-var SignalsUploaderWLALErrorReportGenerator = __webpack_require__(66);
+var SignalsUploaderWLALErrorReportGenerator = __webpack_require__(67);
 
 function createSignalsUploaderErrorReportGenerator(config) {
   switch (config.type) {
@@ -2103,7 +2103,7 @@ module.exports = Object.freeze({ "ANY": "any", "BOOL": "bool", "CURRENCY_CODE": 
 "use strict";
 
 
-module.exports = __webpack_require__(91)
+module.exports = __webpack_require__(92)
 
 
 /***/ }),
@@ -2582,7 +2582,7 @@ module.exports = normalize;
 
 var SignalsValidationUtils = __webpack_require__(0);
 
-var isInternationalPhoneNumber = __webpack_require__(79);
+var isInternationalPhoneNumber = __webpack_require__(80);
 var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
 
 
@@ -2768,7 +2768,7 @@ module.exports = normalize;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var sha256 = __webpack_require__(94);
+var sha256 = __webpack_require__(95);
 var SignalsValidationUtils = __webpack_require__(0);
 
 var hasProp = SignalsValidationUtils.hasProp,
@@ -3107,7 +3107,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var abstractMethod = __webpack_require__(2);
-var createSignalsUploaderReader = __webpack_require__(82);
+var createSignalsUploaderReader = __webpack_require__(83);
 
 var SignalsUploaderTask = function () {
   function SignalsUploaderTask(source, chunkSize, logger) {
@@ -3303,7 +3303,7 @@ module.exports = Object.freeze({ "INVALID": "invalid", "TOO_MANY": "too-many", "
 "use strict";
 
 
-var SignalsUploaderUIWorker = __webpack_require__(77);
+var SignalsUploaderUIWorker = __webpack_require__(78);
 
 function createSignalsUploaderWorker(handler) {
   return new SignalsUploaderUIWorker(handler);
@@ -3335,7 +3335,7 @@ function rawAsap(task) {
         requestFlush();
         flushing = true;
     }
-   
+
     queue[queue.length] = task;
 }
 
@@ -3361,18 +3361,18 @@ var capacity = 1024;
 function flush() {
     while (index < queue.length) {
         var currentIndex = index;
-       
-       
+
+
         index = index + 1;
         queue[currentIndex].call();
-       
-       
-       
-       
-       
+
+
+
+
+
         if (index > capacity) {
-           
-           
+
+
             for (var scan = 0, newLength = queue.length - index; scan < newLength; scan++) {
                 queue[scan] = queue[scan + index];
             }
@@ -3387,25 +3387,25 @@ function flush() {
 
 rawAsap.requestFlush = requestFlush;
 function requestFlush() {
-   
-   
-   
+
+
+
     var parentDomain = process.domain;
     if (parentDomain) {
         if (!domain) {
-           
-           
-            domain = __webpack_require__(95);
+
+
+            domain = __webpack_require__(96);
         }
         domain.active = process.domain = null;
     }
 
-   
-   
-   
-   
-   
-   
+
+
+
+
+
+
     if (flushing && hasSetImmediate) {
         setImmediate(flush);
     } else {
@@ -3559,19 +3559,19 @@ module.exports = keyMirror;
   var IS_INDEXED_SENTINEL = '@@__IMMUTABLE_INDEXED__@@';
   var IS_ORDERED_SENTINEL = '@@__IMMUTABLE_ORDERED__@@';
 
- 
+
   var DELETE = 'delete';
 
- 
+
   var SHIFT = 5;
   var SIZE = 1 << SHIFT;
   var MASK = SIZE - 1;
 
- 
- 
+
+
   var NOT_SET = {};
 
- 
+
   var CHANGE_LENGTH = { value: false };
   var DID_ALTER = { value: false };
 
@@ -3584,12 +3584,12 @@ module.exports = keyMirror;
     ref && (ref.value = true);
   }
 
- 
- 
- 
+
+
+
   function OwnerID() {}
 
- 
+
   function arrCopy(arr, offset) {
     offset = offset || 0;
     var len = Math.max(0, arr.length - offset);
@@ -3608,11 +3608,11 @@ module.exports = keyMirror;
   }
 
   function wrapIndex(iter, index) {
-   
-   
-   
-   
-   
+
+
+
+
+
     if (typeof index !== 'number') {
       var uint32Index = index >>> 0;
       if ('' + uint32Index !== index || uint32Index === 4294967295) {
@@ -3745,13 +3745,13 @@ module.exports = keyMirror;
       return this;
     };
 
-   
+
 
     Seq.prototype.__iterate = function(fn, reverse) {
       return seqIterate(this, fn, reverse, true);
     };
 
-   
+
 
     Seq.prototype.__iterator = function(type, reverse) {
       return seqIterator(this, type, reverse, true);
@@ -3858,7 +3858,7 @@ module.exports = keyMirror;
       var array = this._array;
       var maxIndex = array.length - 1;
       var ii = 0;
-      return new Iterator(function() 
+      return new Iterator(function()
         {return ii > maxIndex ?
           iteratorDone() :
           iteratorValue(type, ii, array[reverse ? maxIndex - ii++ : ii++])}
@@ -4008,7 +4008,7 @@ module.exports = keyMirror;
 
 
 
- 
+
 
   function isSeq(maybeSeq) {
     return !!(maybeSeq && maybeSeq[IS_SEQ_SENTINEL]);
@@ -4275,7 +4275,7 @@ module.exports = keyMirror;
 
     Repeat.prototype.__iterator = function(type, reverse) {var this$0 = this;
       var ii = 0;
-      return new Iterator(function() 
+      return new Iterator(function()
         {return ii < this$0.size ? iteratorValue(type, ii++, this$0._value) : iteratorDone()}
       );
     };
@@ -4431,14 +4431,14 @@ module.exports = keyMirror;
       b = b | 0;
       var c = a & 0xffff;
       var d = b & 0xffff;
-     
+
       return (c * d) + ((((a >>> 16) * d + c * (b >>> 16)) << 16) >>> 0) | 0;
     };
 
- 
- 
- 
- 
+
+
+
+
   function smi(i32) {
     return ((i32 >>> 1) & 0x40000000) | (i32 & 0xBFFFFFFF);
   }
@@ -4500,14 +4500,14 @@ module.exports = keyMirror;
     return hash;
   }
 
- 
+
   function hashString(string) {
-   
-   
-   
-   
-   
-   
+
+
+
+
+
+
     var hash = 0;
     for (var ii = 0; ii < string.length; ii++) {
       hash = 31 * hash + string.charCodeAt(ii) | 0;
@@ -4559,19 +4559,19 @@ module.exports = keyMirror;
       });
     } else if (obj.propertyIsEnumerable !== undefined &&
                obj.propertyIsEnumerable === obj.constructor.prototype.propertyIsEnumerable) {
-     
-     
-     
-     
+
+
+
+
       obj.propertyIsEnumerable = function() {
         return this.constructor.prototype.propertyIsEnumerable.apply(this, arguments);
       };
       obj.propertyIsEnumerable[UID_HASH_KEY] = hash;
     } else if (obj.nodeType !== undefined) {
-     
-     
-     
-     
+
+
+
+
       obj[UID_HASH_KEY] = hash;
     } else {
       throw new Error('Unable to set a non-enumerable property on object.');
@@ -4580,10 +4580,10 @@ module.exports = keyMirror;
     return hash;
   }
 
- 
+
   var isExtensible = Object.isExtensible;
 
- 
+
   var canDefineProperty = (function() {
     try {
       Object.defineProperty({}, '@', {});
@@ -4593,8 +4593,8 @@ module.exports = keyMirror;
     }
   }());
 
- 
- 
+
+
   function getIENodeHash(node) {
     if (node && node.nodeType > 0) {
       switch (node.nodeType) {
@@ -4606,7 +4606,7 @@ module.exports = keyMirror;
     }
   }
 
- 
+
   var usingWeakMap = typeof WeakMap === 'function';
   var weakMap;
   if (usingWeakMap) {
@@ -4634,7 +4634,7 @@ module.exports = keyMirror;
 
   createClass(Map, KeyedCollection);
 
-   
+
 
     function Map(value) {
       return value === null || value === undefined ? emptyMap() :
@@ -4661,7 +4661,7 @@ module.exports = keyMirror;
       return this.__toString('Map {', '}');
     };
 
-   
+
 
     Map.prototype.get = function(k, notSetValue) {
       return this._root ?
@@ -4669,7 +4669,7 @@ module.exports = keyMirror;
         notSetValue;
     };
 
-   
+
 
     Map.prototype.set = function(k, v) {
       return updateMap(this, k, v);
@@ -4721,7 +4721,7 @@ module.exports = keyMirror;
       return emptyMap();
     };
 
-   
+
 
     Map.prototype.merge = function() {
       return mergeIntoMapWith(this, undefined, arguments);
@@ -4760,16 +4760,16 @@ module.exports = keyMirror;
     };
 
     Map.prototype.sort = function(comparator) {
-     
+
       return OrderedMap(sortFactory(this, comparator));
     };
 
     Map.prototype.sortBy = function(mapper, comparator) {
-     
+
       return OrderedMap(sortFactory(this, comparator, mapper));
     };
 
-   
+
 
     Map.prototype.withMutations = function(fn) {
       var mutable = this.asMutable();
@@ -4829,7 +4829,7 @@ module.exports = keyMirror;
   MapPrototype.removeIn = MapPrototype.deleteIn;
 
 
- 
+
 
 
 
@@ -5140,7 +5140,7 @@ module.exports = keyMirror;
 
 
 
- 
+
 
   ArrayMapNode.prototype.iterate =
   HashCollisionNode.prototype.iterate = function (fn, reverse) {
@@ -5468,7 +5468,7 @@ module.exports = keyMirror;
 
   createClass(List, IndexedCollection);
 
-   
+
 
     function List(value) {
       var empty = emptyList();
@@ -5501,7 +5501,7 @@ module.exports = keyMirror;
       return this.__toString('List [', ']');
     };
 
-   
+
 
     List.prototype.get = function(index, notSetValue) {
       index = wrapIndex(this, index);
@@ -5513,7 +5513,7 @@ module.exports = keyMirror;
       return notSetValue;
     };
 
-   
+
 
     List.prototype.set = function(index, value) {
       return updateList(this, index, value);
@@ -5574,7 +5574,7 @@ module.exports = keyMirror;
       return setListBounds(this, 1);
     };
 
-   
+
 
     List.prototype.merge = function() {
       return mergeIntoListWith(this, undefined, arguments);
@@ -5596,7 +5596,7 @@ module.exports = keyMirror;
       return setListBounds(this, 0, size);
     };
 
-   
+
 
     List.prototype.slice = function(begin, end) {
       var size = this.size;
@@ -5675,7 +5675,7 @@ module.exports = keyMirror;
       this.ownerID = ownerID;
     }
 
-   
+
 
     VNode.prototype.removeBefore = function(ownerID, level, index) {
       if (index === level ? 1 << level : 0 || this.array.length === 0) {
@@ -5915,8 +5915,8 @@ module.exports = keyMirror;
   }
 
   function setListBounds(list, begin, end) {
-   
-   
+
+
     if (begin !== undefined) {
       begin = begin | 0;
     }
@@ -5932,7 +5932,7 @@ module.exports = keyMirror;
       return list;
     }
 
-   
+
     if (newOrigin >= newCapacity) {
       return list.clear();
     }
@@ -5940,7 +5940,7 @@ module.exports = keyMirror;
     var newLevel = list._level;
     var newRoot = list._root;
 
-   
+
     var offsetShift = 0;
     while (newOrigin + offsetShift < 0) {
       newRoot = new VNode(newRoot && newRoot.array.length ? [undefined, newRoot] : [], owner);
@@ -5957,19 +5957,19 @@ module.exports = keyMirror;
     var oldTailOffset = getTailOffset(oldCapacity);
     var newTailOffset = getTailOffset(newCapacity);
 
-   
+
     while (newTailOffset >= 1 << (newLevel + SHIFT)) {
       newRoot = new VNode(newRoot && newRoot.array.length ? [newRoot] : [], owner);
       newLevel += SHIFT;
     }
 
-   
+
     var oldTail = list._tail;
     var newTail = newTailOffset < oldTailOffset ?
       listNodeFor(list, newCapacity - 1) :
       newTailOffset > oldTailOffset ? new VNode([], owner) : oldTail;
 
-   
+
     if (oldTail && newTailOffset > oldTailOffset && newOrigin < oldCapacity && oldTail.array.length) {
       newRoot = editableVNode(newRoot, owner);
       var node = newRoot;
@@ -5980,12 +5980,12 @@ module.exports = keyMirror;
       node.array[(oldTailOffset >>> SHIFT) & MASK] = oldTail;
     }
 
-   
+
     if (newCapacity < oldCapacity) {
       newTail = newTail && newTail.removeAfter(owner, 0, newCapacity);
     }
 
-   
+
     if (newOrigin >= newTailOffset) {
       newOrigin -= newTailOffset;
       newCapacity -= newTailOffset;
@@ -5993,11 +5993,11 @@ module.exports = keyMirror;
       newRoot = null;
       newTail = newTail && newTail.removeBefore(owner, 0, newOrigin);
 
-   
+
     } else if (newOrigin > oldOrigin || newTailOffset < oldTailOffset) {
       offsetShift = 0;
 
-     
+
       while (newRoot) {
         var beginIndex = (newOrigin >>> newLevel) & MASK;
         if (beginIndex !== (newTailOffset >>> newLevel) & MASK) {
@@ -6010,7 +6010,7 @@ module.exports = keyMirror;
         newRoot = newRoot.array[beginIndex];
       }
 
-     
+
       if (newRoot && newOrigin > oldOrigin) {
         newRoot = newRoot.removeBefore(owner, newLevel, newOrigin - offsetShift);
       }
@@ -6063,7 +6063,7 @@ module.exports = keyMirror;
 
   createClass(OrderedMap, Map);
 
-   
+
 
     function OrderedMap(value) {
       return value === null || value === undefined ? emptyOrderedMap() :
@@ -6083,14 +6083,14 @@ module.exports = keyMirror;
       return this.__toString('OrderedMap {', '}');
     };
 
-   
+
 
     OrderedMap.prototype.get = function(k, notSetValue) {
       var index = this._map.get(k);
       return index !== undefined ? this._list.get(index)[1] : notSetValue;
     };
 
-   
+
 
     OrderedMap.prototype.clear = function() {
       if (this.size === 0) {
@@ -6339,8 +6339,8 @@ module.exports = keyMirror;
 
     FromEntriesSequence.prototype.__iterate = function(fn, reverse) {var this$0 = this;
       return this._iter.__iterate(function(entry ) {
-       
-       
+
+
         if (entry) {
           validateEntry(entry);
           var indexedIterable = isIterable(entry);
@@ -6362,8 +6362,8 @@ module.exports = keyMirror;
             return step;
           }
           var entry = step.value;
-         
-         
+
+
           if (entry) {
             validateEntry(entry);
             var indexedIterable = isIterable(entry);
@@ -6473,7 +6473,7 @@ module.exports = keyMirror;
         return flipSequence;
       };
     }
-    reversedSequence.get = function(key, notSetValue) 
+    reversedSequence.get = function(key, notSetValue)
       {return iterable.get(useKeys ? key : -1 - key, notSetValue)};
     reversedSequence.has = function(key )
       {return iterable.has(useKeys ? key : -1 - key)};
@@ -6563,8 +6563,8 @@ module.exports = keyMirror;
   function sliceFactory(iterable, begin, end, useKeys) {
     var originalSize = iterable.size;
 
-   
-   
+
+
     if (begin !== undefined) {
       begin = begin | 0;
     }
@@ -6583,17 +6583,17 @@ module.exports = keyMirror;
     var resolvedBegin = resolveBegin(begin, originalSize);
     var resolvedEnd = resolveEnd(end, originalSize);
 
-   
-   
-   
+
+
+
     if (resolvedBegin !== resolvedBegin || resolvedEnd !== resolvedEnd) {
       return sliceFactory(iterable.toSeq().cacheResult(), begin, end, useKeys);
     }
 
-   
-   
-   
-   
+
+
+
+
     var resolvedSize = resolvedEnd - resolvedBegin;
     var sliceSize;
     if (resolvedSize === resolvedSize) {
@@ -6602,8 +6602,8 @@ module.exports = keyMirror;
 
     var sliceSeq = makeSequence(iterable);
 
-   
-   
+
+
     sliceSeq.size = sliceSize === 0 ? sliceSize : iterable.size && sliceSize || undefined;
 
     if (!useKeys && isSeq(iterable) && sliceSize >= 0) {
@@ -6639,7 +6639,7 @@ module.exports = keyMirror;
       if (sliceSize !== 0 && reverse) {
         return this.cacheResult().__iterator(type, reverse);
       }
-     
+
       var iterator = sliceSize !== 0 && iterable.__iterator(type, reverse);
       var skipped = 0;
       var iterations = 0;
@@ -6672,7 +6672,7 @@ module.exports = keyMirror;
         return this.cacheResult().__iterate(fn, reverse);
       }
       var iterations = 0;
-      iterable.__iterate(function(v, k, c) 
+      iterable.__iterate(function(v, k, c)
         {return predicate.call(context, v, k, c) && ++iterations && fn(v, k, this$0)}
       );
       return iterations;
@@ -6863,7 +6863,7 @@ module.exports = keyMirror;
     interposedSequence.size = iterable.size && iterable.size * 2 -1;
     interposedSequence.__iterateUncached = function(fn, reverse) {var this$0 = this;
       var iterations = 0;
-      iterable.__iterate(function(v, k) 
+      iterable.__iterate(function(v, k)
         {return (!iterations || fn(separator, iterations++, this$0) !== false) &&
         fn(v, iterations++, this$0) !== false},
         reverse
@@ -6926,8 +6926,8 @@ module.exports = keyMirror;
 
   function maxCompare(comparator, a, b) {
     var comp = comparator(b, a);
-   
-   
+
+
     return (comp === 0 && b !== a && (b === undefined || b === null || b !== b)) || comp > 0;
   }
 
@@ -6935,10 +6935,10 @@ module.exports = keyMirror;
   function zipWithFactory(keyIter, zipper, iters) {
     var zipSequence = makeSequence(keyIter);
     zipSequence.size = new ArraySeq(iters).map(function(i ) {return i.size}).min();
-   
-   
+
+
     zipSequence.__iterate = function(fn, reverse) {
-           
+
       var iterator = this.__iterator(ITERATE_VALUES, reverse);
       var step;
       var iterations = 0;
@@ -6975,7 +6975,7 @@ module.exports = keyMirror;
   }
 
 
- 
+
 
   function reify(iter, seq) {
     return isSeq(iter) ? seq : iter.constructor(seq);
@@ -7025,8 +7025,8 @@ module.exports = keyMirror;
   function forceIterator(keyPath) {
     var iter = getIterator(keyPath);
     if (!iter) {
-     
-     
+
+
       if (!isArrayLike(keyPath)) {
         throw new TypeError('Expected iterable or array-like: ' + keyPath);
       }
@@ -7069,7 +7069,7 @@ module.exports = keyMirror;
       return this.__toString(recordName(this) + ' {', '}');
     };
 
-   
+
 
     Record.prototype.has = function(k) {
       return this._defaultValues.hasOwnProperty(k);
@@ -7083,7 +7083,7 @@ module.exports = keyMirror;
       return this._map ? this._map.get(k, defaultVal) : defaultVal;
     };
 
-   
+
 
     Record.prototype.clear = function() {
       if (this.__ownerID) {
@@ -7181,7 +7181,7 @@ module.exports = keyMirror;
     try {
       names.forEach(setProp.bind(undefined, prototype));
     } catch (error) {
-     
+
     }
   }
 
@@ -7199,7 +7199,7 @@ module.exports = keyMirror;
 
   createClass(Set, SetCollection);
 
-   
+
 
     function Set(value) {
       return value === null || value === undefined ? emptySet() :
@@ -7223,13 +7223,13 @@ module.exports = keyMirror;
       return this.__toString('Set {', '}');
     };
 
-   
+
 
     Set.prototype.has = function(value) {
       return this._map.has(value);
     };
 
-   
+
 
     Set.prototype.add = function(value) {
       return updateSet(this, this._map.set(value, true));
@@ -7243,7 +7243,7 @@ module.exports = keyMirror;
       return updateSet(this, this._map.clear());
     };
 
-   
+
 
     Set.prototype.union = function() {var iters = SLICE$0.call(arguments, 0);
       iters = iters.filter(function(x ) {return x.size !== 0});
@@ -7299,12 +7299,12 @@ module.exports = keyMirror;
     };
 
     Set.prototype.sort = function(comparator) {
-     
+
       return OrderedSet(sortFactory(this, comparator));
     };
 
     Set.prototype.sortBy = function(mapper, comparator) {
-     
+
       return OrderedSet(sortFactory(this, comparator, mapper));
     };
 
@@ -7380,7 +7380,7 @@ module.exports = keyMirror;
 
   createClass(OrderedSet, Set);
 
-   
+
 
     function OrderedSet(value) {
       return value === null || value === undefined ? emptyOrderedSet() :
@@ -7432,7 +7432,7 @@ module.exports = keyMirror;
 
   createClass(Stack, IndexedCollection);
 
-   
+
 
     function Stack(value) {
       return value === null || value === undefined ? emptyStack() :
@@ -7448,7 +7448,7 @@ module.exports = keyMirror;
       return this.__toString('Stack [', ']');
     };
 
-   
+
 
     Stack.prototype.get = function(index, notSetValue) {
       var head = this._head;
@@ -7463,7 +7463,7 @@ module.exports = keyMirror;
       return this._head && this._head.value;
     };
 
-   
+
 
     Stack.prototype.push = function() {
       if (arguments.length === 0) {
@@ -7549,7 +7549,7 @@ module.exports = keyMirror;
       var resolvedBegin = resolveBegin(begin, this.size);
       var resolvedEnd = resolveEnd(end, this.size);
       if (resolvedEnd !== this.size) {
-       
+
         return IndexedCollection.prototype.slice.call(this, begin, end);
       }
       var newSize = this.size - resolvedBegin;
@@ -7567,7 +7567,7 @@ module.exports = keyMirror;
       return makeStack(newSize, head);
     };
 
-   
+
 
     Stack.prototype.__ensureOwner = function(ownerID) {
       if (ownerID === this.__ownerID) {
@@ -7581,7 +7581,7 @@ module.exports = keyMirror;
       return makeStack(this.size, this._head, ownerID, this.__hash);
     };
 
-   
+
 
     Stack.prototype.__iterate = function(fn, reverse) {
       if (reverse) {
@@ -7658,7 +7658,7 @@ module.exports = keyMirror;
 
   mixin(Iterable, {
 
-   
+
 
     toArray: function() {
       assertNotInfinite(this.size);
@@ -7688,7 +7688,7 @@ module.exports = keyMirror;
     },
 
     toMap: function() {
-     
+
       return Map(this.toKeyedSeq());
     },
 
@@ -7700,17 +7700,17 @@ module.exports = keyMirror;
     },
 
     toOrderedMap: function() {
-     
+
       return OrderedMap(this.toKeyedSeq());
     },
 
     toOrderedSet: function() {
-     
+
       return OrderedSet(isKeyed(this) ? this.valueSeq() : this);
     },
 
     toSet: function() {
-     
+
       return Set(isKeyed(this) ? this.valueSeq() : this);
     },
 
@@ -7725,17 +7725,17 @@ module.exports = keyMirror;
     },
 
     toStack: function() {
-     
+
       return Stack(isKeyed(this) ? this.valueSeq() : this);
     },
 
     toList: function() {
-     
+
       return List(isKeyed(this) ? this.valueSeq() : this);
     },
 
 
-   
+
 
     toString: function() {
       return '[Iterable]';
@@ -7749,7 +7749,7 @@ module.exports = keyMirror;
     },
 
 
-   
+
 
     concat: function() {var values = SLICE$0.call(arguments, 0);
       return reify(this, concatFactory(this, values));
@@ -7855,7 +7855,7 @@ module.exports = keyMirror;
     },
 
 
-   
+
 
     butLast: function() {
       return this.slice(0, -1);
@@ -7882,7 +7882,7 @@ module.exports = keyMirror;
     entrySeq: function() {
       var iterable = this;
       if (iterable._cache) {
-       
+
         return new ArraySeq(iterable._cache);
       }
       var entriesSequence = iterable.toSeq().map(entryMapper).toIndexedSeq();
@@ -7944,8 +7944,8 @@ module.exports = keyMirror;
 
     getIn: function(searchKeyPath, notSetValue) {
       var nested = this;
-     
-     
+
+
       var iter = forceIterator(searchKeyPath);
       var step;
       while (!(step = iter.next()).done) {
@@ -8057,24 +8057,24 @@ module.exports = keyMirror;
     },
 
 
-   
+
 
     hashCode: function() {
       return this.__hash || (this.__hash = hashIterable(this));
     }
 
 
-   
 
-   
 
-   
+
+
+
   });
 
- 
- 
- 
- 
+
+
+
+
 
   var IterablePrototype = Iterable.prototype;
   IterablePrototype[IS_ITERABLE_SENTINEL] = true;
@@ -8088,7 +8088,7 @@ module.exports = keyMirror;
 
   mixin(KeyedIterable, {
 
-   
+
 
     flip: function() {
       return reify(this, flipFactory(this));
@@ -8123,14 +8123,14 @@ module.exports = keyMirror;
 
   mixin(IndexedIterable, {
 
-   
+
 
     toKeyedSeq: function() {
       return new ToKeyedSequence(this, false);
     },
 
 
-   
+
 
     filter: function(predicate, context) {
       return reify(this, filterFactory(this, predicate, context, false));
@@ -8165,9 +8165,9 @@ module.exports = keyMirror;
       if (numArgs === 0 || (numArgs === 2 && !removeNum)) {
         return this;
       }
-     
-     
-     
+
+
+
       index = resolveBegin(index, index < 0 ? this.count() : this.size);
       var spliced = this.slice(0, index);
       return reify(
@@ -8179,7 +8179,7 @@ module.exports = keyMirror;
     },
 
 
-   
+
 
     findLastIndex: function(predicate, context) {
       var entry = this.findLastEntry(predicate, context);
@@ -8256,7 +8256,7 @@ module.exports = keyMirror;
 
   mixin(SetIterable, {
 
-   
+
 
     get: function(value, notSetValue) {
       return this.has(value) ? value : notSetValue;
@@ -8267,7 +8267,7 @@ module.exports = keyMirror;
     },
 
 
-   
+
 
     keySeq: function() {
       return this.valueSeq();
@@ -8279,7 +8279,7 @@ module.exports = keyMirror;
   SetIterable.prototype.contains = SetIterable.prototype.includes;
 
 
- 
+
 
   mixin(KeyedSeq, KeyedIterable.prototype);
   mixin(IndexedSeq, IndexedIterable.prototype);
@@ -8290,7 +8290,7 @@ module.exports = keyMirror;
   mixin(SetCollection, SetIterable.prototype);
 
 
- 
+
 
   function keyMapper(v, k) {
     return k;
@@ -9648,6 +9648,218 @@ module.exports = {
 "use strict";
 
 
+module.exports = {
+    "additionalInfoURL": "https:\/\/www.facebook.com\/help\/606443329504150",
+    "id": "wlal_pii_schema",
+    "version": "0.0.1",
+    "type": "pii_keys",
+    "exampleFiles": {
+        "csv": "https:\/\/www.facebook.com\/images\/ads\/signals\/example_files\/example_value_based_audience_file.csv"
+    },
+    "validIf": {
+        "rule": "meetAll",
+        "args": [{
+            "rule": "propValid",
+            "args": "match_keys"
+        }, {
+            "rule": "propValid",
+            "args": "lookalike_value"
+        }]
+    },
+    "props": [{
+        "key": "match_keys",
+        "label": "Match keys",
+        "type": {
+            "additionalInfoURL": "https:\/\/www.facebook.com\/help\/606443329504150",
+            "id": "basic_pii_schema",
+            "version": "0.0.1",
+            "type": "pii_keys",
+            "exampleFiles": {
+                "csv": "https:\/\/www.facebook.com\/images\/ads\/signals\/example_files\/example_audience_file.csv"
+            },
+            "validIf": {
+                "rule": "minValidProps",
+                "args": 1
+            },
+            "transform": ["processPIISignalBeforeUpload"],
+            "props": [{
+                "key": "email",
+                "maxOccurrence": 3,
+                "label": "Email",
+                "examples": ["Emily@example.com", "John@example.com", "Helena@example.com"],
+                "type": "email"
+            }, {
+                "key": "phone",
+                "maxOccurrence": 3,
+                "label": "Phone Number",
+                "examples": ["1(222)333-4444", "001(222)333-4444", "+12223334444"],
+                "type": "phone_number"
+            }, {
+                "key": "madid",
+                "label": "Mobile Advertiser ID",
+                "formats": ["Android's Advertising ID(AAID)", "Apple's Advertising Identifier(IDFA)"],
+                "type": "string",
+                "typeParams": {
+                    "lowercase": true,
+                    "strip": "whitespace_only",
+                    "test": "^([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}|[a-zA-Z0-9]{6}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{13})$"
+                }
+            }, {
+                "key": "fn",
+                "label": "First Name",
+                "examples": ["John", "F.", "Fr&eacute;d&eacute;drique"],
+                "type": "string",
+                "typeParams": {
+                    "lowercase": true,
+                    "strip": "whitespace_and_punctuation"
+                }
+            }, {
+                "key": "ln",
+                "label": "Last Name",
+                "examples": ["Smith", "S&oslash;rensen", "Jacobs-Anderson"],
+                "type": "string",
+                "typeParams": {
+                    "lowercase": true,
+                    "strip": "whitespace_and_punctuation"
+                }
+            }, {
+                "key": "zip",
+                "label": "ZIP\/Postal Code",
+                "examples": ["94025", "94025-3215", "L3T 5M7"],
+                "type": "postal_code"
+            }, {
+                "key": "ct",
+                "label": "City",
+                "examples": ["Menlo Park", "Seattle", "London"],
+                "type": "string",
+                "typeParams": {
+                    "lowercase": true,
+                    "strip": "all_non_latin_alpha_numeric",
+                    "test": "^[a-z]+"
+                }
+            }, {
+                "key": "st",
+                "label": "State\/Province",
+                "examples": ["CA", "Califonia", "Texas"],
+                "type": "string",
+                "typeParams": {
+                    "lowercase": true,
+                    "strip": "all_non_latin_alpha_numeric",
+                    "test": "^[a-z]+"
+                }
+            }, {
+                "key": "country",
+                "label": "Country",
+                "examples": ["US", "GB", "FR"],
+                "type": "string",
+                "typeParams": {
+                    "lowercase": true,
+                    "strip": "whitespace_only",
+                    "test": "^[a-zA-Z]{2,2}"
+                }
+            }, {
+                "key": "dob",
+                "label": "Date of Birth",
+                "examples": ["mm\/dd\/yyyy", "mm\/dd\/yy", "yyyy-mm-dd", "+ 15 more"],
+                "type": "date",
+                "typeParams": {
+                    "rejectHashed": true
+                }
+            }, {
+                "key": "doby",
+                "label": "Year of Birth",
+                "type": "string",
+                "typeParams": {
+                    "test": "^[0-9]{4,4}$"
+                },
+                "examples": ["1978", "1962", "1990"]
+            }, {
+                "key": "gen",
+                "label": "Gender",
+                "examples": ["M", "F"],
+                "type": "enum",
+                "typeParams": {
+                    "lowercase": true,
+                    "options": ["f", "m"]
+                }
+            }, {
+                "key": "age",
+                "label": "Age",
+                "examples": [65, 42, 21],
+                "type": "number",
+                "typeParams": {
+                    "min": 0
+                }
+            }, {
+                "key": "appuid",
+                "label": "Facebook App User ID",
+                "examples": ["1234567890", "1443637309", "1234567892"],
+                "type": "fbid",
+                "typeParams": {
+                    "scoped": true,
+                    "rejectHashed": true
+                }
+            }, {
+                "key": "fi",
+                "noUI": true,
+                "label": "First name initial",
+                "type": "string",
+                "typeParams": {
+                    "lowercase": true,
+                    "strip": "whitespace_only",
+                    "test": "^[a-z]{1,1}$"
+                }
+            }, {
+                "key": "f5first",
+                "noUI": true,
+                "label": "First five letters of first name",
+                "type": "string",
+                "typeParams": {
+                    "lowercase": true,
+                    "strip": "whitespace_only",
+                    "test": "^[a-z]{5,5}$"
+                }
+            }, {
+                "key": "f5last",
+                "noUI": true,
+                "label": "First five letters of last name",
+                "type": "string",
+                "typeParams": {
+                    "lowercase": true,
+                    "strip": "whitespace_only",
+                    "test": "^[a-z]{5,5}$"
+                }
+            }, {
+                "key": "pageuid",
+                "label": "Facebook Page User ID",
+                "examples": ["1234567890", "1443637309", "1234567892"],
+                "type": "fbid",
+                "typeParams": {
+                    "scoped": true,
+                    "rejectHashed": true
+                }
+            }]
+        }
+    }, {
+        "key": "lookalike_value",
+        "label": "Customer Value",
+        "description": "We support a numeric value, such as customer lifetime value or predictive lifetime value.",
+        "examples": [0, 0.1, 3, 20],
+        "type": "value",
+        "typeParams": {
+            "min": 0,
+            "rejectHashed": true
+        }
+    }]
+};
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var invariant = __webpack_require__(1);
 
 function getTestUploadResult(numRowsProcessed, normalizerSettings, normalizationErrorReport, validateResult) {
@@ -9735,7 +9947,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10083,7 +10295,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10092,7 +10304,7 @@ module.exports = {
 module.exports = ['ISO8601', 'unix_time', 'MM-DD-YYYY', 'MM/DD/YYYY', 'MMDDYYYY', 'DD-MM-YYYY', 'DD/MM/YYYY', 'DDMMYYYY', 'YYYY-MM-DD', 'YYYY/MM/DD', 'YYYYMMDD', 'MM-DD-YY', 'MM/DD/YY', 'MMDDYY', 'DD-MM-YY', 'DD/MM/YY', 'DDMMYY', 'YY-MM-DD', 'YY/MM/DD', 'YYMMDD'];
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10188,7 +10400,7 @@ var SignalsUploaderPreviewV2Task = function (_SignalsUploaderSingl) {
 module.exports = SignalsUploaderPreviewV2Task;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10275,7 +10487,7 @@ var SignalsUploaderSampleFetchTask = function (_SignalsUploaderSingl) {
 module.exports = SignalsUploaderSampleFetchTask;
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10661,7 +10873,7 @@ module.exports = SignalsUploaderUploadTask;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10670,7 +10882,7 @@ module.exports = SignalsUploaderUploadTask;
 module.exports = Object.freeze({ "ADD_PAYMENT_INFO": "AddPaymentInfo", "ADD_TO_CART": "AddToCart", "ADD_TO_WISHLIST": "AddToWishlist", "COMPLETE_REGISTRATION": "CompleteRegistration", "INITIATE_CHECKOUT": "InitiateCheckout", "LEAD": "Lead", "OTHER": "Other", "PURCHASE": "Purchase", "SEARCH": "Search", "VIEW_CONTENT": "ViewContent" });
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10685,7 +10897,7 @@ var SignalBaseTypes = __webpack_require__(19);
 module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(23)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(24)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(25)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(9)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(26)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(27)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(10)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(28)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(29)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(30)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(31)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(32)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(33)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(14)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(34)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(15)), _module$exports);
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10701,7 +10913,7 @@ var SignalsTimestampNormalizationErrorTypes = keyMirror({
 module.exports = SignalsTimestampNormalizationErrorTypes;
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10709,7 +10921,7 @@ module.exports = SignalsTimestampNormalizationErrorTypes;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var SignalsBaseTypeJSONListNestableNormalizers = __webpack_require__(58);
+var SignalsBaseTypeJSONListNestableNormalizers = __webpack_require__(59);
 var SignalsValidationUtils = __webpack_require__(0);
 
 var normalizeSignal = __webpack_require__(7);
@@ -10806,7 +11018,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10821,7 +11033,7 @@ var SignalsNormalizationErrorLevel = __webpack_require__(41);
 var SignalsNormalizationErrorScope = __webpack_require__(12);
 
 var getByPath = __webpack_require__(40);
-var nullthrows = __webpack_require__(87);
+var nullthrows = __webpack_require__(88);
 
 var throwFatalError = SignalsValidationUtils.throwFatalError;
 
@@ -10979,7 +11191,7 @@ function checkRule(value, schema, ruleSpecs) {
 module.exports = checkRule;
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10990,7 +11202,7 @@ var SignalDateFormats = __webpack_require__(6);
 module.exports = SignalDateFormats.concat(['YYMM', 'MMYY', 'YYYYMM', 'MMYYYY', 'YYYY-MM', 'MM-YYYY', 'YY-MM', 'MM-YY', 'YYYY/MM', 'MM/YYYY', 'YY/MM', 'MM/YY']);
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11076,13 +11288,13 @@ function getSignalsNormalizationErrorSummary(results) {
 module.exports = getSignalsNormalizationErrorSummary;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var keyMirrorRecursive = __webpack_require__(86);
+var keyMirrorRecursive = __webpack_require__(87);
 
 var SignalsUploaderColumnMapperConstants = keyMirrorRecursive({
   CUSTOM_COLUMN_TYPE_VALUE: '',
@@ -11101,7 +11313,7 @@ var SignalsUploaderColumnMapperConstants = keyMirrorRecursive({
 module.exports = SignalsUploaderColumnMapperConstants;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11356,7 +11568,7 @@ var SignalsUploaderAdvancedErrorReportGenerator = function (_SignalsUploaderErro
 module.exports = SignalsUploaderAdvancedErrorReportGenerator;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11495,7 +11707,7 @@ var SignalsUploaderWLALErrorReportGenerator = function (_SignalsUploaderDefau) {
 module.exports = SignalsUploaderWLALErrorReportGenerator;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11622,7 +11834,7 @@ var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderConstructBatchJob;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11723,7 +11935,7 @@ var SignalsUploaderDelimiterDetectJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderDelimiterDetectJob;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11733,13 +11945,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var SignalsUploaderConstructBatchJob = __webpack_require__(67);
-var SignalsUploaderDelimiterDetectJob = __webpack_require__(68);
-var SignalsUploaderMappingDetectJob = __webpack_require__(70);
-var SignalsUploaderNormalizeBatchJob = __webpack_require__(71);
-var SignalsUploaderPreviewJob = __webpack_require__(72);
-var SignalsUploaderPreviewV2Job = __webpack_require__(73);
-var SignalsUploaderSampleFetchJob = __webpack_require__(74);
+var SignalsUploaderConstructBatchJob = __webpack_require__(68);
+var SignalsUploaderDelimiterDetectJob = __webpack_require__(69);
+var SignalsUploaderMappingDetectJob = __webpack_require__(71);
+var SignalsUploaderNormalizeBatchJob = __webpack_require__(72);
+var SignalsUploaderPreviewJob = __webpack_require__(73);
+var SignalsUploaderPreviewV2Job = __webpack_require__(74);
+var SignalsUploaderSampleFetchJob = __webpack_require__(75);
 
 var invariant = __webpack_require__(1);
 
@@ -11797,7 +12009,7 @@ var SignalsUploaderJobManager = function () {
 module.exports = SignalsUploaderJobManager;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12041,7 +12253,7 @@ var SignalsUploaderMappingDetectJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderMappingDetectJob;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12132,7 +12344,7 @@ var SignalsUploaderNormalizeBatchJob = function (_SignalsUploaderJob) {
 module.exports = SignalsUploaderNormalizeBatchJob;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12237,7 +12449,7 @@ var SignalsUploaderPreviewJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderPreviewJob;
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12363,7 +12575,7 @@ var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderPreviewV2Job;
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12472,7 +12684,7 @@ var SignalsUploaderSampleFetchJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderSampleFetchJob;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12486,7 +12698,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderReader = __webpack_require__(76);
+var SignalsUploaderReader = __webpack_require__(77);
 
 var invariant = __webpack_require__(1);
 
@@ -12567,7 +12779,7 @@ module.exports = SignalsUploaderNodeJSFileReader;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12621,7 +12833,7 @@ var SignalsUploaderReader = function () {
 module.exports = SignalsUploaderReader;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12635,8 +12847,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderJobManager = __webpack_require__(69);
-var SignalsUploaderWorker = __webpack_require__(78);
+var SignalsUploaderJobManager = __webpack_require__(70);
+var SignalsUploaderWorker = __webpack_require__(79);
 
 var SignalsUploaderUIWorker = function (_SignalsUploaderWorke) {
   _inherits(SignalsUploaderUIWorker, _SignalsUploaderWorke);
@@ -12667,7 +12879,7 @@ var SignalsUploaderUIWorker = function (_SignalsUploaderWorke) {
 module.exports = SignalsUploaderUIWorker;
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12702,7 +12914,7 @@ var SignalsUploaderWorker = function () {
 module.exports = SignalsUploaderWorker;
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12733,7 +12945,7 @@ function isInternationalPhoneNumber(number) {
 module.exports = isInternationalPhoneNumber;
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12742,24 +12954,25 @@ module.exports = isInternationalPhoneNumber;
 module.exports = Object.freeze({ "WHITESPACE_ONLY": "whitespace_only", "WHITESPACE_AND_PUNCTUATION": "whitespace_and_punctuation", "ALL_NON_LATIN_ALPHA_NUMERIC": "all_non_latin_alpha_numeric" });
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var OfflineStandardEventsEnum = __webpack_require__(57);
+var OfflineStandardEventsEnum = __webpack_require__(58);
 var SignalDateFormats = __webpack_require__(6);
 var SignalsBasicPIISchema = __webpack_require__(50);
 var SignalsCurrencyCodes = __webpack_require__(22);
-var SignalsDSDITestUploadUtils = __webpack_require__(51);
-var SignalsDSDITestUploadWarnings = __webpack_require__(52);
+var SignalsDSDITestUploadUtils = __webpack_require__(52);
+var SignalsDSDITestUploadWarnings = __webpack_require__(53);
 var SignalsEventDataSchema = __webpack_require__(48);
 var SignalsHashedEventDataSchema = __webpack_require__(49);
-var SignalsUploaderPreviewV2Task = __webpack_require__(54);
-var SignalsUploaderSampleFetchTask = __webpack_require__(55);
-var SignalsUploaderUploadTask = __webpack_require__(56);
-var SignalTimestampFormats = __webpack_require__(53);
+var SignalsUploaderPreviewV2Task = __webpack_require__(55);
+var SignalsUploaderSampleFetchTask = __webpack_require__(56);
+var SignalsUploaderUploadTask = __webpack_require__(57);
+var SignalsWLALExtendedPIISchema = __webpack_require__(51);
+var SignalTimestampFormats = __webpack_require__(54);
 
 var getSignalsSchemaSummary = __webpack_require__(21);
 
@@ -12775,20 +12988,21 @@ module.exports = {
   SignalsUploaderPreviewV2Task: SignalsUploaderPreviewV2Task,
   SignalsUploaderSampleFetchTask: SignalsUploaderSampleFetchTask,
   SignalsUploaderUploadTask: SignalsUploaderUploadTask,
+  SignalsWLALExtendedPIISchema: SignalsWLALExtendedPIISchema,
   SignalTimestampFormats: SignalTimestampFormats,
   getSignalsSchemaSummary: getSignalsSchemaSummary
 };
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SignalsUploaderNodeJSFileReader = __webpack_require__(75);
+var SignalsUploaderNodeJSFileReader = __webpack_require__(76);
 
-var fs = __webpack_require__(96);
+var fs = __webpack_require__(97);
 
 function createSignalsUploaderReader(source, chunkSize) {
   return new SignalsUploaderNodeJSFileReader(source, chunkSize, 'utf8', fs);
@@ -12797,7 +13011,7 @@ function createSignalsUploaderReader(source, chunkSize) {
 module.exports = createSignalsUploaderReader;
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12832,24 +13046,24 @@ RawTask.prototype.call = function () {
     try {
         this.task.call();
         threw = false;
-       
-       
+
+
         if (this.domain) {
             this.domain.exit();
         }
     } finally {
-       
-       
+
+
         if (threw) {
-           
-           
-           
-           
-           
+
+
+
+
+
             rawAsap.requestFlush();
         }
-       
-       
+
+
         this.task = null;
         this.domain = null;
         freeTasks.push(this);
@@ -12859,7 +13073,7 @@ RawTask.prototype.call = function () {
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports) {
 
 !function(globals) {
@@ -12898,7 +13112,7 @@ if (typeof module !== 'undefined' && module.exports) {
 }(this);
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports) {
 
 !function(globals) {
@@ -12932,7 +13146,7 @@ if (typeof module !== 'undefined' && module.exports) {
 }(this);
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12979,7 +13193,7 @@ function isObject(obj) {
 module.exports = keyMirrorRecursive;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12995,7 +13209,7 @@ var nullthrows = function nullthrows(x) {
 module.exports = nullthrows;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13015,7 +13229,7 @@ Promise.prototype.done = function (onFulfilled, onRejected) {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13125,7 +13339,7 @@ Promise.prototype['catch'] = function (onRejected) {
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13148,22 +13362,22 @@ Promise.prototype['finally'] = function (f) {
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = __webpack_require__(5);
-__webpack_require__(88);
-__webpack_require__(90);
 __webpack_require__(89);
-__webpack_require__(92);
+__webpack_require__(91);
+__webpack_require__(90);
 __webpack_require__(93);
+__webpack_require__(94);
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13173,7 +13387,7 @@ __webpack_require__(93);
 
 
 var Promise = __webpack_require__(5);
-var asap = __webpack_require__(83);
+var asap = __webpack_require__(84);
 
 module.exports = Promise;
 
@@ -13245,7 +13459,7 @@ function denodeifyWithoutCount(fn) {
     'args[argLength] = cb;',
     'res = fn.apply(self, args);',
     '}',
-    
+
     'if (res &&',
     '(typeof res === "object" || typeof res === "function") &&',
     'typeof res.then === "function"',
@@ -13298,7 +13512,7 @@ Promise.prototype.nodeify = function (callback, ctx) {
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13367,7 +13581,7 @@ Promise.disableSynchronous = function() {
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(globals) {
@@ -13376,8 +13590,8 @@ Promise.disableSynchronous = function() {
 var _imports = {}
 
 if (typeof module !== 'undefined' && module.exports) {
-  _imports.bytesToHex = __webpack_require__(84).bytesToHex
-  _imports.convertString = __webpack_require__(85)
+  _imports.bytesToHex = __webpack_require__(85).bytesToHex
+  _imports.convertString = __webpack_require__(86)
   module.exports = sha256
 } else {
   _imports.bytesToHex = globals.convertHex.bytesToHex
@@ -13435,11 +13649,11 @@ var wordsToBytes = function (words) {
 var W = []
 
 var processBlock = function (H, M, offset) {
- 
+
   var a = H[0], b = H[1], c = H[2], d = H[3]
   var e = H[4], f = H[5], g = H[6], h = H[7]
 
-   
+
   for (var i = 0; i < 64; i++) {
     if (i < 16) {
       W[i] = M[offset + i] | 0
@@ -13476,7 +13690,7 @@ var processBlock = function (H, M, offset) {
     a = (t1 + t2) | 0;
   }
 
- 
+
   H[0] = (H[0] + a) | 0;
   H[1] = (H[1] + b) | 0;
   H[2] = (H[2] + c) | 0;
@@ -13519,13 +13733,13 @@ sha256.x2 = function(message, options) {
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports) {
 
 module.exports = require("domain");
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
