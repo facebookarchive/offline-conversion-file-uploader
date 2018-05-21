@@ -1,0 +1,10 @@
+{
+  "delimiter": ",",
+  "header": true,
+  "mapping": {
+    "0": "match_keys.email",
+    "1": "lookalike_value"
+  },
+  "format": {},
+  "batchSize": 10
+}

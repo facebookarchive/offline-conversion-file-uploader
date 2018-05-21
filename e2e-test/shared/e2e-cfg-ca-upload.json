@@ -1,0 +1,19 @@
+{
+  "mockedCalls": [
+    {
+      "params": {
+        "apiPath": "111111111",
+        "method": "GET",
+        "data": {
+          "access_token": "<ACCESS_TOKEN_TEST>",
+          "fields": ["id", "is_value_based"]
+        }
+      },
+      "result": {
+        "id": "111111111",
+        "is_value_based": false
+      }
+    }
+  ],
+  "mockedCallsDumpPath": "api.log"
+}

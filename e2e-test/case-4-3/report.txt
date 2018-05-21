@@ -1,0 +1,3411 @@
+ABORTED because more than 10% of the first 1000 rows have errors.
+
+================================================================================
+Report of ABORTED command
+================================================================================
+Generated: @generated
+Config: {
+  "accessToken": "<ACCESS_TOKEN_TEST>",
+  "batchSize": 10,
+  "customAudienceID": "111111111",
+  "delimiter": ",",
+  "format": {
+    "dob": "MM/DD/YYYY"
+  },
+  "header": true,
+  "inputFilePath": "e2e-test/shared/ca-dirty.csv",
+  "logging": "verbose",
+  "mapping": {
+    "0": "email",
+    "1": "phone",
+    "2": "fn",
+    "3": "ln",
+    "4": "dob",
+    "5": "ct",
+    "6": "st",
+    "7": "zip",
+    "8": "country"
+  },
+  "removeUsers": false,
+  "reportOutputPath": "report.txt"
+}
+
+
+================================================================================
+Invalid data statistics
+================================================================================
+Columns with errors
+  249 errors on column 4 (dob)
+  51 errors on column 1 (phone)
+  41 errors on column 0 (email)
+
+
+================================================================================
+Invalid Samples
+================================================================================
+Row 3
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ljjvscrazt_1472790591@tfbnw.net
+          Column 2 (fn): 81b637d8fcd2c6da6359e6963113a1170de795e4b725b84d1e0b4cfd9ec58ce9
+[INVALID] Column 4 (dob): 7122bdbaa29277897ed4689e7225ef5788f6ec6ccf4643c69c2c0012f623674f
+          Column 5 (ct): ce53c678303fa3e5678b3f614d1daeffc31e32137844b42b46546183bc8bb3d8
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 9 (not mapped): 347.61
+
+Row 4
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): vudhldkiac_1472790989@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): Dingleescu
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): California
+          Column 8 (country): US
+          Column 9 (not mapped): 136.80
+
+Row 5
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Not
+          Column 4 (dob): 01/20/1980
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+
+Row 11
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): vudhldkiac_1472790989@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Betty
+          Column 3 (ln): 88f9124fcde0d8b85172e0daab321ca0aea78fbfe530cceaac299e5856b94b50
+          Column 5 (ct): Stanford
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 8 (country): US
+          Column 9 (not mapped): -96.42
+
+Row 14
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): CA
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 9 (not mapped): 221.83
+
+Row 15
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): a17cce0f0d23f96184b973fae046ac98136f8037b1755a4b439c5c3966843ae1
+          Column 3 (ln): Thurnescu
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 8 (country): US
+          Column 9 (not mapped): 462.30
+
+Row 17
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): 9ce8db922a8f4a7abd859adee70bd8b7a63321265487da54cf4bed6a69eb3e1b
+[INVALID] Column 4 (dob): a95d73111acde789f7b6e0dbdfe015af299827e03946ff9e2964c033f190fc25
+          Column 5 (ct): New York
+          Column 8 (country): US
+          Column 9 (not mapped): -190.65
+
+Row 21
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 357dc69557ba11b39d4aad81efc380ca1cf5cb5fce48075ca66bb8162d24e2e6
+          Column 2 (fn): b54f08623ae4039f55bcecba4961037fb4513d2ba9cb2b0667c5db970ac94911
+[INVALID] Column 4 (dob): 02c5bdc55eea6c2384c38f378e928a2b850aac2d8cac08912c6427198f6a27eb
+          Column 5 (ct): 1865e4f9be9639fc76d7d4da8ee25eaa7421f6837accb67516937e69469ea7e4
+          Column 7 (zip): 20003
+          Column 8 (country): US
+
+Row 28
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19995981278
+          Column 2 (fn): 6bab3007f56e2a9175ff1222c2654ddcd08fa7981a1ddc42f1d95cfbd80ede47
+[INVALID] Column 4 (dob): 2c6ea69b39bfe75fa17ee6eaff7e1b8f2418cea912aeb0f8ffcfe797a07cd3d0
+          Column 5 (ct): 1865e4f9be9639fc76d7d4da8ee25eaa7421f6837accb67516937e69469ea7e4
+          Column 6 (st): District of Columbia
+          Column 7 (zip): 20003
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 30
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): 6915771be1c5aa0c886870b6951b03d7eafc121fea0e80a5ea83beb7c449f4ec
+          Column 3 (ln): dbf330e2b447a408dc5dc99e9dd554580675ae3bf060b87897323f055c0082aa
+          Column 4 (dob): 03/04/1980
+          Column 5 (ct): Stanford
+          Column 6 (st): California
+          Column 7 (zip): 1336ffa791cc6c6fa51c8613fa3db49a48157100345cb4cb3259727a6ce5d527
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 735.41
+
+Row 31
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 7d926844906026ab9c3c4f520bd934e9f2286f56d51c43359d5c1504ccd822ae
+          Column 3 (ln): 0806b82b9fd8ddf9425fd1be68ead6ada713d54c9b54c15378741157bc633ac4
+[INVALID] Column 4 (dob): 2aaa6fde2ce085b4347ad3a6d9867de6a4057623beefba902b89fc01e1ffb410
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 6a023c195898ffbbf2ff20e9879b190af7da850f55853ff713f2955187f2eb29
+          Column 8 (country): US
+
+Row 33
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19994448959
+          Column 2 (fn): b9dd960c1753459a78115d3cb845a57d924b6877e805b08bd01086ccdf34433c
+          Column 3 (ln): Shrewsberrysen
+[INVALID] Column 4 (dob): 56b447d522961414371e560a4e93e15ad32a69afd0a4c754f7dbaabfd1701207
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 94025
+          Column 9 (not mapped): 169.71
+
+Row 38
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 495.38
+
+Row 41
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): 94aec9fbed989ece189a7e172c9cf41669050495152bc4c1dbf2a38d7fd85627
+          Column 3 (ln): Goldmanman
+          Column 5 (ct): d3ecc5b7fe38ffd3397473362f2c42321fb82deb23083ed13cf6f20320ab6c92
+          Column 6 (st): 1c18bc2214f67ae19bbaa640fc776f5a4a38c4021d421cdd8cd3d2bcad23da93
+          Column 8 (country): US
+          Column 9 (not mapped): 474.79
+
+Row 43
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): 4c26d9074c27d89ede59270c0ac14b71e071b15239519f75474b2f3ba63481f5
+          Column 3 (ln): Fotinatosstein
+[INVALID] Column 4 (dob): f46a6fa20cd4551cfa79493749b66d5d0df5020959023d1c6554076deaa0e8f7
+          Column 5 (ct): ce53c678303fa3e5678b3f614d1daeffc31e32137844b42b46546183bc8bb3d8
+          Column 6 (st): California
+          Column 7 (zip): 95113
+          Column 9 (not mapped): 274.77
+
+Row 44
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): c9493763b7fdfe183565844f074527c6300cc5b29990809b1658adef07f00547
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): RosnBrickman
+[INVALID] Column 4 (dob): 367b58b3ebc690e5c6fdf6a086d2f24ae936c27556ace00c5e65b2b49af7cc96
+          Column 7 (zip): 20003
+          Column 8 (country): US
+          Column 9 (not mapped): 705.65
+
+Row 45
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): olhzmfhibe_1472790604@tfbnw.net
+          Column 2 (fn): e5a726a3cf969c027e9734910739b05d0109a6cda58f86efe6bc1791384dca65
+[INVALID] Column 4 (dob): 755fe92f0f4bfa29d195c890ee391a6c6a2b4b5f451aaf283b408cadcc9dcece
+          Column 5 (ct): New York
+          Column 7 (zip): 10002
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 50
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): mimrsridoz_1472790625@tfbnw.net
+          Column 1 (phone): a5ddc127d831a4d54d07c46299209bd8d1962100c9f3bc063a500cf11c705a2f
+          Column 2 (fn): b54f08623ae4039f55bcecba4961037fb4513d2ba9cb2b0667c5db970ac94911
+          Column 3 (ln): c58619a5881b3647611c532b0f7870be7d7b1109368dfb392d6e2e74902513bd
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Philadelphia
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -56.96
+
+Row 51
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 3 (ln): Machadowitz
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 8 (country): US
+          Column 9 (not mapped): 232.88
+
+Row 54
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): CA
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 9 (not mapped): -56.30
+
+Row 57
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): codhvieugy_1472791204@tfbnw.net
+          Column 2 (fn): Jennifer
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 1a6bd4d9d79dc0a79b53795c70d3349fa9e38968a3fbefbfe8783efb1d2b6aac
+          Column 7 (zip): 94115
+
+Row 62
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19969380272
+          Column 2 (fn): Ruth
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 9de3888231a1021acddcaa006b2f2a1ead5e245ae44a6b50e997afa9371e081e
+          Column 9 (not mapped): -110.26
+
+Row 63
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 374.41
+
+Row 64
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): c48257b27d5fd265671252c40d4d1f7bb91c7ef2073582576bb09d8bf2ea1898
+          Column 2 (fn): e5a726a3cf969c027e9734910739b05d0109a6cda58f86efe6bc1791384dca65
+          Column 3 (ln): Romanman
+          Column 4 (dob): 05/27/1980
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 562.51
+
+Row 67
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 4f7d5afbd838b26c949e119f4f73516906999583dda40457698ab1bd34fd83bf
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 774.22
+
+Row 70
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 6f215abf619c794c2e6a2a432d661a5481049e73f3bf5ffeed9955adc32e84d7
+          Column 4 (dob): 02/12/1980
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 94305
+          Column 9 (not mapped): 420.84
+
+Row 72
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ktsvdmbatp_1472791211@tfbnw.net
+          Column 1 (phone): 15542444904
+          Column 3 (ln): Carrierosen
+[INVALID] Column 4 (dob): 99b64041c25dba5b747a96f33aecbda71d99f628f313f022b442aabe6acc7262
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 95113
+          Column 8 (country): US
+
+Row 76
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 4 (dob): 03/18/1980
+          Column 5 (ct): San Jose
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 9 (not mapped): 690.94
+
+Row 79
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): CA
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): US
+
+Row 81
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): Okelolastein
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 1a6bd4d9d79dc0a79b53795c70d3349fa9e38968a3fbefbfe8783efb1d2b6aac
+          Column 7 (zip): 6a023c195898ffbbf2ff20e9879b190af7da850f55853ff713f2955187f2eb29
+          Column 9 (not mapped): 254.74
+
+Row 86
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15549907630
+          Column 3 (ln): Talason
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): Georgia
+
+Row 90
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): qgyrncdncw_1472790966@tfbnw.net
+          Column 2 (fn): bc16f5825a9dafc8c245dc7cd93f4e671a9885035a73e6ef29c04f2d3863bfab
+          Column 3 (ln): Sidhuberg
+[INVALID] Column 4 (dob): ce7f6bcc2be09e0df1fec4791cb99128d354fdbe84e7b4eb79d92af5648a5cf5
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): California
+          Column 8 (country): US
+          Column 9 (not mapped): -85.33
+
+Row 93
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): aniywptrvp_1472791122@tfbnw.net
+          Column 3 (ln): Bharambewitz
+[INVALID] Column 4 (dob): 5b3a3daa37d40fddb90b8d44a3dc032a767133482832e168ad93be0df85a8427
+          Column 6 (st): California
+          Column 7 (zip): 94025
+          Column 9 (not mapped): 437.33
+
+Row 94
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 5 (ct): Menlo Park
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 9 (not mapped): -67.67
+
+Row 97
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Dave
+          Column 3 (ln): Wisemanescu
+[INVALID] Column 4 (dob): 20b8a0b955c121476f55da60cb5339ebdfe6a17817d638b5f8e8129cea6929ab
+          Column 5 (ct): de19c97d557a0e8a8cb2eb074915a22154e5f7606bd248aaf4ae6d24782f1409
+          Column 6 (st): California
+          Column 9 (not mapped): 464.98
+
+Row 101
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): de15739730984d1f92a6086de238980947f680103caf3920b81d7f13bf0b8cda
+          Column 2 (fn): Susan
+          Column 3 (ln): Landaywitz
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 90001
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 727.63
+
+Row 108
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): olhzmfhibe_1472790604@tfbnw.net
+          Column 2 (fn): Dorothy
+[INVALID] Column 4 (dob): 755fe92f0f4bfa29d195c890ee391a6c6a2b4b5f451aaf283b408cadcc9dcece
+          Column 6 (st): New York
+          Column 7 (zip): 10002
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -178.11
+
+Row 111
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 517.97
+
+Row 126
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 2 (fn): 254bb97b57f12e1608fefc4517de768427b2fd6d2cffbbfcbc09f3c818198d5f
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 173.55
+
+Row 128
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): azpopgwenp_1472790674@tfbnw.net
+[INVALID] Column 4 (dob): 80a617dd5bbbccd5f70ebbe6c5c7c8ea974f8c26e3ad108ecd8d60c15b36ec22
+          Column 6 (st): New York
+          Column 7 (zip): 56acd2f85500d246e0851f77035f8b4414a57c4f31735c8f37c9cec0f3739d47
+
+Row 130
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19944821818
+          Column 2 (fn): Rick
+[INVALID] Column 4 (dob): 4e25c029f6a1efa686c96b852f9c695275fbcbc4478112d8158fa30955c2c90c
+          Column 5 (ct): 8760663bb25fa79f35c2c14fb9c6bcbe444a8c938491cd24fe684a7056c9dbc4
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 90001
+
+Row 132
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): Charlie
+          Column 6 (st): California
+          Column 8 (country): US
+          Column 9 (not mapped): 740.82
+
+Row 134
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15531704136
+          Column 2 (fn): Mary
+          Column 3 (ln): Mallozziman
+[INVALID] Column 4 (dob): 59301823abd8536b7eb3291d91d11ab77beafb36b382c89dc15d9e27a90a8045
+          Column 5 (ct): Los Angeles
+          Column 8 (country): US
+          Column 9 (not mapped): 200.85
+
+Row 137
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): CA
+          Column 8 (country): US
+
+Row 138
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): iibfvsqjlv_1472790406@tfbnw.net
+          Column 1 (phone): 15528974128
+          Column 3 (ln): 05e9f405191f9c830f38711e4093aaea755b21e99ec88f694cf5746bd226a18f
+[INVALID] Column 4 (dob): 367b58b3ebc690e5c6fdf6a086d2f24ae936c27556ace00c5e65b2b49af7cc96
+          Column 5 (ct): Washington
+          Column 6 (st): District of Columbia
+          Column 7 (zip): 81efd660a2810b480af90cf521cac5f72ca8f1f6c3d0a2130f4e9de456097fbb
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 141
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): hbfnmztlff_1472790577@tfbnw.net
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 646.13
+
+Row 143
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): 254bb97b57f12e1608fefc4517de768427b2fd6d2cffbbfcbc09f3c818198d5f
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): CA
+          Column 9 (not mapped): 773.47
+
+Row 146
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 8 (country): US
+          Column 9 (not mapped): -81.61
+
+Row 149
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): phkelnwxyt_1472790503@tfbnw.net
+          Column 1 (phone): 6d8b6896bbdfe7743f7f15156d2395f1c8f7ed818c519421d150dec450540927
+          Column 2 (fn): 119c9ae6f9ca741bd0a76f87fba0b22cab5413187afb2906aa2875c38e213603
+          Column 3 (ln): df4660b50e485a6e33557bdbb61fed8fdad20c0dff5c4f53ac9b224083c78ac4
+[INVALID] Column 4 (dob): 96e7bb8c068d61285f5d8dd9d1b9dcea62c5f976640807356cd8b28ab921c870
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): 94025
+
+Row 150
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 5adaf7bb8ed5fd18da76f285e489c667dfadddcd2b7cbb8407a6fddefe98640e
+          Column 2 (fn): df46219531cb5d522d0845901978dccfa286a5b0437f4f9cd4e485064f6b632c
+          Column 3 (ln): Sadanson
+[INVALID] Column 4 (dob): 65446f3e35cf141ee278cccf85e1e5033c6ed03f1fd9be413fca5da3c652d588
+          Column 5 (ct): 5b406272e989b15c0cc821d39f489f1e230c6557a3e0216b156b68108d41fb28
+          Column 6 (st): Pennsylvania
+          Column 7 (zip): 19104
+          Column 8 (country): US
+          Column 9 (not mapped): -187.24
+
+Row 151
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): 94025
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 693.83
+
+Row 152
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 017218ad214412b415d3931016123a51b01070d036fa6e0e23296ec458151fb9
+          Column 2 (fn): Maria
+[INVALID] Column 4 (dob): c5df9046f630e141fb9131850653c69a93268537de8461f24e402e8b89f0e151
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 94305
+          Column 8 (country): US
+          Column 9 (not mapped): 357.13
+
+Row 165
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 3 (ln): 0e4f1d56fab5f8a747d7fda88161bf1393f1410f5481bf6f5e305c5952dd963d
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 6 (st): New York
+          Column 7 (zip): 56acd2f85500d246e0851f77035f8b4414a57c4f31735c8f37c9cec0f3739d47
+          Column 8 (country): US
+          Column 9 (not mapped): 184.30
+
+Row 166
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 1f569f7f14837dda47f32090550b92a81b6db65193abe48a1d2bf0aea8fed895
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Jennifer
+          Column 3 (ln): Chengsky
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 8 (country): US
+          Column 9 (not mapped): 722.54
+
+Row 168
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19984341203
+          Column 3 (ln): Smithsky
+[INVALID] Column 4 (dob): 96e7bb8c068d61285f5d8dd9d1b9dcea62c5f976640807356cd8b28ab921c870
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): -35.76
+
+Row 171
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Patricia
+          Column 3 (ln): a3a10b416d7703ff3298ea35297b5a4a3392bc2bc84d7cbf4bd47e192bcbdb99
+          Column 4 (dob): 02/17/1980
+          Column 5 (ct): Los Angeles
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 90001
+          Column 8 (country): US
+          Column 9 (not mapped): 483.42
+
+Row 174
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): e5a726a3cf969c027e9734910739b05d0109a6cda58f86efe6bc1791384dca65
+          Column 4 (dob): 09/15/1980
+          Column 5 (ct): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 9 (not mapped): 653.25
+
+Row 178
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): rokfedmvfa_1472790667@tfbnw.net
+          Column 1 (phone): 19945916763
+          Column 2 (fn): 904294d8c54b1c63e40832fa1d95bcde534b310df6d42882ce4baf28f3e0184a
+          Column 3 (ln): Mallozzison
+[INVALID] Column 4 (dob): 6aa8a0602f6e63e188d8f28a4b6a9a7a9ddc6deae7258840791462b6e8a4092d
+          Column 8 (country): US
+          Column 9 (not mapped): 104.16
+
+Row 183
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): Mark
+          Column 3 (ln): Mallozzisen
+          Column 4 (dob): 07/20/1980
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 367.31
+
+Row 186
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 19909068950
+          Column 2 (fn): Betty
+          Column 3 (ln): Sidhuman
+[INVALID] Column 4 (dob): 93ad0016995dac04e993763b0f109d784867111f1b1cebbf266d4dfbbdfac116
+          Column 5 (ct): Boston
+          Column 6 (st): Massachusetts
+          Column 8 (country): US
+
+Row 187
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): ace5e5753b24688e2c1cd9f46133f31d641108caefdfbdfc7321db4067f6005b
+[INVALID] Column 4 (dob): 5b3a3daa37d40fddb90b8d44a3dc032a767133482832e168ad93be0df85a8427
+          Column 6 (st): California
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 757.22
+
+Row 198
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 1-987-654-3210
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 170.78
+
+Row 204
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): erlnwikcap_1472790611@tfbnw.net
+          Column 1 (phone): 19977237993
+[INVALID] Column 4 (dob): 67208b96b85db48e78cfd40403e2dc52643330301b3e5d0534a67b05923e32fa
+          Column 5 (ct): 1865e4f9be9639fc76d7d4da8ee25eaa7421f6837accb67516937e69469ea7e4
+          Column 9 (not mapped): 111.76
+
+Row 205
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 1e57e802b496e087ad480488897e9624b2f16110e575c57f533a8d9d93629918
+          Column 2 (fn): David
+          Column 3 (ln): Sorgman
+[INVALID] Column 4 (dob): ceb15a7e37b215798e90cb9c306e285d4ff98ac5c8a62ca25a7331479690e5d0
+          Column 5 (ct): Washington
+          Column 7 (zip): 20003
+          Column 9 (not mapped): 371.72
+
+Row 206
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): mawzqfearz_1472791142@tfbnw.net
+          Column 1 (phone): a64a3987e03f57e079e7092e3b09798407feb72c79fe95b2e237382356bd2bc6
+          Column 2 (fn): Carol
+[INVALID] Column 4 (dob): f46a6fa20cd4551cfa79493749b66d5d0df5020959023d1c6554076deaa0e8f7
+          Column 5 (ct): San Jose
+          Column 6 (st): California
+          Column 7 (zip): 95113
+          Column 8 (country): US
+
+Row 207
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): soytcxmfxw_1472791197@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Maria
+          Column 3 (ln): Rosenthalescu
+          Column 6 (st): California
+          Column 7 (zip): 1336ffa791cc6c6fa51c8613fa3db49a48157100345cb4cb3259727a6ce5d527
+          Column 8 (country): US
+          Column 9 (not mapped): 620.06
+
+Row 210
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): Will
+          Column 3 (ln): 07c2c0fc4733cbf49b2ab1cf7ef9351d7476f17bdc8a9982e7ad42c3653c4a27
+          Column 5 (ct): Philadelphia
+          Column 7 (zip): 19104
+
+Row 214
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Susan
+          Column 3 (ln): Chengson
+[INVALID] Column 4 (dob): 80a617dd5bbbccd5f70ebbe6c5c7c8ea974f8c26e3ad108ecd8d60c15b36ec22
+          Column 5 (ct): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 7 (zip): 10002
+          Column 8 (country): US
+          Column 9 (not mapped): 543.39
+
+Row 217
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): Nancy
+          Column 3 (ln): 655a9751396caf8824c3beb17c06ecaebe435e2094daf3838b08b4308ee691de
+          Column 5 (ct): Atlanta
+          Column 8 (country): US
+
+Row 223
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): adf95782abd261ead7ea6fc549203bbb23433c96f6f9d035db51d5439b905af7
+[INVALID] Column 4 (dob): f00bdf691968da40d2abd69c3b829454f07775675e23ecc15fd9b520d1832028
+          Column 5 (ct): Boston
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 551.01
+
+Row 237
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 547.66
+
+Row 238
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 3 (ln): f763f4c8779f5d6bfce91168feb35461a8f171239b51da4585b033eb807e4b29
+[INVALID] Column 4 (dob): 7052f09d25d451526a2bd711698ad25d047dee08dd1588d10a486dc67d8476a3
+          Column 5 (ct): Philadelphia
+          Column 7 (zip): 0a08a44b77703a0c45421f1c340e9f3bc2ec440dc53cdb479b9e7aa91498a705
+          Column 8 (country): US
+          Column 9 (not mapped): 427.35
+
+Row 240
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3cd34fe5156a6c33e915c0372f94628708e295810b0228716a21d89c0b50434d
+          Column 1 (phone): 19909068950
+          Column 3 (ln): 2bd0635d25b91e65bf342868114bc60de88de26b8f1dde4a75a5a78d64e0c6e4
+[INVALID] Column 4 (dob): 93ad0016995dac04e993763b0f109d784867111f1b1cebbf266d4dfbbdfac116
+          Column 6 (st): Massachusetts
+          Column 7 (zip): 02117
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 293.62
+
+Row 243
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): gwmlwjvrph_1472790632@tfbnw.net
+          Column 2 (fn): Tom
+          Column 3 (ln): Wongson
+[INVALID] Column 4 (dob): 708297a74726bf5e99930b889c878b7ca2462916cbcba7fbd952b9639cb761bd
+          Column 5 (ct): d3ecc5b7fe38ffd3397473362f2c42321fb82deb23083ed13cf6f20320ab6c92
+          Column 7 (zip): 429887cf0e9ca7edfb54c56c7ecdfdd6f0d38b21c1ac4e83947c74f0c9f05a07
+          Column 8 (country): US
+          Column 9 (not mapped): -181.49
+
+Row 244
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+          Column 5 (ct): Menlo Park
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 638.78
+
+Row 246
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): 0e8d4dfa95114570c7dd4d776f3bb9c8331df7580b92044ff6d8fbfe63df9156
+[INVALID] Column 4 (dob): 708297a74726bf5e99930b889c878b7ca2462916cbcba7fbd952b9639cb761bd
+          Column 5 (ct): d3ecc5b7fe38ffd3397473362f2c42321fb82deb23083ed13cf6f20320ab6c92
+          Column 7 (zip): 30301
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 371.99
+
+Row 248
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 366.10
+
+Row 252
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ixgkurtfwy_1472790475@tfbnw.net
+          Column 2 (fn): Elizabeth
+[INVALID] Column 4 (dob): 02c5bdc55eea6c2384c38f378e928a2b850aac2d8cac08912c6427198f6a27eb
+          Column 6 (st): ad30e7e2a1394b49d4ade6500cf199a55d652e274f594f29c8fecd3363ab654a
+          Column 9 (not mapped): 300.66
+
+Row 256
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): 254bb97b57f12e1608fefc4517de768427b2fd6d2cffbbfcbc09f3c818198d5f
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): 94025
+
+Row 258
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 9a334e525bb85de755d3a25b054d046f1f8ad0f5bb9c993ba980dd85ca9e7eb7
+          Column 1 (phone): f7e0b794883d6dcd0efc1184338e58c4e9438ceb49cd9dcdd11e8715b02d1f36
+          Column 2 (fn): Maria
+[INVALID] Column 4 (dob): 3d56575c8405083f9539c03fd36dd3872e91b031416cbf5890148673173a56f3
+          Column 8 (country): US
+          Column 9 (not mapped): -21.96
+
+Row 260
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): caeywsjkoo_1472791074@tfbnw.net
+          Column 1 (phone): 7a97a62e44e7ba26209c996678a0115d4a9e9d665e92b136f5cd44f56603f516
+          Column 2 (fn): Ruth
+[INVALID] Column 4 (dob): af32105bccdf35cb931209e76af88cbf65eb5aaba358ee0181166fc1d8f0a112
+          Column 5 (ct): San Jose
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 9 (not mapped): 92.18
+
+Row 261
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 4f7d5afbd838b26c949e119f4f73516906999583dda40457698ab1bd34fd83bf
+          Column 2 (fn): Not
+          Column 4 (dob): 01/20/1980
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 238.30
+
+Row 262
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): 254bb97b57f12e1608fefc4517de768427b2fd6d2cffbbfcbc09f3c818198d5f
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Menlo Park
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 9 (not mapped): 353.08
+
+Row 266
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Mary
+[INVALID] Column 4 (dob): 61fad570609d21233a2b437372d846af0d433685c70ec1651a2901e154c437a8
+          Column 5 (ct): Stanford
+          Column 7 (zip): 94305
+          Column 8 (country): US
+          Column 9 (not mapped): 249.54
+
+Row 267
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+
+Row 268
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): mwsbhzruia_1472791025@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): c111aec7a40222945b78eda72e99d6db41997e917ac7b6ed9da2452cc4f8ae1a
+          Column 4 (dob): 08/11/1980
+          Column 6 (st): District of Columbia
+          Column 7 (zip): 20003
+          Column 9 (not mapped): 310.74
+
+Row 270
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19960133654
+          Column 2 (fn): Susan
+[INVALID] Column 4 (dob): 5c70d9af4d76050e59f6fec3d45d0cb105770f39791deb5cfe1a2381d30926fe
+          Column 7 (zip): 56acd2f85500d246e0851f77035f8b4414a57c4f31735c8f37c9cec0f3739d47
+          Column 9 (not mapped): 329.57
+
+Row 273
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): c0e4f16bfc2fe4fa16a957e23d9d6b9ec82238847f3ea9696826cfdbc5127c59
+          Column 3 (ln): Sharpeberg
+[INVALID] Column 4 (dob): 710c3addb686336bd3a2f260e1d2fe565cf51ff9390e9a5126c2e04dd6f43bbb
+          Column 5 (ct): New York
+          Column 6 (st): New York
+          Column 9 (not mapped): 667.96
+
+Row 276
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 5d3e9bdd080b1500591ce93d71967fa91ba8316f6b93f3a5f2194b10f9ff11c2
+          Column 1 (phone): 15505522427
+          Column 2 (fn): 9ce8db922a8f4a7abd859adee70bd8b7a63321265487da54cf4bed6a69eb3e1b
+          Column 3 (ln): Putnamsky
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 6 (st): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 9 (not mapped): -34.91
+
+Row 278
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (phone): 1-987-654-3210
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 9 (not mapped): 659.23
+
+Row 279
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): uckrzzqcoz_1472790496@tfbnw.net
+          Column 2 (fn): 1d78b370ad96e7a8091888d902360187bdea87ab6a4af003ec63c791894513ec
+          Column 3 (ln): Thurnberg
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): Georgia
+          Column 9 (not mapped): 605.64
+
+Row 286
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 3 (ln): Valtchanovsen
+[INVALID] Column 4 (dob): 6274449fdb28e7bf29a95c15381e2eff20e4dd84a96e282d58440da0db12f7e8
+          Column 5 (ct): San Jose
+          Column 9 (not mapped): 94.16
+
+Row 288
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): c926190bd9ed23178eec1876f03cbe57934460f791c42bc9dd814c3d765db499
+          Column 1 (phone): 19939409090
+          Column 2 (fn): ed62c6fd9f1b99007f2f0e108e1c5c97184fa69f3c43feb8038b389d80896476
+          Column 3 (ln): 821837f5cb442c79177d3dd9c84f96af9dd40cac6c4ffc063b38a4097b5d6d60
+[INVALID] Column 4 (dob): 652ac7de68c485b9e4b305579dbe4c51c7702d128040b6db5572674514261cd5
+          Column 6 (st): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+
+Row 296
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19945916763
+          Column 3 (ln): c9386aeba92e5f9c7380ff2dc67388acda827355e876cb5a4b99c73a59773439
+[INVALID] Column 4 (dob): 6aa8a0602f6e63e188d8f28a4b6a9a7a9ddc6deae7258840791462b6e8a4092d
+          Column 6 (st): California
+          Column 8 (country): US
+
+Row 300
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 19994448959
+          Column 4 (dob): 05/10/1980
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 511.56
+
+Row 302
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): cd830af8cb499166f18340e92390d6d5a7c626a81ba98b6da52d94c5ab4d8c90
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Stanford
+          Column 9 (not mapped): -109.30
+
+Row 303
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): c818416c95e9e3f0238069530f93731f0bb00cfac8923002631d7a5d875774ee
+          Column 3 (ln): c179e4e8517557cda2b34c6022e0e64bda5b543683912ed5272152bcb9226e47
+[INVALID] Column 4 (dob): fef2478983486079c77b3b8a16cbf057e5426bb81b9264fc45db45bc4414eb2f
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 94305
+          Column 9 (not mapped): 714.52
+
+Row 306
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ktsvdmbatp_1472791211@tfbnw.net
+          Column 1 (phone): 15542444904
+          Column 2 (fn): Patricia
+[INVALID] Column 4 (dob): 99b64041c25dba5b747a96f33aecbda71d99f628f313f022b442aabe6acc7262
+          Column 5 (ct): San Jose
+          Column 8 (country): US
+          Column 9 (not mapped): 610.75
+
+Row 318
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ttakfhtqgc_1472790442@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Susan
+          Column 3 (ln): c179e4e8517557cda2b34c6022e0e64bda5b543683912ed5272152bcb9226e47
+[INVALID] Column 4 (dob): fef2478983486079c77b3b8a16cbf057e5426bb81b9264fc45db45bc4414eb2f
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 8 (country): US
+          Column 9 (not mapped): 571.02
+
+Row 319
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 3 (ln): Exist
+          Column 7 (zip): 94025
+
+Row 320
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15542444904
+          Column 2 (fn): Patricia
+          Column 3 (ln): c364b5413ab55ef836e3c219b1db4bbbff4abb89dec9027bda36b8c8d5ce8b06
+[INVALID] Column 4 (dob): 99b64041c25dba5b747a96f33aecbda71d99f628f313f022b442aabe6acc7262
+          Column 5 (ct): San Jose
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 8 (country): US
+
+Row 321
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 6f99133ac01cda07cec0f806b287aae63dc38eb4c31d0d7420eeca7a7e651faa
+          Column 3 (ln): 17067800ccc8e929fc6cedabf664ef920a54e8b3c64c8c47730399daf6adbaf5
+          Column 4 (dob): 02/22/1980
+          Column 5 (ct): ce53c678303fa3e5678b3f614d1daeffc31e32137844b42b46546183bc8bb3d8
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 67.12
+
+Row 322
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 1-987-654-3210
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 8 (country): US
+
+Row 329
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 350650730c5075f0ad76ff651060d53d533453c428affcf7d50181124906448f
+          Column 1 (phone): 19943510250
+          Column 2 (fn): 9ce8db922a8f4a7abd859adee70bd8b7a63321265487da54cf4bed6a69eb3e1b
+          Column 3 (ln): f7f2fd702c89dae7955d3568dbf43709e43b689b79e345f3f1336e29bd3acb35
+[INVALID] Column 4 (dob): e338e636ee2a96d4a87e4f8888e48836343f4824ac34f79a307ad24c60c64e2c
+          Column 6 (st): California
+          Column 7 (zip): 6a023c195898ffbbf2ff20e9879b190af7da850f55853ff713f2955187f2eb29
+          Column 9 (not mapped): -28.46
+
+Row 335
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): iibfvsqjlv_1472790406@tfbnw.net
+          Column 3 (ln): 05e9f405191f9c830f38711e4093aaea755b21e99ec88f694cf5746bd226a18f
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 1865e4f9be9639fc76d7d4da8ee25eaa7421f6837accb67516937e69469ea7e4
+          Column 6 (st): District of Columbia
+          Column 7 (zip): 20003
+          Column 8 (country): US
+          Column 9 (not mapped): 292.45
+
+Row 337
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 17fb5514706561f2f19ef5febb552183d10b5c2512693775bbbf14d56703609c
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): d86dc6e60b0632e30f2a78abe922c238e913dd5c74f76df6dc935f1ec73a5df6
+          Column 3 (ln): Carrierosen
+[INVALID] Column 4 (dob): 99b64041c25dba5b747a96f33aecbda71d99f628f313f022b442aabe6acc7262
+          Column 5 (ct): ce53c678303fa3e5678b3f614d1daeffc31e32137844b42b46546183bc8bb3d8
+          Column 7 (zip): 95113
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 338
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Dave
+          Column 3 (ln): 4529c7c051c51fe91a8bc359c6f2c8d5610a312a6180d280b82a54bd41af1a58
+          Column 4 (dob): 02/12/1980
+          Column 5 (ct): de19c97d557a0e8a8cb2eb074915a22154e5f7606bd248aaf4ae6d24782f1409
+          Column 7 (zip): 1336ffa791cc6c6fa51c8613fa3db49a48157100345cb4cb3259727a6ce5d527
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 16.66
+
+Row 340
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): vumuvvfcom_1472790681@tfbnw.net
+          Column 1 (phone): 15526019353
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 1865e4f9be9639fc76d7d4da8ee25eaa7421f6837accb67516937e69469ea7e4
+          Column 6 (st): District of Columbia
+          Column 7 (zip): 81efd660a2810b480af90cf521cac5f72ca8f1f6c3d0a2130f4e9de456097fbb
+          Column 9 (not mapped): 785.89
+
+Row 341
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19934345009
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): Massachusetts
+          Column 8 (country): US
+          Column 9 (not mapped): 128.56
+
+Row 342
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): cuwgjknwny_1472791149@tfbnw.net
+[INVALID] Column 4 (dob): f4795c93928be9ba0072e9c1320a986c3fc2acb772b64d85d764b9caa8ee0f0d
+          Column 7 (zip): 9de3888231a1021acddcaa006b2f2a1ead5e245ae44a6b50e997afa9371e081e
+          Column 9 (not mapped): 524.94
+
+Row 347
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19991908254
+          Column 3 (ln): Machadoman
+[INVALID] Column 4 (dob): 38e98fc45edfca592ddeff36c0f93110f709e81548eeb77c493d1cf3555a7330
+          Column 5 (ct): Stanford
+          Column 6 (st): California
+          Column 7 (zip): 94305
+          Column 8 (country): US
+          Column 9 (not mapped): 582.90
+
+Row 348
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 3 (ln): Mallozziman
+[INVALID] Column 4 (dob): 65f3c7f28dd38f07eee4c0357d589c5c354112546962b7a7f06aac48d3948dbf
+          Column 6 (st): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 9 (not mapped): 779.54
+
+Row 351
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 4f7d5afbd838b26c949e119f4f73516906999583dda40457698ab1bd34fd83bf
+          Column 2 (fn): 254bb97b57f12e1608fefc4517de768427b2fd6d2cffbbfcbc09f3c818198d5f
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): 94025
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 442.95
+
+Row 352
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 1786250b66b7d221c1dc2a102530baf9d3de94f05597da75acbc445533791877
+          Column 1 (phone): 15531704136
+          Column 2 (fn): 6915771be1c5aa0c886870b6951b03d7eafc121fea0e80a5ea83beb7c449f4ec
+          Column 3 (ln): Mallozziman
+[INVALID] Column 4 (dob): 59301823abd8536b7eb3291d91d11ab77beafb36b382c89dc15d9e27a90a8045
+          Column 5 (ct): 8760663bb25fa79f35c2c14fb9c6bcbe444a8c938491cd24fe684a7056c9dbc4
+          Column 8 (country): US
+          Column 9 (not mapped): 716.00
+
+Row 355
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): bmiqjjmgav_1472790523@tfbnw.net
+[INVALID] Column 4 (dob): c28f5f3237eefec4d15344e728fea9d81381dcf6bca7372684bc72c11f56f463
+          Column 6 (st): California
+          Column 7 (zip): 95113
+          Column 9 (not mapped): 5.80
+
+Row 356
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 4b20d223508d40f7c7b5a2cb382540076da8b4b727c23c35ac04e19f1b5bd591
+          Column 1 (phone): 15551695478
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Philadelphia
+          Column 6 (st): Pennsylvania
+          Column 7 (zip): 19104
+          Column 9 (not mapped): 12.82
+
+Row 358
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 498.33
+
+Row 361
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 2 (fn): Not
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): US
+          Column 9 (not mapped): 335.58
+
+Row 366
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 7 (zip): 94025
+          Column 9 (not mapped): 659.64
+
+Row 369
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 19910410366
+          Column 3 (ln): Rumblewitz
+          Column 4 (dob): 12/19/1980
+          Column 5 (ct): Menlo Park
+          Column 9 (not mapped): 661.10
+
+Row 371
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 9 (not mapped): -23.40
+
+Row 373
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (phone): 4f7d5afbd838b26c949e119f4f73516906999583dda40457698ab1bd34fd83bf
+          Column 2 (fn): Not
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): US
+
+Row 376
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ktsvdmbatp_1472791211@tfbnw.net
+          Column 2 (fn): Patricia
+          Column 3 (ln): Carrierosen
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): San Jose
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 9 (not mapped): 778.11
+
+Row 378
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Not
+          Column 3 (ln): Exist
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): -117.55
+
+Row 385
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Sandra
+          Column 3 (ln): 695bb56374a25130132c2e967073a76dbd4b08680398a944cb20f3d93af56612
+[INVALID] Column 4 (dob): 721e2ca616008607b0ba04893dda8c647ec0b07276cb7006daf3c2fe1a0247f8
+          Column 5 (ct): Menlo Park
+          Column 6 (st): California
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 111.76
+
+Row 386
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): mwxblxydls_1472790660@tfbnw.net
+          Column 3 (ln): Valtchanovsen
+[INVALID] Column 4 (dob): 6274449fdb28e7bf29a95c15381e2eff20e4dd84a96e282d58440da0db12f7e8
+          Column 5 (ct): ce53c678303fa3e5678b3f614d1daeffc31e32137844b42b46546183bc8bb3d8
+          Column 7 (zip): 95113
+          Column 8 (country): US
+
+Row 401
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 9 (not mapped): 678.27
+
+Row 405
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): a5c595a7291f4d7c45ddc87d5bb7aa3fdb0d13231cdc213432db37907ed8fd33
+          Column 2 (fn): Ruth
+          Column 3 (ln): 8f3077c76319dc5b306ba20b02282a420d26e73e03bbf205893c91c5e707e397
+[INVALID] Column 4 (dob): 0101e0b86bd4ab72f1df72e829b51cce8835505296547901e7b137cd89627e54
+          Column 5 (ct): Los Angeles
+          Column 7 (zip): 90001
+          Column 8 (country): US
+          Column 9 (not mapped): 299.18
+
+Row 412
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): iwwnmiktty_1472791107@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Ruth
+          Column 5 (ct): Philadelphia
+          Column 9 (not mapped): 15.08
+
+Row 418
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): bmiqjjmgav_1472790523@tfbnw.net
+          Column 1 (phone): 19991871751
+[INVALID] Column 4 (dob): c28f5f3237eefec4d15344e728fea9d81381dcf6bca7372684bc72c11f56f463
+          Column 5 (ct): San Jose
+          Column 9 (not mapped): 154.48
+
+Row 419
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19981988592
+[INVALID] Column 4 (dob): 6274449fdb28e7bf29a95c15381e2eff20e4dd84a96e282d58440da0db12f7e8
+          Column 6 (st): California
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -13.87
+
+Row 420
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 57.96
+
+Row 421
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 4 (dob): a7fd10cf2067b8034b074bd23a763298f067c78f5d231d750fdb3f6cca9e9c4e
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 8 (country): US
+          Column 9 (not mapped): 25.12
+
+Row 423
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 9059082bfbe4c3c35e3bfba66d6744d09ab3914ecaba0ed0a3757b647011d01c
+          Column 2 (fn): b78469618fb15871b9508defd1ff70014747c1f918e4185425c5f2bbea2a4e5d
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 7 (zip): 94115
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -24.26
+
+Row 424
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Menlo Park
+          Column 8 (country): US
+          Column 9 (not mapped): 399.97
+
+Row 426
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): zkjiwuiwbd_1472791087@tfbnw.net
+          Column 3 (ln): Watzmanstein
+[INVALID] Column 4 (dob): fbe6ff61a3b62abbab70e2318b276fc806986ac2fd4548847ed70dc90187595b
+          Column 5 (ct): New York
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 703.66
+
+Row 427
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): gwmlwjvrph_1472790632@tfbnw.net
+          Column 2 (fn): Tom
+          Column 3 (ln): Wongson
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): Georgia
+          Column 7 (zip): 30301
+          Column 9 (not mapped): -71.41
+
+Row 428
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): zanztizbmx_1472790350@tfbnw.net
+          Column 2 (fn): Richard
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): California
+          Column 7 (zip): 94025
+          Column 9 (not mapped): -82.71
+
+Row 430
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Charlie
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): San Francisco
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 9 (not mapped): 351.73
+
+Row 432
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): hburenskxv_1472791009@tfbnw.net
+          Column 2 (fn): Patricia
+          Column 3 (ln): a3a10b416d7703ff3298ea35297b5a4a3392bc2bc84d7cbf4bd47e192bcbdb99
+[INVALID] Column 4 (dob): d2833b2a640584e4287dd27874eff31cfaf86afe3aff36c23502c667345b3d9c
+          Column 9 (not mapped): 372.16
+
+Row 433
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Barbara
+[INVALID] Column 4 (dob): 3cabc105b46ffbcb62042615f74b27c499357864f15a55d32c671908c88be175
+          Column 5 (ct): San Francisco
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 8 (country): US
+          Column 9 (not mapped): 376.69
+
+Row 434
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): rfwesmcixt_1472790449@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): 1ed2b38c11c70aa02adedf9fe807482472daef00689af3eeb6141346ec3f3c70
+          Column 6 (st): California
+          Column 7 (zip): 94115
+          Column 8 (country): US
+          Column 9 (not mapped): -6.75
+
+Row 441
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Jennifer
+          Column 3 (ln): Sorgstein
+[INVALID] Column 4 (dob): e338e636ee2a96d4a87e4f8888e48836343f4824ac34f79a307ad24c60c64e2c
+          Column 5 (ct): San Francisco
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 94115
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 199.43
+
+Row 444
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Maria
+          Column 3 (ln): f01d13638629378fc74ab79bf2429d7d7fd39714ecf6a1de387a32e578656644
+[INVALID] Column 4 (dob): 6274449fdb28e7bf29a95c15381e2eff20e4dd84a96e282d58440da0db12f7e8
+          Column 6 (st): California
+          Column 7 (zip): 95113
+          Column 9 (not mapped): 783.67
+
+Row 451
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 9e0cd3be65f3d4529ae44195649fb41dce7bd97a68fdc4ef14c5ef838a6a4173
+          Column 3 (ln): Xustein
+[INVALID] Column 4 (dob): 4f8ead7825bb3267759a4c4e1bf85b1cac8753525fa5d3fbeb2610ad967d0360
+          Column 5 (ct): San Francisco
+          Column 9 (not mapped): 317.91
+
+Row 452
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): f3a5dc5e5746160a50bce6cecc8e0a0dd15443ba69a9635da6face344e5ebe01
+          Column 1 (phone): 15567971089
+          Column 3 (ln): 30157606be0335d269118c839157556d986654800f5000420e0d71ceff38a830
+[INVALID] Column 4 (dob): 5ae6233ac032a345823d7ea37133746b4341d29f952b84d746796d34169bddcb
+          Column 5 (ct): San Francisco
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 94115
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 29.86
+
+Row 460
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 70d18ac0d494487b44e16efc3adba45229243c8ca0c0baaf9cb9c4efab030f06
+          Column 2 (fn): Barbara
+          Column 3 (ln): Moidusky
+[INVALID] Column 4 (dob): f4795c93928be9ba0072e9c1320a986c3fc2acb772b64d85d764b9caa8ee0f0d
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+
+Row 461
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): pxstcjexaq_1472791170@tfbnw.net
+          Column 2 (fn): Yohann
+          Column 3 (ln): Huistein
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 3c66157844fa8ce7e9b67b0022383d7709ba2b30f8306d3c9b2eceb2cd91e4dc
+          Column 6 (st): Massachusetts
+          Column 7 (zip): 02117
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 592.92
+
+Row 462
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 4f7d5afbd838b26c949e119f4f73516906999583dda40457698ab1bd34fd83bf
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 9 (not mapped): 416.78
+
+Row 467
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19973447166
+          Column 2 (fn): Harry
+[INVALID] Column 4 (dob): fcb83d8d20e81315da1caab933f58426eca32dc6844683c81086bff0acf6a3a6
+          Column 5 (ct): Menlo Park
+          Column 6 (st): California
+          Column 7 (zip): 94025
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 705.96
+
+Row 468
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): zanztizbmx_1472790350@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Richard
+          Column 3 (ln): 0d57a0cf12befd6b32b5886956e90cfbff52737cfa0133d147bfce20c16f5fea
+          Column 5 (ct): Menlo Park
+          Column 9 (not mapped): 23.09
+
+Row 473
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): qtoxdpqwog_1472791316@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Joe
+          Column 3 (ln): Fotinatosescu
+          Column 4 (dob): 01/03/1980
+          Column 5 (ct): Philadelphia
+          Column 6 (st): Pennsylvania
+          Column 7 (zip): 19104
+          Column 8 (country): US
+          Column 9 (not mapped): 549.04
+
+Row 474
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): mngdayitnh_1472791254@tfbnw.net
+          Column 2 (fn): John
+[INVALID] Column 4 (dob): 9d5199bd55aedc2fc2bafa28903d6ad06de0287b184c45e41b6b7b1e06805cb8
+          Column 6 (st): Georgia
+          Column 9 (not mapped): 246.78
+
+Row 475
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 4f7d5afbd838b26c949e119f4f73516906999583dda40457698ab1bd34fd83bf
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 265.52
+
+Row 478
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Richard
+          Column 4 (dob): 06/26/1980
+          Column 5 (ct): d3ecc5b7fe38ffd3397473362f2c42321fb82deb23083ed13cf6f20320ab6c92
+          Column 6 (st): 1c18bc2214f67ae19bbaa640fc776f5a4a38c4021d421cdd8cd3d2bcad23da93
+          Column 7 (zip): 429887cf0e9ca7edfb54c56c7ecdfdd6f0d38b21c1ac4e83947c74f0c9f05a07
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -132.09
+
+Row 481
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Charlie
+          Column 3 (ln): Landaywitz
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 9 (not mapped): 484.08
+
+Row 489
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): lvpgozxrhd_1472790373@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Mary
+          Column 3 (ln): dbf330e2b447a408dc5dc99e9dd554580675ae3bf060b87897323f055c0082aa
+[INVALID] Column 4 (dob): 61fad570609d21233a2b437372d846af0d433685c70ec1651a2901e154c437a8
+          Column 6 (st): California
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 492
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): azpopgwenp_1472790674@tfbnw.net
+          Column 1 (phone): fda614b57414e7fa8a9dbc6459cd1466dcd927a0b318aa230c1516902613de18
+[INVALID] Column 4 (dob): 80a617dd5bbbccd5f70ebbe6c5c7c8ea974f8c26e3ad108ecd8d60c15b36ec22
+          Column 5 (ct): New York
+          Column 8 (country): US
+          Column 9 (not mapped): 534.69
+
+Row 500
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): CA
+          Column 8 (country): US
+          Column 9 (not mapped): 306.38
+
+Row 504
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 4 (dob): 65f3c7f28dd38f07eee4c0357d589c5c354112546962b7a7f06aac48d3948dbf
+          Column 5 (ct): New York
+          Column 6 (st): New York
+          Column 7 (zip): 10002
+          Column 9 (not mapped): 732.01
+
+Row 506
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ofoiijzcwi_1472791114@tfbnw.net
+          Column 1 (phone): 15549907630
+          Column 2 (fn): Nancy
+          Column 3 (ln): Talason
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): d3ecc5b7fe38ffd3397473362f2c42321fb82deb23083ed13cf6f20320ab6c92
+          Column 8 (country): US
+
+Row 507
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 17fb5514706561f2f19ef5febb552183d10b5c2512693775bbbf14d56703609c
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 4 (dob): 05/07/1980
+          Column 6 (st): California
+          Column 7 (zip): 95113
+          Column 8 (country): US
+          Column 9 (not mapped): 548.49
+
+Row 511
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): 254bb97b57f12e1608fefc4517de768427b2fd6d2cffbbfcbc09f3c818198d5f
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 9 (not mapped): -87.16
+
+Row 512
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+
+Row 515
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19991871751
+          Column 3 (ln): 5926be2991584a94b5794b09cb1feafaeb4eb072a98bd5d9ed0e3b22621ccd9a
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): California
+          Column 7 (zip): 95113
+          Column 8 (country): US
+          Column 9 (not mapped): 699.50
+
+Row 517
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 3 (ln): Huistein
+[INVALID] Column 4 (dob): a4d2d4ab161312a2ed986112253906212cfe38aaa4d550bcd195675aefac57b6
+          Column 6 (st): 8818439acbcf3df08a17b89b37053f0f0aa399150df725274364d597bcdf4116
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 519
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Richard
+          Column 3 (ln): ea3d661096dd3a84328ecffbfd4c280356594142427ad0ed296f43ad1bdc6861
+          Column 5 (ct): d3ecc5b7fe38ffd3397473362f2c42321fb82deb23083ed13cf6f20320ab6c92
+          Column 6 (st): Georgia
+          Column 7 (zip): 30301
+          Column 9 (not mapped): 769.62
+
+Row 523
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 3 (ln): Exist
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 8 (country): US
+
+Row 526
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Not
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): 376.95
+
+Row 530
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 15538770920
+          Column 3 (ln): eb7bafde60331e6e1d9110a8707f162fbc7b41d610985f73b35b751ba62689e0
+          Column 5 (ct): Menlo Park
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): US
+          Column 9 (not mapped): 114.70
+
+Row 532
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): b5579b68c29516478fd406a1dc6b7269bfa67a870b83a4814655de4218af3553
+          Column 2 (fn): 56e1239485139d3d0564c10a8cb8e7dbb6c75b2d744d49073d07c4208f7b7941
+[INVALID] Column 4 (dob): 5ae6233ac032a345823d7ea37133746b4341d29f952b84d746796d34169bddcb
+          Column 5 (ct): 1a6bd4d9d79dc0a79b53795c70d3349fa9e38968a3fbefbfe8783efb1d2b6aac
+          Column 6 (st): California
+          Column 7 (zip): 6a023c195898ffbbf2ff20e9879b190af7da850f55853ff713f2955187f2eb29
+          Column 9 (not mapped): 272.17
+
+Row 535
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Not
+          Column 3 (ln): Exist
+          Column 4 (dob): 01/20/1980
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): 94025
+          Column 9 (not mapped): -83.78
+
+Row 536
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ee538a6bebde1b1016855291a5fa7c49cb14ea7f52572d5a431cf2d9557870a5
+          Column 1 (phone): 15525839493
+          Column 2 (fn): e1608f75c5d7813f3d4031cb30bfb786507d98137538ff8e128a6ff74e84e643
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): 1c18bc2214f67ae19bbaa640fc776f5a4a38c4021d421cdd8cd3d2bcad23da93
+          Column 7 (zip): 30301
+          Column 8 (country): US
+          Column 9 (not mapped): -108.73
+
+Row 537
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15509920902
+          Column 2 (fn): b9dd960c1753459a78115d3cb845a57d924b6877e805b08bd01086ccdf34433c
+          Column 3 (ln): 8f3077c76319dc5b306ba20b02282a420d26e73e03bbf205893c91c5e707e397
+[INVALID] Column 4 (dob): 37510fcf500eb14d3c54da53e66b668c1f947a52f1ddb5c80f5c553ba95a0ede
+          Column 5 (ct): San Francisco
+          Column 6 (st): California
+          Column 7 (zip): 94115
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -43.54
+
+Row 538
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 19945916763
+          Column 4 (dob): 09/04/1980
+          Column 6 (st): California
+          Column 7 (zip): 90001
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -115.62
+
+Row 548
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): hrnreqpdaq_1472791302@tfbnw.net
+[INVALID] Column 4 (dob): 2c6ea69b39bfe75fa17ee6eaff7e1b8f2418cea912aeb0f8ffcfe797a07cd3d0
+          Column 5 (ct): Washington
+          Column 6 (st): ad30e7e2a1394b49d4ade6500cf199a55d652e274f594f29c8fecd3363ab654a
+          Column 9 (not mapped): 667.47
+
+Row 550
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): vrakqyaxkb_1472790393@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 4 (dob): 01/18/1980
+          Column 6 (st): California
+          Column 7 (zip): 9de3888231a1021acddcaa006b2f2a1ead5e245ae44a6b50e997afa9371e081e
+          Column 9 (not mapped): 322.04
+
+Row 551
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 9 (not mapped): 687.37
+
+Row 552
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): Charlie
+          Column 4 (dob): 09/18/1980
+          Column 5 (ct): San Francisco
+          Column 7 (zip): 94115
+          Column 9 (not mapped): -165.26
+
+Row 553
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): mimrsridoz_1472790625@tfbnw.net
+          Column 1 (phone): 19956928199
+          Column 2 (fn): Elizabeth
+[INVALID] Column 4 (dob): 1893a297d6f3b9516b9e52b4c04d603d3692f772e13afb94d77c18b448b46544
+          Column 6 (st): Pennsylvania
+          Column 7 (zip): 19104
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 545.36
+
+Row 556
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): CA
+          Column 8 (country): US
+
+Row 558
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 3 (ln): Occhinoson
+          Column 5 (ct): San Jose
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+
+Row 560
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): CA
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 9 (not mapped): 412.57
+
+Row 572
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15572090325
+          Column 2 (fn): Bob
+          Column 3 (ln): fde888ee3fc244af69f093d20c31f9747f36f220bf0d7df1ba6693263e71b5fa
+[INVALID] Column 4 (dob): 7122bdbaa29277897ed4689e7225ef5788f6ec6ccf4643c69c2c0012f623674f
+          Column 5 (ct): ce53c678303fa3e5678b3f614d1daeffc31e32137844b42b46546183bc8bb3d8
+          Column 8 (country): US
+
+Row 574
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): bmiqjjmgav_1472790523@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): 9ce8db922a8f4a7abd859adee70bd8b7a63321265487da54cf4bed6a69eb3e1b
+          Column 3 (ln): 5926be2991584a94b5794b09cb1feafaeb4eb072a98bd5d9ed0e3b22621ccd9a
+          Column 4 (dob): 03/24/1980
+          Column 5 (ct): San Jose
+          Column 6 (st): California
+          Column 7 (zip): 95113
+          Column 9 (not mapped): 389.14
+
+Row 576
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 6d8b6896bbdfe7743f7f15156d2395f1c8f7ed818c519421d150dec450540927
+          Column 3 (ln): Smithsky
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): California
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): -126.52
+
+Row 580
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): 28ebbe3d74761c433be8d043182fc21e7ed4afeee2c01b8c54bf6f8f78cdc0a1
+[INVALID] Column 4 (dob): 4f8ead7825bb3267759a4c4e1bf85b1cac8753525fa5d3fbeb2610ad967d0360
+          Column 5 (ct): San Francisco
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 94115
+          Column 8 (country): US
+          Column 9 (not mapped): -0.30
+
+Row 583
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Mark
+[INVALID] Column 4 (dob): 017f6b1b3e5d74e73ace3fc5cc2a3ff877d38b39a79f859d07531a42c116ad9a
+          Column 5 (ct): de19c97d557a0e8a8cb2eb074915a22154e5f7606bd248aaf4ae6d24782f1409
+          Column 6 (st): California
+          Column 7 (zip): 94305
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 589
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 15542039249
+          Column 2 (fn): John
+          Column 3 (ln): Chaison
+          Column 4 (dob): 05/22/1980
+          Column 5 (ct): Philadelphia
+          Column 7 (zip): 19104
+          Column 9 (not mapped): 414.80
+
+Row 590
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): ed62c6fd9f1b99007f2f0e108e1c5c97184fa69f3c43feb8038b389d80896476
+          Column 3 (ln): Valtchanov
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Boston
+          Column 6 (st): Massachusetts
+          Column 8 (country): US
+          Column 9 (not mapped): 380.57
+
+Row 593
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Mary
+          Column 3 (ln): Mallozziman
+          Column 4 (dob): 03/07/1980
+          Column 9 (not mapped): 230.23
+
+Row 598
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): de15739730984d1f92a6086de238980947f680103caf3920b81d7f13bf0b8cda
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Los Angeles
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 90001
+          Column 8 (country): US
+          Column 9 (not mapped): 468.12
+
+Row 601
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): caeywsjkoo_1472791074@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Ruth
+          Column 3 (ln): 971e8007f126a77099523bb0870e62b6ad03757af77c10de0b78ca7f715861cd
+          Column 5 (ct): San Jose
+          Column 6 (st): California
+
+Row 602
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 648.99
+
+Row 609
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): hbfnmztlff_1472790577@tfbnw.net
+          Column 2 (fn): Donna
+          Column 3 (ln): 821837f5cb442c79177d3dd9c84f96af9dd40cac6c4ffc063b38a4097b5d6d60
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 257.19
+
+Row 610
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): 254bb97b57f12e1608fefc4517de768427b2fd6d2cffbbfcbc09f3c818198d5f
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): CA
+
+Row 611
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): azpopgwenp_1472790674@tfbnw.net
+          Column 1 (phone): 19966060020
+          Column 2 (fn): Susan
+[INVALID] Column 4 (dob): 80a617dd5bbbccd5f70ebbe6c5c7c8ea974f8c26e3ad108ecd8d60c15b36ec22
+          Column 6 (st): New York
+          Column 7 (zip): 10002
+          Column 8 (country): US
+          Column 9 (not mapped): -140.54
+
+Row 618
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19982583168
+          Column 2 (fn): 119c9ae6f9ca741bd0a76f87fba0b22cab5413187afb2906aa2875c38e213603
+[INVALID] Column 4 (dob): 79a552fecf4ab93c15f7ace9239ee7d867da33297af6427cf2fad6d939cfa38f
+          Column 5 (ct): Washington
+          Column 6 (st): District of Columbia
+          Column 7 (zip): 81efd660a2810b480af90cf521cac5f72ca8f1f6c3d0a2130f4e9de456097fbb
+          Column 8 (country): US
+
+Row 623
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ujjypckwro_1472791163@tfbnw.net
+          Column 2 (fn): Yohann
+          Column 3 (ln): fc720a52edb28e16cac81823a4c8beff85af8264ceda65892637b2b55f53a5ff
+[INVALID] Column 4 (dob): 8470b79232520481fc528164ae4e5f2ed21681a32d3b339adc32905a0d81d75f
+          Column 5 (ct): Washington
+          Column 6 (st): District of Columbia
+          Column 9 (not mapped): 84.24
+
+Row 625
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Bob
+          Column 3 (ln): Landayson
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Boston
+          Column 6 (st): 8818439acbcf3df08a17b89b37053f0f0aa399150df725274364d597bcdf4116
+          Column 9 (not mapped): -58.38
+
+Row 629
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): zanztizbmx_1472790350@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Richard
+          Column 6 (st): California
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 9 (not mapped): -65.02
+
+Row 632
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 053909b8ff1c4ff2e7e985bf156f318898be927eb9833d3f06b6e5a5325ab2e3
+          Column 1 (phone): 15527023654
+          Column 2 (fn): Ruth
+[INVALID] Column 4 (dob): 37510fcf500eb14d3c54da53e66b668c1f947a52f1ddb5c80f5c553ba95a0ede
+          Column 5 (ct): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 6 (st): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 8 (country): US
+          Column 9 (not mapped): 631.38
+
+Row 635
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): mwxblxydls_1472790660@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Maria
+          Column 3 (ln): f01d13638629378fc74ab79bf2429d7d7fd39714ecf6a1de387a32e578656644
+          Column 4 (dob): 01/26/1980
+          Column 5 (ct): ce53c678303fa3e5678b3f614d1daeffc31e32137844b42b46546183bc8bb3d8
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -44.78
+
+Row 637
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ujjypckwro_1472791163@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): Wisemansen
+[INVALID] Column 4 (dob): 8470b79232520481fc528164ae4e5f2ed21681a32d3b339adc32905a0d81d75f
+          Column 6 (st): District of Columbia
+          Column 7 (zip): 81efd660a2810b480af90cf521cac5f72ca8f1f6c3d0a2130f4e9de456097fbb
+
+Row 644
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19939409090
+[INVALID] Column 4 (dob): 652ac7de68c485b9e4b305579dbe4c51c7702d128040b6db5572674514261cd5
+          Column 5 (ct): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 6 (st): New York
+          Column 7 (zip): 10002
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 416.75
+
+Row 647
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): urygdlrioy_1472791039@tfbnw.net
+          Column 2 (fn): 78675cc176081372c43abab3ea9fb70c74381eb02dc6e93fb6d44d161da6eeb3
+[INVALID] Column 4 (dob): 67208b96b85db48e78cfd40403e2dc52643330301b3e5d0534a67b05923e32fa
+          Column 5 (ct): 5b406272e989b15c0cc821d39f489f1e230c6557a3e0216b156b68108d41fb28
+          Column 6 (st): Pennsylvania
+          Column 9 (not mapped): -140.37
+
+Row 649
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): lvpgozxrhd_1472790373@tfbnw.net
+          Column 3 (ln): Shepardsen
+[INVALID] Column 4 (dob): 61fad570609d21233a2b437372d846af0d433685c70ec1651a2901e154c437a8
+          Column 5 (ct): Stanford
+          Column 7 (zip): 94305
+          Column 8 (country): US
+
+Row 650
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 53f041a730cff8d8e02969f18fd27a410655dfc99917b249f52b629dd66901e9
+[INVALID] Column 4 (dob): 6274449fdb28e7bf29a95c15381e2eff20e4dd84a96e282d58440da0db12f7e8
+          Column 5 (ct): San Jose
+          Column 8 (country): US
+          Column 9 (not mapped): 601.13
+
+Row 651
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): Savil
+          Column 4 (dob): 03/09/1980
+          Column 5 (ct): Menlo Park
+          Column 6 (st): California
+          Column 8 (country): US
+          Column 9 (not mapped): 379.73
+
+Row 659
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 34b19565721c96d627cae0a7f0d5b1c8220fa6bd2879939e39900b045b631046
+          Column 2 (fn): 78675cc176081372c43abab3ea9fb70c74381eb02dc6e93fb6d44d161da6eeb3
+[INVALID] Column 4 (dob): 795e3c791ceecb024916092d2f8d40f731de5b11d8dd675a3f1e7a9911c43a1d
+          Column 5 (ct): Atlanta
+          Column 7 (zip): 30301
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 460.00
+
+Row 662
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): f48b4368bc43db3b0e40f97003bd4b85c383289ef4a21433c64bc0cf8e248603
+          Column 3 (ln): Watzmanstein
+[INVALID] Column 4 (dob): fbe6ff61a3b62abbab70e2318b276fc806986ac2fd4548847ed70dc90187595b
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 310.95
+
+Row 667
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 19982583168
+          Column 3 (ln): d3c7dfb2c54747f81cf3186e84510307e4f2867010480684e74dc101eafd1cdf
+[INVALID] Column 4 (dob): 79a552fecf4ab93c15f7ace9239ee7d867da33297af6427cf2fad6d939cfa38f
+          Column 7 (zip): 20003
+          Column 8 (country): US
+
+Row 670
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): jvcwhqtfph_1472790618@tfbnw.net
+[INVALID] Column 4 (dob): f00bdf691968da40d2abd69c3b829454f07775675e23ecc15fd9b520d1832028
+          Column 5 (ct): 3c66157844fa8ce7e9b67b0022383d7709ba2b30f8306d3c9b2eceb2cd91e4dc
+          Column 6 (st): 8818439acbcf3df08a17b89b37053f0f0aa399150df725274364d597bcdf4116
+          Column 7 (zip): 02117
+          Column 9 (not mapped): 287.03
+
+Row 672
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 5 (ct): San Francisco
+          Column 6 (st): California
+          Column 7 (zip): 94115
+          Column 8 (country): US
+          Column 9 (not mapped): 644.35
+
+Row 673
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 3 (ln): c9386aeba92e5f9c7380ff2dc67388acda827355e876cb5a4b99c73a59773439
+[INVALID] Column 4 (dob): 6aa8a0602f6e63e188d8f28a4b6a9a7a9ddc6deae7258840791462b6e8a4092d
+          Column 5 (ct): Los Angeles
+          Column 7 (zip): 90001
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -96.24
+
+Row 674
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): jtwzamolsm_1472790653@tfbnw.net
+          Column 2 (fn): Barbara
+          Column 3 (ln): a0a6df0d44c07c5b474b5aacd168c4c30d7f3f9eeea0cb797c5d3c37c2711291
+[INVALID] Column 4 (dob): 3cabc105b46ffbcb62042615f74b27c499357864f15a55d32c671908c88be175
+          Column 5 (ct): San Francisco
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 94115
+          Column 8 (country): US
+          Column 9 (not mapped): 699.99
+
+Row 675
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): whcqvlairh_1472790455@tfbnw.net
+          Column 1 (phone): 83d0096be55254d1bf8824f8c47aedabbb9a5fd107551a21e69da05ab4ef6b01
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): California
+          Column 7 (zip): 95113
+
+Row 676
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): US
+          Column 9 (not mapped): -39.15
+
+Row 678
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): 904294d8c54b1c63e40832fa1d95bcde534b310df6d42882ce4baf28f3e0184a
+          Column 3 (ln): Landaysen
+          Column 7 (zip): 81efd660a2810b480af90cf521cac5f72ca8f1f6c3d0a2130f4e9de456097fbb
+          Column 8 (country): US
+          Column 9 (not mapped): 528.16
+
+Row 682
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): lvpgozxrhd_1472790373@tfbnw.net
+          Column 3 (ln): dbf330e2b447a408dc5dc99e9dd554580675ae3bf060b87897323f055c0082aa
+[INVALID] Column 4 (dob): 61fad570609d21233a2b437372d846af0d433685c70ec1651a2901e154c437a8
+          Column 8 (country): US
+          Column 9 (not mapped): 129.57
+
+Row 684
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): CA
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -173.19
+
+Row 689
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): Ruth
+          Column 3 (ln): Bao
+          Column 6 (st): 8fe8a0a0604f699ee063a1dba1ec5d236de9cfb48734885de208bb8db49ece26
+          Column 7 (zip): 19104
+          Column 9 (not mapped): 235.96
+
+Row 694
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 1-987-654-3210
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 8 (country): US
+          Column 9 (not mapped): 634.22
+
+Row 698
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): yicewssiio_1472791128@tfbnw.net
+          Column 1 (phone): 19923863423
+          Column 3 (ln): Wisemansky
+[INVALID] Column 4 (dob): d809865bc350a0a51ebf32f70c6b0cf49f62642080b7bbc1849ceaca8f4ff2f1
+          Column 6 (st): California
+          Column 7 (zip): 94305
+          Column 9 (not mapped): 702.44
+
+Row 706
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15574525449
+          Column 2 (fn): 61bffea9215f65164ad18b45aff1436c0c165d0d5dd2087ef61b4232ba6d2c1a
+          Column 3 (ln): Ricesky
+[INVALID] Column 4 (dob): d7d0ba7f340c302042772454448ae8846f3bd763fbc4b3ffc6db9324cae26112
+          Column 6 (st): Georgia
+          Column 9 (not mapped): 221.65
+
+Row 711
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): aieegsecku_1472791288@tfbnw.net
+          Column 2 (fn): Ruth
+[INVALID] Column 4 (dob): 0101e0b86bd4ab72f1df72e829b51cce8835505296547901e7b137cd89627e54
+          Column 5 (ct): Los Angeles
+          Column 6 (st): California
+          Column 7 (zip): 9de3888231a1021acddcaa006b2f2a1ead5e245ae44a6b50e997afa9371e081e
+          Column 9 (not mapped): 193.90
+
+Row 712
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): bc598456661d7bf077ba8f40e9a5d17dbdd91801c7c2fb1975df4af7d653f9ae
+          Column 2 (fn): b9dd960c1753459a78115d3cb845a57d924b6877e805b08bd01086ccdf34433c
+          Column 3 (ln): c5e033772a070ea7b4a4e6bc1b242019b5e78abf18b5aa398bc667c8b04f87c9
+[INVALID] Column 4 (dob): 04cafe79f5bef00a6178784b85a1082c1731ab83680e8ab12f4037b33fab960f
+          Column 5 (ct): San Francisco
+          Column 6 (st): California
+          Column 7 (zip): 6a023c195898ffbbf2ff20e9879b190af7da850f55853ff713f2955187f2eb29
+          Column 8 (country): US
+          Column 9 (not mapped): 708.07
+
+Row 718
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 4 (dob): 67208b96b85db48e78cfd40403e2dc52643330301b3e5d0534a67b05923e32fa
+          Column 8 (country): US
+          Column 9 (not mapped): 448.78
+
+Row 721
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): yicewssiio_1472791128@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): Wisemansky
+          Column 5 (ct): de19c97d557a0e8a8cb2eb074915a22154e5f7606bd248aaf4ae6d24782f1409
+          Column 6 (st): California
+          Column 7 (zip): 94305
+          Column 8 (country): US
+          Column 9 (not mapped): 738.59
+
+Row 723
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 2 (fn): 94aec9fbed989ece189a7e172c9cf41669050495152bc4c1dbf2a38d7fd85627
+          Column 3 (ln): f01d13638629378fc74ab79bf2429d7d7fd39714ecf6a1de387a32e578656644
+          Column 6 (st): California
+          Column 9 (not mapped): -39.22
+
+Row 727
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 0467f05cf9c677fba45aea42031913b60c07b673e9cbbef2705a9b028d1865dd
+          Column 1 (phone): 368d5cb9a8151c5d0bc8d63dd90d370c20d7bfaff9b4675f036257d6107ac775
+          Column 2 (fn): Dorothy
+          Column 3 (ln): 26087e0854ebce7958f13db1e249b27c3181fcbc83c98f0f86e52f8bb591c7cb
+[INVALID] Column 4 (dob): 755fe92f0f4bfa29d195c890ee391a6c6a2b4b5f451aaf283b408cadcc9dcece
+          Column 5 (ct): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 8 (country): US
+          Column 9 (not mapped): 128.04
+
+Row 728
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (phone): 4f7d5afbd838b26c949e119f4f73516906999583dda40457698ab1bd34fd83bf
+          Column 2 (fn): Not
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): US
+          Column 9 (not mapped): 428.57
+
+Row 730
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19968150825
+          Column 3 (ln): Goldmanman
+[INVALID] Column 4 (dob): c259a7a33a52ac6779e38fcaca493a78ed3571e4d18b6285414731b4829f9936
+          Column 7 (zip): 429887cf0e9ca7edfb54c56c7ecdfdd6f0d38b21c1ac4e83947c74f0c9f05a07
+          Column 8 (country): US
+          Column 9 (not mapped): 52.79
+
+Row 731
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): jtwzamolsm_1472790653@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Barbara
+          Column 4 (dob): 02/27/1980
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 704.30
+
+Row 738
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): 6915771be1c5aa0c886870b6951b03d7eafc121fea0e80a5ea83beb7c449f4ec
+          Column 4 (dob): 03/04/1980
+          Column 5 (ct): Stanford
+          Column 8 (country): US
+          Column 9 (not mapped): -190.39
+
+Row 739
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): jtwzamolsm_1472790653@tfbnw.net
+          Column 1 (phone): 19903635400
+          Column 2 (fn): Barbara
+[INVALID] Column 4 (dob): 3cabc105b46ffbcb62042615f74b27c499357864f15a55d32c671908c88be175
+          Column 8 (country): US
+          Column 9 (not mapped): 453.16
+
+Row 743
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): jtwzamolsm_1472790653@tfbnw.net
+          Column 3 (ln): Rumble
+[INVALID] Column 4 (dob): 3cabc105b46ffbcb62042615f74b27c499357864f15a55d32c671908c88be175
+          Column 5 (ct): San Francisco
+          Column 7 (zip): 6a023c195898ffbbf2ff20e9879b190af7da850f55853ff713f2955187f2eb29
+          Column 9 (not mapped): 784.79
+
+Row 745
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): John
+[INVALID] Column 4 (dob): 9d5199bd55aedc2fc2bafa28903d6ad06de0287b184c45e41b6b7b1e06805cb8
+          Column 5 (ct): Atlanta
+          Column 7 (zip): 429887cf0e9ca7edfb54c56c7ecdfdd6f0d38b21c1ac4e83947c74f0c9f05a07
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 746
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 1-987-654-3210
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 753
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): US
+          Column 9 (not mapped): 283.33
+
+Row 754
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): d13c9749e24637c6e197ee5cac3926612e279a6c0cea5d9b0ce39d8a5b67ffea
+          Column 1 (phone): 9dee7a398347e744f97e476615515a94b2a9e37abd2fde4a89ca66d0d5e1da71
+          Column 2 (fn): Donna
+[INVALID] Column 4 (dob): 2628be4398e3bad17a608aae6df627d07c92612624b925e2478c5dd9f91771f2
+          Column 6 (st): 8818439acbcf3df08a17b89b37053f0f0aa399150df725274364d597bcdf4116
+          Column 7 (zip): 02117
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 168.57
+
+Row 755
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): qtoxdpqwog_1472791316@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): 78675cc176081372c43abab3ea9fb70c74381eb02dc6e93fb6d44d161da6eeb3
+          Column 6 (st): Pennsylvania
+          Column 9 (not mapped): -9.33
+
+Row 756
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): erlnwikcap_1472790611@tfbnw.net
+          Column 1 (phone): b200e0f500ca2dc36896537549c11a534504fd0487b810e528a31ab1cacecd33
+          Column 2 (fn): Karen
+          Column 3 (ln): Landaysen
+[INVALID] Column 4 (dob): 67208b96b85db48e78cfd40403e2dc52643330301b3e5d0534a67b05923e32fa
+          Column 6 (st): District of Columbia
+          Column 8 (country): US
+
+Row 760
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): 254bb97b57f12e1608fefc4517de768427b2fd6d2cffbbfcbc09f3c818198d5f
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): CA
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 761
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 8 (country): US
+
+Row 769
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+[INVALID] Column 4 (dob): fcb83d8d20e81315da1caab933f58426eca32dc6844683c81086bff0acf6a3a6
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): -82.25
+
+Row 775
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3830ebfe71cb9b3363979a982809da80636bfaf0603f73d5a2c130aa01025401
+          Column 2 (fn): 78675cc176081372c43abab3ea9fb70c74381eb02dc6e93fb6d44d161da6eeb3
+[INVALID] Column 4 (dob): 67208b96b85db48e78cfd40403e2dc52643330301b3e5d0534a67b05923e32fa
+          Column 5 (ct): 5b406272e989b15c0cc821d39f489f1e230c6557a3e0216b156b68108d41fb28
+          Column 8 (country): US
+          Column 9 (not mapped): 140.92
+
+Row 780
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 8873700babbaf17b4999759748aecab7f497829c458526f0a6a0c72841c0f5fa
+          Column 1 (phone): 53f041a730cff8d8e02969f18fd27a410655dfc99917b249f52b629dd66901e9
+          Column 2 (fn): Maria
+[INVALID] Column 4 (dob): 6274449fdb28e7bf29a95c15381e2eff20e4dd84a96e282d58440da0db12f7e8
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 95113
+          Column 8 (country): US
+
+Row 781
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15574525449
+          Column 2 (fn): Richard
+[INVALID] Column 4 (dob): d7d0ba7f340c302042772454448ae8846f3bd763fbc4b3ffc6db9324cae26112
+          Column 6 (st): Georgia
+          Column 7 (zip): 429887cf0e9ca7edfb54c56c7ecdfdd6f0d38b21c1ac4e83947c74f0c9f05a07
+          Column 9 (not mapped): -199.92
+
+Row 784
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): jtwzamolsm_1472790653@tfbnw.net
+          Column 1 (phone): 19903635400
+          Column 2 (fn): Barbara
+[INVALID] Column 4 (dob): 3cabc105b46ffbcb62042615f74b27c499357864f15a55d32c671908c88be175
+          Column 5 (ct): San Francisco
+          Column 7 (zip): 6a023c195898ffbbf2ff20e9879b190af7da850f55853ff713f2955187f2eb29
+          Column 8 (country): US
+          Column 9 (not mapped): 332.42
+
+Row 786
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): fpolagfode_1472790482@tfbnw.net
+          Column 2 (fn): 1d78b370ad96e7a8091888d902360187bdea87ab6a4af003ec63c791894513ec
+[INVALID] Column 4 (dob): 7d08dbe478ed01be88c90c8f8f934db2fc3be0a15910f030a97165238774a86f
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 159.78
+
+Row 788
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 7fdb07ccb36565dce526831ca16d76a1d9f3ca67ce5d09a1a2532a757c6c5476
+          Column 1 (phone): 19993502559
+[INVALID] Column 4 (dob): 6b8d5e609320c5235ef806e5cffc684287eee6cc2e8380f0bc7d1c02bd47afde
+          Column 6 (st): California
+          Column 7 (zip): 9de3888231a1021acddcaa006b2f2a1ead5e245ae44a6b50e997afa9371e081e
+          Column 8 (country): US
+          Column 9 (not mapped): 257.82
+
+Row 797
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19906766455
+          Column 2 (fn): Wei
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 7 (zip): 10002
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 431.80
+
+Row 798
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ljjvscrazt_1472790591@tfbnw.net
+          Column 1 (phone): 90ff776c1d1eec5595d815ec8a39a0efef0fd14bcc23006f2c2e559493fc1f95
+          Column 3 (ln): fde888ee3fc244af69f093d20c31f9747f36f220bf0d7df1ba6693263e71b5fa
+[INVALID] Column 4 (dob): 7122bdbaa29277897ed4689e7225ef5788f6ec6ccf4643c69c2c0012f623674f
+          Column 5 (ct): ce53c678303fa3e5678b3f614d1daeffc31e32137844b42b46546183bc8bb3d8
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 95113
+          Column 8 (country): US
+          Column 9 (not mapped): 53.30
+
+Row 799
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 4581e86891cd365249af2f143322ff7c16a0f3392b41e23f1de78201bc827a07
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Bill
+          Column 3 (ln): Shrewsberrysky
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Atlanta
+          Column 6 (st): 1c18bc2214f67ae19bbaa640fc776f5a4a38c4021d421cdd8cd3d2bcad23da93
+          Column 7 (zip): 30301
+          Column 9 (not mapped): 16.82
+
+Row 800
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 0711760320669d720c417e289a97ed535026ba317d036ed5221ae98ed3cc454e
+          Column 1 (phone): 19900369711
+          Column 2 (fn): 6915771be1c5aa0c886870b6951b03d7eafc121fea0e80a5ea83beb7c449f4ec
+          Column 3 (ln): Shepardsen
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Stanford
+
+Row 801
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): b54f08623ae4039f55bcecba4961037fb4513d2ba9cb2b0667c5db970ac94911
+          Column 3 (ln): 919a7bb5d38080ba01f4054356d0f821538c4cb3b2219576b7654f7d99c0c5a9
+          Column 5 (ct): 1865e4f9be9639fc76d7d4da8ee25eaa7421f6837accb67516937e69469ea7e4
+          Column 6 (st): ad30e7e2a1394b49d4ade6500cf199a55d652e274f594f29c8fecd3363ab654a
+          Column 7 (zip): 20003
+          Column 9 (not mapped): -162.48
+
+Row 802
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 9a334e525bb85de755d3a25b054d046f1f8ad0f5bb9c993ba980dd85ca9e7eb7
+[INVALID] Column 4 (dob): 3d56575c8405083f9539c03fd36dd3872e91b031416cbf5890148673173a56f3
+          Column 5 (ct): 1865e4f9be9639fc76d7d4da8ee25eaa7421f6837accb67516937e69469ea7e4
+          Column 7 (zip): 20003
+          Column 9 (not mapped): 574.60
+
+Row 805
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): mwsbhzruia_1472791025@tfbnw.net
+[INVALID] Column 4 (dob): ceb15a7e37b215798e90cb9c306e285d4ff98ac5c8a62ca25a7331479690e5d0
+          Column 5 (ct): Washington
+          Column 7 (zip): 81efd660a2810b480af90cf521cac5f72ca8f1f6c3d0a2130f4e9de456097fbb
+
+Row 808
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15542444904
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): San Jose
+          Column 6 (st): California
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 9 (not mapped): 221.65
+
+Row 813
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): mzyvmyutib_1472791183@tfbnw.net
+          Column 2 (fn): Richard
+[INVALID] Column 4 (dob): 881c1aae3eab1d6bf5b6b9d61b15cdb75680564041f825f65f1069e729daa516
+          Column 6 (st): Georgia
+
+Row 814
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Not
+          Column 3 (ln): Exist
+          Column 4 (dob): 01/20/1980
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 7 (zip): 94025
+          Column 9 (not mapped): 652.62
+
+Row 817
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): hburenskxv_1472791009@tfbnw.net
+          Column 1 (phone): 15559151598
+          Column 2 (fn): Patricia
+          Column 3 (ln): a3a10b416d7703ff3298ea35297b5a4a3392bc2bc84d7cbf4bd47e192bcbdb99
+[INVALID] Column 4 (dob): d2833b2a640584e4287dd27874eff31cfaf86afe3aff36c23502c667345b3d9c
+          Column 6 (st): California
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 575.85
+
+Row 821
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ixgkurtfwy_1472790475@tfbnw.net
+          Column 2 (fn): b54f08623ae4039f55bcecba4961037fb4513d2ba9cb2b0667c5db970ac94911
+[INVALID] Column 4 (dob): 02c5bdc55eea6c2384c38f378e928a2b850aac2d8cac08912c6427198f6a27eb
+          Column 6 (st): District of Columbia
+          Column 7 (zip): 20003
+          Column 8 (country): US
+          Column 9 (not mapped): 201.53
+
+Row 824
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): c0bbebb09dfd19e6117ed3bc7392ba8cfc6e7b476cf64cbbef654f00f571ecea
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): Thurnberg
+          Column 8 (country): US
+
+Row 828
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): Menlo Park
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 81.90
+
+Row 829
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 1-987-654-3210
+          Column 2 (fn): Not
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): 6959097001d10501ac7d54c0bdb8db61420f658f2922cc26e46d536119a31126
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 335.39
+
+Row 831
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 3 (ln): Sorgberg
+[INVALID] Column 4 (dob): 7668e969b20157ae57ff5d456bbbfc2fffefd4aacd80552b9371f15811b99bfc
+          Column 6 (st): 8fe8a0a0604f699ee063a1dba1ec5d236de9cfb48734885de208bb8db49ece26
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 725.09
+
+Row 836
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 19936490100
+[INVALID] Column 4 (dob): 181ae0b1fce9d08c86094f34bb281c1e444de166dbbda54ae2f0832a9018c3ed
+          Column 5 (ct): Stanford
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 149.06
+
+Row 838
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): lvvqhakgxr_1472790420@tfbnw.net
+          Column 1 (phone): 15573390949
+          Column 2 (fn): James
+          Column 3 (ln): Changstein
+[INVALID] Column 4 (dob): 696fdbbbeca1d661563a3b808ff9afa7c353f7b45c6d052e7dd34a51986c61c6
+          Column 5 (ct): Philadelphia
+          Column 6 (st): Pennsylvania
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 552.13
+
+Row 840
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): 254bb97b57f12e1608fefc4517de768427b2fd6d2cffbbfcbc09f3c818198d5f
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): US
+          Column 9 (not mapped): 528.61
+
+Row 847
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): c0bbebb09dfd19e6117ed3bc7392ba8cfc6e7b476cf64cbbef654f00f571ecea
+          Column 1 (phone): 15581123329
+          Column 2 (fn): Nancy
+          Column 3 (ln): Thurnberg
+[INVALID] Column 4 (dob): 908f3e0c2b84b97cb01186bc374af91e9221311e45386829e08c76ddab69fe80
+          Column 6 (st): 1c18bc2214f67ae19bbaa640fc776f5a4a38c4021d421cdd8cd3d2bcad23da93
+          Column 9 (not mapped): 167.71
+
+Row 848
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ffa4f8d7ada410d0b0eb1d700d96f79bf7ca7458a569e0639f8c99b3f8601bda
+          Column 1 (phone): 19935275423
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 7 (zip): c3ff7669d589fc55c499602d7792805c005d37c42c5de5d7a1e776136ee6ee65
+          Column 9 (not mapped): 627.30
+
+Row 849
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): jtwzamolsm_1472790653@tfbnw.net
+          Column 1 (phone): ab1ff2a99d39110ce13895b76bd72aaf003b83a0ded53d08e09777c6cdc7a976
+          Column 2 (fn): Barbara
+          Column 3 (ln): Rumble
+[INVALID] Column 4 (dob): 3cabc105b46ffbcb62042615f74b27c499357864f15a55d32c671908c88be175
+          Column 7 (zip): 94115
+          Column 8 (country): US
+          Column 9 (not mapped): 40.12
+
+Row 852
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): npskhabqsh_1472790536@tfbnw.net
+          Column 1 (phone): 19960133654
+[INVALID] Column 4 (dob): 5c70d9af4d76050e59f6fec3d45d0cb105770f39791deb5cfe1a2381d30926fe
+          Column 5 (ct): New York
+          Column 6 (st): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 7 (zip): 56acd2f85500d246e0851f77035f8b4414a57c4f31735c8f37c9cec0f3739d47
+          Column 8 (country): US
+          Column 9 (not mapped): 722.49
+
+Row 857
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): riuoaxztal_1472791274@tfbnw.net
+          Column 1 (phone): 19991362411
+          Column 2 (fn): 061b67d6e7ab579da2610e27e631aa4beda1ffe75c0a1b3f3f1c0b97780b4052
+          Column 3 (ln): 28ebbe3d74761c433be8d043182fc21e7ed4afeee2c01b8c54bf6f8f78cdc0a1
+[INVALID] Column 4 (dob): 4f8ead7825bb3267759a4c4e1bf85b1cac8753525fa5d3fbeb2610ad967d0360
+          Column 6 (st): 7e8eea5cc60980270c9ceb75ce8c087d48d726110fd3d17921f774eefd8e18d8
+          Column 7 (zip): 6a023c195898ffbbf2ff20e9879b190af7da850f55853ff713f2955187f2eb29
+          Column 8 (country): US
+
+Row 859
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): efcbbc0f9627e95dae0484a6f0931730974ae059f78820e34b4147f5eaf92107
+          Column 2 (fn): b9dd960c1753459a78115d3cb845a57d924b6877e805b08bd01086ccdf34433c
+[INVALID] Column 4 (dob): cfe39d2c2889944da7d14ac801a0e7ef73818d1ee4515f34eefc403f56b509d7
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): California
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 395.93
+
+Row 861
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Susan
+          Column 3 (ln): Vaidyaman
+[INVALID] Column 4 (dob): fef2478983486079c77b3b8a16cbf057e5426bb81b9264fc45db45bc4414eb2f
+          Column 5 (ct): Stanford
+          Column 7 (zip): 94305
+          Column 9 (not mapped): 530.66
+
+Row 865
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): bmiqjjmgav_1472790523@tfbnw.net
+          Column 2 (fn): 9ce8db922a8f4a7abd859adee70bd8b7a63321265487da54cf4bed6a69eb3e1b
+[INVALID] Column 4 (dob): c28f5f3237eefec4d15344e728fea9d81381dcf6bca7372684bc72c11f56f463
+          Column 5 (ct): ce53c678303fa3e5678b3f614d1daeffc31e32137844b42b46546183bc8bb3d8
+          Column 6 (st): California
+          Column 7 (zip): 95113
+          Column 8 (country): US
+          Column 9 (not mapped): 308.87
+
+Row 867
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): 94025
+          Column 9 (not mapped): 193.67
+
+Row 874
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): bc598456661d7bf077ba8f40e9a5d17dbdd91801c7c2fb1975df4af7d653f9ae
+          Column 2 (fn): Charlie
+          Column 5 (ct): 1a6bd4d9d79dc0a79b53795c70d3349fa9e38968a3fbefbfe8783efb1d2b6aac
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): -156.55
+
+Row 875
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): caeywsjkoo_1472791074@tfbnw.net
+          Column 3 (ln): Machadowitz
+[INVALID] Column 4 (dob): af32105bccdf35cb931209e76af88cbf65eb5aaba358ee0181166fc1d8f0a112
+          Column 5 (ct): San Jose
+          Column 7 (zip): 95113
+          Column 8 (country): US
+          Column 9 (not mapped): 487.87
+
+Row 878
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): isyuuezdit_1472791047@tfbnw.net
+          Column 1 (phone): 19970365861
+[INVALID] Column 4 (dob): 795e3c791ceecb024916092d2f8d40f731de5b11d8dd675a3f1e7a9911c43a1d
+          Column 5 (ct): d3ecc5b7fe38ffd3397473362f2c42321fb82deb23083ed13cf6f20320ab6c92
+          Column 6 (st): 1c18bc2214f67ae19bbaa640fc776f5a4a38c4021d421cdd8cd3d2bcad23da93
+          Column 7 (zip): 30301
+          Column 8 (country): US
+          Column 9 (not mapped): 300.10
+
+Row 880
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Charlie
+[INVALID] Column 4 (dob): 04cafe79f5bef00a6178784b85a1082c1731ab83680e8ab12f4037b33fab960f
+          Column 5 (ct): 1a6bd4d9d79dc0a79b53795c70d3349fa9e38968a3fbefbfe8783efb1d2b6aac
+          Column 9 (not mapped): 673.12
+
+Row 881
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): codhvieugy_1472791204@tfbnw.net
+          Column 1 (phone): 19943510250
+          Column 2 (fn): Jennifer
+          Column 3 (ln): Sorgstein
+[INVALID] Column 4 (dob): e338e636ee2a96d4a87e4f8888e48836343f4824ac34f79a307ad24c60c64e2c
+          Column 5 (ct): San Francisco
+          Column 7 (zip): 94115
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 300.80
+
+Row 886
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): f339e2f23c4b39441b13a3b8a2a1a5c83ac0c0c5dfc0aae12a75a538f6b26cbc
+[INVALID] Column 4 (dob): 2628be4398e3bad17a608aae6df627d07c92612624b925e2478c5dd9f91771f2
+          Column 5 (ct): Boston
+          Column 6 (st): Massachusetts
+          Column 7 (zip): 02117
+          Column 8 (country): US
+          Column 9 (not mapped): 619.97
+
+Row 890
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ttakfhtqgc_1472790442@tfbnw.net
+          Column 1 (phone): 19952650639
+          Column 2 (fn): Susan
+          Column 3 (ln): c179e4e8517557cda2b34c6022e0e64bda5b543683912ed5272152bcb9226e47
+[INVALID] Column 4 (dob): fef2478983486079c77b3b8a16cbf057e5426bb81b9264fc45db45bc4414eb2f
+          Column 5 (ct): Stanford
+          Column 6 (st): California
+          Column 7 (zip): 94305
+          Column 8 (country): US
+          Column 9 (not mapped): 698.97
+
+Row 892
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): ixgkurtfwy_1472790475@tfbnw.net
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Elizabeth
+[INVALID] Column 4 (dob): 02c5bdc55eea6c2384c38f378e928a2b850aac2d8cac08912c6427198f6a27eb
+          Column 5 (ct): Washington
+          Column 7 (zip): 20003
+          Column 8 (country): US
+          Column 9 (not mapped): 194.70
+
+Row 893
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15559372663
+          Column 2 (fn): Richard
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): d3ecc5b7fe38ffd3397473362f2c42321fb82deb23083ed13cf6f20320ab6c92
+          Column 6 (st): 1c18bc2214f67ae19bbaa640fc776f5a4a38c4021d421cdd8cd3d2bcad23da93
+          Column 7 (zip): 429887cf0e9ca7edfb54c56c7ecdfdd6f0d38b21c1ac4e83947c74f0c9f05a07
+          Column 9 (not mapped): -44.93
+
+Row 903
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 7ce564cd08c6b76cac26016fa73217a9bc8d490d37a34ebb52211c46a1b5179b
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 3 (ln): 57aa12d894185c1fbb2447a6039cb56de4ca78c42bfef9cae704f94085ed6d7a
+          Column 5 (ct): San Jose
+          Column 7 (zip): 95113
+          Column 8 (country): US
+          Column 9 (not mapped): 654.60
+
+Row 907
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): hbfnmztlff_1472790577@tfbnw.net
+          Column 3 (ln): Machadoman
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Stanford
+          Column 6 (st): California
+          Column 7 (zip): 1336ffa791cc6c6fa51c8613fa3db49a48157100345cb4cb3259727a6ce5d527
+          Column 9 (not mapped): 724.10
+
+Row 908
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 4f7d5afbd838b26c949e119f4f73516906999583dda40457698ab1bd34fd83bf
+          Column 2 (fn): Not
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 9 (not mapped): -159.22
+
+Row 909
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): zanztizbmx_1472790350@tfbnw.net
+          Column 1 (phone): 19970853150
+          Column 2 (fn): Richard
+[INVALID] Column 4 (dob): 23de7115880b38e5c1bba39843293aa72aca8a0b19a61ff8e00f872762150429
+          Column 6 (st): California
+          Column 7 (zip): 94025
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+
+Row 916
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): bnqqfoayhi_1472790400@tfbnw.net
+          Column 1 (phone): 19944811552
+          Column 3 (ln): Sharpeberg
+[INVALID] Column 4 (dob): 710c3addb686336bd3a2f260e1d2fe565cf51ff9390e9a5126c2e04dd6f43bbb
+          Column 5 (ct): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 6 (st): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 7 (zip): 56acd2f85500d246e0851f77035f8b4414a57c4f31735c8f37c9cec0f3739d47
+          Column 9 (not mapped): 534.32
+
+Row 920
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): phkelnwxyt_1472790503@tfbnw.net
+          Column 1 (phone): 19984341203
+          Column 2 (fn): James
+          Column 3 (ln): Smithsky
+[INVALID] Column 4 (dob): 96e7bb8c068d61285f5d8dd9d1b9dcea62c5f976640807356cd8b28ab921c870
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): -157.89
+
+Row 923
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 1-987-654-3210
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): CA
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 9 (not mapped): 341.26
+
+Row 927
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): e24103f351e980a41cfc66b33264b73e1635c3e0050abfbdbc39e4df3ecb4440
+          Column 1 (phone): 15572112755
+          Column 2 (fn): Charlie
+          Column 3 (ln): Occhinosen
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 7 (zip): 9de3888231a1021acddcaa006b2f2a1ead5e245ae44a6b50e997afa9371e081e
+          Column 8 (country): US
+          Column 9 (not mapped): 59.58
+
+Row 930
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): c0bbebb09dfd19e6117ed3bc7392ba8cfc6e7b476cf64cbbef654f00f571ecea
+          Column 1 (phone): 74a31449f1e7001d579cb08b7710b8e95f84c16228b9db68542da907ee395080
+          Column 2 (fn): 1d78b370ad96e7a8091888d902360187bdea87ab6a4af003ec63c791894513ec
+          Column 3 (ln): Thurnberg
+[INVALID] Column 4 (dob): 908f3e0c2b84b97cb01186bc374af91e9221311e45386829e08c76ddab69fe80
+          Column 5 (ct): d3ecc5b7fe38ffd3397473362f2c42321fb82deb23083ed13cf6f20320ab6c92
+          Column 7 (zip): 30301
+          Column 8 (country): US
+          Column 9 (not mapped): 502.84
+
+Row 931
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 2e1d91bfb85a21c86bd5ec2966949775e266bc8fd676a8fe44fe245b549c6d2a
+          Column 2 (fn): Rick
+          Column 5 (ct): 8760663bb25fa79f35c2c14fb9c6bcbe444a8c938491cd24fe684a7056c9dbc4
+          Column 6 (st): California
+          Column 7 (zip): 9de3888231a1021acddcaa006b2f2a1ead5e245ae44a6b50e997afa9371e081e
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 450.34
+
+Row 940
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 3 (ln): 7d68838bddc6082b8d3db730d0cc4b18fe6b52ff201af0a64c489128bace6a45
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Menlo Park
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 317.78
+
+Row 945
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): rdzitzouks_1472791156@tfbnw.net
+[INVALID] Column 4 (dob): 37510fcf500eb14d3c54da53e66b668c1f947a52f1ddb5c80f5c553ba95a0ede
+          Column 6 (st): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 7 (zip): 56acd2f85500d246e0851f77035f8b4414a57c4f31735c8f37c9cec0f3739d47
+          Column 8 (country): US
+          Column 9 (not mapped): 507.32
+
+Row 948
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Nancy
+          Column 3 (ln): 655a9751396caf8824c3beb17c06ecaebe435e2094daf3838b08b4308ee691de
+[INVALID] Column 4 (dob): 908f3e0c2b84b97cb01186bc374af91e9221311e45386829e08c76ddab69fe80
+          Column 5 (ct): Atlanta
+          Column 6 (st): 1c18bc2214f67ae19bbaa640fc776f5a4a38c4021d421cdd8cd3d2bcad23da93
+          Column 7 (zip): 30301
+          Column 8 (country): US
+          Column 9 (not mapped): 154.92
+
+Row 951
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 19977237993
+          Column 5 (ct): 1865e4f9be9639fc76d7d4da8ee25eaa7421f6837accb67516937e69469ea7e4
+          Column 6 (st): District of Columbia
+          Column 8 (country): US
+          Column 9 (not mapped): 70.26
+
+Row 953
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 3543d7a8b7297327150070f302d3130fa70f2999e72948e957c38d66f5be5291
+          Column 1 (phone): 4f7d5afbd838b26c949e119f4f73516906999583dda40457698ab1bd34fd83bf
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): 75fe6e66c5e2f2aed1a65f065aa0fd0ab3233aac61a7293930391d2caf74a945
+          Column 6 (st): CA
+          Column 7 (zip): 94025
+          Column 9 (not mapped): 98.68
+
+Row 959
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): 904294d8c54b1c63e40832fa1d95bcde534b310df6d42882ce4baf28f3e0184a
+          Column 3 (ln): Landaysen
+[INVALID] Column 4 (dob): 67208b96b85db48e78cfd40403e2dc52643330301b3e5d0534a67b05923e32fa
+          Column 5 (ct): 1865e4f9be9639fc76d7d4da8ee25eaa7421f6837accb67516937e69469ea7e4
+          Column 7 (zip): 20003
+          Column 8 (country): US
+          Column 9 (not mapped): 434.66
+
+Row 963
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): test@fb.com
+          Column 1 (phone): 1-987-654-3210
+          Column 3 (ln): Exist
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 6 (st): CA
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 695.60
+
+Row 970
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 357dc69557ba11b39d4aad81efc380ca1cf5cb5fce48075ca66bb8162d24e2e6
+          Column 1 (phone): 07c365dac6a7ace0e70b02964f1ba79cce6648127b63df568794661312c335df
+          Column 2 (fn): Elizabeth
+          Column 3 (ln): Onikiwitz
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 5 (ct): Washington
+          Column 9 (not mapped): 242.40
+
+Row 974
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 1-987-654-3210
+          Column 7 (zip): 94025
+          Column 8 (country): US
+          Column 9 (not mapped): -110.74
+
+Row 977
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): 0467f05cf9c677fba45aea42031913b60c07b673e9cbbef2705a9b028d1865dd
+          Column 1 (phone): 15554808728
+          Column 3 (ln): Sharpe
+[INVALID] Column 4 (dob): 755fe92f0f4bfa29d195c890ee391a6c6a2b4b5f451aaf283b408cadcc9dcece
+          Column 5 (ct): New York
+          Column 6 (st): 350c754ba4d38897693aa077ef43072a859d23f613443133fecbbd90a3512ca5
+          Column 7 (zip): 10002
+          Column 8 (country): US
+          Column 9 (not mapped): 234.48
+
+Row 981
+Accepted with error
+--------------------------------------------------------------------------------
+[INVALID] Column 0 (email): NOT-AN-EMAIL
+          Column 1 (phone): 19977201482
+          Column 3 (ln): Landayson
+          Column 4 (dob): 07/22/1980
+          Column 5 (ct): 1a6bd4d9d79dc0a79b53795c70d3349fa9e38968a3fbefbfe8783efb1d2b6aac
+          Column 6 (st): California
+          Column 7 (zip): 6a023c195898ffbbf2ff20e9879b190af7da850f55853ff713f2955187f2eb29
+          Column 8 (country): US
+          Column 9 (not mapped): 463.68
+
+Row 982
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): efcbbc0f9627e95dae0484a6f0931730974ae059f78820e34b4147f5eaf92107
+          Column 2 (fn): Charlie
+          Column 3 (ln): Rumblewitz
+[INVALID] Column 4 (dob): cfe39d2c2889944da7d14ac801a0e7ef73818d1ee4515f34eefc403f56b509d7
+          Column 5 (ct): 0007a3d64c01e23d5075203c5977c14e4f7e01a3fc570686fcc50b5e1dd42685
+          Column 6 (st): California
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+
+Row 983
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 0 (email): cd93264722b03cdce4d85431574ab052f32531f3408f26ebe2a2456c4cb1d28e
+[INVALID] Column 1 (phone): NOT-A-PHONE
+          Column 2 (fn): Linda
+          Column 3 (ln): Greenesen
+          Column 6 (st): ad30e7e2a1394b49d4ade6500cf199a55d652e274f594f29c8fecd3363ab654a
+          Column 7 (zip): 81efd660a2810b480af90cf521cac5f72ca8f1f6c3d0a2130f4e9de456097fbb
+          Column 8 (country): US
+          Column 9 (not mapped): 186.78
+
+Row 986
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 15581123329
+          Column 2 (fn): Nancy
+          Column 3 (ln): 655a9751396caf8824c3beb17c06ecaebe435e2094daf3838b08b4308ee691de
+[INVALID] Column 4 (dob): 908f3e0c2b84b97cb01186bc374af91e9221311e45386829e08c76ddab69fe80
+          Column 6 (st): Georgia
+          Column 7 (zip): 30301
+          Column 8 (country): 79adb2a2fce5c6ba215fe5f27f532d4e7edbac4b6a5e09e1ef3a08084a904621
+          Column 9 (not mapped): 268.02
+
+Row 987
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): 96d9632f363564cc3032521409cf22a852f2032eec099ed5967c0d000cec607a
+          Column 3 (ln): Chaison
+[INVALID] Column 4 (dob): 8ca5b10b61944aadb3eace42579ff13a990e23cc3eb030bccd55353445c51d62
+          Column 5 (ct): Philadelphia
+          Column 6 (st): 8fe8a0a0604f699ee063a1dba1ec5d236de9cfb48734885de208bb8db49ece26
+          Column 9 (not mapped): 204.58
+
+Row 992
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 1 (phone): 2e1d91bfb85a21c86bd5ec2966949775e266bc8fd676a8fe44fe245b549c6d2a
+          Column 2 (fn): 5efc60b80fa21baa18d66c9a9c33c51e2b87fba0876709d4c8909aa3ed7fbbde
+          Column 3 (ln): Zamorewitz
+[INVALID] Column 4 (dob): 4e25c029f6a1efa686c96b852f9c695275fbcbc4478112d8158fa30955c2c90c
+          Column 9 (not mapped): 416.85
+
+Row 996
+Accepted with error
+--------------------------------------------------------------------------------
+          Column 2 (fn): Will
+[INVALID] Column 4 (dob): NOT-A-DATE
+          Column 7 (zip): b9a9cf3cd3723a2e91b7c23ecf68456e872b6e5d86e5cab7f3d45a7302da32c7
+          Column 8 (country): US
+          Column 9 (not mapped): -36.95
+
+

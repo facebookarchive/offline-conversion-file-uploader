@@ -1,0 +1,44 @@
+================================================================================
+Report of upload-audience command
+================================================================================
+Generated: @generated
+Config: {
+  "accessToken": "<ACCESS_TOKEN_TEST>",
+  "batchSize": 10,
+  "customAudienceID": "111111111",
+  "delimiter": ",",
+  "format": {
+    "dob": "MM/DD/YYYY"
+  },
+  "header": true,
+  "inputFilePath": "e2e-test/shared/ca-rich.csv",
+  "logging": "verbose",
+  "mapping": {
+    "0": "email",
+    "1": "phone",
+    "2": "fn",
+    "3": "ln",
+    "4": "dob",
+    "5": "ct",
+    "6": "st",
+    "7": "zip",
+    "8": "country"
+  },
+  "removeUsers": false,
+  "reportOutputPath": "report.txt"
+}
+
+
+================================================================================
+Overview
+================================================================================
+Num all rows: 1000
+Num rows uploaded successfully: 1000
+
+
+================================================================================
+Invalid Samples
+================================================================================
+Woohoo! No Invalid Sample!
+
+

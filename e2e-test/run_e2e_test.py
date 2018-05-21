@@ -591,6 +591,177 @@ tests = {
             ),
         ],
     },
+    'case-4-1': {
+        'description': 'Upload to custom audience (email PII)',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-simple.csv',
+                    'configFilePath': 'e2e-test/case-4-1/cfg.json',
+                    'e2eTestConfigFilePath':
+                        'e2e-test/shared/e2e-cfg-ca-upload.json',
+                },
+            },
+        ],
+        'sorts': ['api.log'],
+        'compares': [
+            ('report.txt', 'e2e-test/case-4-1/report.txt'),
+            ('api.log', 'e2e-test/case-4-1/api.log'),
+        ],
+    },
+    'case-4-2': {
+        'description': 'Upload to custom audience (rich PII)',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-rich.csv',
+                    'configFilePath': 'e2e-test/case-4-2/cfg.json',
+                    'e2eTestConfigFilePath':
+                        'e2e-test/shared/e2e-cfg-ca-upload.json',
+                },
+            },
+        ],
+        'sorts': ['api.log'],
+        'compares': [
+            ('report.txt', 'e2e-test/case-4-2/report.txt'),
+            ('api.log', 'e2e-test/case-4-2/api.log'),
+        ],
+    },
+    'case-4-3': {
+        'description': 'Upload to custom audience (rich PII, dirty data)',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-dirty.csv',
+                    'configFilePath': 'e2e-test/case-4-3/cfg.json',
+                    'e2eTestConfigFilePath':
+                        'e2e-test/shared/e2e-cfg-ca-upload.json',
+                },
+                'expect_fail': True,
+            },
+        ],
+        'sorts': [],
+        'compares': [
+            ('report.txt', 'e2e-test/case-4-3/report.txt'),
+        ],
+    },
+    'case-4-4': {
+        'description': 'Upload and remove custom audience (email PII)',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-simple.csv',
+                    'configFilePath': 'e2e-test/case-4-4/cfg.json',
+                    'e2eTestConfigFilePath':
+                        'e2e-test/shared/e2e-cfg-ca-upload.json',
+                    'removeUsers': True,
+                },
+            },
+        ],
+        'sorts': ['api.log'],
+        'compares': [
+            ('report.txt', 'e2e-test/case-4-4/report.txt'),
+            ('api.log', 'e2e-test/case-4-4/api.log'),
+        ],
+    },
+    'case-5-1': {
+        'description': 'Upload to value-based custom audience (email PII)',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-simple.csv',
+                    'configFilePath': 'e2e-test/case-5-1/cfg.json',
+                    'e2eTestConfigFilePath':
+                        'e2e-test/shared/e2e-cfg-vbca-upload.json',
+                },
+            },
+        ],
+        'sorts': ['api.log'],
+        'compares': [
+            ('report.txt', 'e2e-test/case-5-1/report.txt'),
+            ('api.log', 'e2e-test/case-5-1/api.log'),
+        ],
+    },
+    'case-5-2': {
+        'description': 'Upload to value-based custom audience (rich PII)',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-rich.csv',
+                    'configFilePath': 'e2e-test/case-5-2/cfg.json',
+                    'e2eTestConfigFilePath':
+                        'e2e-test/shared/e2e-cfg-vbca-upload.json',
+                },
+            },
+        ],
+        'sorts': ['api.log'],
+        'compares': [
+            ('report.txt', 'e2e-test/case-5-2/report.txt'),
+            ('api.log', 'e2e-test/case-5-2/api.log'),
+        ],
+    },
+    'case-5-3': {
+        'description':
+            'Upload to value-based custom audience (rich PII, dirty data)',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-dirty.csv',
+                    'configFilePath': 'e2e-test/case-5-3/cfg.json',
+                    'e2eTestConfigFilePath':
+                        'e2e-test/shared/e2e-cfg-vbca-upload.json',
+                },
+                'expect_fail': True,
+            },
+        ],
+        'sorts': [],
+        'compares': [
+            ('report.txt', 'e2e-test/case-5-3/report.txt'),
+        ],
+    },
+    'case-5-4': {
+        'description': 'Remove user from value-based custom audience',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-simple.csv',
+                    'configFilePath': 'e2e-test/case-5-4/cfg.json',
+                    'e2eTestConfigFilePath':
+                        'e2e-test/shared/e2e-cfg-vbca-upload.json',
+                    'removeUsers': True,
+                },
+            },
+        ],
+        'sorts': ['api.log'],
+        'compares': [
+            ('report.txt', 'e2e-test/case-5-4/report.txt'),
+            ('api.log', 'e2e-test/case-5-4/api.log'),
+        ],
+    },
 }
 
 

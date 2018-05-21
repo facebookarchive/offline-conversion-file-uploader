@@ -1,0 +1,20 @@
+{
+  "delimiter": ",",
+  "header": true,
+  "mapping": {
+    "0": "match_keys.email",
+    "1": "match_keys.phone",
+    "2": "match_keys.fn",
+    "3": "match_keys.ln",
+    "4": "match_keys.dob",
+    "5": "match_keys.ct",
+    "6": "match_keys.st",
+    "7": "match_keys.zip",
+    "8": "match_keys.country",
+    "9": "lookalike_value"
+  },
+  "format": {
+    "dob": "MM/DD/YYYY"
+  },
+  "batchSize": 10
+}
