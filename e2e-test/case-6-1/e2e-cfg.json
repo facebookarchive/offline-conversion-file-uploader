@@ -1,0 +1,34 @@
+{
+  "mockedCalls": [
+    {
+      "params": {
+        "apiPath": "act_123456789",
+        "method": "GET",
+        "data": {
+          "access_token": "<ACCESS_TOKEN_TEST>",
+          "fields": ["id"]
+        }
+      },
+      "result": {
+        "id": "act_123456789"
+      }
+    },
+    {
+      "params": {
+        "apiPath": "act_123456789/customaudiences",
+        "method": "POST",
+        "data": {
+          "access_token": "<ACCESS_TOKEN_TEST>",
+          "customer_file_source": "USER_PROVIDED_ONLY",
+          "is_value_based": false,
+          "name": "ca-simple.csv",
+          "subtype": "CUSTOM"
+        }
+      },
+      "result": {
+        "id": "111111111"
+      }
+    }
+  ],
+  "mockedCallsDumpPath": "api.log"
+}

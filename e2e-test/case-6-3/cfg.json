@@ -1,0 +1,9 @@
+{
+  "delimiter": ",",
+  "header": true,
+  "mapping": {
+    "0": "email"
+  },
+  "format": {},
+  "batchSize": 10
+}

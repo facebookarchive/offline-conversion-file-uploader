@@ -762,6 +762,71 @@ tests = {
             ('api.log', 'e2e-test/case-5-4/api.log'),
         ],
     },
+    'case-6-1': {
+        'description': 'Create custom audience with customer_file_source',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'adAccountID': '123456789',
+                    'inputFilePath': 'e2e-test/shared/ca-simple.csv',
+                    'configFilePath': 'e2e-test/case-6-1/cfg.json',
+                    'e2eTestConfigFilePath': 'e2e-test/case-6-1/e2e-cfg.json',
+                    'customerFileSource': 'USER_PROVIDED_ONLY',
+                },
+            },
+        ],
+        'sorts': ['api.log'],
+        'compares': [
+            ('report.txt', 'e2e-test/case-6-1/report.txt'),
+            ('api.log', 'e2e-test/case-6-1/api.log'),
+        ],
+    },
+    'case-6-2': {
+        'description':
+            'Upload custom audience and update customer_file_source',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-simple.csv',
+                    'configFilePath': 'e2e-test/case-6-2/cfg.json',
+                    'e2eTestConfigFilePath': 'e2e-test/case-6-2/e2e-cfg.json',
+                    'customerFileSource': 'USER_PROVIDED_ONLY',
+                },
+            },
+        ],
+        'sorts': ['api.log'],
+        'compares': [
+            ('report.txt', 'e2e-test/case-6-2/report.txt'),
+            ('api.log', 'e2e-test/case-6-2/api.log'),
+        ],
+    },
+    'case-6-3': {
+        'description': 'Do not update custom audience if ' \
+            + 'customer_file_source has not been changed',
+        'commands': [
+            {
+                'command': 'upload-audience',
+                'params': {
+                    'accessToken': '<ACCESS_TOKEN_TEST>',
+                    'customAudienceID': '111111111',
+                    'inputFilePath': 'e2e-test/shared/ca-simple.csv',
+                    'configFilePath': 'e2e-test/case-6-3/cfg.json',
+                    'e2eTestConfigFilePath': 'e2e-test/case-6-3/e2e-cfg.json',
+                    'customerFileSource': 'USER_PROVIDED_ONLY',
+                },
+            },
+        ],
+        'sorts': ['api.log'],
+        'compares': [
+            ('report.txt', 'e2e-test/case-6-3/report.txt'),
+            ('api.log', 'e2e-test/case-6-3/api.log'),
+        ],
+    },
 }
 
 

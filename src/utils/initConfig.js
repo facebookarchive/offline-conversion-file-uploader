@@ -11,6 +11,7 @@
 
 'use strict';
 
+const batchSenders = require('./batchSenders');
 const commander = require('commander');
 const fs = require('fs');
 const graphAPI = require('./graphAPI');
@@ -92,8 +93,9 @@ function getNormalizeEnumFn(options: Array<string>): NormalizeFn {
   return input => {
     if (typeof input === 'string') {
       const inputLowerCase = input.toLowerCase();
-      if (optionsInLowerCase.indexOf(inputLowerCase) >= 0) {
-        return inputLowerCase;
+      const index = optionsInLowerCase.indexOf(inputLowerCase);
+      if (index >= 0) {
+        return options[index];
       }
     }
     return null;
@@ -279,6 +281,18 @@ const ALL_CONFIG_OPTIONS: {[string]: Option} = {
     optional: true,
     normalize: normalizeArrayOfFBID,
   },
+  customerFileSource: {
+    cliOption: [
+      '--customerFileSource <customerFileSource>',
+      'Source information for custom audience.',
+    ],
+    optional: true,
+    normalize: getNormalizeEnumFn([
+      'USER_PROVIDED_ONLY',
+      'PARTNER_PROVIDED_ONLY',
+      'BOTH_USER_AND_PARTNER_PROVIDED',
+    ]),
+  },
 };
 
 function filterConfigOptions(
@@ -388,6 +402,7 @@ const OPTIONS_FOR_UPLOAD_AUDIENCE = filterConfigOptions(
     'pageIDs',
     'removeUsers',
     'reportOutputPath',
+    'customerFileSource',
   ],
 );
 
@@ -419,6 +434,7 @@ function loadConfig(
       JSON.parse(fs.readFileSync(e2eTestConfigFilePathAbs, 'utf8'));
     graphAPI.setupE2E(e2eTestConfig);
     reportUtils.setupE2E();
+    batchSenders.setupE2E();
     /* $FlowFixMe: Mock out this function so event time normalization returns
      same result. */
     Date.now = () => 1519862400000;

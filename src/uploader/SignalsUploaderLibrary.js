@@ -1476,11 +1476,11 @@ module.exports = normalize;
 "use strict";
 
 
+var SignalsNumberNormalizationErrorTypes = __webpack_require__(13);
+
 var _require = __webpack_require__(0),
     looksLikeHashed = _require.looksLikeHashed,
     trim = _require.trim;
-
-var SignalsNumberNormalizationErrorTypes = __webpack_require__(13);
 
 function normalize(input) {
   var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -1638,7 +1638,7 @@ function normalize(input) {
       errorType = SignalsTimestampNormalizationErrorTypes.REJECT_TOO_EARLY;
     }
     result = null;
-  } else if (result != null && timeZone != null && !wasImplicitTimezone) {
+  } else if (result != null && timeZone != null && timeFormat !== 'unix_time' && !wasImplicitTimezone) {
     var timeZoneOffset = normalizeSignalsNumberType(timeZone, {
       rejectHashed: true
     }).normalizedValue;
@@ -1663,9 +1663,10 @@ module.exports = normalize;
 "use strict";
 
 
-var normalizeSignalsNumberType = __webpack_require__(11);
-var SignalsValidationUtils = __webpack_require__(0);
 var SignalsNumberNormalizationErrorTypes = __webpack_require__(13);
+var SignalsValidationUtils = __webpack_require__(0);
+
+var normalizeSignalsNumberType = __webpack_require__(11);
 
 var trim = SignalsValidationUtils.trim;
 
@@ -1797,8 +1798,8 @@ module.exports = normalize;
 var Immutable = __webpack_require__(47);
 var SignalsUploaderColumnMapperConstants = __webpack_require__(65);
 
-var getSchemaSummary = __webpack_require__(21);
 var getSignalsNormalizationErrorSummary = __webpack_require__(64);
+var getSchemaSummary = __webpack_require__(21);
 
 var COLUMN_MAPPING_ERROR_THRESHOLD = 0.95;
 
@@ -2768,8 +2769,9 @@ module.exports = normalize;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var sha256 = __webpack_require__(95);
 var SignalsValidationUtils = __webpack_require__(0);
+
+var sha256 = __webpack_require__(95);
 
 var hasProp = SignalsValidationUtils.hasProp,
     looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
@@ -11028,9 +11030,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var SignalsValidationUtils = __webpack_require__(0);
 var SignalsNormalizationErrorLevel = __webpack_require__(41);
 var SignalsNormalizationErrorScope = __webpack_require__(12);
+var SignalsValidationUtils = __webpack_require__(0);
 
 var getByPath = __webpack_require__(40);
 var nullthrows = __webpack_require__(88);

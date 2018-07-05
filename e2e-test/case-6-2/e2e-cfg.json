@@ -1,0 +1,33 @@
+{
+  "mockedCalls": [
+    {
+      "params": {
+        "apiPath": "111111111",
+        "method": "GET",
+        "data": {
+          "access_token": "<ACCESS_TOKEN_TEST>",
+          "fields": ["id", "is_value_based", "customer_file_source"]
+        }
+      },
+      "result": {
+        "id": "111111111",
+        "is_value_based": false,
+        "customer_file_source": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "params": {
+        "apiPath": "111111111",
+        "method": "POST",
+        "data": {
+          "access_token": "<ACCESS_TOKEN_TEST>",
+          "customer_file_source": "USER_PROVIDED_ONLY"
+        }
+      },
+      "result": {
+        "success": true
+      }
+    }
+  ],
+  "mockedCallsDumpPath": "api.log"
+}

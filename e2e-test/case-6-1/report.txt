@@ -1,0 +1,35 @@
+================================================================================
+Report of upload-audience command
+================================================================================
+Generated: @generated
+Config: {
+  "accessToken": "<ACCESS_TOKEN_TEST>",
+  "adAccountID": "123456789",
+  "batchSize": 10,
+  "delimiter": ",",
+  "format": {},
+  "header": true,
+  "inputFilePath": "e2e-test/shared/ca-simple.csv",
+  "logging": "verbose",
+  "mapping": {
+    "0": "email"
+  },
+  "removeUsers": false,
+  "reportOutputPath": "report.txt",
+  "customerFileSource": "USER_PROVIDED_ONLY"
+}
+
+
+================================================================================
+Overview
+================================================================================
+Num all rows: 1000
+Num rows uploaded successfully: 1000
+
+
+================================================================================
+Invalid Samples
+================================================================================
+Woohoo! No Invalid Sample!
+
+

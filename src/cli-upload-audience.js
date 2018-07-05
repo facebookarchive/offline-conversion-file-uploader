@@ -40,6 +40,7 @@ const {
 
 const COMMAND = 'upload-audience';
 const UINT_MAX = 4294967296;
+const CUSTOMER_FILE_SOURCE_HELP = 'https://developers.facebook.com/ads/blog/post/2018/06/13/sharing-custom-audiences/';
 
 async function main() {
   const config = initConfig.loadConfigOrExit(initConfig.OPTIONS_FOR_UPLOAD_AUDIENCE);
@@ -78,7 +79,15 @@ async function main() {
   }
 
   // Init audienceID.
-  let {customAudienceID, adAccountID, removeUsers} = config;
+  let {customAudienceID, adAccountID, removeUsers, customerFileSource} = config;
+
+  if (customerFileSource == null) {
+    winston.warn(
+      'Please set customerFileSource. Learn more at: '
+      + CUSTOMER_FILE_SOURCE_HELP,
+    );
+  }
+
   if (customAudienceID == null) {
     if (removeUsers) {
       winston.error('customAudienceID must be specified when removing users.');
@@ -107,6 +116,7 @@ async function main() {
           name,
           subtype: 'CUSTOM',
           is_value_based: isValueBased,
+          customer_file_source: customerFileSource,
         },
       );
       customAudienceID = createAudienceResult.id;
@@ -125,7 +135,9 @@ async function main() {
       config.accessToken,
       customAudienceID,
       'customAudienceID',
-      ['id', 'is_value_based'],
+      customerFileSource != null
+        ? ['id', 'is_value_based', 'customer_file_source']
+        : ['id', 'is_value_based'],
     );
 
     if (
@@ -151,6 +163,28 @@ async function main() {
 
     if (adAccountID != null) {
       winston.warn(`AdAccountID ${adAccountID} specified but not used.`);
+    }
+
+    if (
+      customerFileSource != null
+      && existingAudience.customer_file_source !== customerFileSource
+    ) {
+      winston.info(
+        'The audience is using customer_file_source '
+        + `${existingAudience.customer_file_source}, will update to `
+        + `${customerFileSource} specified by customerFileSource.`,
+      );
+      await graphAPI(
+        customAudienceID,
+        'POST',
+        {
+          access_token: config.accessToken,
+          customer_file_source: customerFileSource,
+        },
+      );
+      winston.info(
+        `Successfully set customer_file_source to ${customerFileSource}.`,
+      );
     }
   }
 

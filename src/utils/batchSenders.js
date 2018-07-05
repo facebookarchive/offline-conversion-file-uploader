@@ -19,6 +19,9 @@ const {EOL} = os;
 
 const ERROR_CODE_PROGRESS_OVERLAP = 2044011;
 const UINT_MAX = 4294967296;
+const UPLOAD_SOURCE = 'MDFU V2.00';
+
+let isE2E = false;
 
 type Batch = {
   start: number,
@@ -27,6 +30,10 @@ type Batch = {
 };
 
 type BatchSender = (batch: Batch) => Promise<void>;
+
+function setupE2E() {
+  isE2E = true;
+}
 
 function getGraphAPICallbacks(
   resolve: () => void,
@@ -72,6 +79,9 @@ function getOfflineEventsBatchSender(
         data: batch.rows,
         upload_id: uploadID,
       };
+      if (!isE2E) {
+        params.upload_source = UPLOAD_SOURCE;
+      }
       if (namespaceID != null) {
         params.namespace_id = namespaceID;
       }
@@ -407,5 +417,6 @@ module.exports = {
   getColumnsFromMappingsForOfflineEvents,
   getOfflineEventsBatchSender,
   getPseudoBatchSenderForPreprocessing,
+  setupE2E,
   shouldIgnoreAPIErrorFn,
 };

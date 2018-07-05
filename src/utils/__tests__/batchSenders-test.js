@@ -87,6 +87,7 @@ test('getOfflineEventsBatchSender without progress tracking', async () => {
     params: {
       access_token: '<ACCESS_TOKEN>',
       upload_id: '222222',
+      upload_source: 'MDFU V2.00',
       data: [{mock: 'row1'}, {mock: 'row2'}],
       suppress_http_code: 1,
     },
@@ -102,6 +103,7 @@ test('getOfflineEventsBatchSender without progress tracking', async () => {
     params: {
       access_token: '<ACCESS_TOKEN>',
       upload_id: '222222',
+      upload_source: 'MDFU V2.00',
       data: [{mock: 'row3'}],
       suppress_http_code: 1,
     },
