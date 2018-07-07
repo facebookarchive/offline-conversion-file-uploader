@@ -6,13 +6,19 @@
         "method": "GET",
         "data": {
           "access_token": "<ACCESS_TOKEN_TEST>",
-          "fields": ["id", "is_value_based", "customer_file_source"]
+          "fields": [
+            "id",
+            "is_value_based",
+            "retention_days",
+            "customer_file_source"
+          ]
         }
       },
       "result": {
         "id": "111111111",
         "is_value_based": false,
-        "customer_file_source": "USER_PROVIDED_ONLY"
+        "customer_file_source": "USER_PROVIDED_ONLY",
+        "retention_days": 90
       }
     }
   ],

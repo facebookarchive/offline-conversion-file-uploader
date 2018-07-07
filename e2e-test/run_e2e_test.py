@@ -763,7 +763,8 @@ tests = {
         ],
     },
     'case-6-1': {
-        'description': 'Create custom audience with customer_file_source',
+        'description': 'Create custom audience with customer_file_source ' \
+            + 'and retention_days',
         'commands': [
             {
                 'command': 'upload-audience',
@@ -774,6 +775,7 @@ tests = {
                     'configFilePath': 'e2e-test/case-6-1/cfg.json',
                     'e2eTestConfigFilePath': 'e2e-test/case-6-1/e2e-cfg.json',
                     'customerFileSource': 'USER_PROVIDED_ONLY',
+                    'retentionDays': '90',
                 },
             },
         ],
@@ -785,7 +787,7 @@ tests = {
     },
     'case-6-2': {
         'description':
-            'Upload custom audience and update customer_file_source',
+            'Update customer_file_source and retention_days, then upload',
         'commands': [
             {
                 'command': 'upload-audience',
@@ -796,6 +798,7 @@ tests = {
                     'configFilePath': 'e2e-test/case-6-2/cfg.json',
                     'e2eTestConfigFilePath': 'e2e-test/case-6-2/e2e-cfg.json',
                     'customerFileSource': 'USER_PROVIDED_ONLY',
+                    'retentionDays': '90',
                 },
             },
         ],
@@ -818,6 +821,7 @@ tests = {
                     'configFilePath': 'e2e-test/case-6-3/cfg.json',
                     'e2eTestConfigFilePath': 'e2e-test/case-6-3/e2e-cfg.json',
                     'customerFileSource': 'USER_PROVIDED_ONLY',
+                    'retentionDays': '90',
                 },
             },
         ],

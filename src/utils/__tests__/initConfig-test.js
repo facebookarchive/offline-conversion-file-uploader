@@ -445,6 +445,8 @@ describe('upload', () => {
       {numRowsToValidate: 1000},
       {validateOutputPath: 'validate.txt'},
       {preprocessOutputPath: 'hashed.csv'},
+      {retentionDays: 100},
+      {customerFileSource: 'USER_PROVIDED_ONLY'},
     ];
     unsupportedParams.forEach((param, i) => {
       require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({
@@ -547,6 +549,8 @@ describe('validate', () => {
       {batchSize: 500},
       {preprocessOutputPath: 'hashed.csv'},
       {ignoreSampleErrors: true},
+      {retentionDays: 100},
+      {customerFileSource: 'USER_PROVIDED_ONLY'},
     ];
     unsupportedParams.forEach((param, i) => {
       require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({
@@ -646,6 +650,8 @@ describe('preprocess', () => {
       {batchSize: 500},
       {namespaceID: '666666'},
       {numRowsToValidate: 1000},
+      {retentionDays: 100},
+      {customerFileSource: 'USER_PROVIDED_ONLY'},
     ];
     unsupportedParams.forEach((param, i) => {
       require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({
@@ -718,6 +724,8 @@ describe('upload-preprocessed', () => {
       {presetValues: {}},
       {numRowsToValidate: 500},
       {preprocessOutputPath: 'hashed.csv'},
+      {retentionDays: 100},
+      {customerFileSource: 'USER_PROVIDED_ONLY'},
     ];
     unsupportedParams.forEach((param, i) => {
       require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({
@@ -759,6 +767,7 @@ describe('upload-audience', () => {
       logging: 'verbose',
       removeUsers: false,
       reportOutputPath: 'resolved/report.txt',
+      retentionDays: 0,
     });
     expect(console.warn).not.toHaveBeenCalled();
   });
@@ -778,6 +787,8 @@ describe('upload-audience', () => {
       customAudienceID: '123456',
       appIDs: ['111', '222'],
       pageIDs: ['333', '444'],
+      retentionDays: 100,
+      customerFileSource: 'USER_PROVIDED_ONLY',
     };
     require('fs').mockFile('resolved/cfg', JSON.stringify(params));
     expect(loadConfig(
@@ -802,6 +813,9 @@ describe('upload-audience', () => {
       {appIDs: '111'},
       {pageIDs: ['xyz', '444']},
       {pageIDs: '444'},
+      {retentionDays: '181'},
+      {retentionDays: 'not-a-number'},
+      {customerFileSource: 'NOT_APPLICABLE'},
     ];
     invalidParams.forEach((param, i) => {
       require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({

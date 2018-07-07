@@ -22,7 +22,8 @@
           "customer_file_source": "USER_PROVIDED_ONLY",
           "is_value_based": false,
           "name": "ca-simple.csv",
-          "subtype": "CUSTOM"
+          "subtype": "CUSTOM",
+          "retention_days": 90
         }
       },
       "result": {

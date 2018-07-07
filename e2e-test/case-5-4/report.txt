@@ -15,7 +15,8 @@ Config: {
     "0": "email"
   },
   "removeUsers": true,
-  "reportOutputPath": "report.txt"
+  "reportOutputPath": "report.txt",
+  "retentionDays": 0
 }
 
 

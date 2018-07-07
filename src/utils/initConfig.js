@@ -293,6 +293,16 @@ const ALL_CONFIG_OPTIONS: {[string]: Option} = {
       'BOTH_USER_AND_PARTNER_PROVIDED',
     ]),
   },
+  retentionDays: {
+    cliOption: [
+      '--retentionDays <retentionDays>',
+      'Number of days to keep the user in this cluster. '
+      + 'You can use any value between 1 and 180 days. '
+      + 'Defaults to forever if not specified.',
+    ],
+    default: 0,
+    normalize: getNormalizeNumberFn(0, 180),
+  },
 };
 
 function filterConfigOptions(
@@ -392,6 +402,7 @@ const OPTIONS_FOR_UPLOAD_AUDIENCE = filterConfigOptions(
     'appIDs',
     'batchSize',
     'customAudienceID',
+    'customerFileSource',
     'delimiter',
     'format',
     'header',
@@ -402,7 +413,7 @@ const OPTIONS_FOR_UPLOAD_AUDIENCE = filterConfigOptions(
     'pageIDs',
     'removeUsers',
     'reportOutputPath',
-    'customerFileSource',
+    'retentionDays',
   ],
 );
 

@@ -28,7 +28,8 @@ Config: {
     "9": "lookalike_value"
   },
   "removeUsers": false,
-  "reportOutputPath": "report.txt"
+  "reportOutputPath": "report.txt",
+  "retentionDays": 0
 }
 
 

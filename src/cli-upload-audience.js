@@ -79,7 +79,13 @@ async function main() {
   }
 
   // Init audienceID.
-  let {customAudienceID, adAccountID, removeUsers, customerFileSource} = config;
+  let {
+    adAccountID,
+    customAudienceID,
+    customerFileSource,
+    removeUsers,
+    retentionDays,
+  } = config;
 
   if (customerFileSource == null) {
     winston.warn(
@@ -88,13 +94,13 @@ async function main() {
     );
   }
 
+  // Create an audience under ad account if customAudienceID is not specified.
   if (customAudienceID == null) {
     if (removeUsers) {
       winston.error('customAudienceID must be specified when removing users.');
       process.exit(1);
     }
 
-    // Create an audience under ad account if customAudienceID is not specified.
     if (adAccountID == null) {
       winston.error('Neither customAudienceID nor adAccountID is specified.');
       process.exit(1);
@@ -117,6 +123,7 @@ async function main() {
           subtype: 'CUSTOM',
           is_value_based: isValueBased,
           customer_file_source: customerFileSource,
+          retention_days: retentionDays,
         },
       );
       customAudienceID = createAudienceResult.id;
@@ -131,13 +138,16 @@ async function main() {
       process.exit(1);
     }
   } else {
+    const fieldsToCheck = ['id', 'is_value_based', 'retention_days'];
+    if (customerFileSource != null) {
+      fieldsToCheck.push('customer_file_source');
+    }
+
     const existingAudience = await checkAccessTokenAndEnt(
       config.accessToken,
       customAudienceID,
       'customAudienceID',
-      customerFileSource != null
-        ? ['id', 'is_value_based', 'customer_file_source']
-        : ['id', 'is_value_based'],
+      fieldsToCheck,
     );
 
     if (
@@ -184,6 +194,25 @@ async function main() {
       );
       winston.info(
         `Successfully set customer_file_source to ${customerFileSource}.`,
+      );
+    }
+
+    if (existingAudience.retention_days !== retentionDays) {
+      winston.info(
+        'The audience is using retention_days='
+        + `${existingAudience.retention_days}, will update to `
+        + `${retentionDays} specified by retentionDays.`,
+      );
+      await graphAPI(
+        customAudienceID,
+        'POST',
+        {
+          access_token: config.accessToken,
+          retention_days: retentionDays,
+        },
+      );
+      winston.info(
+        `Successfully set retention_days to ${retentionDays}.`,
       );
     }
   }

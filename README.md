@@ -109,6 +109,7 @@ Here is a list of all options we support. See previous section for options suppo
 | adAccountID | ID of your ad account if you are creating a new audience with this upload. | CLI or Config JSON | *No default* | `"123456789"` |
 | customAudienceID | ID of your custom audience if you are uploading to an existing audience. | CLI or Config JSON | *No default* | `"123456789"` |
 | customFileSource | Describes how the customer information in your Custom Audience was originally collected. | CLI or Config JSON | `USER_PROVIDED_ONLY`, `PARTNER_PROVIDED_ONLY`, `BOTH_USER_AND_PARTNER_PROVIDED` | `"USER_PROVIDED_ONLY"` |
+| retentionDays | Number of days to keep the user in this cluster. You can use any value between 0 and 180 days. Defaults to forever if not specified, or specified to 0. | CLI or Config JSON | `0` | `90` |
 | removeUsers | Remove uploaded users from custom audience. | CLI or Config JSON | `false` | `true` |
 | appIDs | A list of app IDs when appuid is mapped. | Config JSON Only | *No default* | `["123456789", "987654321"]` |
 | pageIDs | A list of page IDs when pageuid is mapped. | Config JSON Only | *No default* | `["123456789", "987654321"]` |

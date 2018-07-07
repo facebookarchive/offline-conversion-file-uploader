@@ -6,6 +6,7 @@ Config: {
   "accessToken": "<ACCESS_TOKEN_TEST>",
   "batchSize": 10,
   "customAudienceID": "111111111",
+  "customerFileSource": "USER_PROVIDED_ONLY",
   "delimiter": ",",
   "format": {},
   "header": true,
@@ -16,7 +17,7 @@ Config: {
   },
   "removeUsers": false,
   "reportOutputPath": "report.txt",
-  "customerFileSource": "USER_PROVIDED_ONLY"
+  "retentionDays": 90
 }
 
 
