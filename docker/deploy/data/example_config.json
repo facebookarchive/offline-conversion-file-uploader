@@ -1,0 +1,43 @@
+{
+ "accessToken": "<YOUR_ACCESS_TOKEN>",
+ "dataSetID": "<OFFLINE_EVENT_SET_ID>",
+ "header": true,
+ "delimiter": ",",
+ "reportOutputPath": "/data/logs/report.txt",
+ "mapping": {
+   "0": "match_keys.email",
+   "1": "match_keys.email",
+   "2": "match_keys.email",
+   "3": "match_keys.phone",
+   "4": "match_keys.phone",
+   "5": "match_keys.phone",
+   "6": "match_keys.madid",
+   "7": "match_keys.fn",
+   "8": "match_keys.ln",
+   "9": "match_keys.zip",
+   "10": "match_keys.ct",
+   "11": "match_keys.st",
+   "12": "match_keys.country",
+   "13": "match_keys.dob",
+   "14": "match_keys.doby",
+   "15": "match_keys.gen",
+   "16": "match_keys.age",
+   "17": "event_name",
+   "18": "event_time",
+   "19": "value",
+   "20": "currency",
+   "21": "custom_data.store_num"
+ },
+ "format": {
+    "dob": "MM/DD/YY",
+    "event_time": {
+      "timeFormat": "ISO8601"
+    }
+  },
+  "customTypeInfo": {
+    "store_num": {
+      "key": "store_id",
+      "baseType": "number"
+    }
+  }
+}
