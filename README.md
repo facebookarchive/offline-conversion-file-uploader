@@ -114,7 +114,7 @@ Here is a list of all options we support. See previous section for options suppo
 | appIDs | A list of app IDs when appuid is mapped. | Config JSON Only | *No default* | `["123456789", "987654321"]` |
 | pageIDs | A list of page IDs when pageuid is mapped. | Config JSON Only | *No default* | `["123456789", "987654321"]` |
 
-### Mapping for Offilne Events
+### Mapping for Offline Events
 
 The `mapping` field is a dictionary that maps the index of a column to offline event schema. Here is an example:
 
