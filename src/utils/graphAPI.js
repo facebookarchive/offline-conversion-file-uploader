@@ -56,7 +56,6 @@ function graphAPIReal(
   data: ?Object,
 ): Promise<Object> {
   return new Promise((resolve, reject) => {
-    console.log(apiVersion);
     const apiVer = apiVersion ? apiVersion : MARKETING_API_VERSION;
     const urlPrefix = `https://graph.facebook.com/${apiVer}`;
     const baseParams = {
