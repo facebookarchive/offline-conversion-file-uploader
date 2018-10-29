@@ -40,7 +40,12 @@ const COMMAND = 'preprocess';
 // TODO: test preset value
 async function main() {
   const config = initConfig.loadConfigOrExit(initConfig.OPTIONS_FOR_PREPROCESS);
-  initLogger(config.logging, COMMAND, config.inputFilePath);
+  initLogger(
+    config.logging,
+    COMMAND,
+    config.inputFilePath,
+    config.disableLogging,
+  );
   winston.info('Config and logger initialized.');
 
   await fetchSamplesAndCheckConfigForRawEventData(config);

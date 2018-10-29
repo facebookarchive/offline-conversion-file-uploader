@@ -43,6 +43,7 @@ async function initUpload(config: {
   inputFilePath: string,
   accessToken: string,
   dataSetID: string,
+  apiVersion?: string,
 }): Promise<{
   uploadID: string,
   uploadTag: string,
@@ -52,6 +53,7 @@ async function initUpload(config: {
   try {
     if (config.uploadID) {
       const upload = await graphAPI(
+        config.apiVersion,
         config.uploadID,
         'GET',
         {
@@ -79,6 +81,7 @@ async function initUpload(config: {
         uploadTag = getFileSignatureUsingSize(config.inputFilePath);
       }
       const uploads = await graphAPI(
+        config.apiVersion,
         `${config.dataSetID}/uploads`,
         'GET',
         {
@@ -96,6 +99,7 @@ async function initUpload(config: {
         winston.info('Found existing upload tag.');
       } else {
         const createUploadResult = await graphAPI(
+          config.apiVersion,
           `${config.dataSetID}/uploads`,
           'POST',
           {

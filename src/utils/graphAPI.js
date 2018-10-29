@@ -50,12 +50,15 @@ function getErrorFromAPIResponse(response: any): ?Object {
 }
 
 function graphAPIReal(
+  apiVersion: ?string,
   apiPath: string,
   method: 'GET' | 'POST' | 'DELETE',
   data: ?Object,
 ): Promise<Object> {
   return new Promise((resolve, reject) => {
-    const urlPrefix = `https://graph.facebook.com/${MARKETING_API_VERSION}`;
+    console.log(apiVersion);
+    const apiVer = apiVersion ? apiVersion : MARKETING_API_VERSION;
+    const urlPrefix = `https://graph.facebook.com/${apiVer}`;
     const baseParams = {
       hostname: 'graph.facebook.com',
       port: 443,
@@ -146,6 +149,7 @@ const MOCK_API_LATENCY_MIN = 5;
 const MOCK_API_LATENCY_MAX = 100;
 
 function graphAPIForE2ETest(
+  apiVersion: ?string,
   apiPath: string,
   method: 'GET' | 'POST' | 'DELETE',
   data: ?Object,
@@ -209,11 +213,12 @@ function setupE2E(config: {
 let apiImpl = graphAPIReal;
 
 function graphAPI(
+  apiVersion: ?string,
   apiPath: string,
   method: 'GET' | 'POST' | 'DELETE',
   data: ?Object,
 ): Promise<Object> {
-  return apiImpl(apiPath, method, data);
+  return apiImpl(apiVersion, apiPath, method, data);
 }
 
 graphAPI.setupE2E = setupE2E;

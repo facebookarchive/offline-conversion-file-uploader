@@ -48,13 +48,21 @@ const {
 const TEST_UPLOAD_DOC_URL =
   'https://www.facebook.com/business/help/184554988773121';
 
+const COMMAND = 'validate';
+
 async function main() {
   const config = initConfig.loadConfigOrExit(initConfig.OPTIONS_FOR_VALIDATE);
-  initLogger(config.logging, 'validate', config.inputFilePath);
+  initLogger(
+    config.logging,
+    COMMAND,
+    config.inputFilePath,
+    config.disableLogging,
+  );
   winston.info('Config and logger initialized.');
 
   await fetchSamplesAndCheckConfigForRawEventData(config);
   await checkAccessTokenAndEnt(
+    config.apiVersion,
     config.accessToken,
     config.dataSetID,
     'dataSetID',
@@ -96,6 +104,7 @@ async function main() {
   let validateResult;
   try {
     validateResult = await graphAPI(
+      config.apiVersion,
       `${config.dataSetID}/validate`,
       'POST',
       {

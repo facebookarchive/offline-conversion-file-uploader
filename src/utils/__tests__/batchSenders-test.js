@@ -73,6 +73,7 @@ test('getOfflineEventsBatchSender without progress tracking', async () => {
     '222222',
     null,
     false,
+    'v3.0',
   );
   const sendPromise1 = sender({
     start: 10,
@@ -321,6 +322,7 @@ describe('getCustomAudienceBatchSender', async () => {
         cfg.method,
         cfg.appIDs || null,
         cfg.pageIDs || null,
+        'v3.0',
       );
 
       const sendPromise1 = batchSender({

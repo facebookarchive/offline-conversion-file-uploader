@@ -425,6 +425,9 @@ describe('upload', () => {
       {namespaceID: 333333},
       {reportOutputPath: null},
       {reportOutputPath: ''},
+      {apiVersion: '3'},
+      {apiVersion: '211'},
+      {apiVersion: 'v'},
     ];
     invalidParams.forEach((param, i) => {
       require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({
@@ -816,6 +819,9 @@ describe('upload-audience', () => {
       {retentionDays: '181'},
       {retentionDays: 'not-a-number'},
       {customerFileSource: 'NOT_APPLICABLE'},
+      {apiVersion: '3'},
+      {apiVersion: '211'},
+      {apiVersion: 'v'},
     ];
     invalidParams.forEach((param, i) => {
       require('fs').mockFile(`resolved/cfg-${i}`, JSON.stringify({

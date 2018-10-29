@@ -44,7 +44,12 @@ const CUSTOMER_FILE_SOURCE_HELP = 'https://developers.facebook.com/ads/blog/post
 
 async function main() {
   const config = initConfig.loadConfigOrExit(initConfig.OPTIONS_FOR_UPLOAD_AUDIENCE);
-  initLogger(config.logging, COMMAND, config.inputFilePath);
+  initLogger(
+    config.logging,
+    COMMAND,
+    config.inputFilePath,
+    config.disableLogging,
+  );
   winston.info('Config and logger initialized.');
 
   const isValueBased = Object.values(config.mapping)
@@ -107,6 +112,7 @@ async function main() {
     }
 
     await checkAccessTokenAndEnt(
+      config.apiVersion,
       config.accessToken,
       `act_${adAccountID}`,
       'adAccountID',
@@ -115,6 +121,7 @@ async function main() {
     try {
       const name = path.basename(config.inputFilePath);
       const createAudienceResult = await graphAPI(
+        config.apiVersion,
         `act_${adAccountID}/customaudiences`,
         'POST',
         {
@@ -144,6 +151,7 @@ async function main() {
     }
 
     const existingAudience = await checkAccessTokenAndEnt(
+      config.apiVersion,
       config.accessToken,
       customAudienceID,
       'customAudienceID',
@@ -185,6 +193,7 @@ async function main() {
         + `${customerFileSource} specified by customerFileSource.`,
       );
       await graphAPI(
+        config.apiVersion,
         customAudienceID,
         'POST',
         {
@@ -204,6 +213,7 @@ async function main() {
         + `${retentionDays} specified by retentionDays.`,
       );
       await graphAPI(
+        config.apiVersion,
         customAudienceID,
         'POST',
         {
@@ -230,6 +240,7 @@ async function main() {
     removeUsers ? 'DELETE' : 'POST',
     config.appIDs || null,
     config.pageIDs || null,
+    config.apiVersion,
   );
 
   let latestProgress = null;

@@ -14,7 +14,7 @@ const Promise = require('promise');
 
 const requests = [];
 
-const graphAPI = jest.fn().mockImplementation((path, method, params) => {
+const graphAPI = jest.fn().mockImplementation((version, path, method, params) => {
   return new Promise((resolve, reject) => {
     requests.push({resolve, reject, argv: {path, method, params}});
   });

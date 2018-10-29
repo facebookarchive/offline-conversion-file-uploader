@@ -44,7 +44,12 @@ async function main() {
   const config = initConfig.loadConfigOrExit(
     initConfig.OPTIONS_FOR_UPLOAD_PREPROCESSED,
   );
-  initLogger(config.logging, COMMAND, config.inputFilePath);
+  initLogger(
+    config.logging,
+    COMMAND,
+    config.inputFilePath,
+    config.disableLogging,
+  );
   winston.info('Config and logger initialized.');
 
   const samples = await fetchSamples({
@@ -76,6 +81,7 @@ async function main() {
   }
 
   await checkAccessTokenAndEnt(
+    config.apiVersion,
     config.accessToken,
     config.dataSetID,
     'dataSetID',
@@ -120,6 +126,7 @@ async function main() {
       uploadID,
       config.namespaceID,
       progressRanges != null, // enableProgressTracking
+      config.apiVersion,
     ),
     batchSenders.shouldIgnoreAPIErrorFn,
     10, // num retries for API error

@@ -537,6 +537,7 @@ function checkAndDeriveConfigForPreprocessedEventData(
 }
 
 async function checkAccessTokenAndEnt(
+  apiVersion: string,
   accessToken: string,
   entID: string,
   entKey: string,
@@ -544,6 +545,7 @@ async function checkAccessTokenAndEnt(
 ): Promise<Object> {
   try {
     return await graphAPI(
+      apiVersion,
       entID,
       'GET',
       {

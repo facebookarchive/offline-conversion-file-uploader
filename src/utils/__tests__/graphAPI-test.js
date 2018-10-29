@@ -41,9 +41,9 @@ afterEach(() => {
 const graphAPI = require('../graphAPI');
 
 // Wrap the graphAPI async function so that it prints out stack trace on error.
-async function callGraphAPI(apiPath, method, data) {
+async function callGraphAPI(apiVersion, apiPath, method, data) {
   try {
-    return await graphAPI(apiPath, method, data);
+    return await graphAPI(apiVersion, apiPath, method, data);
   } catch (ex) {
     // Uncomment the following line to debug.
     // console.error(ex);
@@ -52,7 +52,7 @@ async function callGraphAPI(apiPath, method, data) {
 }
 
 test('GET without params and with valid response', async () => {
-  const api = callGraphAPI('123456', 'GET');
+  const api = callGraphAPI('v3.1', '123456', 'GET');
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   expect(https.reqOn).toHaveBeenCalledTimes(1);
@@ -62,7 +62,7 @@ test('GET without params and with valid response', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'GET',
-    path: 'https://graph.facebook.com/v3.0/123456',
+    path: 'https://graph.facebook.com/v3.1/123456',
   });
   const res = {
     setEncoding: jest.fn(),
@@ -78,7 +78,7 @@ test('GET without params and with valid response', async () => {
 });
 
 test('GET with params, make sure they are encoded', async () => {
-  callGraphAPI('123456', 'GET', {x: 1, y: 2, '\u4F60': '\u597D'});
+  callGraphAPI('v3.1', '123456', 'GET', {x: 1, y: 2, '\u4F60': '\u597D'});
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   expect(https.reqOn).toHaveBeenCalledTimes(1);
@@ -88,12 +88,12 @@ test('GET with params, make sure they are encoded', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'GET',
-    path: 'https://graph.facebook.com/v3.0/123456?x=1&y=2&%E4%BD%A0=%E5%A5%BD',
+    path: 'https://graph.facebook.com/v3.1/123456?x=1&y=2&%E4%BD%A0=%E5%A5%BD',
   });
 });
 
 test('GET with invalid JSON in response', async () => {
-  const api = callGraphAPI('123456', 'GET');
+  const api = callGraphAPI('v3.0', '123456', 'GET');
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -107,7 +107,7 @@ test('GET with invalid JSON in response', async () => {
 });
 
 test('GET with null response', async () => {
-  const api = callGraphAPI('123456', 'GET');
+  const api = callGraphAPI('v3.0', '123456', 'GET');
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -129,7 +129,7 @@ test('GET with null response', async () => {
 });
 
 test('GET with error field', async () => {
-  const api = callGraphAPI('123456', 'GET');
+  const api = callGraphAPI('v3.0', '123456', 'GET');
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -150,7 +150,7 @@ test('GET with error field', async () => {
 });
 
 test('GET with error_code and error_msg field', async () => {
-  const api = callGraphAPI('123456', 'GET');
+  const api = callGraphAPI('v3.0', '123456', 'GET');
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -178,7 +178,7 @@ test('GET with error_code and error_msg field', async () => {
 });
 
 test('GET with non 200 error', async () => {
-  const api = callGraphAPI('123456', 'GET');
+  const api = callGraphAPI('v3.0', '123456', 'GET');
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -200,7 +200,7 @@ test('GET with non 200 error', async () => {
 });
 
 test('GET with error', async () => {
-  const api = callGraphAPI('123456', 'GET');
+  const api = callGraphAPI('v3.0', '123456', 'GET');
   const https = require('https');
   https.reqOn.mock.calls[0][1](new Error('random issue'));
   await expect(api).rejects.toThrow('random issue');
@@ -208,7 +208,7 @@ test('GET with error', async () => {
 
 test('POST with params', async () => {
   const params = {x: 1, y: 2, '\u4F60': '\u597D'};
-  callGraphAPI('123456', 'POST', params);
+  callGraphAPI('v3.0', '123456', 'POST', params);
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   expect(https.reqOn).toHaveBeenCalledTimes(1);

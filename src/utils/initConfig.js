@@ -81,6 +81,16 @@ function normalizeAnyObject(input: any): ?any {
   return typeof input === 'object' ? input : null;
 }
 
+function normalizeApiVersion(input: any): ?any {
+  if (typeof input !== 'string') {
+    return null;
+  }
+  if (!input.startsWith('v')) {
+    input = 'v' + input;
+  }
+  return /^v\d+\.\d+$/.test(input) ? input : null;
+}
+
 function getNormalizeNumberFn(min: number, max: number): NormalizeFn {
   return input => {
     const num = parseInt(input, 10);
@@ -303,6 +313,22 @@ const ALL_CONFIG_OPTIONS: {[string]: Option} = {
     default: 0,
     normalize: getNormalizeNumberFn(0, 180),
   },
+  apiVersion: {
+    cliOption: [
+      '--apiVersion <apiVersion>',
+      'The API version of Facebook Marketing API you use.',
+    ],
+    optional: true,
+    normalize: normalizeApiVersion,
+  },
+  disableLogging: {
+    cliOption: [
+      '--disableLogging',
+      'Disable logging files being saved to local disks.'
+    ],
+    optional: true,
+    normalize: normalizeBoolean,
+  },
 };
 
 function filterConfigOptions(
@@ -337,6 +363,8 @@ const OPTIONS_FOR_UPLOAD = filterConfigOptions(
     'uploadID',
     'uploadTag',
     'uploadTagPrefix',
+    'apiVersion',
+    'disableLogging',
   ],
 );
 
@@ -356,6 +384,8 @@ const OPTIONS_FOR_VALIDATE = filterConfigOptions(
     'numRowsToValidate',
     'presetValues',
     'reportOutputPath',
+    'apiVersion',
+    'disableLogging',
   ],
 );
 
@@ -373,6 +403,7 @@ const OPTIONS_FOR_PREPROCESS = filterConfigOptions(
     'preprocessOutputPath',
     'presetValues',
     'reportOutputPath',
+    'disableLogging',
   ],
 );
 
@@ -391,6 +422,8 @@ const OPTIONS_FOR_UPLOAD_PREPROCESSED = filterConfigOptions(
     'uploadID',
     'uploadTag',
     'uploadTagPrefix',
+    'apiVersion',
+    'disableLogging',
   ],
 );
 
@@ -414,6 +447,8 @@ const OPTIONS_FOR_UPLOAD_AUDIENCE = filterConfigOptions(
     'removeUsers',
     'reportOutputPath',
     'retentionDays',
+    'apiVersion',
+    'disableLogging',
   ],
 );
 

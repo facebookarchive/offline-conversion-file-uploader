@@ -42,7 +42,12 @@ const COMMAND = 'upload';
 
 async function main() {
   const config = initConfig.loadConfigOrExit(initConfig.OPTIONS_FOR_UPLOAD);
-  initLogger(config.logging, COMMAND, config.inputFilePath);
+  initLogger(
+    config.logging,
+    COMMAND,
+    config.inputFilePath,
+    config.disableLogging,
+  );
   winston.info('Config and logger initialized.');
 
   await fetchSamplesAndCheckConfigForRawEventData(config);
@@ -55,6 +60,7 @@ async function main() {
   }
 
   await checkAccessTokenAndEnt(
+    config.apiVersion,
     config.accessToken,
     config.dataSetID,
     'dataSetID',
@@ -95,6 +101,7 @@ async function main() {
       uploadID,
       config.namespaceID,
       progressRanges != null, // enableProgressTracking
+      config.apiVersion,
     ),
     batchSenders.shouldIgnoreAPIErrorFn,
     10, // num retries for API error

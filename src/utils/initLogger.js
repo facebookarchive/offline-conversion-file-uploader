@@ -47,32 +47,44 @@ function initLogger(
   level: string,
   prefix: string,
   filePath: string,
+  disableLogging: boolean,
 ) {
   const date = new Date().toISOString();
   const fileName = path.basename(filePath);
-  winston.configure({
-    level,
-    transports: [
-      new winston.transports.Console({
-        timestamp,
-        formatter: plainFormatter,
-      }),
-      new winston.transports.File({
-        name: 'log-in-plain-text',
-        filename: `${prefix}-${fileName}-${date}-txt.log`,
-        json: false,
-        timestamp,
-        formatter: plainFormatter,
-      }),
-      new winston.transports.File({
-        name: 'log-in-aws-format',
-        filename: `${prefix}-${fileName}-${date}-aws.log`,
-        json: false,
-        timestamp,
-        formatter: awsFormatter,
-      }),
-    ],
+  const consoleTransport = new winston.transports.Console({
+    timestamp,
+    formatter: plainFormatter,
   });
+  const txtTransport = new winston.transports.File({
+    name: 'log-in-plain-text',
+    filename: `${prefix}-${fileName}-${date}-txt.log`,
+    json: false,
+    timestamp,
+    formatter: plainFormatter,
+  });
+  const awsTransport = new winston.transports.File({
+    name: 'log-in-aws-format',
+    filename: `${prefix}-${fileName}-${date}-aws.log`,
+    json: false,
+    timestamp,
+    formatter: awsFormatter,
+  });
+
+  if (disableLogging) {
+    winston.configure({
+      level,
+      transports: [consoleTransport],
+    });
+  } else {
+    winston.configure({
+      level,
+      transports: [
+        consoleTransport,
+        txtTransport,
+        awsTransport,
+      ],
+    });
+  }
 }
 
 module.exports = initLogger;
