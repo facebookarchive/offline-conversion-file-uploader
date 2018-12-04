@@ -105,26 +105,37 @@ function graphAPIReal(
       res => {
         res.setEncoding('utf8');
         res.on('data', d => {
+          let parsedResponse, error;
           if (res.statusCode === 200) {
-            let parsedResponse;
             try {
               parsedResponse = JSON.parse(d);
             } catch (ex) {
               reject(new Error('Invalid JSON: ' + d));
               return;
             }
-            const error = getErrorFromAPIResponse(parsedResponse);
+            error = getErrorFromAPIResponse(parsedResponse);
             if (error) {
               reject(_wrapError(error));
             } else {
               resolve(parsedResponse);
             }
           } else {
-            reject(_wrapError({
+            const genericError = _wrapError({
               code: 1,
               error_subcode: ERROR_CODE_EMPTY_RESPONSE,
               is_network_error: true,
-            }));
+            });
+            try {
+              parsedResponse = JSON.parse(d);
+              error = getErrorFromAPIResponse(parsedResponse);
+              if (error) {
+                reject(_wrapError(error));
+              } else {
+                reject(genericError);
+              }
+            } catch (ex) {
+              reject(genericError);
+            }
           }
         });
       },

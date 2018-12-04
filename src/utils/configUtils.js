@@ -554,8 +554,15 @@ async function checkAccessTokenAndEnt(
       },
     );
   } catch (error) {
+    const erorrDetails = {
+      message: error.message,
+      type: error.type,
+      code: error.code,
+      fbtrace_id: error.fbtrace_id,
+    };
     winston.error(
-      `Failed to read ${entID} using access token ${accessToken}. `
+      `Failed to read ${entID} using access token ${accessToken}, receiving `
+      + `error: ${JSON.stringify(erorrDetails)}. \n`
       + `Please make sure ${entKey} and accessToken are setup properly. `
       + 'Also, network or firewall issues may also cause the error. '
       + 'Please make sure your network is connected and whitelist Facebook '
