@@ -18,7 +18,7 @@ const Promise = require('promise');
 const stringify = require('json-stable-stringify');
 const winston = require('winston');
 
-const MARKETING_API_VERSION = 'v3.0';
+const MARKETING_API_VERSION = 'v3.2';
 const ERROR_CODE_EMPTY_RESPONSE = 1357045;
 
 function _wrapError(errorData: Object): Object {
