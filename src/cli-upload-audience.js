@@ -14,7 +14,7 @@
 const batchSenders = require('./utils/batchSenders');
 const configUtils = require('./utils/configUtils');
 const fs = require('fs');
-const graphAPI = require('./utils/graphAPI');
+const graphAPIUtils = require('./utils/graphAPIUtils');
 const initConfig = require('./utils/initConfig');
 const initLogger = require('./utils/initLogger');
 const path = require('path');
@@ -22,6 +22,7 @@ const reportUtils = require('./utils/reportUtils');
 const SignalsUploaderLibrary = require('./uploader/SignalsUploaderLibrary');
 const winston = require('winston');
 
+const {graphAPI, setupGraphAPIVersion} = graphAPIUtils;
 const {
   SignalsBasicPIISchema,
   SignalsWLALExtendedPIISchema,
@@ -51,6 +52,8 @@ async function main() {
     config.disableLogging,
   );
   winston.info('Config and logger initialized.');
+
+  await setupGraphAPIVersion(config.accessToken, config.apiVersion);
 
   const isValueBased = Object.values(config.mapping)
     .includes('lookalike_value');
@@ -112,7 +115,6 @@ async function main() {
     }
 
     await checkAccessTokenAndEnt(
-      config.apiVersion,
       config.accessToken,
       `act_${adAccountID}`,
       'adAccountID',
@@ -121,7 +123,6 @@ async function main() {
     try {
       const name = path.basename(config.inputFilePath);
       const createAudienceResult = await graphAPI(
-        config.apiVersion,
         `act_${adAccountID}/customaudiences`,
         'POST',
         {
@@ -151,7 +152,6 @@ async function main() {
     }
 
     const existingAudience = await checkAccessTokenAndEnt(
-      config.apiVersion,
       config.accessToken,
       customAudienceID,
       'customAudienceID',
@@ -193,7 +193,6 @@ async function main() {
         + `${customerFileSource} specified by customerFileSource.`,
       );
       await graphAPI(
-        config.apiVersion,
         customAudienceID,
         'POST',
         {
@@ -213,7 +212,6 @@ async function main() {
         + `${retentionDays} specified by retentionDays.`,
       );
       await graphAPI(
-        config.apiVersion,
         customAudienceID,
         'POST',
         {
@@ -240,7 +238,6 @@ async function main() {
     removeUsers ? 'DELETE' : 'POST',
     config.appIDs || null,
     config.pageIDs || null,
-    config.apiVersion,
   );
 
   let latestProgress = null;

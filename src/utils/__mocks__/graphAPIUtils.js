@@ -14,9 +14,24 @@ const Promise = require('promise');
 
 const requests = [];
 
-const graphAPI = jest.fn().mockImplementation((version, path, method, params) => {
+let globalAPIVersion = null;
+
+const setupGraphAPIVersion = jest.fn().mockImplementation((accessToken, version) => {
+  globalAPIVersion = version != null ? version : 'v4.0';
+});
+
+const graphAPI = jest.fn().mockImplementation((path, method, params) => {
   return new Promise((resolve, reject) => {
-    requests.push({resolve, reject, argv: {path, method, params}});
+    requests.push({
+      resolve,
+      reject,
+      argv: {
+        path,
+        method,
+        params,
+        version: globalAPIVersion,
+      }
+    });
   });
 });
 
@@ -48,4 +63,7 @@ graphAPI.reset = () => {
   requests.length = 0;
 };
 
-module.exports = graphAPI;
+module.exports = {
+  graphAPI,
+  setupGraphAPIVersion,
+};

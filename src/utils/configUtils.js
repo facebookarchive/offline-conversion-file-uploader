@@ -12,10 +12,12 @@
 'use strict';
 
 const fs = require('fs');
-const graphAPI = require('./graphAPI');
+const graphAPIUtils = require('./graphAPIUtils');
 const reportUtils = require('./reportUtils');
 const SignalsUploaderLibrary = require('../uploader/SignalsUploaderLibrary');
 const winston = require('winston');
+
+const {graphAPI} = graphAPIUtils;
 
 const {
   OfflineStandardEventsEnum,
@@ -537,7 +539,6 @@ function checkAndDeriveConfigForPreprocessedEventData(
 }
 
 async function checkAccessTokenAndEnt(
-  apiVersion: string,
   accessToken: string,
   entID: string,
   entKey: string,
@@ -545,7 +546,6 @@ async function checkAccessTokenAndEnt(
 ): Promise<Object> {
   try {
     return await graphAPI(
-      apiVersion,
       entID,
       'GET',
       {

@@ -2,6 +2,18 @@
   "mockedCalls": [
     {
       "params": {
+        "apiPath": "api_version",
+        "method": "GET",
+        "data": {
+          "access_token": "<ACCESS_TOKEN_TEST>"
+        }
+      },
+      "result": {
+        "api_version": "v3.1"
+      }
+    },
+    {
+      "params": {
         "apiPath": "222222222",
         "method": "GET",
         "data": {

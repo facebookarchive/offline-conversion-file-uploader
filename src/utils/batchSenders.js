@@ -10,10 +10,12 @@
  */
 
 const fs = require('fs');
-const graphAPI = require('../utils/graphAPI');
+const graphAPIUtils = require('../utils/graphAPIUtils');
 const os = require('os');
 const Promise = require('promise');
 const winston = require('winston');
+
+const {graphAPI} = graphAPIUtils;
 
 const {EOL} = os;
 
@@ -70,7 +72,6 @@ function getOfflineEventsBatchSender(
   uploadID: string,
   namespaceID: ?string,
   enableProgressTracking: boolean,
-  apiVersion: string,
 ): BatchSender {
   return (batch: Batch) => {
     return new Promise((resolve, reject) => {
@@ -96,7 +97,7 @@ function getOfflineEventsBatchSender(
         thenCallback,
         catchCallback,
       } = getGraphAPICallbacks(resolve, reject, batch);
-      graphAPI(apiVersion, `${dataSetID}/events`, 'POST', params)
+      graphAPI(`${dataSetID}/events`, 'POST', params)
         .catch(catchCallback)
         .then(thenCallback);
       winston.debug(`Batch [${batch.start}, ${batch.end}): sending`);
@@ -168,7 +169,6 @@ function getCustomAudienceBatchSender(
   method: 'POST' | 'DELETE',
   appIDs: ?Array<string>,
   pageIDs: ?Array<string>,
-  apiVersion: string,
 ): {
   batchSender: BatchSender,
   lastDummyBatchSender: () => Promise<void>,
@@ -220,7 +220,7 @@ function getCustomAudienceBatchSender(
         thenCallback,
         catchCallback,
       } = getGraphAPICallbacks(resolve, reject, batch);
-      graphAPI(apiVersion, `${audienceID}/users`, method, params)
+      graphAPI(`${audienceID}/users`, method, params)
         .catch(catchCallback)
         .then(thenCallback);
       winston.debug(`Batch [${batch.start}, ${batch.end}): sending`);
@@ -242,7 +242,7 @@ function getCustomAudienceBatchSender(
         session_id: sessionID,
       },
     };
-    return graphAPI(apiVersion, `${audienceID}/users`, method, params);
+    return graphAPI(`${audienceID}/users`, method, params);
   };
   return {
     batchSender,

@@ -18,8 +18,10 @@ const Promise = require('promise');
 const stringify = require('json-stable-stringify');
 const winston = require('winston');
 
-const MARKETING_API_VERSION = 'v3.2';
 const ERROR_CODE_EMPTY_RESPONSE = 1357045;
+
+let globalAPIVersion = null;
+let isE2E = false;
 
 function _wrapError(errorData: Object): Object {
   const error = new Error(errorData.message);
@@ -49,15 +51,16 @@ function getErrorFromAPIResponse(response: any): ?Object {
   return undefined;
 }
 
-function graphAPIReal(
+function _graphAPI(
   apiVersion: ?string,
   apiPath: string,
   method: 'GET' | 'POST' | 'DELETE',
-  data: ?Object,
+  data: Object,
 ): Promise<Object> {
   return new Promise((resolve, reject) => {
-    const apiVer = apiVersion ? apiVersion : MARKETING_API_VERSION;
-    const urlPrefix = `https://graph.facebook.com/${apiVer}`;
+    const urlPrefix = apiVersion != null
+      ? `https://graph.facebook.com/${apiVersion}`
+      : 'https://graph.facebook.com';
     const baseParams = {
       hostname: 'graph.facebook.com',
       port: 443,
@@ -150,6 +153,46 @@ function graphAPIReal(
   });
 }
 
+function _getLatestGraphAPIVersion(
+  accessToken: string
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    return _graphAPI(
+      null,
+      'api_version',
+      'GET',
+      {access_token: accessToken},
+    ).then(result => resolve(result['api_version']))
+    .catch(error => reject(error));
+  });
+}
+
+async function setupGraphAPIVersion(
+  accessToken: string,
+  versionToUse: ?string = null,
+): Promise<void> {
+  if (versionToUse != null) {
+    globalAPIVersion = versionToUse;
+  } else if (isE2E) {
+    globalAPIVersion = 'v3.1';
+  } else {
+    globalAPIVersion = await _getLatestGraphAPIVersion(accessToken);
+  }
+}
+
+function graphAPIReal(
+  apiPath: string,
+  method: 'GET' | 'POST' | 'DELETE',
+  data: Object = {},
+): Promise<Object> {
+  return _graphAPI(
+    globalAPIVersion,
+    apiPath,
+    method,
+    data,
+  );
+}
+
 // Keyed by the method, apiPath and data.
 let mockedCalls: Object = {};
 // Keyed by only method and apiPath, in case data is too complicated.
@@ -159,7 +202,6 @@ const MOCK_API_LATENCY_MIN = 5;
 const MOCK_API_LATENCY_MAX = 100;
 
 function graphAPIForE2ETest(
-  apiVersion: ?string,
   apiPath: string,
   method: 'GET' | 'POST' | 'DELETE',
   data: ?Object,
@@ -217,20 +259,22 @@ function setupE2E(config: {
     // eslint-disable-next-line no-useless-concat
     fs.writeFileSync(mockedCallsDumpPath, '@' + 'generated\n');
   }
+  isE2E = true;
   apiImpl = graphAPIForE2ETest;
 }
 
 let apiImpl = graphAPIReal;
 
 function graphAPI(
-  apiVersion: ?string,
   apiPath: string,
   method: 'GET' | 'POST' | 'DELETE',
   data: ?Object,
 ): Promise<Object> {
-  return apiImpl(apiVersion, apiPath, method, data);
+  return apiImpl(apiPath, method, data);
 }
 
-graphAPI.setupE2E = setupE2E;
-
-module.exports = graphAPI;
+module.exports = {
+  graphAPI,
+  setupE2E,
+  setupGraphAPIVersion,
+};

@@ -14,6 +14,7 @@
 const batchSenders = require('./utils/batchSenders');
 const configUtils = require('./utils/configUtils');
 const fs = require('fs');
+const graphAPIUtils = require('./utils/graphAPIUtils');
 const initConfig = require('./utils/initConfig');
 const initLogger = require('./utils/initLogger');
 const initUpload = require('./utils/initUpload');
@@ -21,6 +22,7 @@ const reportUtils = require('./utils/reportUtils');
 const SignalsUploaderLibrary = require('./uploader/SignalsUploaderLibrary');
 const winston = require('winston');
 
+const {setupGraphAPIVersion} = graphAPIUtils;
 const {
   SignalsHashedEventDataSchema,
   SignalsUploaderUploadTask,
@@ -52,6 +54,8 @@ async function main() {
   );
   winston.info('Config and logger initialized.');
 
+  await setupGraphAPIVersion(config.accessToken, config.apiVersion);
+
   const samples = await fetchSamples({
     inputFilePath: config.inputFilePath,
     delimiter: ',',
@@ -81,7 +85,6 @@ async function main() {
   }
 
   await checkAccessTokenAndEnt(
-    config.apiVersion,
     config.accessToken,
     config.dataSetID,
     'dataSetID',
@@ -126,7 +129,6 @@ async function main() {
       uploadID,
       config.namespaceID,
       progressRanges != null, // enableProgressTracking
-      config.apiVersion,
     ),
     batchSenders.shouldIgnoreAPIErrorFn,
     10, // num retries for API error

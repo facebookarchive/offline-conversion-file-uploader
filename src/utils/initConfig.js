@@ -14,7 +14,7 @@
 const batchSenders = require('./batchSenders');
 const commander = require('commander');
 const fs = require('fs');
-const graphAPI = require('./graphAPI');
+const graphAPIUtils = require('./graphAPIUtils');
 const path = require('path');
 const reportUtils = require('./reportUtils');
 
@@ -478,7 +478,7 @@ function loadConfig(
       path.resolve(commander.e2eTestConfigFilePath);
     const e2eTestConfig =
       JSON.parse(fs.readFileSync(e2eTestConfigFilePathAbs, 'utf8'));
-    graphAPI.setupE2E(e2eTestConfig);
+    graphAPIUtils.setupE2E(e2eTestConfig);
     reportUtils.setupE2E();
     batchSenders.setupE2E();
     /* $FlowFixMe: Mock out this function so event time normalization returns

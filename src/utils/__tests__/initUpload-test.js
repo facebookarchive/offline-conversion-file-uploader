@@ -24,15 +24,17 @@ jest
     }),
   }))
   .mock('winston', () => ({info: jest.fn(), error: jest.fn()}))
-  .mock('../graphAPI');
+  .mock('../graphAPIUtils');
 
 const initUpload = require('../initUpload');
 
 beforeEach(() => {
-  require('../graphAPI').reset();
+  require('../graphAPIUtils').graphAPI.reset();
+  require('../graphAPIUtils').setupGraphAPIVersion('<ACCESS_TOKEN>', 'v3.1');
 });
 
 test('get upload by ID', async () => {
+  const {graphAPI} = require('../graphAPIUtils');
   let resultPromise, result;
   resultPromise = initUpload({
     uploadID: '666666',
@@ -40,7 +42,6 @@ test('get upload by ID', async () => {
     accessToken: '<ACCESS_TOKEN>',
     dataSetID: '111111',
   });
-  const graphAPI = require('../graphAPI');
   expect(graphAPI.hasRequest()).toBe(true);
   expect(graphAPI.getLastRequest().argv).toEqual({
     path: '666666',
@@ -49,6 +50,7 @@ test('get upload by ID', async () => {
       access_token: '<ACCESS_TOKEN>',
       fields: ['progress', 'upload_tag'],
     },
+    version: 'v3.1',
   });
   await graphAPI.resolveLastRequest({
     upload_tag: 'mdfu-upload',
@@ -89,6 +91,7 @@ test('get upload by ID', async () => {
 });
 
 test('get upload by upload Tag', async () => {
+  const {graphAPI} = require('../graphAPIUtils');
   let resultPromise, result;
   resultPromise = initUpload({
     uploadTag: 'mdfu-upload',
@@ -96,7 +99,7 @@ test('get upload by upload Tag', async () => {
     accessToken: '<ACCESS_TOKEN>',
     dataSetID: '111111',
   });
-  const graphAPI = require('../graphAPI');
+
   expect(graphAPI.hasRequest()).toBe(true);
   expect(graphAPI.getLastRequest().argv).toEqual({
     path: '111111/uploads',
@@ -106,6 +109,7 @@ test('get upload by upload Tag', async () => {
       upload_tag: 'mdfu-upload',
       fields: ['id', 'upload_tag', 'progress'],
     },
+    version: 'v3.1',
   });
   await graphAPI.resolveLastRequest({data: []});
   expect(graphAPI.hasRequest()).toBe(true);
@@ -116,6 +120,7 @@ test('get upload by upload Tag', async () => {
       access_token: '<ACCESS_TOKEN>',
       upload_tag: 'mdfu-upload',
     },
+    version: 'v3.1',
   });
   await graphAPI.resolveLastRequest({id: '666666'});
   result = await resultPromise;
@@ -156,13 +161,13 @@ test('get upload by upload Tag', async () => {
 });
 
 test('get upload by upload Tag Prefix', async () => {
+  const {graphAPI} = require('../graphAPIUtils');
   const resultPromise = initUpload({
     uploadTagPrefix: 'mdfu-upload',
     inputFilePath: 'path/to/input.csv',
     accessToken: '<ACCESS_TOKEN>',
     dataSetID: '111111',
   });
-  const graphAPI = require('../graphAPI');
   expect(graphAPI.hasRequest()).toBe(true);
   expect(graphAPI.getLastRequest().argv).toEqual({
     path: '111111/uploads',
@@ -172,6 +177,7 @@ test('get upload by upload Tag Prefix', async () => {
       upload_tag: 'mdfu-upload (input.csv@1514764800000)',
       fields: ['id', 'upload_tag', 'progress'],
     },
+    version: 'v3.1',
   });
   await graphAPI.resolveLastRequest({data: [{
     id: '666666',
@@ -188,12 +194,12 @@ test('get upload by upload Tag Prefix', async () => {
 });
 
 test('get upload by default', async () => {
+  const {graphAPI} = require('../graphAPIUtils');
   const resultPromise = initUpload({
     inputFilePath: 'path/to/input.csv',
     accessToken: '<ACCESS_TOKEN>',
     dataSetID: '111111',
   });
-  const graphAPI = require('../graphAPI');
   expect(graphAPI.hasRequest()).toBe(true);
   expect(graphAPI.getLastRequest().argv).toEqual({
     path: '111111/uploads',
@@ -203,6 +209,7 @@ test('get upload by default', async () => {
       upload_tag: 'input.csv (12345678bytes)',
       fields: ['id', 'upload_tag', 'progress'],
     },
+    version: 'v3.1',
   });
   await graphAPI.resolveLastRequest({data: [{
     id: '666666',
@@ -219,13 +226,13 @@ test('get upload by default', async () => {
 });
 
 test('upload already exists but skipRowsAlreadyUploaded not set', async () => {
+  const {graphAPI} = require('../graphAPIUtils');
   const resultPromise = initUpload({
     inputFilePath: 'path/to/input.csv',
     accessToken: '<ACCESS_TOKEN>',
     dataSetID: '111111',
     skipRowsAlreadyUploaded: true,
   });
-  const graphAPI = require('../graphAPI');
   expect(graphAPI.hasRequest()).toBe(true);
   expect(graphAPI.getLastRequest().argv).toEqual({
     path: '111111/uploads',
@@ -235,6 +242,7 @@ test('upload already exists but skipRowsAlreadyUploaded not set', async () => {
       upload_tag: 'input.csv (12345678bytes)',
       fields: ['id', 'upload_tag', 'progress'],
     },
+    version: 'v3.1',
   });
   await graphAPI.resolveLastRequest({data: [{
     id: '666666',

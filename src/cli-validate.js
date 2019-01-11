@@ -13,13 +13,14 @@
 
 const configUtils = require('./utils/configUtils');
 const fs = require('fs');
-const graphAPI = require('./utils/graphAPI');
+const graphAPIUtils = require('./utils/graphAPIUtils');
 const initConfig = require('./utils/initConfig');
 const initLogger = require('./utils/initLogger');
 const reportUtils = require('./utils/reportUtils');
 const SignalsUploaderLibrary = require('./uploader/SignalsUploaderLibrary');
 const winston = require('winston');
 
+const {graphAPI, setupGraphAPIVersion} = graphAPIUtils;
 const {
   SignalsDSDITestUploadUtils,
   SignalsDSDITestUploadWarnings,
@@ -60,9 +61,9 @@ async function main() {
   );
   winston.info('Config and logger initialized.');
 
+  await setupGraphAPIVersion(config.accessToken, config.apiVersion);
   await fetchSamplesAndCheckConfigForRawEventData(config);
   await checkAccessTokenAndEnt(
-    config.apiVersion,
     config.accessToken,
     config.dataSetID,
     'dataSetID',
@@ -104,7 +105,6 @@ async function main() {
   let validateResult;
   try {
     validateResult = await graphAPI(
-      config.apiVersion,
       `${config.dataSetID}/validate`,
       'POST',
       {

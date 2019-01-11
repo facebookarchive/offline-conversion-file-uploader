@@ -38,12 +38,23 @@ afterEach(() => {
   https.reqEnd.mockClear();
 });
 
-const graphAPI = require('../graphAPI');
+const graphAPIUtils = require('../graphAPIUtils');
+
+const {graphAPI, setupGraphAPIVersion} = graphAPIUtils;
+
+beforeEach(() => {
+  // Run all tests by default on v3.1
+  setupGraphAPIVersion('<ACCESS_TOKEN>', 'v3.1');
+});
 
 // Wrap the graphAPI async function so that it prints out stack trace on error.
-async function callGraphAPI(apiVersion, apiPath, method, data) {
+async function callGraphAPI(
+  apiPath: string,
+  method: 'GET' | 'POST' | 'DELETE',
+  data: Object,
+) {
   try {
-    return await graphAPI(apiVersion, apiPath, method, data);
+    return await graphAPI(apiPath, method, data);
   } catch (ex) {
     // Uncomment the following line to debug.
     // console.error(ex);
@@ -51,8 +62,45 @@ async function callGraphAPI(apiVersion, apiPath, method, data) {
   }
 }
 
+test('Setup Graph API version automatically to latest', async () => {
+  const https = require('https');
+  const setupVersion = setupGraphAPIVersion('abc');
+  const requestCalls = https.request.mock.calls;
+  expect(https.reqOn).toHaveBeenCalledTimes(1);
+  expect(https.reqWrite).not.toHaveBeenCalled();
+  expect(https.reqEnd).toHaveBeenCalledTimes(1);
+  expect(requestCalls[0][0]).toEqual({
+    hostname: 'graph.facebook.com',
+    port: 443,
+    method: 'GET',
+    path: 'https://graph.facebook.com/api_version?access_token=abc',
+  });
+  const res = {
+    setEncoding: jest.fn(),
+    on: jest.fn(),
+    statusCode: 200,
+  };
+  requestCalls[0][1](res);
+  expect(res.on).toHaveBeenCalledTimes(1);
+  expect(res.on.mock.calls[0][0]).toBe('data');
+  res.on.mock.calls[0][1](JSON.stringify({api_version: 'v4.0'}));
+  await setupVersion;
+
+  // Test calling Graph API uses new version
+  callGraphAPI('123456', 'GET', {access_token: 'abc'});
+  expect(https.reqOn).toHaveBeenCalledTimes(2);
+  expect(https.reqWrite).not.toHaveBeenCalled();
+  expect(https.reqEnd).toHaveBeenCalledTimes(2);
+  expect(requestCalls[1][0]).toEqual({
+    hostname: 'graph.facebook.com',
+    port: 443,
+    method: 'GET',
+    path: 'https://graph.facebook.com/v4.0/123456?access_token=abc',
+  });
+});
+
 test('GET without params and with valid response', async () => {
-  const api = callGraphAPI('v3.1', '123456', 'GET');
+  const api = callGraphAPI('123456', 'GET', {access_token: 'abc'});
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   expect(https.reqOn).toHaveBeenCalledTimes(1);
@@ -62,7 +110,7 @@ test('GET without params and with valid response', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'GET',
-    path: 'https://graph.facebook.com/v3.1/123456',
+    path: 'https://graph.facebook.com/v3.1/123456?access_token=abc',
   });
   const res = {
     setEncoding: jest.fn(),
@@ -78,7 +126,11 @@ test('GET without params and with valid response', async () => {
 });
 
 test('GET with params, make sure they are encoded', async () => {
-  callGraphAPI('v3.1', '123456', 'GET', {x: 1, y: 2, '\u4F60': '\u597D'});
+  callGraphAPI(
+    '123456',
+    'GET',
+    {access_token: 'abc', x: 1, y: 2, '\u4F60': '\u597D'},
+  );
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   expect(https.reqOn).toHaveBeenCalledTimes(1);
@@ -88,12 +140,12 @@ test('GET with params, make sure they are encoded', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'GET',
-    path: 'https://graph.facebook.com/v3.1/123456?x=1&y=2&%E4%BD%A0=%E5%A5%BD',
+    path: 'https://graph.facebook.com/v3.1/123456?access_token=abc&x=1&y=2&%E4%BD%A0=%E5%A5%BD',
   });
 });
 
 test('GET with invalid JSON in response', async () => {
-  const api = callGraphAPI('v3.0', '123456', 'GET');
+  const api = callGraphAPI('123456', 'GET', {access_token: 'abc'});
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -107,7 +159,7 @@ test('GET with invalid JSON in response', async () => {
 });
 
 test('GET with null response', async () => {
-  const api = callGraphAPI('v3.0', '123456', 'GET');
+  const api = callGraphAPI('123456', 'GET', {access_token: 'abc'});
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -129,7 +181,7 @@ test('GET with null response', async () => {
 });
 
 test('GET with error field', async () => {
-  const api = callGraphAPI('v3.0', '123456', 'GET');
+  const api = callGraphAPI('123456', 'GET', {access_token: 'abc'});
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -150,7 +202,7 @@ test('GET with error field', async () => {
 });
 
 test('GET with error_code and error_msg field', async () => {
-  const api = callGraphAPI('v3.0', '123456', 'GET');
+  const api = callGraphAPI('123456', 'GET', {access_token: 'abc'});
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -178,7 +230,7 @@ test('GET with error_code and error_msg field', async () => {
 });
 
 test('GET with non 200 error', async () => {
-  const api = callGraphAPI('v3.0', '123456', 'GET');
+  const api = callGraphAPI('123456', 'GET', {access_token: 'abc'});
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   const res = {
@@ -200,15 +252,15 @@ test('GET with non 200 error', async () => {
 });
 
 test('GET with error', async () => {
-  const api = callGraphAPI('v3.0', '123456', 'GET');
+  const api = callGraphAPI('123456', 'GET', {access_token: 'abc'});
   const https = require('https');
   https.reqOn.mock.calls[0][1](new Error('random issue'));
   await expect(api).rejects.toThrow('random issue');
 });
 
 test('POST with params', async () => {
-  const params = {x: 1, y: 2, '\u4F60': '\u597D'};
-  callGraphAPI('v3.0', '123456', 'POST', params);
+  const params = {access_token: 'abc', x: 1, y: 2, '\u4F60': '\u597D'};
+  callGraphAPI('123456', 'POST', params);
   const https = require('https');
   const requestCalls = https.request.mock.calls;
   expect(https.reqOn).toHaveBeenCalledTimes(1);
@@ -219,7 +271,7 @@ test('POST with params', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'POST',
-    path: 'https://graph.facebook.com/v3.0/123456',
+    path: 'https://graph.facebook.com/v3.1/123456',
     headers: {
       'Content-Type': 'application/json',
       'Content-Length': Buffer.byteLength(JSON.stringify(params)),

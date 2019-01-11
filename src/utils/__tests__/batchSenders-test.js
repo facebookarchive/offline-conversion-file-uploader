@@ -50,11 +50,12 @@ jest
       getContentForPath,
     };
   })
-  .mock('../graphAPI');
+  .mock('../graphAPIUtils');
 
 beforeEach(() => {
   require('fs').reset();
-  require('../graphAPI').reset();
+  require('../graphAPIUtils').graphAPI.reset();
+  require('../graphAPIUtils').setupGraphAPIVersion('<ACCESS_TOKEN>', 'v3.1');
 });
 
 const batchSenders = require('../batchSenders');
@@ -66,14 +67,13 @@ const {
 } = batchSenders;
 
 test('getOfflineEventsBatchSender without progress tracking', async () => {
-  const graphAPI = require('../graphAPI');
+  const {graphAPI} = require('../graphAPIUtils');
   const sender = getOfflineEventsBatchSender(
     '<ACCESS_TOKEN>',
     '111111',
     '222222',
     null,
     false,
-    'v3.0',
   );
   const sendPromise1 = sender({
     start: 10,
@@ -92,6 +92,7 @@ test('getOfflineEventsBatchSender without progress tracking', async () => {
       data: [{mock: 'row1'}, {mock: 'row2'}],
       suppress_http_code: 1,
     },
+    version: 'v3.1',
   });
   const sendPromise2 = sender({
     start: 30,
@@ -108,6 +109,7 @@ test('getOfflineEventsBatchSender without progress tracking', async () => {
       data: [{mock: 'row3'}],
       suppress_http_code: 1,
     },
+    version: 'v3.1',
   });
 
   await graphAPI.resolveLastRequest();
@@ -310,7 +312,7 @@ describe('getCustomAudienceBatchSender', async () => {
 
   configs.map(cfg =>
     it(cfg.description, async () => {
-      const graphAPI = require('../graphAPI');
+      const {graphAPI} = require('../graphAPIUtils');
       const {
         batchSender,
         lastDummyBatchSender,
@@ -322,7 +324,6 @@ describe('getCustomAudienceBatchSender', async () => {
         cfg.method,
         cfg.appIDs || null,
         cfg.pageIDs || null,
-        'v3.0',
       );
 
       const sendPromise1 = batchSender({
@@ -348,6 +349,7 @@ describe('getCustomAudienceBatchSender', async () => {
             session_id: 123456,
           }
         },
+        version: 'v3.1',
       });
       await graphAPI.resolveLastRequest();
       await sendPromise1;
@@ -371,6 +373,7 @@ describe('getCustomAudienceBatchSender', async () => {
             session_id: 123456,
           }
         },
+        version: 'v3.1',
       });
       await graphAPI.resolveLastRequest();
       await sendPromise2;
