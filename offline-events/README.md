@@ -96,7 +96,6 @@ Here is a list of all options we support. See previous section for options suppo
 | preprocessOutputPath | Path of output of `preprocess` command. Hashed events will be generated into the path. The file will be truncated if it already exists. | CLI or Config JSON | `"preprocess-output.csv"` | `"hashed.csv"` |
 | reportOutputPath | Path of output report of each command. The report contains summary, issues and error samples. The file will be truncated if it already exists. | CLI or Config JSON | `"report.txt"` | `"upload-report.txt"` |
 | adAccountID | ID of your ad account if you are creating a new audience with this upload. | CLI or Config JSON | *No default* | `"123456789"` |
-| retentionDays | Number of days to keep the user in this cluster. You can use any value between 0 and 180 days. Defaults to forever if not specified, or specified to 0. | CLI or Config JSON | `0` | `90` |
 | appIDs | A list of app IDs when appuid is mapped. | Config JSON Only | *No default* | `["123456789", "987654321"]` |
 | pageIDs | A list of page IDs when pageuid is mapped. | Config JSON Only | *No default* | `["123456789", "987654321"]` |
 | uploadTag | **(Deprecated)**  Tag to identify the events uploaded. Should use unique string for each distinct file uploaded. | CLI or Config JSON | *No default* | `"Offline Conversions"` |
