@@ -1,6 +1,6 @@
 {
   "name": "marketing-data-file-uploader",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Feed File Uploader for Facebook Offline Conversions API",
   "main": "index.js",
   "bin": "cli.js",
