@@ -106,14 +106,18 @@ function _graphAPI(
     const req = https.request(
       params || {},
       res => {
+        let body = '';
         res.setEncoding('utf8');
         res.on('data', d => {
+          body += d;
+        });
+        res.on('end', () => {
           let parsedResponse, error;
           if (res.statusCode === 200) {
             try {
-              parsedResponse = JSON.parse(d);
+              parsedResponse = JSON.parse(body);
             } catch (ex) {
-              reject(new Error('Invalid JSON: ' + d));
+              reject(new Error('Invalid JSON: ' + body));
               return;
             }
             error = getErrorFromAPIResponse(parsedResponse);
@@ -129,7 +133,7 @@ function _graphAPI(
               is_network_error: true,
             });
             try {
-              parsedResponse = JSON.parse(d);
+              parsedResponse = JSON.parse(body);
               error = getErrorFromAPIResponse(parsedResponse);
               if (error) {
                 reject(_wrapError(error));
