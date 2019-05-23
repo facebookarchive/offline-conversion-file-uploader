@@ -7,3 +7,5 @@
 /report.txt
 /upload-report.txt
 /preprocess-report.txt
+/output
+.vscode/

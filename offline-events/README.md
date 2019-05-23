@@ -102,6 +102,7 @@ Here is a list of all options we support. See previous section for options suppo
 | uploadTagPrefix | **(Deprecated)**  Instead of providing uploadTag, you can also define prefix (ex: Offline Conversions), then the tool will append filename/timestamp and use it as the uploadTag. If uploadTag is set, uploadTagPrefix is ignored. Example: *Offline Conversions (example_events_big_100k.csv@1493837377000)* | CLI or Config JSON | *No default* | `"Offline Conversions"` |
 | uploadID | **(Deprecated)** ID of the uploadTag. | CLI or Config JSON | *No default* | `"123456789"` |
 | skipRowsAlreadyUploaded | Rows will be skipped if part of the same file was already uploaded before. | CLI or Config JSON | `false` | `true` |
+| apiVersion | Graph API version to use. See [here](https://developers.facebook.com/docs/graph-api/changelog/). | CLI or Config JSON | *No default* | `v3.3` |
 
 ### Mapping for Offilne Events
 
