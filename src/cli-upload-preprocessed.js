@@ -54,7 +54,7 @@ async function main() {
   );
   winston.info('Config and logger initialized.');
 
-  await setupGraphAPIVersion(config.accessToken, config.apiVersion);
+  await setupGraphAPIVersion(config.apiVersion);
 
   const samples = await fetchSamples({
     inputFilePath: config.inputFilePath,

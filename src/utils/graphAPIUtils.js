@@ -157,30 +157,13 @@ function _graphAPI(
   });
 }
 
-function _getLatestGraphAPIVersion(
-  accessToken: string
-): Promise<string> {
-  return new Promise((resolve, reject) => {
-    return _graphAPI(
-      null,
-      'api_version',
-      'GET',
-      {access_token: accessToken},
-    ).then(result => resolve(result['api_version']))
-    .catch(error => reject(error));
-  });
-}
-
 async function setupGraphAPIVersion(
-  accessToken: string,
-  versionToUse: ?string = null,
+  versionToUse: string,
 ): Promise<void> {
-  if (versionToUse != null) {
-    globalAPIVersion = versionToUse;
-  } else if (isE2E) {
-    globalAPIVersion = 'v3.1';
+  if (isE2E) {
+    globalAPIVersion = 'v3.3';
   } else {
-    globalAPIVersion = await _getLatestGraphAPIVersion(accessToken);
+    globalAPIVersion = versionToUse;
   }
 }
 
@@ -263,8 +246,8 @@ function setupE2E(config: {
     // eslint-disable-next-line no-useless-concat
     fs.writeFileSync(mockedCallsDumpPath, '@' + 'generated\n');
   }
-  isE2E = true;
   apiImpl = graphAPIForE2ETest;
+  isE2E = true;
 }
 
 let apiImpl = graphAPIReal;
