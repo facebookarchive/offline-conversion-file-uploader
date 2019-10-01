@@ -8,6 +8,7 @@ npm run compile
 cd demo-audience; unzip test-audience-files.zip; cd ..
 export audience_id='YOUR_CUSTOM_AUDIENCE_ID_HERE'
 export access_token='YOUR_ACCESS_TOKEN_HERE'
+export api_version=v4.0
 ```
 
 If you don't have audience ID yet, you can use ad account ID.
@@ -31,6 +32,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-email-10k.json \
   --inputFilePath demo-audience/test-email-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY
 ```
@@ -42,6 +44,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-email-10k.json \
   --inputFilePath demo-audience/test-email-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY \
   --removeUsers
@@ -56,6 +59,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-rich-10k.json \
   --inputFilePath demo-audience/test-rich-clean-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY
 ```
@@ -67,6 +71,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-rich-10k.json \
   --inputFilePath demo-audience/test-rich-clean-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY \
   --removeUsers
@@ -81,6 +86,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-rich-10k.json \
   --inputFilePath demo-audience/test-rich-dirty-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY
 ```
@@ -100,6 +106,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-email-value-10k.json \
   --inputFilePath demo-audience/test-email-value-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY
 ```
@@ -111,6 +118,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-email-value-10k.json \
   --inputFilePath demo-audience/test-email-value-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY \
   --removeUsers
@@ -123,6 +131,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-email-10k.json \
   --inputFilePath demo-audience/test-email-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY \
   --removeUsers
@@ -137,6 +146,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-rich-value-10k.json \
   --inputFilePath demo-audience/test-rich-clean-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY
 ```
@@ -148,6 +158,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-rich-value-10k.json \
   --inputFilePath demo-audience/test-rich-clean-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY \
   --removeUsers
@@ -163,6 +174,7 @@ node lib/cli.js upload-audience \
   --configFilePath demo-audience/config-test-rich-value-10k.json \
   --inputFilePath demo-audience/test-rich-dirty-10k.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --customAudienceID $audience_id \
   --customerFileSource USER_PROVIDED_ONLY
 ```

@@ -8,6 +8,7 @@ npm run compile
 cd demo-offline-events; unzip test-event-files.zip; cd ..
 export data_set_id='YOUR_DATA_SET_ID_HERE'
 export access_token='YOUR_ACCESS_TOKEN_HERE'
+export api_version=v4.0
 ```
 
 # Run Demos
@@ -21,6 +22,7 @@ node lib/cli.js upload \
   --configFilePath demo-offline-events/config-test-upload.json \
   --inputFilePath demo-offline-events/test-events.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --dataSetID $data_set_id
 ```
 
@@ -33,6 +35,7 @@ node lib/cli.js upload \
   --configFilePath demo-offline-events/config-test-upload-1m.json \
   --inputFilePath demo-offline-events/test-events-1m.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --dataSetID $data_set_id
 ```
 
@@ -44,6 +47,7 @@ node lib/cli.js upload \
   --configFilePath demo-offline-events/config-test-upload-dirty.json \
   --inputFilePath demo-offline-events/test-events-dirty.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --dataSetID $data_set_id
 ```
 
@@ -56,6 +60,7 @@ node lib/cli.js validate \
   --configFilePath demo-offline-events/config-test-validate-1m.json \
   --inputFilePath demo-offline-events/test-events-1m.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --dataSetID $data_set_id
 ```
 
@@ -66,6 +71,7 @@ node lib/cli.js validate \
   --configFilePath demo-offline-events/config-test-validate-dirty.json \
   --inputFilePath demo-offline-events/test-events-dirty.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --dataSetID $data_set_id
 ```
 
@@ -82,6 +88,7 @@ node lib/cli.js preprocess \
 && node lib/cli.js upload-preprocessed \
   --inputFilePath preprocessed-events.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --dataSetID $data_set_id \
   --reportOutputPath upload-report.txt
 ```
@@ -97,6 +104,7 @@ node lib/cli.js preprocess \
 && node lib/cli.js upload-preprocessed \
   --inputFilePath preprocessed-events-1m.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --dataSetID $data_set_id \
   --reportOutputPath upload-report.txt
 ```
@@ -112,6 +120,7 @@ node lib/cli.js preprocess \
 && node lib/cli.js upload-preprocessed \
   --inputFilePath preprocessed-events-dirty.csv \
   --accessToken $access_token \
+  --apiVersion $api_version \
   --dataSetID $data_set_id \
   --reportOutputPath upload-report.txt
 ```
