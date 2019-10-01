@@ -36,7 +36,7 @@ Once you make sure an upload is made successfully, you can automate your upload 
 ## Commands
 |Command|Description|Options (Required options are in bold)|
 |-------|-----------|--------------------------------------|
-|upload-audience|Add or remove users to/from your custom audience.|**`accessToken`** **`configFilePath`** **`customFileSource`** **`inputFilePath`** **`mapping`** `adAccountID` `appIDs` `batchSize` `customAudienceID` `delimiter` `format` `header` `ignoreSampleErrors` `logging` `pageIDs` `removeUsers` `reportOutputPath`|
+|upload-audience|Add or remove users to/from your custom audience.|**`accessToken`** **`apiVersion`** **`configFilePath`** **`customFileSource`** **`inputFilePath`** **`mapping`** `adAccountID` `appIDs` `batchSize` `customAudienceID` `delimiter` `format` `header` `ignoreSampleErrors` `logging` `pageIDs` `removeUsers` `reportOutputPath`|
 
 ## Options
 ### How to Specify
@@ -87,6 +87,7 @@ Here is a list of all options we support. See previous section for supports/requ
 | retentionDays | Number of days to keep the user in this cluster. You can use any value between 0 and 180 days. Defaults to forever if not specified, or specified to 0. | CLI or Config JSON | `0` | `90` |
 | appIDs | A list of app IDs when appuid is mapped. | Config JSON Only | *No default* | `["123456789", "987654321"]` |
 | pageIDs | A list of page IDs when pageuid is mapped. | Config JSON Only | *No default* | `["123456789", "987654321"]` |
+| apiVersion | Graph API version to use. See [here](https://developers.facebook.com/docs/graph-api/changelog/). | CLI or Config JSON | *No default* | `v4.0` |
 
 ### Mapping for Custom Audience
 
