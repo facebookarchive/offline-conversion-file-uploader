@@ -1,0 +1,27 @@
+{
+  "name": "sse_uploader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "flow": "flow",
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^3.0.2",
+    "csv-parser": "^2.3.1",
+    "facebook-nodejs-business-sdk": "^4.0.6",
+    "fs": "0.0.1-security",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-flow": "^7.0.0",
+    "flow-bin": "^0.109.0"
+  }
+}

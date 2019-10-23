@@ -1,0 +1,12 @@
+[ignore]
+./lib/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

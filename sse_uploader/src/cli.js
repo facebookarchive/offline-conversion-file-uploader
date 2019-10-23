@@ -1,0 +1,6 @@
+const program = require('commander');
+ 
+program
+  .version('0.0.1')
+  .command('upload', 'Hash and send events in input file via the SSE API.')
+  .parse(process.argv);
