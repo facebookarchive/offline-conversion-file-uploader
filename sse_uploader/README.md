@@ -5,20 +5,22 @@ Server-Side Events Uploader is a command line tool that helps Facebook advertise
 Make sure git and node are installed and are up-to-date on your machine, then run:
 
 ```
-git clone https://github.com/facebookincubator/sse-uploader
+git clone https://github.com/facebookincubator/offline-conversion-file-uploader
+cd offline-conversion-file-uploader/sse_uploader
 npm install
-npm run compile
+npm run build
 ```
 
 ## Run
-Use the upload command to read events from the input file (default: events.csv) using the given configuration (default: config.json) and send those events via Server-Side events api.
+Use the `upload` command to read events from the input file (default: events.csv) using the given configuration (default: config.json) and send those events via Server-Side events API.
+
+Use the `validate` command to read events from the input file and print all possible errors in your data before sending them through the API.
 
 ```
 node lib/cli.js <COMMAND> [--config <PATH_TO_CONFIG>] [--input <PATH_TO_INPUT_CSV>] [--test-mode]
 ```
 
 The input CSV separator should be `,`. 
-
 
 ### Configuration options
 Here is a list of all options we support in the configuration file.
