@@ -100,6 +100,11 @@ function getEventData(row: any): SSEvent {
   return data;
 }
 
+function isEmptyObject(obj: any) {
+  return !Object.keys(obj).length;
+}
+
 module.exports = {
-  getEventData
+  getEventData,
+  isEmptyObject
 };

@@ -4,7 +4,7 @@ const csv = require('csv-parser');
 const fs = require('fs');
 const { AdsPixel, FacebookAdsApi } = require('facebook-nodejs-business-sdk');
 const { loadConfigOrExit } = require('./configUtils');
-const { getEventData } = require('./dataUtils');
+const { getEventData, isEmptyObject } = require('./dataUtils');
 
 import type { SSEvent } from './dataUtils';
 
@@ -42,16 +42,18 @@ function main() {
   fs.createReadStream(program.input)
       .pipe(csv())
       .on('data', data => {
-        batch.push(getEventData(data));
-        if (batch.length == config.batch_size) {
-          batches.push(batch);
-          batch = [];
+        if (!isEmptyObject(data)) {
+          batch.push(getEventData(data));
+          if (batch.length == config.batch_size) {
+            batches.push(batch);
+            batch = [];
+          }
         }
       })
       .on('end', async () => {
         if (batch.length > 0)
           batches.push(batch);
-          
+
         // Send all batches
         const sendPromises = [];
         for (let b of batches)
