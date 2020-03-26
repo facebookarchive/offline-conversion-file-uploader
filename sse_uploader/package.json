@@ -14,7 +14,7 @@
   "dependencies": {
     "commander": "^3.0.2",
     "csv-parser": "^2.3.1",
-    "facebook-nodejs-business-sdk": "^4.0.6",
+    "facebook-nodejs-business-sdk": "^6.0.2",
     "fs": "0.0.1-security",
     "winston": "^3.2.1"
   },

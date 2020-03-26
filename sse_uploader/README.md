@@ -31,7 +31,7 @@ Here is a list of all options we support in the configuration file.
 | appId | The ID of your Facebook App. It needs to be whitelisted to send Server-Side Events. *Required*. | *No default* | `"987654321"` |
 | pixelId | The ID of the Facebook Pixel associated with your app. *Required*.| *No default* | `"486822841454810"` |
 | testId | The Test ID to be used in case you want to use the [Test Events tool](https://www.facebook.com/business/help/1624255387706033) in Events Manager. *Required* when uploading with the `--test-mode` flag. | *No default* | `"TEST3141"` |
-| batchSize | Configures how many events are sent to Facebook server in one API call. Ranges from 1 to 2000. Lower the number if network is slow or unstable. | `100` | `500` |
+| batchSize | Configures how many events are sent to Facebook server in one API call. Ranges from 1 to 1000. Lower the number if network is slow or unstable. | `1000` | `500` |
 
 ## Input CSV file
 Supported columns in the input CSV file. See the [Server-Side Events API Parameters documentation](https://developers.facebook.com/docs/marketing-api/facebook-pixel/server-side-api/parameters) for more information. See the provided `events.csv` file as an example.

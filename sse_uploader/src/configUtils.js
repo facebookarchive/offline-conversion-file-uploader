@@ -11,7 +11,7 @@ export type Config = {
 
 const REQUIRED_FIELDS = ['access_token', 'pixel_id'];
 
-const DEFAULT_BATCH_SIZE = 100;
+const DEFAULT_BATCH_SIZE = 1000;
 
 function loadConfigOrExit(path: string): Config {
   let rawConfig = fs.readFileSync(path, 'utf-8');
