@@ -53,7 +53,7 @@ async function main() {
   );
   winston.info('Config and logger initialized.');
 
-  await setupGraphAPIVersion(config.apiVersion);
+  await setupGraphAPIVersion(config.accessToken, config.apiVersion);
 
   const isValueBased = Object.values(config.mapping)
     .includes('lookalike_value');

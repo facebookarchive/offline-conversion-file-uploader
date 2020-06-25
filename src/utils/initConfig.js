@@ -318,7 +318,7 @@ const ALL_CONFIG_OPTIONS: {[string]: Option} = {
       '--apiVersion <apiVersion>',
       'The API version of Facebook Marketing API you use.',
     ],
-    optional: false,
+    optional: true,
     normalize: normalizeApiVersion,
   },
   disableLogging: {

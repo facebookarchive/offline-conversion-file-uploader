@@ -61,7 +61,7 @@ async function main() {
   );
   winston.info('Config and logger initialized.');
 
-  await setupGraphAPIVersion(config.apiVersion);
+  await setupGraphAPIVersion(config.accessToken, config.apiVersion);
   await fetchSamplesAndCheckConfigForRawEventData(config);
   await checkAccessTokenAndEnt(
     config.accessToken,

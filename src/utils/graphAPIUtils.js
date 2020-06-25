@@ -19,6 +19,7 @@ const stringify = require('json-stable-stringify');
 const winston = require('winston');
 
 const ERROR_CODE_EMPTY_RESPONSE = 1357045;
+const DEFAULT_GRAPH_API_VERSION_FOR_E2E = 'v7.0'
 
 let globalAPIVersion = null;
 let isE2E = false;
@@ -157,13 +158,30 @@ function _graphAPI(
   });
 }
 
+function _getLatestGraphAPIVersion(
+  accessToken: string
+): Promise<string> {
+  return new Promise((resolve, reject) => {
+    return _graphAPI(
+      null,
+      'api_version',
+      'GET',
+      {access_token: accessToken},
+    ).then(result => resolve(result['api_version']))
+    .catch(error => reject(error));
+  });
+}
+
 async function setupGraphAPIVersion(
-  versionToUse: string,
+  accessToken: string,
+  versionToUse: ?string = null,
 ): Promise<void> {
-  if (isE2E) {
-    globalAPIVersion = 'v3.3';
-  } else {
+  if (versionToUse != null) {
     globalAPIVersion = versionToUse;
+  } else if (isE2E) {
+    globalAPIVersion = DEFAULT_GRAPH_API_VERSION_FOR_E2E;
+  } else {
+    globalAPIVersion = await _getLatestGraphAPIVersion(accessToken);
   }
 }
 
@@ -246,8 +264,8 @@ function setupE2E(config: {
     // eslint-disable-next-line no-useless-concat
     fs.writeFileSync(mockedCallsDumpPath, '@' + 'generated\n');
   }
-  apiImpl = graphAPIForE2ETest;
   isE2E = true;
+  apiImpl = graphAPIForE2ETest;
 }
 
 let apiImpl = graphAPIReal;

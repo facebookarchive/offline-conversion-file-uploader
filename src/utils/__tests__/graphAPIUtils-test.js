@@ -10,6 +10,8 @@
 
 'use strict';
 
+const DEFAULT_GRAPH_API_VERSION_FOR_E2E = 'v7.0';
+
 jest
   .mock('winston', () => ({}))
   .mock('https', () => {
@@ -43,8 +45,7 @@ const graphAPIUtils = require('../graphAPIUtils');
 const {graphAPI, setupGraphAPIVersion} = graphAPIUtils;
 
 beforeEach(() => {
-  // Run all tests by default on v3.1
-  setupGraphAPIVersion('<ACCESS_TOKEN>', 'v3.1');
+  setupGraphAPIVersion('<ACCESS_TOKEN>', DEFAULT_GRAPH_API_VERSION_FOR_E2E);
 });
 
 // Wrap the graphAPI async function so that it prints out stack trace on error.
@@ -81,9 +82,12 @@ test('Setup Graph API version automatically to latest', async () => {
     statusCode: 200,
   };
   requestCalls[0][1](res);
-  expect(res.on).toHaveBeenCalledTimes(1);
+  expect(res.on).toHaveBeenCalledTimes(2);
   expect(res.on.mock.calls[0][0]).toBe('data');
-  res.on.mock.calls[0][1](JSON.stringify({api_version: 'v4.0'}));
+  expect(res.on.mock.calls[1][0]).toBe('end');
+
+  res.on.mock.calls[0][1](JSON.stringify({api_version: DEFAULT_GRAPH_API_VERSION_FOR_E2E}));
+  res.on.mock.calls[1][1]();
   await setupVersion;
 
   // Test calling Graph API uses new version
@@ -95,7 +99,7 @@ test('Setup Graph API version automatically to latest', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'GET',
-    path: 'https://graph.facebook.com/v4.0/123456?access_token=abc',
+    path: 'https://graph.facebook.com/' + DEFAULT_GRAPH_API_VERSION_FOR_E2E + '/123456?access_token=abc',
   });
 });
 
@@ -110,7 +114,7 @@ test('GET without params and with valid response', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'GET',
-    path: 'https://graph.facebook.com/v3.1/123456?access_token=abc',
+    path: 'https://graph.facebook.com/' + DEFAULT_GRAPH_API_VERSION_FOR_E2E + '/123456?access_token=abc',
   });
   const res = {
     setEncoding: jest.fn(),
@@ -118,9 +122,11 @@ test('GET without params and with valid response', async () => {
     statusCode: 200,
   };
   requestCalls[0][1](res);
-  expect(res.on).toHaveBeenCalledTimes(1);
+  expect(res.on).toHaveBeenCalledTimes(2);
   expect(res.on.mock.calls[0][0]).toBe('data');
+  expect(res.on.mock.calls[1][0]).toBe('end');
   res.on.mock.calls[0][1](JSON.stringify({success: true}));
+  res.on.mock.calls[1][1]();
   const result = await api;
   expect(result).toEqual({success: true});
 });
@@ -140,7 +146,7 @@ test('GET with params, make sure they are encoded', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'GET',
-    path: 'https://graph.facebook.com/v3.1/123456?access_token=abc&x=1&y=2&%E4%BD%A0=%E5%A5%BD',
+    path: 'https://graph.facebook.com/' + DEFAULT_GRAPH_API_VERSION_FOR_E2E + '/123456?access_token=abc&x=1&y=2&%E4%BD%A0=%E5%A5%BD',
   });
 });
 
@@ -155,6 +161,7 @@ test('GET with invalid JSON in response', async () => {
   };
   requestCalls[0][1](res);
   res.on.mock.calls[0][1]('response not in JSON');
+  res.on.mock.calls[1][1]();
   await expect(api).rejects.toThrow('Invalid JSON: response not in JSON');
 });
 
@@ -169,6 +176,7 @@ test('GET with null response', async () => {
   };
   requestCalls[0][1](res);
   res.on.mock.calls[0][1]('null');
+  res.on.mock.calls[1][1]();
   expect.hasAssertions();
   try {
     await api;
@@ -191,6 +199,7 @@ test('GET with error field', async () => {
   };
   requestCalls[0][1](res);
   res.on.mock.calls[0][1](JSON.stringify({error: {x: 1, y: 2}}));
+  res.on.mock.calls[1][1]();
   expect.hasAssertions();
   try {
     await api;
@@ -217,6 +226,7 @@ test('GET with error_code and error_msg field', async () => {
     error_type: 'abc',
     error_subcode: 456,
   }));
+  res.on.mock.calls[1][1]();
   expect.hasAssertions();
   try {
     await api;
@@ -240,6 +250,7 @@ test('GET with non 200 error', async () => {
   };
   requestCalls[0][1](res);
   res.on.mock.calls[0][1]();
+  res.on.mock.calls[1][1]();
   expect.hasAssertions();
   try {
     await api;
@@ -271,7 +282,7 @@ test('POST with params', async () => {
     hostname: 'graph.facebook.com',
     port: 443,
     method: 'POST',
-    path: 'https://graph.facebook.com/v3.1/123456',
+    path: 'https://graph.facebook.com/' + DEFAULT_GRAPH_API_VERSION_FOR_E2E + '/123456',
     headers: {
       'Content-Type': 'application/json',
       'Content-Length': Buffer.byteLength(JSON.stringify(params)),

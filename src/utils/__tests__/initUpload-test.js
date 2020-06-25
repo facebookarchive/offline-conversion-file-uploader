@@ -10,6 +10,8 @@
 
 'use strict';
 
+const DEFAULT_GRAPH_API_VERSION_FOR_E2E = 'v7.0';
+
 jest
   .mock('fs', () => ({
     statSync: jest.fn().mockReturnValue({
@@ -30,7 +32,7 @@ const initUpload = require('../initUpload');
 
 beforeEach(() => {
   require('../graphAPIUtils').graphAPI.reset();
-  require('../graphAPIUtils').setupGraphAPIVersion('<ACCESS_TOKEN>', 'v3.1');
+  require('../graphAPIUtils').setupGraphAPIVersion('<ACCESS_TOKEN>', DEFAULT_GRAPH_API_VERSION_FOR_E2E);
 });
 
 test('get upload by ID', async () => {
@@ -50,7 +52,7 @@ test('get upload by ID', async () => {
       access_token: '<ACCESS_TOKEN>',
       fields: ['progress', 'upload_tag'],
     },
-    version: 'v3.1',
+    version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
   });
   await graphAPI.resolveLastRequest({
     upload_tag: 'mdfu-upload',
@@ -109,7 +111,7 @@ test('get upload by upload Tag', async () => {
       upload_tag: 'mdfu-upload',
       fields: ['id', 'upload_tag', 'progress'],
     },
-    version: 'v3.1',
+    version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
   });
   await graphAPI.resolveLastRequest({data: []});
   expect(graphAPI.hasRequest()).toBe(true);
@@ -120,7 +122,7 @@ test('get upload by upload Tag', async () => {
       access_token: '<ACCESS_TOKEN>',
       upload_tag: 'mdfu-upload',
     },
-    version: 'v3.1',
+    version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
   });
   await graphAPI.resolveLastRequest({id: '666666'});
   result = await resultPromise;
@@ -177,7 +179,7 @@ test('get upload by upload Tag Prefix', async () => {
       upload_tag: 'mdfu-upload (input.csv@1514764800000)',
       fields: ['id', 'upload_tag', 'progress'],
     },
-    version: 'v3.1',
+    version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
   });
   await graphAPI.resolveLastRequest({data: [{
     id: '666666',
@@ -209,7 +211,7 @@ test('get upload by default', async () => {
       upload_tag: 'input.csv (12345678bytes)',
       fields: ['id', 'upload_tag', 'progress'],
     },
-    version: 'v3.1',
+    version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
   });
   await graphAPI.resolveLastRequest({data: [{
     id: '666666',
@@ -242,7 +244,7 @@ test('upload already exists but skipRowsAlreadyUploaded not set', async () => {
       upload_tag: 'input.csv (12345678bytes)',
       fields: ['id', 'upload_tag', 'progress'],
     },
-    version: 'v3.1',
+    version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
   });
   await graphAPI.resolveLastRequest({data: [{
     id: '666666',

@@ -11,6 +11,8 @@
 
 'use strict';
 
+const DEFAULT_GRAPH_API_VERSION_FOR_E2E = 'v7.0';
+
 jest
   .mock('winston', () => ({debug: jest.fn(), warn: jest.fn()}))
   .mock('fs', () => {
@@ -55,7 +57,7 @@ jest
 beforeEach(() => {
   require('fs').reset();
   require('../graphAPIUtils').graphAPI.reset();
-  require('../graphAPIUtils').setupGraphAPIVersion('<ACCESS_TOKEN>', 'v3.1');
+  require('../graphAPIUtils').setupGraphAPIVersion('<ACCESS_TOKEN>', DEFAULT_GRAPH_API_VERSION_FOR_E2E);
 });
 
 const batchSenders = require('../batchSenders');
@@ -92,7 +94,7 @@ test('getOfflineEventsBatchSender without progress tracking', async () => {
       data: [{mock: 'row1'}, {mock: 'row2'}],
       suppress_http_code: 1,
     },
-    version: 'v3.1',
+    version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
   });
   const sendPromise2 = sender({
     start: 30,
@@ -109,7 +111,7 @@ test('getOfflineEventsBatchSender without progress tracking', async () => {
       data: [{mock: 'row3'}],
       suppress_http_code: 1,
     },
-    version: 'v3.1',
+    version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
   });
 
   await graphAPI.resolveLastRequest();
@@ -349,7 +351,7 @@ describe('getCustomAudienceBatchSender', async () => {
             session_id: 123456,
           }
         },
-        version: 'v3.1',
+        version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
       });
       await graphAPI.resolveLastRequest();
       await sendPromise1;
@@ -373,7 +375,7 @@ describe('getCustomAudienceBatchSender', async () => {
             session_id: 123456,
           }
         },
-        version: 'v3.1',
+        version: DEFAULT_GRAPH_API_VERSION_FOR_E2E,
       });
       await graphAPI.resolveLastRequest();
       await sendPromise2;
