@@ -240,7 +240,7 @@ tests = {
                     'inputFilePath': 'e2e-test/shared/dirty.csv',
                     'configFilePath': 'e2e-test/case-1-5/cfg.json',
                     'e2eTestConfigFilePath':
-                        'e2e-test/shared/e2e-cfg-dummy.json',
+                        'e2e-test/shared/e2e-cfg-upload.json',
                 },
                 'expect_fail': True,
             },

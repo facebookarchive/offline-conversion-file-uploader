@@ -25,6 +25,10 @@
         "events_lagged_2_days_count": 0,
         "events_lagged_90_days_count": 0,
         "events_with_value_count": 0,
+        "events_contents_with_nonstandard_category": {
+	        "count": 0,
+	        "samples": []
+	      },
         "unique_value_count": 0,
         "dataset_not_assigned_to_adaccount": false,
         "events_before_adaccount_assignment": []

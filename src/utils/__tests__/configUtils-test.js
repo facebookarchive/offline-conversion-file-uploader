@@ -71,30 +71,21 @@ describe('checkConfigForRawEventData', () => {
         ['23333333333', '66666666666'],
         ['Purchase', 'Lead'],
         [NOW_ISO_STR, NOW_ISO_STR],
-        ['1.23', '4.56'],
+        ['2.50', '4.56'],
         ['USD', 'USD'],
         ['ABC123', '123DEF'],
         ['1', 'A2'],
-        ['product', 'destination'],
-        ['1', '2,A3'],
-        [
-          '[]',
-          JSON.stringify([{
-            availability: 'in stock',
-            brand: 'Sample Brand',
-            category: 'Clothing & Accessories > Clothing > Dresses',
-            currency: 'USD',
-            condition: 'new',
-            description: 'A Sample Catalog Auto Population Item',
-            image_url: 'https://www.facebook.com/sample_csv_item.jpg',
-            name: 'Sample Catalog Auto Population Item',
-            price: 199,
-            product_type: 'Clothing & Accessories > Clothing > Dresses',
-            retailer_id: 'sample_retailer_id_1',
-            url: 'https://www.facebook.com/sample_csv_item',
-            visibility: 'published',
-          }]),
-        ],
+        ['SKU1;SKU2', 'SKU3'],
+        ['1.00;1.50', '4.56'],
+        ['1;1', '1'],
+        ['BrandA;BrandB', 'BrandC'],
+        ['Clothing & Accessories > Clothing > Dresses;Clothing & Accessories > Clothing > Dresses', 'Apparel & Accessories > Shoes'],
+        ['Best Shirt Ever;Best Pants Ever', 'Best Shoes Ever'],
+        ['AlphaShirt, a shirt like no other;Betapants, pants like no other', 'Gammashoe, a shoe like no other'],
+        ['physical_store', 'phone_call'],
+        ['[]', '[LDU]'],
+        ['1', '1'],
+        ['1000', '1000'],
       ],
       false,
       {
@@ -122,9 +113,17 @@ describe('checkConfigForRawEventData', () => {
         '21': 'currency',
         '22': 'order_id',
         '23': 'item_number',
-        '24': 'content_type',
-        '25': 'content_ids',
-        '26': 'catalog_auto_population_info',
+        '24': 'contents.content_id',
+        '25': 'contents.price',
+        '26': 'contents.quantity',
+        '27': 'contents.brand',
+        '28': 'contents.category',
+        '29': 'contents.description',
+        '30': 'contents.title',
+        '31': 'action_source',
+        '32': 'data_processing_options',
+        '33': 'data_processing_options_country',
+        '34': 'data_processing_options_state'
       },
       {
         event_time: {
@@ -1104,6 +1103,102 @@ describe('checkConfigForRawEventData', () => {
       {},
     )).toThrow();
   });
+
+  it('fail if Country invalid for LDU event', () => {
+    expect(() => checkConfigForRawEventData(
+      [
+        ['LDU'],
+        ['0'],
+        ['1000'],
+        [NOW_ISO_STR],
+      ],
+      false,
+      {
+        '0': 'data_processing_options',
+        '1': 'data_processing_options_country',
+        '2': 'data_processing_options_state',
+        '3': 'event_time',
+      },
+      {
+        event_time: {
+          timeFormat: 'ISO8601',
+        }
+      },
+      {},
+      {},
+    )).toThrow();
+  });
+
+  it('fail if Country missing for LDU event', () => {
+    expect(() => checkConfigForRawEventData(
+      [
+        ['LDU'],
+        ['1000'],
+        [NOW_ISO_STR],
+      ],
+      false,
+      {
+        '0': 'data_processing_options',
+        '1': 'data_processing_options_state',
+        '2': 'event_time',
+      },
+      {
+        event_time: {
+          timeFormat: 'ISO8601',
+        }
+      },
+      {},
+      {},
+    )).toThrow();
+  });
+
+    it('fail if State invalid for LDU event', () => {
+    expect(() => checkConfigForRawEventData(
+      [
+        ['LDU'],
+        ['1'],
+        ['0'],
+        [NOW_ISO_STR],
+      ],
+      false,
+      {
+        '0': 'data_processing_options',
+        '1': 'data_processing_options_country',
+        '2': 'data_processing_options_state',
+        '3': 'event_time',
+      },
+      {
+        event_time: {
+          timeFormat: 'ISO8601',
+        }
+      },
+      {},
+      {},
+    )).toThrow();
+  });
+
+  it('fail if State missing for LDU event', () => {
+    expect(() => checkConfigForRawEventData(
+      [
+        ['LDU'],
+        ['1'],
+        [NOW_ISO_STR],
+      ],
+      false,
+      {
+        '0': 'data_processing_options',
+        '1': 'data_processing_options_country',
+        '2': 'event_time',
+      },
+      {
+        event_time: {
+          timeFormat: 'ISO8601',
+        }
+      },
+      {},
+      {},
+    )).toThrow();
+  });
 });
 
 describe('checkAndDeriveConfigForPreprocessedEventData', () => {
@@ -1152,27 +1247,17 @@ describe('checkAndDeriveConfigForPreprocessedEventData', () => {
       ['currency', 'USD', 'USD'],
       ['order_id', 'ABC123', '123DEF'],
       ['item_number', '1', 'A2'],
-      ['content_type', 'product', 'destination'],
-      ['content_ids', '1', '2,A3'],
-      [
-        'catalog_auto_population_info',
-        `"${JSON.stringify([])}"`,
-        `"${JSON.stringify([{
-          availability: 'in stock',
-          brand: 'Sample Brand',
-          category: 'Clothing & Accessories > Clothing > Dresses',
-          currency: 'USD',
-          condition: 'new',
-          description: 'A Sample Catalog Auto Population Item',
-          image_url: 'https://www.facebook.com/sample_csv_item.jpg',
-          name: 'Sample Catalog Auto Population Item',
-          price: 199,
-          product_type: 'Clothing & Accessories > Clothing > Dresses',
-          retailer_id: 'sample_retailer_id_1',
-          url: 'https://www.facebook.com/sample_csv_item',
-          visibility: 'published',
-        }]).replace(/\"/g, '""')}"`,
-      ],
+      ['contents.content_id', 'SKU1;SKU2', 'SKU3'],
+      ['contents.price', '1.00;1.50', '4.56'],
+      ['contents.quantity', '1;1', '1'],
+      ['contents.brand', 'BrandA;BrandB', 'BrandC'],
+      ['contents.category', 'Clothing & Accessories > Clothing > Dresses;Clothing & Accessories > Clothing > Dresses', 'Apparel & Accessories > Shoes'],
+      ['contents.description', 'Best Shirt Ever;Best Pants Ever', 'Best Shoes Ever'],
+      ['contents.title', 'AlphaShirt, a shirt like no other;Betapants, pants like no other', 'Gammashoe, a shoe like no other'],
+      ['action_source', 'physical_store', 'phone_call'],
+      ['data_processing_options', '[]', '[LDU]'],
+      ['data_processing_options_country', '1', '1'],
+      ['data_processing_options_state', '1000', '1000'],
     ])).toEqual({
       mapping: {
         '0': 'match_keys.email',
@@ -1203,9 +1288,17 @@ describe('checkAndDeriveConfigForPreprocessedEventData', () => {
         '25': 'currency',
         '26': 'order_id',
         '27': 'item_number',
-        '28': 'content_type',
-        '29': 'content_ids',
-        '30': 'catalog_auto_population_info',
+        '28': 'contents.content_id',
+        '29': 'contents.price',
+        '30': 'contents.quantity',
+        '31': 'contents.brand',
+        '32': 'contents.category',
+        '33': 'contents.description',
+        '34': 'contents.title',
+        '35': 'action_source',
+        '36': 'data_processing_options',
+        '37': 'data_processing_options_country',
+        '38': 'data_processing_options_state'
       },
       customTypeInfo: {},
     });
@@ -1353,5 +1446,101 @@ describe('checkAndDeriveConfigForPreprocessedEventData', () => {
       ['event_time', NOW_UNIX_STR, NOW_UNIX_STR],
       ['content_ids', '1', '2,A3'],
     ])).toThrow();
+  });
+
+  it('fail if Country invalid for LDU event', () => {
+    expect(() => checkConfigForRawEventData(
+      [
+        ['LDU'],
+        ['0'],
+        ['1000'],
+        [NOW_ISO_STR],
+      ],
+      false,
+      {
+        '0': 'data_processing_options',
+        '1': 'data_processing_options_country',
+        '2': 'data_processing_options_state',
+        '3': 'event_time',
+      },
+      {
+        event_time: {
+          timeFormat: 'ISO8601',
+        }
+      },
+      {},
+      {},
+    )).toThrow();
+  });
+
+  it('fail if Country missing for LDU event', () => {
+    expect(() => checkConfigForRawEventData(
+      [
+        ['LDU'],
+        ['1000'],
+        [NOW_ISO_STR],
+      ],
+      false,
+      {
+        '0': 'data_processing_options',
+        '1': 'data_processing_options_state',
+        '2': 'event_time',
+      },
+      {
+        event_time: {
+          timeFormat: 'ISO8601',
+        }
+      },
+      {},
+      {},
+    )).toThrow();
+  });
+
+    it('fail if State invalid for LDU event', () => {
+    expect(() => checkConfigForRawEventData(
+      [
+        ['LDU'],
+        ['1'],
+        ['0'],
+        [NOW_ISO_STR],
+      ],
+      false,
+      {
+        '0': 'data_processing_options',
+        '1': 'data_processing_options_country',
+        '2': 'data_processing_options_state',
+        '3': 'event_time',
+      },
+      {
+        event_time: {
+          timeFormat: 'ISO8601',
+        }
+      },
+      {},
+      {},
+    )).toThrow();
+  });
+
+  it('fail if State missing for LDU event', () => {
+    expect(() => checkConfigForRawEventData(
+      [
+        ['LDU'],
+        ['1'],
+        [NOW_ISO_STR],
+      ],
+      false,
+      {
+        '0': 'data_processing_options',
+        '1': 'data_processing_options_country',
+        '2': 'event_time',
+      },
+      {
+        event_time: {
+          timeFormat: 'ISO8601',
+        }
+      },
+      {},
+      {},
+    )).toThrow();
   });
 });

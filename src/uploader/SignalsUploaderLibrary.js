@@ -1,24 +1,24 @@
 /*!
  * BSD License
- *
+ * 
  * For SignalsUploader software
- *
+ * 
  * Copyright (c) 2016-present, Facebook, Inc. All rights reserved.
- *
+ * 
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- *
+ * 
  *  * Redistributions of source code must retain the above copyright notice, this
  *    list of conditions and the following disclaimer.
- *
+ * 
  *  * Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
  *    and/or other materials provided with the distribution.
- *
+ * 
  *  * Neither the name Facebook nor the names of its contributors may be used to
  *    endorse or promote products derived from this software without specific
  *    prior written permission.
- *
+ * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,7 +29,7 @@
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
+ * 
  * @nolint
  * @haste-ignore
  * @generated
@@ -100,7 +100,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 82);
+/******/ 	return __webpack_require__(__webpack_require__.s = 63);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -112,7 +112,7 @@ module.exports =
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var STRIP_MODES = __webpack_require__(81);
+var STRIP_MODES = __webpack_require__(65);
 
 var SHA_256_REGEX = /^[a-f0-9]{64}$/i;
 var TRIM_REGEX = /^\s+|\s+$/g;
@@ -157,7 +157,7 @@ function addValueAtPath(head, path, value) {
     value = null;
   }
 
-  for (var i = 0; i < stack.length - 1; i++) {
+  for (var _index = 0; _index < stack.length - 1; _index++) {
     var parentKey = stack.shift();
     head = head[parentKey] || (head[parentKey] = {});
   }
@@ -193,14 +193,14 @@ function throwFatalError(message) {
 }
 
 module.exports = {
+  STRIP_MODES: STRIP_MODES,
   addValueAtPath: addValueAtPath,
   hasProp: hasProp,
   isFile: isFile,
   looksLikeHashed: looksLikeHashed,
   strip: strip,
   throwFatalError: throwFatalError,
-  trim: trim,
-  STRIP_MODES: STRIP_MODES
+  trim: trim
 };
 
 /***/ }),
@@ -273,7 +273,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderJob = __webpack_require__(37);
+var SignalsUploaderJob = __webpack_require__(44);
 
 var abstractMethod = __webpack_require__(2);
 var invariant = __webpack_require__(1);
@@ -344,12 +344,12 @@ var SignalsUploaderChunkDigestJob = function (_SignalsUploaderJob) {
     }
   }, {
     key: '__processChunk',
-    value: function __processChunk(chunk) {
+    value: function __processChunk(_chunk) {
       abstractMethod('SignalsUploaderJob', '_processChunk');
     }
   }, {
     key: '__processEndOfStream',
-    value: function __processEndOfStream(endOfStream) {
+    value: function __processEndOfStream(_endOfStream) {
       abstractMethod('SignalsUploaderJob', '_processEndOfStream');
     }
   }]);
@@ -361,6 +361,996 @@ module.exports = SignalsUploaderChunkDigestJob;
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var asap = __webpack_require__(48);
+
+function noop() {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var LAST_ERROR = null;
+var IS_ERROR = {};
+function getThen(obj) {
+  try {
+    return obj.then;
+  } catch (ex) {
+    LAST_ERROR = ex;
+    return IS_ERROR;
+  }
+}
+
+function tryCallOne(fn, a) {
+  try {
+    return fn(a);
+  } catch (ex) {
+    LAST_ERROR = ex;
+    return IS_ERROR;
+  }
+}
+function tryCallTwo(fn, a, b) {
+  try {
+    fn(a, b);
+  } catch (ex) {
+    LAST_ERROR = ex;
+    return IS_ERROR;
+  }
+}
+
+module.exports = Promise;
+
+function Promise(fn) {
+  if (typeof this !== 'object') {
+    throw new TypeError('Promises must be constructed via new');
+  }
+  if (typeof fn !== 'function') {
+    throw new TypeError('Promise constructor\'s argument is not a function');
+  }
+  this._40 = 0;
+  this._65 = 0;
+  this._55 = null;
+  this._72 = null;
+  if (fn === noop) return;
+  doResolve(fn, this);
+}
+Promise._37 = null;
+Promise._87 = null;
+Promise._61 = noop;
+
+Promise.prototype.then = function(onFulfilled, onRejected) {
+  if (this.constructor !== Promise) {
+    return safeThen(this, onFulfilled, onRejected);
+  }
+  var res = new Promise(noop);
+  handle(this, new Handler(onFulfilled, onRejected, res));
+  return res;
+};
+
+function safeThen(self, onFulfilled, onRejected) {
+  return new self.constructor(function (resolve, reject) {
+    var res = new Promise(noop);
+    res.then(resolve, reject);
+    handle(self, new Handler(onFulfilled, onRejected, res));
+  });
+}
+function handle(self, deferred) {
+  while (self._65 === 3) {
+    self = self._55;
+  }
+  if (Promise._37) {
+    Promise._37(self);
+  }
+  if (self._65 === 0) {
+    if (self._40 === 0) {
+      self._40 = 1;
+      self._72 = deferred;
+      return;
+    }
+    if (self._40 === 1) {
+      self._40 = 2;
+      self._72 = [self._72, deferred];
+      return;
+    }
+    self._72.push(deferred);
+    return;
+  }
+  handleResolved(self, deferred);
+}
+
+function handleResolved(self, deferred) {
+  asap(function() {
+    var cb = self._65 === 1 ? deferred.onFulfilled : deferred.onRejected;
+    if (cb === null) {
+      if (self._65 === 1) {
+        resolve(deferred.promise, self._55);
+      } else {
+        reject(deferred.promise, self._55);
+      }
+      return;
+    }
+    var ret = tryCallOne(cb, self._55);
+    if (ret === IS_ERROR) {
+      reject(deferred.promise, LAST_ERROR);
+    } else {
+      resolve(deferred.promise, ret);
+    }
+  });
+}
+function resolve(self, newValue) {
+ 
+  if (newValue === self) {
+    return reject(
+      self,
+      new TypeError('A promise cannot be resolved with itself.')
+    );
+  }
+  if (
+    newValue &&
+    (typeof newValue === 'object' || typeof newValue === 'function')
+  ) {
+    var then = getThen(newValue);
+    if (then === IS_ERROR) {
+      return reject(self, LAST_ERROR);
+    }
+    if (
+      then === self.then &&
+      newValue instanceof Promise
+    ) {
+      self._65 = 3;
+      self._55 = newValue;
+      finale(self);
+      return;
+    } else if (typeof then === 'function') {
+      doResolve(then.bind(newValue), self);
+      return;
+    }
+  }
+  self._65 = 1;
+  self._55 = newValue;
+  finale(self);
+}
+
+function reject(self, newValue) {
+  self._65 = 2;
+  self._55 = newValue;
+  if (Promise._87) {
+    Promise._87(self, newValue);
+  }
+  finale(self);
+}
+function finale(self) {
+  if (self._40 === 1) {
+    handle(self, self._72);
+    self._72 = null;
+  }
+  if (self._40 === 2) {
+    for (var i = 0; i < self._72.length; i++) {
+      handle(self, self._72[i]);
+    }
+    self._72 = null;
+  }
+}
+
+function Handler(onFulfilled, onRejected, promise){
+  this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
+  this.onRejected = typeof onRejected === 'function' ? onRejected : null;
+  this.promise = promise;
+}
+
+function doResolve(fn, promise) {
+  var done = false;
+  var res = tryCallTwo(fn, function (value) {
+    if (done) return;
+    done = true;
+    resolve(promise, value);
+  }, function (reason) {
+    if (done) return;
+    done = true;
+    reject(promise, reason);
+  });
+  if (!done && res === IS_ERROR) {
+    done = true;
+    reject(promise, LAST_ERROR);
+  }
+}
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _module$exports;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var SignalBaseTypes = __webpack_require__(13);
+
+module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(28)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(29)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(30)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(9)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(31)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(32)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(10)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(33)), _defineProperty(_module$exports, SignalBaseTypes.JSON_LIST, __webpack_require__(69)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(34)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(35)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(36)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(37)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(38)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(15)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(39)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(16)), _module$exports);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = ['MM-DD-YYYY', 'MM/DD/YYYY', 'MMDDYYYY', 'DD-MM-YYYY', 'DD/MM/YYYY', 'DDMMYYYY', 'YYYY-MM-DD', 'YYYY/MM/DD', 'YYYYMMDD', 'MM-DD-YY', 'MM/DD/YY', 'MMDDYY', 'DD-MM-YY', 'DD/MM/YY', 'DDMMYY', 'YY-MM-DD', 'YY/MM/DD', 'YYMMDD'];
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = Object.freeze({ "RULE": "rule", "PROP": "prop" });
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var SignalsNormalizationErrorLevel = __webpack_require__(25);
+var SignalsNormalizationErrorScope = __webpack_require__(7);
+var SignalsNormalizationPropError = __webpack_require__(26);
+var SignalsValidationUtils = __webpack_require__(0);
+
+var ruleChecker = __webpack_require__(70);
+
+var addValueAtPath = SignalsValidationUtils.addValueAtPath,
+    hasProp = SignalsValidationUtils.hasProp,
+    throwFatalError = SignalsValidationUtils.throwFatalError;
+
+
+function _remapSignal(signal, _schema, mapping) {
+  var newSignal = {};
+  var reverseMapping = {};
+
+  for (var prop in mapping) {
+    if (hasProp(mapping, prop)) {
+      if (Array.isArray(signal)) {
+        addValueAtPath(newSignal, mapping[prop], signal[Number(prop)]);
+      } else {
+        addValueAtPath(newSignal, mapping[prop], signal[prop]);
+      }
+      addValueAtPath(reverseMapping, mapping[prop], prop);
+    }
+  }
+  return { newSignal: newSignal, reverseMapping: reverseMapping };
+}
+
+function _constructTree(signal, propSchema, infoForNormalization, reverseMapping, customTypeInfo) {
+  if ((typeof propSchema === 'undefined' ? 'undefined' : _typeof(propSchema)) !== 'object') {
+    throwFatalError('propSchema is not an object', { propSchema: propSchema });
+  }
+
+  var typeSchema = propSchema.type;
+  if ((typeof typeSchema === 'undefined' ? 'undefined' : _typeof(typeSchema)) === 'object') {
+    var nodes = {};
+    if ((typeof signal === 'undefined' ? 'undefined' : _typeof(signal)) === 'object') {
+      var _loop = function _loop(propKey) {
+        var props = typeSchema.props;
+
+
+        var subPropSchema = (props != null && Array.isArray(props) ? props : []).find(function (subPropSchema) {
+          return subPropSchema.key === propKey;
+        });
+
+        if (subPropSchema == null) {
+          var customType = customTypeInfo && customTypeInfo[propKey] || {};
+          subPropSchema = {
+            customType: true,
+            key: propKey,
+            maxOccurrence: customType.maxOccurrence,
+            type: customType.baseType,
+            typeParams: customType.typeParams
+          };
+        }
+
+        nodes[propKey] = _constructTree(signal[propKey], subPropSchema, infoForNormalization, reverseMapping != null && (typeof reverseMapping === 'undefined' ? 'undefined' : _typeof(reverseMapping)) === 'object' ? reverseMapping[propKey] : undefined, customTypeInfo);
+      };
+
+      for (var propKey in signal) {
+        _loop(propKey);
+      }
+    }
+
+    return {
+      errors: [],
+      infoForNormalization: infoForNormalization || undefined,
+      nodes: nodes,
+      propSchema: propSchema,
+      rawValue: signal,
+      reverseMapping: reverseMapping || undefined,
+      type: 'compound'
+    };
+  }
+
+  return {
+    errors: [],
+    infoForNormalization: infoForNormalization || undefined,
+    propSchema: propSchema,
+    rawValue: signal,
+    reverseMapping: reverseMapping || undefined,
+    type: 'prop'
+  };
+}
+
+function _makePropError(error, badValues) {
+  return {
+    level: SignalsNormalizationErrorLevel.WARNING,
+    propError: { badValues: badValues, error: error },
+    where: SignalsNormalizationErrorScope.PROP
+  };
+}
+
+function _normalizeCompoundNode(node, normalizers, transformers) {
+  var nodes = node.nodes,
+      errors = node.errors,
+      propSchema = node.propSchema,
+      rawValue = node.rawValue,
+      reverseMapping = node.reverseMapping;
+
+  if ((typeof nodes === 'undefined' ? 'undefined' : _typeof(nodes)) !== 'object') {
+    throwFatalError('compound node node.nodes is not Object', { node: node });
+    return;
+  }
+
+  var normalizedValue = {};
+  for (var propKey in nodes) {
+    var subNode = nodes[propKey];
+    _normalizeNode(subNode, normalizers, transformers);
+    if (subNode.normalizedValue != null) {
+      normalizedValue[propKey] = subNode.normalizedValue;
+    }
+  }
+
+  var typeSchema = propSchema.type;
+  if ((typeof typeSchema === 'undefined' ? 'undefined' : _typeof(typeSchema)) !== 'object') {
+    throwFatalError('propSchema.type is not Object', { propSchema: propSchema });
+    return;
+  }
+  if (typeSchema.validIf != null) {
+    errors.push.apply(errors, _toConsumableArray(ruleChecker(normalizedValue, typeSchema, typeSchema.validIf)));
+  }
+
+  errors.push.apply(errors, _toConsumableArray(ruleChecker(normalizedValue, typeSchema, {
+    rule: 'rejectExtraProps',
+    warnOnFail: typeSchema.canHaveExtraProps === true
+  })));
+
+  var valid = (typeof rawValue === 'undefined' ? 'undefined' : _typeof(rawValue)) === 'object' && errors.find(function (error) {
+    return error.level !== SignalsNormalizationErrorLevel.WARNING;
+  }) == null;
+  if (valid) {
+    if (transformers && Array.isArray(typeSchema.transform)) {
+      typeSchema.transform.forEach(function (transformer) {
+        var transformerFunc = transformers && transformers[transformer];
+        if (transformerFunc != null) {
+          normalizedValue = transformerFunc(normalizedValue, typeSchema);
+        }
+      });
+    }
+    node.normalizedValue = normalizedValue;
+  } else {
+    node.errors.push(_makePropError(SignalsNormalizationPropError.INVALID, [{
+      rawPosition: reverseMapping || undefined,
+      value: rawValue
+    }]));
+  }
+}
+
+function _normalizePropNode(node, normalizers) {
+  var propSchema = node.propSchema,
+      rawValue = node.rawValue,
+      reverseMapping = node.reverseMapping;
+
+  var normalizer = normalizers[propSchema.type];
+
+  if (normalizer == null) {
+    node.normalizedValue = rawValue;
+    return;
+  }
+
+  var infoForNormalization = node.infoForNormalization && node.infoForNormalization[propSchema.key] || undefined;
+
+  if (propSchema.maxOccurrence == null) {
+    var _normalizer = normalizer(rawValue, propSchema.typeParams, infoForNormalization),
+        normalizedValue = _normalizer.normalizedValue,
+        additionalInfo = _normalizer.additionalInfo;
+
+    if (normalizedValue != null) {
+      node.normalizedValue = normalizedValue;
+    } else {
+      node.errors.push(_makePropError(SignalsNormalizationPropError.INVALID, [{
+        details: additionalInfo,
+        rawPosition: reverseMapping || undefined,
+        value: rawValue
+      }]));
+    }
+    return;
+  }
+
+  var actuallyHadMultipleOccurances = rawValue != null && Array.isArray(rawValue);
+
+  var values = actuallyHadMultipleOccurances ? rawValue || [] : [rawValue];
+
+  var reverseMappings = actuallyHadMultipleOccurances ? reverseMapping || [] : [reverseMapping];
+
+  if (values.length > propSchema.maxOccurrence) {
+    node.errors.push(_makePropError(SignalsNormalizationPropError.TOO_MANY, values.map(function (value, index) {
+      return {
+        rawPosition: reverseMappings != null ? reverseMappings[index] : undefined,
+        value: value
+      };
+    })));
+    return;
+  }
+
+  var badValues = [];
+  var goodValues = [];
+  values.forEach(function (value, index) {
+    var _normalizer2 = normalizer(value, propSchema.typeParams, infoForNormalization && infoForNormalization[index] || undefined),
+        normalizedValue = _normalizer2.normalizedValue,
+        additionalInfo = _normalizer2.additionalInfo;
+
+    if (normalizedValue != null) {
+      goodValues.push(normalizedValue);
+    } else {
+      badValues.push({
+        details: additionalInfo,
+        rawPosition: reverseMappings != null ? reverseMappings[index] : undefined,
+        value: value
+      });
+    }
+  });
+  if (badValues.length > 0) {
+    node.errors.push(_makePropError(goodValues.length === 0 ? SignalsNormalizationPropError.INVALID : SignalsNormalizationPropError.SOME_INVALID, badValues));
+  }
+  if (goodValues.length > 0) {
+    node.normalizedValue = goodValues.length === 1 ? goodValues[0] : goodValues;
+  }
+}
+
+function _normalizeNode(node, normalizers, transformers) {
+  switch (node.type) {
+    case 'compound':
+      _normalizeCompoundNode(node, normalizers, transformers);
+      return;
+    case 'prop':
+      _normalizePropNode(node, normalizers);
+      return;
+  }
+}
+
+function _normalizeSignal(signal, schema, normalizers, transformers, infoForNormalization, customTypeInfo, reverseMapping) {
+  var tree = _constructTree(signal, {
+    type: schema
+  }, infoForNormalization, reverseMapping, customTypeInfo);
+
+  _normalizeNode(tree, normalizers, transformers || {});
+  return tree;
+}
+
+function _pushPropIfNotExist(props, prop) {
+  if (props.indexOf(prop) === -1) {
+    props.push(prop);
+  }
+}
+
+function _appendPath(path, key) {
+  return path.length > 0 ? path + '.' + key : key;
+}
+
+function _deriveLegacyMetadata(node, path, invalidProps, missingRequiredProps, notFoundProps, unidentifiedProps, notAllowedProps) {
+  var errors = node.errors,
+      nodes = node.nodes,
+      type = node.type,
+      normalizedValue = node.normalizedValue,
+      propSchema = node.propSchema;
+
+  if (type === 'compound') {
+    for (var propKey in nodes) {
+      _deriveLegacyMetadata(nodes[propKey], _appendPath(path, propKey), invalidProps, missingRequiredProps, notFoundProps, unidentifiedProps, notAllowedProps);
+    }
+    (propSchema.type.props || []).forEach(function (subPropSchema) {
+      if (nodes == null || nodes[subPropSchema.key] == null) {
+        var propPath = _appendPath(path, subPropSchema.key);
+        _pushPropIfNotExist(notFoundProps, propPath);
+      }
+    });
+  }
+  errors.forEach(function (error) {
+    if (error.where === SignalsNormalizationErrorScope.RULE) {
+      var ruleError = error.ruleError;
+
+      var ruleSpecs = ruleError && ruleError.ruleSpecs;
+      var rule = ruleSpecs && ruleSpecs.rule;
+      if (rule === 'propValid') {
+        var _propKey = ruleSpecs && ruleSpecs.args;
+        var propPath = _appendPath(path, String(_propKey));
+        _pushPropIfNotExist(invalidProps, propPath);
+        _pushPropIfNotExist(missingRequiredProps, propPath);
+      } else if (rule === 'dependentProps') {
+        var propKeys = ruleError && ruleError.details && ruleError.details.invalidProps || [];
+        propKeys.forEach(function (propKey) {
+          _pushPropIfNotExist(missingRequiredProps, _appendPath(path, propKey));
+        });
+      } else if (rule === 'rejectExtraProps') {
+        var propPaths = (ruleError && ruleError.details && ruleError.details.unidentifiedProps || []).map(function (propKey) {
+          return _appendPath(path, propKey);
+        });
+        propPaths.forEach(function (propPath) {
+          _pushPropIfNotExist(unidentifiedProps, propPath);
+          if (error.level === SignalsNormalizationErrorLevel.REJECT) {
+            _pushPropIfNotExist(notAllowedProps, propPath);
+          }
+        });
+      }
+    }
+  });
+  if (normalizedValue == null) {
+    _pushPropIfNotExist(invalidProps, path);
+  }
+}
+
+function normalizeSignal(signal, schema, normalizers, transformers, mapping, infoForNormalization, customTypeInfo) {
+  var tree = null;
+
+  var invalidProps = [];
+  var missingRequiredProps = [];
+  var notFoundProps = [];
+  var unidentifiedProps = [];
+  var notAllowedProps = [];
+
+  try {
+    if (signal != null && schema != null && normalizers != null && (typeof schema === 'undefined' ? 'undefined' : _typeof(schema)) === 'object' && (typeof normalizers === 'undefined' ? 'undefined' : _typeof(normalizers)) === 'object' && !(mapping == null && Array.isArray(signal))) {
+      var reverseMapping = null;
+      if (mapping != null && (typeof mapping === 'undefined' ? 'undefined' : _typeof(mapping)) === 'object') {
+        var remapResult = _remapSignal(signal, schema, mapping);
+        signal = remapResult.newSignal;
+        reverseMapping = remapResult.reverseMapping;
+      }
+
+      tree = _normalizeSignal(signal, schema, normalizers, transformers || {}, infoForNormalization || undefined, customTypeInfo || undefined, reverseMapping || undefined);
+
+      _deriveLegacyMetadata(tree, '', invalidProps, missingRequiredProps, notFoundProps, unidentifiedProps, notAllowedProps);
+    } else {
+      throwFatalError('invalid input', { mapping: mapping, normalizers: normalizers, schema: schema, signal: signal });
+    }
+  } catch (error) {
+    return {
+      fatalError: error,
+      invalidProps: [],
+      missingRequiredProps: [],
+      normalizedValue: null,
+      notAllowedProps: [],
+      notFoundProps: [],
+      tree: null,
+      unidentifiedProps: [],
+      valid: false
+    };
+  }
+
+  return {
+    fatalError: null,
+    invalidProps: invalidProps,
+    missingRequiredProps: missingRequiredProps,
+    normalizedValue: tree && tree.normalizedValue || null,
+    notAllowedProps: notAllowedProps,
+    notFoundProps: notFoundProps,
+    tree: tree,
+    unidentifiedProps: unidentifiedProps,
+    valid: tree && tree.normalizedValue != null || false
+  };
+}
+
+module.exports = normalizeSignal;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalDateFormats = __webpack_require__(6);
+var SignalDateMonthFormats = __webpack_require__(71);
+var SignalsValidationUtils = __webpack_require__(0);
+
+var normalizeSignalsEnumType = __webpack_require__(10);
+
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
+    trim = SignalsValidationUtils.trim;
+
+
+var ONLY_DIGITS_CHECKER = /^[0-9]*$/;
+var ONLY_DIGITS_NORMALIZER = /[^0-9]/g;
+var ONLY_LETTERS_NORMALIZER = /[^a-zA-Z]/g;
+var EXACTLY_4_DIGITS_CHECKER = /^[0-9]{4,4}$/;
+
+function validateDate(dateStr) {
+  var year = parseInt(dateStr.slice(0, 4), 10);
+  var month = parseInt(dateStr.slice(4, 6), 10) - 1;
+  var day = parseInt(dateStr.slice(6, 8), 10);
+  var date = new Date(year, month, day);
+  return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
+}
+
+function validateDateFormat(dateStr) {
+  var dateFormat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SignalDateFormats[0];
+
+  switch (dateFormat) {
+    case 'DD/MM/YYYY':
+    case 'MM/DD/YYYY':
+      return (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateStr)
+      );
+    case 'DD-MM-YYYY':
+    case 'MM-DD-YYYY':
+      return (/^\d{1,2}-\d{1,2}-\d{4}$/.test(dateStr)
+      );
+    case 'YYYY/MM/DD':
+      return (/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(dateStr)
+      );
+    case 'YYYY-MM-DD':
+      return (/^\d{4}-\d{1,2}-\d{1,2}$/.test(dateStr)
+      );
+    case 'DD/MM/YY':
+    case 'MM/DD/YY':
+      return (/^\d{1,2}\/\d{1,2}\/\d{2}$/.test(dateStr)
+      );
+    case 'DD-MM-YY':
+    case 'MM-DD-YY':
+      return (/^\d{1,2}-\d{1,2}-\d{2}$/.test(dateStr)
+      );
+    case 'YY/MM/DD':
+      return (/^\d{2}\/\d{1,2}\/\d{1,2}$/.test(dateStr)
+      );
+    case 'YY-MM-DD':
+      return (/^\d{2}-\d{1,2}-\d{1,2}$/.test(dateStr)
+      );
+    case 'YY-MM':
+    case 'MM-YY':
+      return (/^\d{2}-\d{2}$/.test(dateStr)
+      );
+    case 'YYYY-MM':
+      return (/^\d{4}-\d{2}$/.test(dateStr)
+      );
+    case 'MM-YYYY':
+      return (/^\d{2}-\d{4}$/.test(dateStr)
+      );
+    case 'YY/MM':
+    case 'MM/YY':
+      return (/^\d{2}\/\d{2}$/.test(dateStr)
+      );
+    case 'MM/YYYY':
+      return (/^\d{2}\/\d{4}$/.test(dateStr)
+      );
+    case 'YYYY/MM':
+      return (/^\d{4}\/\d{2}$/.test(dateStr)
+      );
+    case 'MMYY':
+    case 'YYMM':
+      return dateStr.length === 4 && ONLY_DIGITS_CHECKER.test(dateStr);
+    case 'YYYYMM':
+    case 'MMYYYY':
+      return dateStr.length === 6 && ONLY_DIGITS_CHECKER.test(dateStr);
+    case 'DDMMYYYY':
+    case 'MMDDYYYY':
+    case 'YYYYMMDD':
+      return dateStr.length === 8 && ONLY_DIGITS_CHECKER.test(dateStr);
+    case 'DDMMYY':
+    case 'MMDDYY':
+    case 'YYMMDD':
+    default:
+      return dateStr.length === 6 && ONLY_DIGITS_CHECKER.test(dateStr);
+  }
+}
+
+function padYear(dateStr, dateFormat) {
+  var currYear = new Date().getFullYear() % 100;
+  switch (dateFormat) {
+    case 'DD-MM-YY':
+    case 'MM-DD-YY':
+    case 'DD/MM/YY':
+    case 'MM/DD/YY':
+    case 'DDMMYY':
+    case 'MMDDYY':
+    case 'MM-YY':
+    case 'MM/YY':
+    case 'MMYY':
+      return dateStr.slice(0, -2) + (parseInt(dateStr.slice(-2), 10) <= currYear ? '20' : '19') + dateStr.slice(-2);
+    case 'YY-MM-DD':
+    case 'YY/MM/DD':
+    case 'YYMMDD':
+    case 'YY-MM':
+    case 'YY/MM':
+    case 'YYMM':
+      return (parseInt(dateStr.substr(0, 2), 10) <= currYear ? '20' : '19') + dateStr;
+    default:
+      return dateStr;
+  }
+}
+
+function padDate(dateStr, dateFormat) {
+  var delim = null;
+  switch (dateFormat) {
+    case 'DD-MM-YYYY':
+    case 'MM-DD-YYYY':
+    case 'YYYY-MM-DD':
+    case 'DD-MM-YY':
+    case 'MM-DD-YY':
+    case 'YY-MM-DD':
+      delim = '-';
+      break;
+    case 'DD/MM/YYYY':
+    case 'MM/DD/YYYY':
+    case 'YYYY/MM/DD':
+    case 'DD/MM/YY':
+    case 'MM/DD/YY':
+    case 'YY/MM/DD':
+      delim = '/';
+      break;
+    default:
+      break;
+  }
+  if (delim != null) {
+    var dates = dateStr.split(delim);
+    var paddedDateStr = '';
+    dates.forEach(function (elem) {
+      paddedDateStr += elem.length === 1 ? '0' + elem : elem;
+    });
+    dateStr = paddedDateStr;
+  }
+  return padYear(dateStr, dateFormat);
+}
+
+var DEFAULT_NORMALIZER_PARAMS = {
+  rejectHashed: undefined
+};
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_NORMALIZER_PARAMS;
+  var additionalInfo = arguments[2];
+
+  var result = null;
+  var dateFormat = additionalInfo;
+
+  if (input != null && typeof input === 'string') {
+    if (looksLikeHashed(input)) {
+      if (!(params && params.rejectHashed)) {
+        result = input;
+      }
+    } else {
+
+      input = trim(input) || '';
+
+      if (EXACTLY_4_DIGITS_CHECKER.test(input) && !params.allowMonthOnly) {
+        result = input + '0101';
+      } else {
+        dateFormat = normalizeSignalsEnumType(dateFormat, {
+          options: params.allowMonthOnly ? SignalDateMonthFormats : SignalDateFormats,
+          uppercase: true
+        }).normalizedValue;
+
+        result = input;
+
+        if (dateFormat == null || !validateDateFormat(result, dateFormat)) {
+          result = null;
+        } else {
+          result = padDate(result, dateFormat);
+          dateFormat = dateFormat.replace(ONLY_LETTERS_NORMALIZER, '');
+          result = result.replace(ONLY_DIGITS_NORMALIZER, '');
+          switch (dateFormat) {
+            case 'DDMMYYYY':
+            case 'DDMMYY':
+              result = result.slice(4, 8) + result.slice(2, 4) + result.slice(0, 2);
+              break;
+            case 'MMDDYYYY':
+            case 'MMDDYY':
+              result = result.slice(4, 8) + result.slice(0, 2) + result.slice(2, 4);
+              break;
+            case 'YYYYMM':
+            case 'YYMM':
+              result += '01';
+              break;
+            case 'MMYY':
+            case 'MMYYYY':
+              result = result.slice(2, 6) + result.slice(0, 2) + '01';
+              break;
+            case 'YYYYMMDD':
+            case 'YYMMDD':
+            default:
+              break;
+          }
+
+          if (result !== null && !validateDate(result)) {
+            result = null;
+          }
+        }
+      }
+    }
+  }
+  return { normalizedValue: result };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsValidationUtils = __webpack_require__(0);
+
+var isTruthy = __webpack_require__(24);
+
+var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
+    trim = SignalsValidationUtils.trim;
+
+
+var DEFAULT_NORMALIZER_PARAMS = {
+  rejectHashed: undefined
+};
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_NORMALIZER_PARAMS;
+
+  var result = null;
+
+  var caseInsensitive = params.caseInsensitive,
+      isIntegerEnum = params.isIntegerEnum,
+      lowercase = params.lowercase,
+      options = params.options,
+      truncate = params.truncate,
+      uppercase = params.uppercase;
+
+
+  if (input != null && options != null && Array.isArray(options) && options.length) {
+    if (typeof input === 'string' && looksLikeHashed(input)) {
+      if (params.rejectHashed !== true) {
+        result = input;
+      }
+    } else if (isIntegerEnum === true) {
+      var value = parseInt(input, 10);
+      result = options.indexOf(value) > -1 ? value : null;
+    } else {
+      var str = trim(String(input));
+
+      if (lowercase === true) {
+        str = str.toLowerCase();
+      }
+
+      if (uppercase === true) {
+        str = str.toUpperCase();
+      }
+
+      if (isTruthy(truncate)) {
+        str = str.substring(0, truncate);
+      }
+
+      if (caseInsensitive === true) {
+        var lowercasedStr = str.toLowerCase();
+        var lowerCaseMatch = options.find(function (option) {
+          return String(option).toLowerCase() === lowercasedStr;
+        });
+        if (lowerCaseMatch != null) {
+          str = lowerCaseMatch;
+        }
+      }
+
+      result = options.indexOf(str) > -1 ? str : null;
+    }
+  }
+
+  return { normalizedValue: result };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var SignalsNumberNormalizationErrorTypes = __webpack_require__(14);
+
+var _require = __webpack_require__(0),
+    looksLikeHashed = _require.looksLikeHashed,
+    trim = _require.trim;
+
+var DEFAULT_NORMALIZER_PARAMS = {
+  rejectHashed: undefined
+};
+
+function normalize(input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_NORMALIZER_PARAMS;
+
+  var result = null;
+  var errorType = null;
+  if (input != null && typeof input === 'string' || typeof input === 'number') {
+    if (looksLikeHashed(input) && !params.rejectHashed) {
+      result = input;
+    } else {
+      if (typeof input === 'string') {
+        input = trim(input);
+      }
+
+      var maybeNum = parseFloat(input);
+
+      if (!isNaN(input - maybeNum)) {
+        if (params.round) {
+          maybeNum = Math.round(maybeNum);
+        }
+
+        if (params.integer && Math.floor(maybeNum) !== maybeNum) {
+          errorType = SignalsNumberNormalizationErrorTypes.NON_INTEGER;
+        }
+
+        if (!errorType && params.min != null && maybeNum < params.min) {
+          errorType = SignalsNumberNormalizationErrorTypes.TOO_SMALL;
+        }
+
+        if (!errorType && params.max != null && maybeNum > params.max) {
+          errorType = SignalsNumberNormalizationErrorTypes.TOO_BIG;
+        }
+
+        if (!errorType && params.lessThan != null && maybeNum >= params.lessThan) {
+          errorType = SignalsNumberNormalizationErrorTypes.TOO_BIG;
+        }
+
+        if (!errorType && params.moreThan != null && maybeNum <= params.moreThan) {
+          errorType = SignalsNumberNormalizationErrorTypes.TOO_SMALL;
+        }
+
+        if (errorType == null) {
+          result = maybeNum;
+        }
+      }
+    }
+  }
+
+  return {
+    additionalInfo: {
+      errorType: result == null && errorType == null ? SignalsNumberNormalizationErrorTypes.NON_NUMERIC : errorType
+    },
+    normalizedValue: result
+  };
+}
+
+module.exports = normalize;
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -392,15 +1382,29 @@ var SignalsUploaderCSVParser = function () {
     value: function readRows() {
       if (this._state === 'end-of-stream') {
         return this._rows.splice(0, this._rows.length);
-      } else {
-        return this._rows.splice(0, this._rows.length - 1);
       }
+      return this._rows.splice(0, this._rows.length - 1);
     }
   }, {
     key: 'onNewCharacter',
     value: function onNewCharacter(char) {
-      this._position++;
+      this.incrementPosition();
       this._onNewCharacter(char);
+    }
+  }, {
+    key: 'incrementPosition',
+    value: function incrementPosition() {
+      this._position++;
+    }
+  }, {
+    key: 'decreasePosition',
+    value: function decreasePosition() {
+      this._position--;
+    }
+  }, {
+    key: 'getDelimiter',
+    value: function getDelimiter() {
+      return this._delimiter;
     }
   }, {
     key: '_onNewCharacter',
@@ -553,10 +1557,10 @@ var SignalsUploaderCSVParser = function () {
     key: '_pushRow',
     value: function _pushRow() {
       this._rows.push({
+        end: this._position,
         fields: this._lastRow,
         lineNumber: this._lineNumber,
-        start: this._lastEnd,
-        end: this._position
+        start: this._lastEnd
       });
       this._lastRow = [];
       this._lineNumber++;
@@ -570,992 +1574,22 @@ var SignalsUploaderCSVParser = function () {
 module.exports = SignalsUploaderCSVParser;
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var asap = __webpack_require__(44);
-
-function noop() {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var LAST_ERROR = null;
-var IS_ERROR = {};
-function getThen(obj) {
-  try {
-    return obj.then;
-  } catch (ex) {
-    LAST_ERROR = ex;
-    return IS_ERROR;
-  }
-}
-
-function tryCallOne(fn, a) {
-  try {
-    return fn(a);
-  } catch (ex) {
-    LAST_ERROR = ex;
-    return IS_ERROR;
-  }
-}
-function tryCallTwo(fn, a, b) {
-  try {
-    fn(a, b);
-  } catch (ex) {
-    LAST_ERROR = ex;
-    return IS_ERROR;
-  }
-}
-
-module.exports = Promise;
-
-function Promise(fn) {
-  if (typeof this !== 'object') {
-    throw new TypeError('Promises must be constructed via new');
-  }
-  if (typeof fn !== 'function') {
-    throw new TypeError('Promise constructor\'s argument is not a function');
-  }
-  this._40 = 0;
-  this._65 = 0;
-  this._55 = null;
-  this._72 = null;
-  if (fn === noop) return;
-  doResolve(fn, this);
-}
-Promise._37 = null;
-Promise._87 = null;
-Promise._61 = noop;
-
-Promise.prototype.then = function(onFulfilled, onRejected) {
-  if (this.constructor !== Promise) {
-    return safeThen(this, onFulfilled, onRejected);
-  }
-  var res = new Promise(noop);
-  handle(this, new Handler(onFulfilled, onRejected, res));
-  return res;
-};
-
-function safeThen(self, onFulfilled, onRejected) {
-  return new self.constructor(function (resolve, reject) {
-    var res = new Promise(noop);
-    res.then(resolve, reject);
-    handle(self, new Handler(onFulfilled, onRejected, res));
-  });
-}
-function handle(self, deferred) {
-  while (self._65 === 3) {
-    self = self._55;
-  }
-  if (Promise._37) {
-    Promise._37(self);
-  }
-  if (self._65 === 0) {
-    if (self._40 === 0) {
-      self._40 = 1;
-      self._72 = deferred;
-      return;
-    }
-    if (self._40 === 1) {
-      self._40 = 2;
-      self._72 = [self._72, deferred];
-      return;
-    }
-    self._72.push(deferred);
-    return;
-  }
-  handleResolved(self, deferred);
-}
-
-function handleResolved(self, deferred) {
-  asap(function() {
-    var cb = self._65 === 1 ? deferred.onFulfilled : deferred.onRejected;
-    if (cb === null) {
-      if (self._65 === 1) {
-        resolve(deferred.promise, self._55);
-      } else {
-        reject(deferred.promise, self._55);
-      }
-      return;
-    }
-    var ret = tryCallOne(cb, self._55);
-    if (ret === IS_ERROR) {
-      reject(deferred.promise, LAST_ERROR);
-    } else {
-      resolve(deferred.promise, ret);
-    }
-  });
-}
-function resolve(self, newValue) {
-
-  if (newValue === self) {
-    return reject(
-      self,
-      new TypeError('A promise cannot be resolved with itself.')
-    );
-  }
-  if (
-    newValue &&
-    (typeof newValue === 'object' || typeof newValue === 'function')
-  ) {
-    var then = getThen(newValue);
-    if (then === IS_ERROR) {
-      return reject(self, LAST_ERROR);
-    }
-    if (
-      then === self.then &&
-      newValue instanceof Promise
-    ) {
-      self._65 = 3;
-      self._55 = newValue;
-      finale(self);
-      return;
-    } else if (typeof then === 'function') {
-      doResolve(then.bind(newValue), self);
-      return;
-    }
-  }
-  self._65 = 1;
-  self._55 = newValue;
-  finale(self);
-}
-
-function reject(self, newValue) {
-  self._65 = 2;
-  self._55 = newValue;
-  if (Promise._87) {
-    Promise._87(self, newValue);
-  }
-  finale(self);
-}
-function finale(self) {
-  if (self._40 === 1) {
-    handle(self, self._72);
-    self._72 = null;
-  }
-  if (self._40 === 2) {
-    for (var i = 0; i < self._72.length; i++) {
-      handle(self, self._72[i]);
-    }
-    self._72 = null;
-  }
-}
-
-function Handler(onFulfilled, onRejected, promise){
-  this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
-  this.onRejected = typeof onRejected === 'function' ? onRejected : null;
-  this.promise = promise;
-}
-
-function doResolve(fn, promise) {
-  var done = false;
-  var res = tryCallTwo(fn, function (value) {
-    if (done) return;
-    done = true;
-    resolve(promise, value);
-  }, function (reason) {
-    if (done) return;
-    done = true;
-    reject(promise, reason);
-  });
-  if (!done && res === IS_ERROR) {
-    done = true;
-    reject(promise, LAST_ERROR);
-  }
-}
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = ['MM-DD-YYYY', 'MM/DD/YYYY', 'MMDDYYYY', 'DD-MM-YYYY', 'DD/MM/YYYY', 'DDMMYYYY', 'YYYY-MM-DD', 'YYYY/MM/DD', 'YYYYMMDD', 'MM-DD-YY', 'MM/DD/YY', 'MMDDYY', 'DD-MM-YY', 'DD/MM/YY', 'DDMMYY', 'YY-MM-DD', 'YY/MM/DD', 'YYMMDD'];
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var SignalsNormalizationErrorLevel = __webpack_require__(41);
-var SignalsNormalizationErrorScope = __webpack_require__(12);
-var SignalsNormalizationPropError = __webpack_require__(42);
-var SignalsValidationUtils = __webpack_require__(0);
-
-var ruleChecker = __webpack_require__(62);
-
-var addValueAtPath = SignalsValidationUtils.addValueAtPath,
-    hasProp = SignalsValidationUtils.hasProp,
-    throwFatalError = SignalsValidationUtils.throwFatalError;
-
-
-function _remapSignal(signal, schema, mapping) {
-  var newSignal = {};
-  var reverseMapping = {};
-
-  for (var p in mapping) {
-    if (hasProp(mapping, p)) {
-      if (Array.isArray(signal)) {
-        addValueAtPath(newSignal, mapping[p], signal[Number(p)]);
-      } else {
-        addValueAtPath(newSignal, mapping[p], signal[p]);
-      }
-      addValueAtPath(reverseMapping, mapping[p], p);
-    }
-  }
-  return { newSignal: newSignal, reverseMapping: reverseMapping };
-}
-
-function _constructTree(signal, propSchema, infoForNormalization, reverseMapping, customTypeInfo) {
-  if ((typeof propSchema === 'undefined' ? 'undefined' : _typeof(propSchema)) !== 'object') {
-    throwFatalError('propSchema is not an object', { propSchema: propSchema });
-  }
-
-  var typeSchema = propSchema.type;
-  if ((typeof typeSchema === 'undefined' ? 'undefined' : _typeof(typeSchema)) === 'object') {
-    var nodes = {};
-    if ((typeof signal === 'undefined' ? 'undefined' : _typeof(signal)) === 'object') {
-      var _loop = function _loop(propKey) {
-        var props = typeSchema.props;
-
-
-        var subPropSchema = (props != null && Array.isArray(props) ? props : []).find(function (subPropSchema) {
-          return subPropSchema.key === propKey;
-        });
-
-        if (subPropSchema == null) {
-          var customType = customTypeInfo && customTypeInfo[propKey] || {};
-          subPropSchema = {
-            type: customType.baseType,
-            typeParams: customType.typeParams,
-            maxOccurrence: customType.maxOccurrence,
-            key: propKey,
-            customType: true
-          };
-        }
-
-        nodes[propKey] = _constructTree(signal[propKey], subPropSchema, infoForNormalization, reverseMapping != null && (typeof reverseMapping === 'undefined' ? 'undefined' : _typeof(reverseMapping)) === 'object' ? reverseMapping[propKey] : undefined, customTypeInfo);
-      };
-
-      for (var propKey in signal) {
-        _loop(propKey);
-      }
-    }
-
-    return {
-      type: 'compound',
-      nodes: nodes,
-      propSchema: propSchema,
-      errors: [],
-
-      rawValue: signal,
-
-      infoForNormalization: infoForNormalization || undefined,
-      reverseMapping: reverseMapping || undefined
-    };
-  }
-
-  return {
-    type: 'prop',
-    propSchema: propSchema,
-    errors: [],
-
-    rawValue: signal,
-
-    infoForNormalization: infoForNormalization || undefined,
-    reverseMapping: reverseMapping || undefined
-  };
-}
-
-function _makePropError(error, badValues) {
-  return {
-    level: SignalsNormalizationErrorLevel.WARNING,
-    where: SignalsNormalizationErrorScope.PROP,
-    propError: { error: error, badValues: badValues }
-  };
-}
-
-function _normalizeCompoundNode(node, normalizers, transformers) {
-  var nodes = node.nodes,
-      errors = node.errors,
-      propSchema = node.propSchema,
-      rawValue = node.rawValue,
-      reverseMapping = node.reverseMapping;
-
-  if ((typeof nodes === 'undefined' ? 'undefined' : _typeof(nodes)) !== 'object') {
-    throwFatalError('compound node node.nodes is not Object', { node: node });
-    return;
-  }
-
-  var normalizedValue = {};
-  for (var propKey in nodes) {
-    var subNode = nodes[propKey];
-    _normalizeNode(subNode, normalizers, transformers);
-    if (subNode.normalizedValue != null) {
-      normalizedValue[propKey] = subNode.normalizedValue;
-    }
-  }
-
-  var typeSchema = propSchema.type;
-  if ((typeof typeSchema === 'undefined' ? 'undefined' : _typeof(typeSchema)) !== 'object') {
-    throwFatalError('propSchema.type is not Object', { propSchema: propSchema });
-    return;
-  }
-  if (typeSchema.validIf != null) {
-    errors.push.apply(errors, _toConsumableArray(ruleChecker(normalizedValue, typeSchema, typeSchema.validIf)));
-  }
-
-  errors.push.apply(errors, _toConsumableArray(ruleChecker(normalizedValue, typeSchema, {
-    rule: 'rejectExtraProps',
-    warnOnFail: typeSchema.canHaveExtraProps === true
-  })));
-
-  var valid = (typeof rawValue === 'undefined' ? 'undefined' : _typeof(rawValue)) === 'object' && errors.find(function (error) {
-    return error.level !== SignalsNormalizationErrorLevel.WARNING;
-  }) == null;
-  if (valid) {
-    if (transformers && Array.isArray(typeSchema.transform)) {
-      typeSchema.transform.forEach(function (transformer) {
-        var transformerFunc = transformers && transformers[transformer];
-        if (transformerFunc != null) {
-          normalizedValue = transformerFunc(normalizedValue, typeSchema);
-        }
-      });
-    }
-    node.normalizedValue = normalizedValue;
-  } else {
-    node.errors.push(_makePropError(SignalsNormalizationPropError.INVALID, [{
-      value: rawValue,
-      rawPosition: reverseMapping || undefined
-    }]));
-  }
-}
-
-function _normalizePropNode(node, normalizers) {
-  var propSchema = node.propSchema,
-      rawValue = node.rawValue,
-      reverseMapping = node.reverseMapping;
-
-  var normalizer = normalizers[propSchema.type];
-
-  if (normalizer == null) {
-    node.normalizedValue = rawValue;
-    return;
-  }
-
-  var infoForNormalization = node.infoForNormalization && node.infoForNormalization[propSchema.key] || undefined;
-
-  if (propSchema.maxOccurrence == null) {
-    var _normalizer = normalizer(rawValue, propSchema.typeParams, infoForNormalization),
-        normalizedValue = _normalizer.normalizedValue,
-        additionalInfo = _normalizer.additionalInfo;
-
-    if (normalizedValue != null) {
-      node.normalizedValue = normalizedValue;
-    } else {
-      node.errors.push(_makePropError(SignalsNormalizationPropError.INVALID, [{
-        value: rawValue,
-        rawPosition: reverseMapping || undefined,
-        details: additionalInfo
-      }]));
-    }
-    return;
-  }
-
-  var actuallyHadMultipleOccurances = rawValue != null && Array.isArray(rawValue);
-
-  var values = actuallyHadMultipleOccurances ? rawValue || [] : [rawValue];
-
-  var reverseMappings = actuallyHadMultipleOccurances ? reverseMapping || [] : [reverseMapping];
-
-  if (values.length > propSchema.maxOccurrence) {
-    node.errors.push(_makePropError(SignalsNormalizationPropError.TOO_MANY, values.map(function (value, i) {
-      return {
-        value: value,
-        rawPosition: reverseMappings != null ? reverseMappings[i] : undefined
-      };
-    })));
-    return;
-  }
-
-  var badValues = [];
-  var goodValues = [];
-  values.forEach(function (value, i) {
-    var _normalizer2 = normalizer(value, propSchema.typeParams, infoForNormalization && infoForNormalization[i] || undefined),
-        normalizedValue = _normalizer2.normalizedValue,
-        additionalInfo = _normalizer2.additionalInfo;
-
-    if (normalizedValue != null) {
-      goodValues.push(normalizedValue);
-    } else {
-      badValues.push({
-        value: value,
-        rawPosition: reverseMappings != null ? reverseMappings[i] : undefined,
-        details: additionalInfo
-      });
-    }
-  });
-  if (badValues.length > 0) {
-    node.errors.push(_makePropError(goodValues.length === 0 ? SignalsNormalizationPropError.INVALID : SignalsNormalizationPropError.SOME_INVALID, badValues));
-  }
-  if (goodValues.length > 0) {
-    node.normalizedValue = goodValues.length === 1 ? goodValues[0] : goodValues;
-  }
-}
-
-function _normalizeNode(node, normalizers, transformers) {
-  switch (node.type) {
-    case 'compound':
-      _normalizeCompoundNode(node, normalizers, transformers);
-      return;
-    case 'prop':
-      _normalizePropNode(node, normalizers);
-      return;
-  }
-}
-
-function _normalizeSignal(signal, schema, normalizers, transformers, infoForNormalization, customTypeInfo, reverseMapping) {
-  var tree = _constructTree(signal, {
-    type: schema
-  }, infoForNormalization, reverseMapping, customTypeInfo);
-
-  _normalizeNode(tree, normalizers, transformers || {});
-  return tree;
-}
-
-function _pushPropIfNotExist(props, prop) {
-  if (props.indexOf(prop) === -1) {
-    props.push(prop);
-  }
-}
-
-function _appendPath(path, key) {
-  return path.length > 0 ? path + '.' + key : key;
-}
-
-function _deriveLegacyMetadata(node, path, invalidProps, missingRequiredProps, notFoundProps, unidentifiedProps, notAllowedProps) {
-  var errors = node.errors,
-      nodes = node.nodes,
-      type = node.type,
-      normalizedValue = node.normalizedValue,
-      propSchema = node.propSchema;
-
-  if (type === 'compound') {
-    for (var propKey in nodes) {
-      _deriveLegacyMetadata(nodes[propKey], _appendPath(path, propKey), invalidProps, missingRequiredProps, notFoundProps, unidentifiedProps, notAllowedProps);
-    }
-    (propSchema.type.props || []).forEach(function (subPropSchema) {
-      if (nodes == null || nodes[subPropSchema.key] == null) {
-        var propPath = _appendPath(path, subPropSchema.key);
-        _pushPropIfNotExist(notFoundProps, propPath);
-      }
-    });
-  }
-  errors.forEach(function (error) {
-    if (error.where === SignalsNormalizationErrorScope.RULE) {
-      var ruleError = error.ruleError;
-      var ruleSpecs = ruleError && ruleError.ruleSpecs;
-      var rule = ruleSpecs && ruleSpecs.rule;
-      if (rule === 'propValid') {
-        var _propKey = ruleSpecs && ruleSpecs.args;
-        var propPath = _appendPath(path, String(_propKey));
-        _pushPropIfNotExist(invalidProps, propPath);
-        _pushPropIfNotExist(missingRequiredProps, propPath);
-      } else if (rule === 'dependentProps') {
-        var propKeys = ruleError && ruleError.details && ruleError.details.invalidProps || [];
-        propKeys.forEach(function (propKey) {
-          _pushPropIfNotExist(missingRequiredProps, _appendPath(path, propKey));
-        });
-      } else if (rule === 'rejectExtraProps') {
-        var propPaths = (ruleError && ruleError.details && ruleError.details.unidentifiedProps || []).map(function (propKey) {
-          return _appendPath(path, propKey);
-        });
-        propPaths.forEach(function (propPath) {
-          _pushPropIfNotExist(unidentifiedProps, propPath);
-          if (error.level === SignalsNormalizationErrorLevel.REJECT) {
-            _pushPropIfNotExist(notAllowedProps, propPath);
-          }
-        });
-      }
-    }
-  });
-  if (normalizedValue == null) {
-    _pushPropIfNotExist(invalidProps, path);
-  }
-}
-
-function normalizeSignal(signal, schema, normalizers, transformers, mapping, infoForNormalization, customTypeInfo) {
-  var tree = null;
-
-  var invalidProps = [];
-  var missingRequiredProps = [];
-  var notFoundProps = [];
-  var unidentifiedProps = [];
-  var notAllowedProps = [];
-
-  try {
-    if (signal != null && schema != null && normalizers != null && (typeof schema === 'undefined' ? 'undefined' : _typeof(schema)) === 'object' && (typeof normalizers === 'undefined' ? 'undefined' : _typeof(normalizers)) === 'object' && !(mapping == null && Array.isArray(signal))) {
-      var reverseMapping = null;
-      if (mapping != null && (typeof mapping === 'undefined' ? 'undefined' : _typeof(mapping)) === 'object') {
-        var remapResult = _remapSignal(signal, schema, mapping);
-        signal = remapResult.newSignal;
-        reverseMapping = remapResult.reverseMapping;
-      }
-
-      tree = _normalizeSignal(signal, schema, normalizers, transformers || {}, infoForNormalization || undefined, customTypeInfo || undefined, reverseMapping || undefined);
-
-      _deriveLegacyMetadata(tree, '', invalidProps, missingRequiredProps, notFoundProps, unidentifiedProps, notAllowedProps);
-    } else {
-      throwFatalError('invalid input', { signal: signal, mapping: mapping, schema: schema, normalizers: normalizers });
-    }
-  } catch (error) {
-    return {
-      tree: null,
-
-      normalizedValue: null,
-      valid: false,
-      fatalError: error,
-
-      invalidProps: [],
-      missingRequiredProps: [],
-      notFoundProps: [],
-      unidentifiedProps: [],
-      notAllowedProps: []
-    };
-  }
-
-  return {
-    tree: tree,
-
-    normalizedValue: tree && tree.normalizedValue || null,
-    valid: tree && tree.normalizedValue != null || false,
-    fatalError: null,
-
-    invalidProps: invalidProps,
-    missingRequiredProps: missingRequiredProps,
-    notFoundProps: notFoundProps,
-    unidentifiedProps: unidentifiedProps,
-    notAllowedProps: notAllowedProps
-  };
-}
-
-module.exports = normalizeSignal;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _module$exports;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var SignalBaseTypes = __webpack_require__(19);
-
-module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(23)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(24)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(25)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(9)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(26)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(27)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(10)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(28)), _defineProperty(_module$exports, SignalBaseTypes.JSON_LIST, __webpack_require__(61)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(29)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(30)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(31)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(32)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(33)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(14)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(34)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(15)), _module$exports);
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalDateFormats = __webpack_require__(6);
-var SignalDateMonthFormats = __webpack_require__(63);
-var SignalsValidationUtils = __webpack_require__(0);
-
-var normalizeSignalsEnumType = __webpack_require__(10);
-
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
-    trim = SignalsValidationUtils.trim;
-
-
-var ONLY_DIGITS_CHECKER = /^[0-9]*$/;
-var ONLY_DIGITS_NORMALIZER = /[^0-9]/g;
-var ONLY_LETTERS_NORMALIZER = /[^a-zA-Z]/g;
-var EXACTLY_4_DIGITS_CHECKER = /^[0-9]{4,4}$/;
-
-function validateDate(dateStr) {
-  var y = parseInt(dateStr.slice(0, 4), 10);
-  var m = parseInt(dateStr.slice(4, 6), 10) - 1;
-  var d = parseInt(dateStr.slice(6, 8), 10);
-  var date = new Date(y, m, d);
-  return date.getFullYear() === y && date.getMonth() === m && date.getDate() === d;
-}
-
-function validateDateFormat(dateStr) {
-  var dateFormat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : SignalDateFormats[0];
-
-  switch (dateFormat) {
-    case 'DD/MM/YYYY':
-    case 'MM/DD/YYYY':
-      return (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateStr)
-      );
-    case 'DD-MM-YYYY':
-    case 'MM-DD-YYYY':
-      return (/^\d{1,2}-\d{1,2}-\d{4}$/.test(dateStr)
-      );
-    case 'YYYY/MM/DD':
-      return (/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(dateStr)
-      );
-    case 'YYYY-MM-DD':
-      return (/^\d{4}-\d{1,2}-\d{1,2}$/.test(dateStr)
-      );
-    case 'DD/MM/YY':
-    case 'MM/DD/YY':
-      return (/^\d{1,2}\/\d{1,2}\/\d{2}$/.test(dateStr)
-      );
-    case 'DD-MM-YY':
-    case 'MM-DD-YY':
-      return (/^\d{1,2}-\d{1,2}-\d{2}$/.test(dateStr)
-      );
-    case 'YY/MM/DD':
-      return (/^\d{2}\/\d{1,2}\/\d{1,2}$/.test(dateStr)
-      );
-    case 'YY-MM-DD':
-      return (/^\d{2}-\d{1,2}-\d{1,2}$/.test(dateStr)
-      );
-    case 'YY-MM':
-    case 'MM-YY':
-      return (/^\d{2}-\d{2}$/.test(dateStr)
-      );
-    case 'YYYY-MM':
-      return (/^\d{4}-\d{2}$/.test(dateStr)
-      );
-    case 'MM-YYYY':
-      return (/^\d{2}-\d{4}$/.test(dateStr)
-      );
-    case 'YY/MM':
-    case 'MM/YY':
-      return (/^\d{2}\/\d{2}$/.test(dateStr)
-      );
-    case 'MM/YYYY':
-      return (/^\d{2}\/\d{4}$/.test(dateStr)
-      );
-    case 'YYYY/MM':
-      return (/^\d{4}\/\d{2}$/.test(dateStr)
-      );
-    case 'MMYY':
-    case 'YYMM':
-      return dateStr.length === 4 && ONLY_DIGITS_CHECKER.test(dateStr);
-    case 'YYYYMM':
-    case 'MMYYYY':
-      return dateStr.length === 6 && ONLY_DIGITS_CHECKER.test(dateStr);
-    case 'DDMMYYYY':
-    case 'MMDDYYYY':
-    case 'YYYYMMDD':
-      return dateStr.length === 8 && ONLY_DIGITS_CHECKER.test(dateStr);
-    case 'DDMMYY':
-    case 'MMDDYY':
-    case 'YYMMDD':
-    default:
-      return dateStr.length === 6 && ONLY_DIGITS_CHECKER.test(dateStr);
-  }
-}
-
-function padYear(dateStr, dateFormat) {
-  var currYear = new Date().getFullYear() % 100;
-  switch (dateFormat) {
-    case 'DD-MM-YY':
-    case 'MM-DD-YY':
-    case 'DD/MM/YY':
-    case 'MM/DD/YY':
-    case 'DDMMYY':
-    case 'MMDDYY':
-    case 'MM-YY':
-    case 'MM/YY':
-    case 'MMYY':
-      return dateStr.slice(0, -2) + (parseInt(dateStr.slice(-2), 10) <= currYear ? '20' : '19') + dateStr.slice(-2);
-    case 'YY-MM-DD':
-    case 'YY/MM/DD':
-    case 'YYMMDD':
-    case 'YY-MM':
-    case 'YY/MM':
-    case 'YYMM':
-      return (parseInt(dateStr.substr(0, 2), 10) <= currYear ? '20' : '19') + dateStr;
-    default:
-      return dateStr;
-  }
-}
-
-function padDate(dateStr, dateFormat) {
-  var delim = null;
-  switch (dateFormat) {
-    case 'DD-MM-YYYY':
-    case 'MM-DD-YYYY':
-    case 'YYYY-MM-DD':
-    case 'DD-MM-YY':
-    case 'MM-DD-YY':
-    case 'YY-MM-DD':
-      delim = '-';
-      break;
-    case 'DD/MM/YYYY':
-    case 'MM/DD/YYYY':
-    case 'YYYY/MM/DD':
-    case 'DD/MM/YY':
-    case 'MM/DD/YY':
-    case 'YY/MM/DD':
-      delim = '/';
-      break;
-    default:
-      break;
-  }
-  if (delim != null) {
-    var dates = dateStr.split(delim);
-    var paddedDateStr = '';
-    dates.forEach(function (elem) {
-      paddedDateStr += elem.length === 1 ? '0' + elem : elem;
-    });
-    dateStr = paddedDateStr;
-  }
-  return padYear(dateStr, dateFormat);
-}
-
-function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments[2];
-
-  var result = null;
-  var dateFormat = additionalInfo;
-
-  if (input != null && typeof input === 'string') {
-    if (looksLikeHashed(input)) {
-      if (!(params && params.rejectHashed)) {
-        result = input;
-      }
-    } else {
-
-      input = trim(input) || '';
-
-      if (EXACTLY_4_DIGITS_CHECKER.test(input) && !params.allowMonthOnly) {
-        result = input + '0101';
-      } else {
-        dateFormat = normalizeSignalsEnumType(dateFormat, {
-          uppercase: true,
-          options: params.allowMonthOnly ? SignalDateMonthFormats : SignalDateFormats
-        }).normalizedValue;
-
-        result = input;
-
-        if (dateFormat == null || !validateDateFormat(result, dateFormat)) {
-          result = null;
-        } else {
-          result = padDate(result, dateFormat);
-          dateFormat = dateFormat.replace(ONLY_LETTERS_NORMALIZER, '');
-          result = result.replace(ONLY_DIGITS_NORMALIZER, '');
-          switch (dateFormat) {
-            case 'DDMMYYYY':
-            case 'DDMMYY':
-              result = result.slice(4, 8) + result.slice(2, 4) + result.slice(0, 2);
-              break;
-            case 'MMDDYYYY':
-            case 'MMDDYY':
-              result = result.slice(4, 8) + result.slice(0, 2) + result.slice(2, 4);
-              break;
-            case 'YYYYMM':
-            case 'YYMM':
-              result += '01';
-              break;
-            case 'MMYY':
-            case 'MMYYYY':
-              result = result.slice(2, 6) + result.slice(0, 2) + '01';
-              break;
-            case 'YYYYMMDD':
-            case 'YYMMDD':
-            default:
-              break;
-          }
-
-          if (result !== null && !validateDate(result)) {
-            result = null;
-          }
-        }
-      }
-    }
-  }
-  return { normalizedValue: result };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsValidationUtils = __webpack_require__(0);
-
-var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
-    trim = SignalsValidationUtils.trim;
-
-
-function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  var result = null;
-
-  var caseInsensitive = params.caseInsensitive,
-      lowercase = params.lowercase,
-      options = params.options,
-      truncate = params.truncate,
-      uppercase = params.uppercase;
-
-
-  if (input != null && options != null && Array.isArray(options) && options.length) {
-    if (typeof input === 'string' && looksLikeHashed(input)) {
-      if (!params.rejectHashed) {
-        result = input;
-      }
-    } else {
-      var str = trim(String(input));
-
-      if (lowercase) {
-        str = str.toLowerCase();
-      }
-
-      if (uppercase) {
-        str = str.toUpperCase();
-      }
-
-      if (truncate) {
-        str = str.substring(0, truncate);
-      }
-
-      if (caseInsensitive) {
-        var lowercasedStr = str.toLowerCase();
-        for (var i = 0; i < options.length; ++i) {
-          if (lowercasedStr === options[i].toLowerCase()) {
-            str = options[i];
-            break;
-          }
-        }
-      }
-
-      result = options.indexOf(str) > -1 ? str : null;
-    }
-  }
-
-  return { normalizedValue: result };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsNumberNormalizationErrorTypes = __webpack_require__(13);
-
-var _require = __webpack_require__(0),
-    looksLikeHashed = _require.looksLikeHashed,
-    trim = _require.trim;
-
-function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  var result = null;
-  var errorType = null;
-  if (input != null && typeof input === 'string' || typeof input === 'number') {
-    if (looksLikeHashed(input) && !params.rejectHashed) {
-      result = input;
-    } else {
-      if (typeof input === 'string') {
-        input = trim(input);
-      }
-
-      var maybeNum = parseFloat(input);
-
-      if (!isNaN(input - maybeNum)) {
-        if (params.round) {
-          maybeNum = Math.round(maybeNum);
-        }
-
-        if (params.integer && Math.floor(maybeNum) !== maybeNum) {
-          errorType = SignalsNumberNormalizationErrorTypes.NON_INTEGER;
-        }
-
-        if (!errorType && params.min != null && maybeNum < params.min) {
-          errorType = SignalsNumberNormalizationErrorTypes.TOO_SMALL;
-        }
-
-        if (!errorType && params.max != null && maybeNum > params.max) {
-          errorType = SignalsNumberNormalizationErrorTypes.TOO_BIG;
-        }
-
-        if (!errorType && params.lessThan != null && maybeNum >= params.lessThan) {
-          errorType = SignalsNumberNormalizationErrorTypes.TOO_BIG;
-        }
-
-        if (!errorType && params.moreThan != null && maybeNum <= params.moreThan) {
-          errorType = SignalsNumberNormalizationErrorTypes.TOO_SMALL;
-        }
-
-        if (errorType == null) {
-          result = maybeNum;
-        }
-      }
-    }
-  }
-
-  return {
-    normalizedValue: result,
-    additionalInfo: {
-      errorType: result == null && errorType == null ? SignalsNumberNormalizationErrorTypes.NON_NUMERIC : errorType
-    }
-  };
-}
-
-module.exports = normalize;
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = Object.freeze({ "RULE": "rule", "PROP": "prop" });
-
-/***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var keyMirror = __webpack_require__(46);
+module.exports = Object.freeze({ "ANY": "any", "BOOL": "bool", "CURRENCY_CODE": "currency_code", "DATE": "date", "DATE_MONTH": "date_month", "EMAIL": "email", "ENUM": "enum", "FBID": "fbid", "JSON_LIST": "json_list", "LIST": "LIST", "NUMBER": "number", "PHONE_NUMBER": "phone_number", "POSTAL_CODE": "postal_code", "SHA256": "sha256", "STRING": "string", "TIMESTAMP": "timestamp", "UNIX_TIME": "unix_time", "VALUE": "value" });
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var keyMirror = __webpack_require__(50);
 
 var SignalsNumberNormalizationErrorTypes = keyMirror({
   EMPTY: null,
@@ -1569,28 +1603,28 @@ var SignalsNumberNormalizationErrorTypes = keyMirror({
 module.exports = SignalsNumberNormalizationErrorTypes;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SignalsTimestampNormalizationErrorTypes = __webpack_require__(60);
+var SignalsTimestampNormalizationErrorTypes = __webpack_require__(68);
 
 var normalizeSignalsDateType = __webpack_require__(9);
 var normalizeSignalsNumberType = __webpack_require__(11);
 
-var ONE_HOUR_IN_MS = 1 * 60 * 60 * 1000;
+var ONE_HOUR_IN_MS = 3600000;
+var ONE_SECOND_IN_MS = 1000;
 var ISO_WITH_TZ_REGEX = /[+-]\d{2}:\d{2}|Z$/;
 
 function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Object.freeze({});
+  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Object.freeze({});
 
   var result = null;
   var wasImplicitTimezone = false;
   var errorType = void 0;
-
   var rejectTimeBefore = params.rejectTimeBefore;
   var timeFormat = additionalInfo.timeFormat,
       timeZone = additionalInfo.timeZone,
@@ -1603,11 +1637,11 @@ function normalize(input) {
         rejectHashed: true
       }).normalizedValue;
 
-      if (maybeNum != null && typeof maybeNum !== 'string') {
+      if (maybeNum != null && typeof maybeNum === 'number') {
         if (timeFormat === 'unix_time') {
-          maybeNum *= 1000;
+          maybeNum *= ONE_SECOND_IN_MS;
         }
-        result = new Date(maybeNum).getTime();
+        result = maybeNum;
       }
     } else if (timeFormat === 'ISO8601' && typeof input === 'string') {
 
@@ -1618,13 +1652,13 @@ function normalize(input) {
 
       var tmpResult = normalizeSignalsDateType(input, { rejectHashed: true }, timeFormat).normalizedValue;
 
-      if (tmpResult != null) {
+      if (tmpResult != null && typeof tmpResult === 'string') {
 
-        var y = tmpResult.slice(0, 4);
-        var m = tmpResult.slice(4, 6);
-        var d = tmpResult.slice(6, 8);
+        var year = tmpResult.slice(0, 4);
+        var month = tmpResult.slice(4, 6);
+        var day = tmpResult.slice(6, 8);
 
-        result = new Date(y + '-' + m + '-' + d).getTime();
+        result = new Date(year + '-' + month + '-' + day).getTime();
       }
     }
   }
@@ -1647,29 +1681,33 @@ function normalize(input) {
       result -= timeZoneOffset * ONE_HOUR_IN_MS;
     }
   }
-
   return {
-    normalizedValue: result,
-    additionalInfo: errorType != null ? { errorType: errorType } : null
+    additionalInfo: errorType != null ? { errorType: errorType } : null,
+    normalizedValue: result
   };
 }
 
 module.exports = normalize;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var SignalsNumberNormalizationErrorTypes = __webpack_require__(13);
+var SignalsNumberNormalizationErrorTypes = __webpack_require__(14);
 var SignalsValidationUtils = __webpack_require__(0);
 
+var isFalsey = __webpack_require__(23);
 var normalizeSignalsNumberType = __webpack_require__(11);
 
 var trim = SignalsValidationUtils.trim;
 
+
+var DEFAULT_NORMALIZER_PARAMS = {
+  rejectHashed: undefined
+};
 
 var CURRENCY_CODES_AND_SYMBOLS = ['ALL', 'AFN', 'ARS', 'AWG', 'AUD', 'AZN', 'BSD', 'BBD', 'BYR', 'BZD', 'BMD', 'BOB', 'BAM', 'BWP', 'BGN', 'BRL', 'BND', 'KHR', 'CAD', 'KYD', 'CLP', 'CNY', 'COP', 'CRC', 'HRK', 'CUP', 'CZK', 'DKK', 'DOP', 'XCD', 'EGP', 'SVC', 'EEK', 'EUR', 'FKP', 'FJD', 'GHC', 'GIP', 'GTQ', 'GGP', 'GYD', 'HNL', 'HKD', 'HUF', 'ISK', 'INR', 'IDR', 'IRR', 'IMP', 'ILS', 'JMD', 'JPY', 'JEP', 'KES', 'KZT', 'KPW', 'KRW', 'KGS', 'LAK', 'LVL', 'LBP', 'LRD', 'LTL', 'MKD', 'MYR', 'MUR', 'MXN', 'MNT', 'MZN', 'NAD', 'NPR', 'ANG', 'NZD', 'NIO', 'NGN', 'NOK', 'OMR', 'PKR', 'PAB', 'PYG', 'PEN', 'PHP', 'PLN', 'QAR', 'RON', 'RUB', 'RMB', 'SHP', 'SAR', 'RSD', 'SCR', 'SGD', 'SBD', 'SOS', 'ZAR', 'LKR', 'SEK', 'CHF', 'SRD', 'SYP', 'TZS', 'TWD', 'THB', 'TTD', 'TRY', 'TRL', 'TVD', 'UGX', 'UAH', 'GBP', 'USD', 'UYU', 'UZS', 'VEF', 'VND', 'YER', 'ZWD', 'L', '\u060B', '$', '\u0192', '\u20BC', 'p.', 'BZ$', 'Bs.', 'KM', 'P', '\u043B\u0432', 'R$', '\u17DB', '\xA5', '\u20A1', 'kn', '\u20B1', 'K\u010D', 'kr', 'RD$', '\xA3', '\u20AC', '\u20B5', 'Q', 'Ft', '\u20B9', 'Rp', '\uFDFC', '\u20AA', 'J$', 'KSh', '\u20A9', '\u20AD', 'Ls', 'Lt', '\u0434\u0435\u043D', 'RM', '\u20A8', '\u20AE', 'MT', 'C$', '\u20A6', 'B/.', 'Gs', 'S/.', 'z\u0142', 'lei', '\u20BD', '\uFFE5', '\u0414\u0438\u043D.', 'S', 'R', 'TSh', 'NT$', '\u0E3F', 'TT$', '\u20BA', '\u20A4', 'USh', '\u20B4', '$U', 'Bs', '\u20AB', 'Z$'];
 
@@ -1683,18 +1721,18 @@ function replaceCharAt(str, index, newChar) {
 }
 
 function i18nNumberNormalize(maybeNumber) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_NORMALIZER_PARAMS;
+  var additionalInfo = arguments[2];
 
-  var decimalPointChar = additionalInfo.decimalPointChar != null ? additionalInfo.decimalPointChar : DEFAULT_DECIMAL_REPRESENTATION;
+  var decimalPointChar = additionalInfo != null && additionalInfo.decimalPointChar != null ? additionalInfo.decimalPointChar : DEFAULT_DECIMAL_REPRESENTATION;
   var standizedNumber = maybeNumber;
   if (decimalPointChar === ',') {
     if (maybeNumber.indexOf('.') !== -1) {
       return {
-        normalizedValue: null,
         additionalInfo: {
           errorType: SignalsNumberNormalizationErrorTypes.INVALID_SEPARATOR
-        }
+        },
+        normalizedValue: null
       };
     }
     var decimalPointIdx = maybeNumber.lastIndexOf(',');
@@ -1702,10 +1740,10 @@ function i18nNumberNormalize(maybeNumber) {
   } else {
     if (maybeNumber.indexOf(',') !== -1) {
       return {
-        normalizedValue: null,
         additionalInfo: {
           errorType: SignalsNumberNormalizationErrorTypes.INVALID_SEPARATOR
-        }
+        },
+        normalizedValue: null
       };
     }
   }
@@ -1713,8 +1751,8 @@ function i18nNumberNormalize(maybeNumber) {
 }
 
 function trimCurrencyNormalize(trimmedInput) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_NORMALIZER_PARAMS;
+  var additionalInfo = arguments[2];
 
   var maybeNumberStartsWithCurrency = CURRENCY_CODES_AND_SYMBOLS.map(function (currency) {
     if (trimmedInput.startsWith(currency) || trimmedInput.toUpperCase().startsWith(currency)) {
@@ -1736,19 +1774,19 @@ function trimCurrencyNormalize(trimmedInput) {
 }
 
 function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_NORMALIZER_PARAMS;
   var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
     decimalPointChar: DEFAULT_DECIMAL_REPRESENTATION
   };
 
   var result = null;
 
-  if (input == null || input === '') {
+  if (isFalsey(input)) {
     result = {
-      normalizedValue: null,
       additionalInfo: {
         errorType: SignalsNumberNormalizationErrorTypes.EMPTY
-      }
+      },
+      normalizedValue: null
     };
     return result;
   }
@@ -1764,14 +1802,14 @@ function normalize(input) {
       if (typeof trimmedInput === 'string') {
         var trimCurrencyNormalizeResult = trimCurrencyNormalize(trimmedInput, params, additionalInfo);
 
-        result = trimCurrencyNormalizeResult.find(function (x) {
-          return x.normalizedValue != null;
+        result = trimCurrencyNormalizeResult.find(function (normalizedResult) {
+          return normalizedResult.normalizedValue != null;
         });
 
         if (result == null) {
 
-          result = trimCurrencyNormalizeResult.find(function (x) {
-            return x.additionalInfo && x.additionalInfo.errorType && x.additionalInfo.errorType != null;
+          result = trimCurrencyNormalizeResult.find(function (normalizedResult) {
+            return normalizedResult.additionalInfo && normalizedResult.additionalInfo.errorType && normalizedResult.additionalInfo.errorType != null;
           });
         }
       }
@@ -1779,30 +1817,32 @@ function normalize(input) {
   }
 
   return result != null ? result : {
-    normalizedValue: null,
     additionalInfo: {
       errorType: SignalsNumberNormalizationErrorTypes.NON_NUMERIC
-    }
+    },
+    normalizedValue: null
   };
 }
 
 module.exports = normalize;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Immutable = __webpack_require__(47);
-var SignalsUploaderColumnMapperConstants = __webpack_require__(65);
+var SignalsUploaderColumnMapperConstants = __webpack_require__(64);
 
-var getSignalsNormalizationErrorSummary = __webpack_require__(64);
-var getSchemaSummary = __webpack_require__(21);
+var getSignalsNormalizationErrorSummary = __webpack_require__(72);
+var getSignalsSchemaSummary = __webpack_require__(21);
+var Immutable = __webpack_require__(51);
 
 var COLUMN_MAPPING_ERROR_THRESHOLD = 0.95;
-
+var uploadForNumberOfLinesEstimationConfig = {
+  chunkSize: 128 * 1024
+};
 var Map = Immutable.Map,
     List = Immutable.List;
 var CUSTOM_COLUMN_TYPE_VALUE = SignalsUploaderColumnMapperConstants.CUSTOM_COLUMN_TYPE_VALUE,
@@ -1813,20 +1853,20 @@ var CUSTOM_COLUMN_TYPE_VALUE = SignalsUploaderColumnMapperConstants.CUSTOM_COLUM
 
 function arrayToObject(arr) {
   var object = {};
-  for (var i = 0; i < arr.length; i++) {
-    object[i] = arr[i];
+  for (var index = 0; index < arr.length; index++) {
+    object[index] = arr[index];
   }
   return object;
 }
 
 function getPropKeysForTypes(types, schema) {
-  var summary = getSchemaSummary(schema);
+  var summary = getSignalsSchemaSummary(schema);
   var propPaths = summary.pathForSimplePropKeys;
   var extraPropCollector = summary.extraPropsCollectors[0];
 
   var mapping = {};
 
-  types.forEach(function (key, i) {
+  types.forEach(function (key, index) {
     var propPath = void 0;
     if (typeof key === 'string') {
       if (propPaths[key]) {
@@ -1838,7 +1878,7 @@ function getPropKeysForTypes(types, schema) {
       }
     }
     if (propPath) {
-      mapping[i] = propPath;
+      mapping[index] = propPath;
     }
   });
 
@@ -1854,8 +1894,8 @@ function getByteLength(value) {
   }
   if (typeof value === 'string') {
     var byteLen = 0;
-    for (var i = 0; i < value.length; i++) {
-      var code = value.charCodeAt(i);
+    for (var index = 0; index < value.length; index++) {
+      var code = value.charCodeAt(index);
       if (code < 128) {
         byteLen += 1;
       } else if (code < 2048) {
@@ -1882,8 +1922,8 @@ function getPresetValueConfigFromObject(data) {
   };
   if (data != null) {
     result.mappings = Object.keys(data);
-    for (var i = 0; i < result.mappings.length; i++) {
-      result.values.push(data[result.mappings[i]]);
+    for (var index = 0; index < result.mappings.length; index++) {
+      result.values.push(data[result.mappings[index]]);
     }
   }
   return result;
@@ -1897,12 +1937,18 @@ function getMappingWithPreset(currentMappings, offset, presetMappings) {
   return result;
 }
 
-function getArgumentsForNormalizationFromColumnMapping(mapping, customTypes, infoForNormalization, schemaSummary, columnStatuses) {
+function getArgumentsForNormalizationFromColumnMapping(params) {
+  var mapping = params.mapping,
+      columnStatuses = params.columnStatuses,
+      customTypes = params.customTypes,
+      infoForNormalization = params.infoForNormalization,
+      schemaSummary = params.schemaSummary;
+
   var transFormedMapping = mapping.map(function (columnType, idx) {
     var additionalInfo = infoForNormalization.get(String(idx));
     var propKey = void 0;
 
-    if (!columnStatuses || columnStatuses.get(idx) !== ITEM_STATUSES.MAPPED_WITH_ERROR) {
+    if (columnStatuses == null || columnStatuses.get(idx) !== ITEM_STATUSES.MAPPED_WITH_ERROR) {
       if (columnType === CUSTOM_COLUMN_TYPE_VALUE) {
         var customColumnTypeDefinition = customTypes.get(String(idx));
         propKey = customColumnTypeDefinition && customColumnTypeDefinition.key ? customColumnTypeDefinition.key : undefined;
@@ -1925,15 +1971,22 @@ function getArgumentsForNormalizationFromColumnMapping(mapping, customTypes, inf
   }, {}));
 
   return {
-    mapping: transFormedMapping,
+    customTypeInfos: customTypeInfos,
     infoForNormalization: transformedInfoForNormalization,
-    customTypeInfos: customTypeInfos
+    mapping: transFormedMapping
   };
 }
 
-function getColumnStatuses(numColumns, mapping, infoForNormalization, customTypeDefintion, normalizationResults, preMappedColumnMapping) {
-  var errorThreshold = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : COLUMN_MAPPING_ERROR_THRESHOLD;
-  var requireOnlyOneRightValueMappedTypes = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : [];
+function getColumnStatuses(params) {
+  var customTypeDefintion = params.customTypeDefintion,
+      infoForNormalization = params.infoForNormalization,
+      mapping = params.mapping,
+      normalizationResults = params.normalizationResults,
+      numColumns = params.numColumns,
+      preMappedColumnMapping = params.preMappedColumnMapping;
+
+  var errorThreshold = params.errorThreshold != null ? params.errorThreshold : COLUMN_MAPPING_ERROR_THRESHOLD;
+  var requireOnlyOneRightValueMappedTypes = params.requireOnlyOneRightValueMappedTypes != null ? params.requireOnlyOneRightValueMappedTypes : [];
 
   var alignedMapping = mapping;
   while (alignedMapping.size < numColumns) {
@@ -1945,7 +1998,7 @@ function getColumnStatuses(numColumns, mapping, infoForNormalization, customType
   var errorSummary = getSignalsNormalizationErrorSummary(normalizationResults.toArray());
   if (numSamples > 0) {
     columnStatuses = alignedMapping.map(function (propPath, index) {
-      if (preMappedColumnMapping && preMappedColumnMapping.includes(index)) {
+      if (preMappedColumnMapping != null && preMappedColumnMapping.includes(index)) {
         return ITEM_STATUSES.PRE_MAPPED;
       }
 
@@ -1967,9 +2020,8 @@ function getColumnStatuses(numColumns, mapping, infoForNormalization, customType
 
       if (invalidColumnCounts < overTheLimitErrorCount || requireOnlyOneRightValueMappedTypes.indexOf(propPath) > -1 && invalidColumnCounts < numSamples) {
         return ITEM_STATUSES.MAPPED_RIGHT;
-      } else {
-        return ITEM_STATUSES.MAPPED_WITH_ERROR;
       }
+      return ITEM_STATUSES.MAPPED_WITH_ERROR;
     });
   } else {
     columnStatuses = List();
@@ -1985,12 +2037,12 @@ function getColumnStatuses(numColumns, mapping, infoForNormalization, customType
   });
 
   return {
-    mapping: alignedMapping,
     columnStatuses: columnStatuses,
+    errorSummary: errorSummary,
     mappedRightColumns: mappedRightColumns,
     mappedWithErrorColumns: mappedWithErrorColumns,
+    mapping: alignedMapping,
     nonMappedColumns: nonMappedColumns,
-    errorSummary: errorSummary,
     sampleNormalizationResults: normalizationResults
   };
 }
@@ -1999,69 +2051,30 @@ function getHumanFriendlyAPIErrorMessage(error) {
   if (error) {
     if (typeof error === 'string') {
       return error;
-    } else {
-      if (error.error_user_msg) {
-        return error.error_user_msg;
-      } else {
-        return error.message;
-      }
     }
+
+    if (error.error_user_msg) {
+      return error.error_user_msg;
+    }
+
+    return error.message;
   }
 
   return null;
 }
 
 module.exports = {
+  COLUMN_MAPPING_ERROR_THRESHOLD: COLUMN_MAPPING_ERROR_THRESHOLD,
   arrayToObject: arrayToObject,
   getArgumentsForNormalizationFromColumnMapping: getArgumentsForNormalizationFromColumnMapping,
   getByteLength: getByteLength,
   getColumnStatuses: getColumnStatuses,
+  getHumanFriendlyAPIErrorMessage: getHumanFriendlyAPIErrorMessage,
   getMappingWithPreset: getMappingWithPreset,
   getPresetValueConfigFromObject: getPresetValueConfigFromObject,
   getPropKeysForTypes: getPropKeysForTypes,
-  COLUMN_MAPPING_ERROR_THRESHOLD: COLUMN_MAPPING_ERROR_THRESHOLD,
-  getHumanFriendlyAPIErrorMessage: getHumanFriendlyAPIErrorMessage
+  uploadForNumberOfLinesEstimationConfig: uploadForNumberOfLinesEstimationConfig
 };
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var abstractMethod = __webpack_require__(2);
-
-var SignalsUploaderErrorReportGenerator = function () {
-  function SignalsUploaderErrorReportGenerator() {
-    _classCallCheck(this, SignalsUploaderErrorReportGenerator);
-  }
-
-  _createClass(SignalsUploaderErrorReportGenerator, [{
-    key: 'initialize',
-    value: function initialize() {
-      return abstractMethod('SignalsUploaderErrorReportGenerator', 'initialize');
-    }
-  }, {
-    key: 'update',
-    value: function update(report, row, normalizationResult, mapping) {
-      abstractMethod('SignalsUploaderErrorReportGenerator', 'update');
-    }
-  }, {
-    key: 'merge',
-    value: function merge(report1, report2) {
-      return abstractMethod('SignalsUploaderErrorReportGenerator', 'merge');
-    }
-  }]);
-
-  return SignalsUploaderErrorReportGenerator;
-}();
-
-module.exports = SignalsUploaderErrorReportGenerator;
 
 /***/ }),
 /* 18 */
@@ -2070,9 +2083,9 @@ module.exports = SignalsUploaderErrorReportGenerator;
 "use strict";
 
 
-var SignalsUploaderAdvancedErrorReportGenerator = __webpack_require__(66);
-var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(36);
-var SignalsUploaderWLALErrorReportGenerator = __webpack_require__(67);
+var SignalsUploaderAdvancedErrorReportGenerator = __webpack_require__(73);
+var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(42);
+var SignalsUploaderWLALErrorReportGenerator = __webpack_require__(74);
 
 function createSignalsUploaderErrorReportGenerator(config) {
   switch (config.type) {
@@ -2095,7 +2108,284 @@ module.exports = createSignalsUploaderErrorReportGenerator;
 "use strict";
 
 
-module.exports = Object.freeze({ "ANY": "any", "BOOL": "bool", "CURRENCY_CODE": "currency_code", "DATE": "date", "DATE_MONTH": "date_month", "EMAIL": "email", "ENUM": "enum", "FBID": "fbid", "JSON_LIST": "json_list", "LIST": "LIST", "NUMBER": "number", "PHONE_NUMBER": "phone_number", "POSTAL_CODE": "postal_code", "SHA256": "sha256", "STRING": "string", "TIMESTAMP": "timestamp", "UNIX_TIME": "unix_time", "VALUE": "value" });
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SignalsUploaderCSVParser = __webpack_require__(12);
+
+var invariant = __webpack_require__(1);
+
+var SignalsUploaderExtendedCSVParser = function (_SignalsUploaderCSVPa) {
+  _inherits(SignalsUploaderExtendedCSVParser, _SignalsUploaderCSVPa);
+
+  function SignalsUploaderExtendedCSVParser(delimiter) {
+    var commentChar = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '#';
+    var skipEmptyLines = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+    _classCallCheck(this, SignalsUploaderExtendedCSVParser);
+
+    var _this = _possibleConstructorReturn(this, (SignalsUploaderExtendedCSVParser.__proto__ || Object.getPrototypeOf(SignalsUploaderExtendedCSVParser)).call(this, delimiter));
+
+    _this._commentChar = commentChar;
+
+    _this._state = 'pre-csv-start';
+    _this._skipEmptyLines = skipEmptyLines;
+    _this._buffer = '';
+    _this._parameters = '';
+    return _this;
+  }
+
+  _createClass(SignalsUploaderExtendedCSVParser, [{
+    key: 'onNewCharacter',
+    value: function onNewCharacter(char) {
+      this.incrementPosition();
+      this._onNewPreCSVCharacter(char);
+    }
+  }, {
+    key: '_onNewPreCSVCharacter',
+    value: function _onNewPreCSVCharacter(char) {
+      invariant(char.length === 1, 'Should be a character');
+
+      if (char === '\x00') {
+        return;
+      }
+
+      var delimiter = this._skipEmptyLines ? _get(SignalsUploaderExtendedCSVParser.prototype.__proto__ || Object.getPrototypeOf(SignalsUploaderExtendedCSVParser.prototype), 'getDelimiter', this).call(this) : null;
+
+      switch (this._state) {
+        case 'pre-csv-start':
+          this._buffer = '';
+          switch (char) {
+            case this._commentChar:
+              this._state = 'pre-csv-comment';
+              break;
+            case '"':
+              this._buffer += char;
+              this._state = 'pre-csv-quote';
+              break;
+            case delimiter:
+              this._buffer += char;
+              this._state = 'pre-csv-empty';
+              break;
+            case 'p':
+            case 'P':
+              this._buffer += char;
+              this._state = 'pre-csv-p';
+              break;
+            case '\r':
+            case '\n':
+              this._state = 'pre-csv-start';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-comment':
+          switch (char) {
+            case '\r':
+            case '\n':
+              this._state = 'pre-csv-start';
+              break;
+          }
+          break;
+        case 'pre-csv-quote':
+          switch (char) {
+            case this._commentChar:
+              this._state = 'pre-csv-comment';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-empty':
+          switch (char) {
+            case delimiter:
+              this._buffer += char;
+              break;
+            case '\r':
+            case '\n':
+              this._state = 'pre-csv-start';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-p':
+          switch (char) {
+            case 'a':
+            case 'A':
+              this._buffer += char;
+              this._state = 'pre-csv-pa';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-pa':
+          switch (char) {
+            case 'r':
+            case 'R':
+              this._buffer += char;
+              this._state = 'pre-csv-par';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-par':
+          switch (char) {
+            case 'a':
+            case 'A':
+              this._buffer += char;
+              this._state = 'pre-csv-para';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-para':
+          switch (char) {
+            case 'm':
+            case 'M':
+              this._buffer += char;
+              this._state = 'pre-csv-param';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-param':
+          switch (char) {
+            case 'e':
+            case 'E':
+              this._buffer += char;
+              this._state = 'pre-csv-parame';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-parame':
+          switch (char) {
+            case 't':
+            case 'T':
+              this._buffer += char;
+              this._state = 'pre-csv-paramet';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-paramet':
+          switch (char) {
+            case 'e':
+            case 'E':
+              this._buffer += char;
+              this._state = 'pre-csv-paramete';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-paramete':
+          switch (char) {
+            case 'r':
+            case 'R':
+              this._buffer += char;
+              this._state = 'pre-csv-parameter';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-parameter':
+          switch (char) {
+            case 's':
+            case 'S':
+              this._buffer += char;
+              this._state = 'pre-csv-parameters';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-parameters':
+          switch (char) {
+            case ':':
+              this._buffer += char;
+              this._state = 'pre-csv-parameters:';
+              break;
+            default:
+              this._state = 'field-start';
+              this._fieldStart(char);
+              break;
+          }
+          break;
+        case 'pre-csv-parameters:':
+          switch (char) {
+            case '\r':
+            case '\n':
+              this._parameters = this._buffer;
+              this._state = 'pre-csv-start';
+              break;
+            default:
+              this._buffer += char;
+              break;
+          }
+          break;
+        default:
+          this.decreasePosition();
+          _get(SignalsUploaderExtendedCSVParser.prototype.__proto__ || Object.getPrototypeOf(SignalsUploaderExtendedCSVParser.prototype), 'onNewCharacter', this).call(this, char);
+      }
+    }
+  }, {
+    key: '_fieldStart',
+    value: function _fieldStart(char) {
+      this._buffer += char;
+      for (var index = 0; index < this._buffer.length; index++) {
+        this.decreasePosition();
+      }
+      for (var _index = 0; _index < this._buffer.length; _index++) {
+        _get(SignalsUploaderExtendedCSVParser.prototype.__proto__ || Object.getPrototypeOf(SignalsUploaderExtendedCSVParser.prototype), 'onNewCharacter', this).call(this, this._buffer[_index]);
+      }
+    }
+  }]);
+
+  return SignalsUploaderExtendedCSVParser;
+}(SignalsUploaderCSVParser);
+
+module.exports = SignalsUploaderExtendedCSVParser;
 
 /***/ }),
 /* 20 */
@@ -2104,7 +2394,7 @@ module.exports = Object.freeze({ "ANY": "any", "BOOL": "bool", "CURRENCY_CODE": 
 "use strict";
 
 
-module.exports = __webpack_require__(92)
+module.exports = __webpack_require__(97)
 
 
 /***/ }),
@@ -2122,10 +2412,13 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var SignalsValidationUtils = __webpack_require__(0);
 
+var isTruthy = __webpack_require__(24);
+
 var hasProp = SignalsValidationUtils.hasProp;
 
 
 var PII_SCHEMA_TYPE = 'pii_keys';
+var CONTENT_SCHEMA_TYPE = 'content_data';
 
 function _getSchemaSummary(schema) {
   var parentKey = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -2145,9 +2438,10 @@ function _getSchemaSummary(schema) {
   var keysForSimplePropsTypesInSchema = {};
   var keysForSubschemasWithID = {};
   var piiKeys = [];
+  var contentKeys = [];
   var subschemasByType = {};
 
-  var pathPrefix = parentKey ? parentKey + '.' : '';
+  var pathPrefix = isTruthy(parentKey) ? parentKey + '.' : '';
 
   var type = schema.type;
 
@@ -2158,8 +2452,8 @@ function _getSchemaSummary(schema) {
   }
 
   if (schema.props != null && Array.isArray(schema.props)) {
-    for (var i = 0; i < schema.props.length; i++) {
-      var propSchema = schema.props[i];
+    for (var index = 0; index < schema.props.length; index++) {
+      var propSchema = schema.props[index];
       var propKey = propSchema.key;
 
       if ((typeof propSchema === 'undefined' ? 'undefined' : _typeof(propSchema)) === 'object' && propKey != null) {
@@ -2195,6 +2489,7 @@ function _getSchemaSummary(schema) {
             }
 
             piiKeys.push.apply(piiKeys, _toConsumableArray(childSummary.piiKeys));
+            contentKeys.push.apply(contentKeys, _toConsumableArray(childSummary.contentKeys));
 
             var typesInChildSummary = Object.keys(childSummary.subschemasByType);
 
@@ -2228,31 +2523,32 @@ function _getSchemaSummary(schema) {
 
             keysForSubschemasWithID[id].push(propKey);
           }
-
           if (schema.type === PII_SCHEMA_TYPE) {
             piiKeys.push(propKey);
+          } else if (schema.type === CONTENT_SCHEMA_TYPE) {
+            contentKeys.push(propKey);
           }
         }
       }
     }
   }
-
   return {
-    id: id,
     additionalInfoURL: additionalInfoURL,
-    exampleFiles: exampleFiles,
     allSimplePropKeysInSchema: allSimplePropKeysInSchema,
-    noUISimplePropKeysInSchema: noUISimplePropKeysInSchema,
+    contentKeys: contentKeys,
+    exampleFiles: exampleFiles,
     extraPropsCollectors: extraPropsCollectors,
-    schemasForSimplePropsInSchema: schemasForSimplePropsInSchema,
-    typesForSimplePropKeys: typesForSimplePropKeys,
-    typesForSimplePropPaths: typesForSimplePropPaths,
+    id: id,
     keysForSimplePropPaths: keysForSimplePropPaths,
-    pathForSimplePropKeys: pathForSimplePropKeys,
     keysForSimplePropsTypesInSchema: keysForSimplePropsTypesInSchema,
     keysForSubschemasWithID: keysForSubschemasWithID,
+    noUISimplePropKeysInSchema: noUISimplePropKeysInSchema,
+    pathForSimplePropKeys: pathForSimplePropKeys,
     piiKeys: piiKeys,
+    schemasForSimplePropsInSchema: schemasForSimplePropsInSchema,
     subschemasByType: subschemasByType,
+    typesForSimplePropKeys: typesForSimplePropKeys,
+    typesForSimplePropPaths: typesForSimplePropPaths,
     validIf: schema.validIf
   };
 }
@@ -2270,12 +2566,79 @@ module.exports = getSchemaSummary;
 "use strict";
 
 
-var VALID_CURRENCY_CODES = ['AED', 'ARS', 'AUD', 'BOB', 'BRL', 'CAD', 'CHF', 'CLP', 'CNY', 'COP', 'CRC', 'CZK', 'DKK', 'EUR', 'GBP', 'GTQ', 'HKD', 'HNL', 'HUF', 'IDR', 'ILS', 'INR', 'ISK', 'JPY', 'KRW', 'MOP', 'MXN', 'MYR', 'NIO', 'NOK', 'NZD', 'PEN', 'PHP', 'PLN', 'PYG', 'QAR', 'RON', 'RUB', 'SAR', 'SEK', 'SGD', 'THB', 'TRY', 'TWD', 'USD', 'UYU', 'VEF', 'VND', 'ZAR'];
+var VALID_CURRENCY_CODES = ['AED', 'ARS', 'AUD', 'BOB', 'BRL', 'CAD', 'CHF', 'CLP', 'CNY', 'COP', 'CRC', 'CZK', 'DKK', 'EUR', 'GBP', 'GTQ', 'HKD', 'HNL', 'HUF', 'IDR', 'ILS', 'INR', 'ISK', 'JPY', 'KRW', 'MOP', 'MXN', 'MYR', 'NIO', 'NOK', 'NZD', 'PEN', 'PHP', 'PKR', 'PLN', 'PYG', 'QAR', 'RON', 'RUB', 'SAR', 'SEK', 'SGD', 'THB', 'TRY', 'TWD', 'USD', 'UYU', 'VEF', 'VND', 'ZAR'];
 
 module.exports = { VALID_CURRENCY_CODES: VALID_CURRENCY_CODES };
 
 /***/ }),
 /* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function isFalsey(value) {
+  return value == null || !Boolean(value);
+}
+
+module.exports = isFalsey;
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function isTruthy(value) {
+  return value != null && Boolean(value);
+}
+
+module.exports = isTruthy;
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = Object.freeze({ "REJECT": "reject", "WARNING": "warning" });
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = Object.freeze({ "INVALID": "invalid", "TOO_MANY": "too-many", "SOME_INVALID": "some-invalid" });
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function getByPath(root, path, fallbackValue) {
+  var current = root;
+  for (var i = 0; i < path.length; i++) {
+    var segment = path[i];
+
+    if (current && typeof current !== 'string' && typeof current !== 'number' && segment in current) {
+      current = current[segment];
+    } else {
+      return fallbackValue;
+    }
+  }
+  return current;
+}
+
+module.exports = getByPath;
+
+/***/ }),
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2288,7 +2651,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 24 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2338,7 +2701,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 25 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2362,7 +2725,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 26 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2370,8 +2733,12 @@ module.exports = normalize;
 
 var normalizeSignalsDateType = __webpack_require__(9);
 
+var DEFAULT_NORMALIZER_PARAMS = {
+  rejectHashed: undefined
+};
+
 function normalizeSignalsDateMonthType(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_NORMALIZER_PARAMS;
   var additionalInfo = arguments[2];
 
   params.allowMonthOnly = true;
@@ -2381,7 +2748,7 @@ function normalizeSignalsDateMonthType(input) {
 module.exports = normalizeSignalsDateMonthType;
 
 /***/ }),
-/* 27 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2417,7 +2784,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 28 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2427,6 +2794,10 @@ var SignalsValidationUtils = __webpack_require__(0);
 
 var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
 
+
+var DEFAULT_NORMALIZER_PARAMS = {
+  rejectHashed: undefined
+};
 
 var LEAD_ID_PREFIX = 'l:';
 
@@ -2441,11 +2812,11 @@ function isValueWithinUint64Range(value) {
   if (value.length > MAX_FBID.length) {
     return false;
   }
-  for (var i = 0; i < value.length; i++) {
-    if (value[i] < MAX_FBID[i]) {
+  for (var index = 0; index < value.length; index++) {
+    if (value[index] < MAX_FBID[index]) {
       return true;
     }
-    if (value[i] > MAX_FBID[i]) {
+    if (value[index] > MAX_FBID[index]) {
       return false;
     }
   }
@@ -2453,26 +2824,23 @@ function isValueWithinUint64Range(value) {
 }
 
 function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_NORMALIZER_PARAMS;
   var additionalInfo = arguments[2];
 
-  if (typeof input === 'number') {
-    input = String(input);
-  }
-
-  if (typeof input !== 'string') {
+  var inputStr = typeof input === 'number' ? String(input) : input;
+  if (typeof inputStr !== 'string') {
     return {
       normalizedValue: null
     };
   }
 
-  if (looksLikeHashed(input) && !params.rejectHashed) {
+  if (looksLikeHashed(inputStr) && params.rejectHashed !== true) {
     return {
-      normalizedValue: input
+      normalizedValue: inputStr
     };
   }
 
-  var nonPrefixedInput = input;
+  var nonPrefixedInput = inputStr;
   if (params.stripPrefix && typeof nonPrefixedInput === 'string' && nonPrefixedInput.slice(0, LEAD_ID_PREFIX.length) === LEAD_ID_PREFIX) {
     nonPrefixedInput = nonPrefixedInput.substring(LEAD_ID_PREFIX.length);
   }
@@ -2491,11 +2859,10 @@ function normalize(input) {
       return {
         normalizedValue: nonPrefixedInput
       };
-    } else {
-      return {
-        normalizedValue: null
-      };
     }
+    return {
+      normalizedValue: null
+    };
   }
 
   return { normalizedValue: nonPrefixedInput };
@@ -2504,54 +2871,71 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 29 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var SignalsBaseTypeNormalizers = __webpack_require__(5);
 var SignalsValidationUtils = __webpack_require__(0);
 
 var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
 
 
-function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+var DEFAULT_DELIMITER = ',';
+
+function normalize(raw_input) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Object.freeze({});
+  var additionalInfo = arguments[2];
 
   var result = null;
+  var input = raw_input;
 
-  var rejectEmptyList = params.rejectEmptyList,
+  var caseInsensitiveElements = params.caseInsensitiveElements,
+      _params$dropEmptyDeli = params.dropEmptyDelimitedElements,
+      dropEmptyDelimitedElements = _params$dropEmptyDeli === undefined ? true : _params$dropEmptyDeli,
+      _params$listContentTy = params.listContentType,
+      listContentType = _params$listContentTy === undefined ? null : _params$listContentTy,
       maxItemsAllowed = params.maxItemsAllowed,
+      listContentTypeParam = params.listContentTypeParam,
       options = params.options,
-      rejectHashed = params.rejectHashed,
-      caseInsensitiveElements = params.caseInsensitiveElements;
+      rejectEmptyList = params.rejectEmptyList,
+      rejectEmptyString = params.rejectEmptyString,
+      rejectHashed = params.rejectHashed;
 
+
+  var delimiter = additionalInfo && additionalInfo.delimiter || params && params.delimiter || DEFAULT_DELIMITER;
 
   if (Array.isArray(input)) {
     result = input;
   } else if (typeof input === 'string') {
+
     if (looksLikeHashed(input)) {
-      result = rejectHashed ? null : input;
+      result = rejectHashed === true ? null : input;
     } else {
       input = input.trim();
       if (input.length === 0) {
-        result = [];
+        result = rejectEmptyString === true ? null : [];
       } else {
         if (input.length >= 2 && input[0] === '[' && input[input.length - 1] === ']') {
           input = input.slice(1, input.length - 1);
         }
 
-        result = input.split(',').map(function (segment) {
+        result = input.split(delimiter).map(function (segment) {
           return segment.trim().replace(/^\'(.*)\'$|^\"(.*)\"$/, '$1$2');
-        }).filter(function (item) {
-          return item.length !== 0;
         });
+        if (dropEmptyDelimitedElements) {
+          result = result.filter(function (item) {
+            return item.length !== 0;
+          });
+        }
       }
     }
   }
-  if (options && result !== null) {
+  if (options != null && result !== null) {
     var options_set = void 0;
-    if (caseInsensitiveElements) {
+    if (caseInsensitiveElements === true) {
       options_set = new Set(options.map(function (option) {
         return option.toLowerCase();
       }));
@@ -2559,12 +2943,19 @@ function normalize(input) {
       options_set = new Set(options);
     }
     result = !Array.isArray(result) || result.some(function (item) {
-      return !options_set.has(caseInsensitiveElements ? String(item).toLowerCase() : String(item));
+      return !options_set.has(caseInsensitiveElements === true ? String(item).toLowerCase() : String(item));
     }) ? null : result;
   }
 
-  if (result) {
-    if (rejectEmptyList && result.length === 0 || maxItemsAllowed && result.length > maxItemsAllowed) {
+  if (listContentType != null && Array.isArray(result) && SignalsBaseTypeNormalizers.hasOwnProperty(listContentType)) {
+    var normalizer = SignalsBaseTypeNormalizers[listContentType];
+    result = result.map(function (item) {
+      return normalizer(item, listContentTypeParam).normalizedValue;
+    });
+  }
+
+  if (result != null) {
+    if (rejectEmptyList === true && result.length === 0 || maxItemsAllowed != null && result.length > maxItemsAllowed) {
       result = null;
     }
   }
@@ -2575,7 +2966,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 30 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2583,14 +2974,15 @@ module.exports = normalize;
 
 var SignalsValidationUtils = __webpack_require__(0);
 
-var isInternationalPhoneNumber = __webpack_require__(80);
+var isInternationalPhoneNumber = __webpack_require__(66);
 var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
 
 
 var PHONE_DROP_PREFIX_ZEROS = /^0*/;
 var PHONE_IGNORE_CHAR_SET = /[\-@#<>'",; ]|\(|\)|\+|[a-z]/gi;
+var DEFAULT_EMPTY_PHONE_CODE = '';
 
-function normalize(input) {
+function normalize(input, _params, additionalInfo) {
   var result = null;
 
   if (input != null) {
@@ -2598,19 +2990,27 @@ function normalize(input) {
       result = input;
     } else {
       var str = String(input);
-      if (isInternationalPhoneNumber(str)) {
+      if (additionalInfo != null && additionalInfo.alreadyHasPhoneCode === false) {
+        var _phoneCode = additionalInfo && additionalInfo.phoneCode || DEFAULT_EMPTY_PHONE_CODE;
+        if (_phoneCode === DEFAULT_EMPTY_PHONE_CODE) {
+          return { normalizedValue: null };
+        }
+        var newStr = _phoneCode + str;
+        if (isInternationalPhoneNumber(newStr)) {
+          result = newStr.replace(PHONE_IGNORE_CHAR_SET, '').replace(PHONE_DROP_PREFIX_ZEROS, '');
+        }
+      } else if (isInternationalPhoneNumber(str)) {
         result = str.replace(PHONE_IGNORE_CHAR_SET, '').replace(PHONE_DROP_PREFIX_ZEROS, '');
       }
     }
   }
-
   return { normalizedValue: result };
 }
 
 module.exports = normalize;
 
 /***/ }),
-/* 31 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2643,7 +3043,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 32 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2667,7 +3067,7 @@ function normalize(input, params) {
 module.exports = normalize;
 
 /***/ }),
-/* 33 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2679,14 +3079,18 @@ var looksLikeHashed = SignalsValidationUtils.looksLikeHashed,
     strip = SignalsValidationUtils.strip;
 
 
+var DEFAULT_NORMALIZER_PARAMS = {
+  rejectHashed: undefined
+};
+
 function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_NORMALIZER_PARAMS;
 
   var result = null;
 
   if (input != null) {
     if (looksLikeHashed(input) && typeof input === 'string') {
-      if (!params.rejectHashed) {
+      if (params.rejectHashed !== true) {
         result = input;
       }
     } else {
@@ -2696,17 +3100,17 @@ function normalize(input) {
         str = strip(str, params.strip);
       }
 
-      if (params.lowercase) {
+      if (params.lowercase === true) {
         str = str.toLowerCase();
-      } else if (params.uppercase) {
+      } else if (params.uppercase === true) {
         str = str.toUpperCase();
       }
 
-      if (params.truncate) {
+      if (params.truncate != null && params.truncate !== 0) {
         str = str.substring(0, params.truncate);
       }
 
-      if (params.test) {
+      if (params.test != null && params.test !== '') {
         result = new RegExp(params.test).test(str) ? str : null;
       } else {
         result = str;
@@ -2719,7 +3123,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 34 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2727,11 +3131,13 @@ module.exports = normalize;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var normalizeSignalsTimestampType = __webpack_require__(14);
+var normalizeSignalsTimestampType = __webpack_require__(15);
+
+var ONE_SECOND_IN_MS = 1000;
 
 function normalize(input) {
-  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Object.freeze({});
+  var additionalInfo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Object.freeze({});
 
   if (input == null) {
     return {
@@ -2740,28 +3146,22 @@ function normalize(input) {
   }
 
   var newAdditionalInfo = additionalInfo ? _extends({}, additionalInfo) : {};
-  newAdditionalInfo.timeFormat = newAdditionalInfo.timeFormat || 'unix_time';
+  newAdditionalInfo.timeFormat = newAdditionalInfo.timeFormat != null ? newAdditionalInfo.timeFormat : 'unix_time';
 
   var tmpResult = normalizeSignalsTimestampType(input, params, newAdditionalInfo);
 
-  if (tmpResult.normalizedValue != null) {
-    var result = Math.round(tmpResult.normalizedValue / 1000);
-    return {
-      normalizedValue: result,
-      additionalInfo: tmpResult.additionalInfo
-    };
-  } else {
-    return {
-      normalizedValue: null,
-      additionalInfo: tmpResult.additionalInfo
-    };
-  }
+  var result = tmpResult.normalizedValue != null && typeof tmpResult.normalizedValue === 'number' ? Math.round(tmpResult.normalizedValue / ONE_SECOND_IN_MS) : null;
+
+  return {
+    additionalInfo: tmpResult.additionalInfo,
+    normalizedValue: result
+  };
 }
 
 module.exports = normalize;
 
 /***/ }),
-/* 35 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2771,7 +3171,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var SignalsValidationUtils = __webpack_require__(0);
 
-var sha256 = __webpack_require__(95);
+var sha256 = __webpack_require__(100);
 
 var hasProp = SignalsValidationUtils.hasProp,
     looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
@@ -2838,8 +3238,8 @@ function processPIISignalBeforeUpload(signal, schema) {
 
       if (nonHashableKeys.indexOf(key) === -1 && !propIsToBeRemoved) {
 
-        signal[key] = Array.isArray(prop) ? prop.map(function (v) {
-          return hashIfNotHashed(v);
+        signal[key] = Array.isArray(prop) ? prop.map(function (propValue) {
+          return hashIfNotHashed(propValue);
         }) : hashIfNotHashed(prop);
       }
 
@@ -2855,7 +3255,67 @@ function processPIISignalBeforeUpload(signal, schema) {
 module.exports = processPIISignalBeforeUpload;
 
 /***/ }),
-/* 36 */
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function transformContentFieldsToObjectArray(signal, _schema) {
+  if (signal == null || signal.size === 0 || signal.content_id == null) {
+    return [];
+  }
+  var count = signal.content_id.length;
+  var validKeys = [];
+  Object.keys(signal).forEach(function (key) {
+    if (signal[key] != null && signal[key].length === count) {
+      validKeys.push(key);
+    }
+  });
+
+  var result = [];
+  for (var index = 0; index < count; index++) {
+    var contentObject = {};
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = validKeys[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var key = _step.value;
+
+        if (signal[key][index] != null) {
+          if (key === 'content_id') {
+            contentObject.id = signal[key][index];
+          } else {
+            contentObject[key] = signal[key][index];
+          }
+        }
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    result.push(contentObject);
+  }
+  return result;
+}
+
+module.exports = transformContentFieldsToObjectArray;
+
+/***/ }),
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2871,9 +3331,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderErrorReportGenerator = __webpack_require__(17);
+var SignalsUploaderErrorReportGenerator = __webpack_require__(43);
 
 var invariant = __webpack_require__(1);
+var isFalsey = __webpack_require__(23);
 
 var SignalsUploaderDefaultErrorReportGenerator = function (_SignalsUploaderError) {
   _inherits(SignalsUploaderDefaultErrorReportGenerator, _SignalsUploaderError);
@@ -2891,13 +3352,18 @@ var SignalsUploaderDefaultErrorReportGenerator = function (_SignalsUploaderError
     key: 'initialize',
     value: function initialize() {
       return {
-        type: 'default',
-        invalidSamples: []
+        invalidSamples: [],
+        type: 'default'
       };
     }
   }, {
     key: 'update',
-    value: function update(report, row, normalizationResult, mapping) {
+    value: function update(params) {
+      var mapping = params.mapping,
+          normalizationResult = params.normalizationResult,
+          report = params.report,
+          row = params.row;
+
       invariant(report.type === 'default', 'Invalid report type.');
       if (normalizationResult.valid || report.invalidSamples.length >= this.__maxNumInvalidSamples || normalizationResult.tree == null) {
         return;
@@ -2935,7 +3401,7 @@ var SignalsUploaderDefaultErrorReportGenerator = function (_SignalsUploaderError
       for (var index in mapping) {
         var field = row.fields[parseInt(index, 10)];
         var propPath = mapping[index];
-        if ((field === '' || field == null) && propPath != null && propPath !== '') {
+        if (isFalsey(field) && propPath != null && propPath !== '') {
           var propPathBreakdown = propPath.split('.');
           var propKey = propPathBreakdown[propPathBreakdown.length - 1];
           emptyColumns.push(propKey);
@@ -2943,8 +3409,8 @@ var SignalsUploaderDefaultErrorReportGenerator = function (_SignalsUploaderError
         }
       }
       return {
-        invalidColumns: Object.keys(invalidPropSet),
-        emptyColumns: emptyColumns
+        emptyColumns: emptyColumns,
+        invalidColumns: Object.keys(invalidPropSet)
       };
     }
   }, {
@@ -2960,10 +3426,10 @@ var SignalsUploaderDefaultErrorReportGenerator = function (_SignalsUploaderError
       invariant(report1.type === 'default', 'Invalid report type.');
       invariant(report2.type === 'default', 'Invalid report type.');
       return {
-        type: 'default',
-        invalidSamples: report1.invalidSamples.concat(report2.invalidSamples).sort(function (a, b) {
-          return a.row - b.row;
-        }).slice(0, this.__maxNumInvalidSamples)
+        invalidSamples: report1.invalidSamples.concat(report2.invalidSamples).sort(function (sampleA, sampleB) {
+          return sampleA.row - sampleB.row;
+        }).slice(0, this.__maxNumInvalidSamples),
+        type: 'default'
       };
     }
   }]);
@@ -2974,7 +3440,47 @@ var SignalsUploaderDefaultErrorReportGenerator = function (_SignalsUploaderError
 module.exports = SignalsUploaderDefaultErrorReportGenerator;
 
 /***/ }),
-/* 37 */
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var abstractMethod = __webpack_require__(2);
+
+var SignalsUploaderErrorReportGenerator = function () {
+  function SignalsUploaderErrorReportGenerator() {
+    _classCallCheck(this, SignalsUploaderErrorReportGenerator);
+  }
+
+  _createClass(SignalsUploaderErrorReportGenerator, [{
+    key: 'initialize',
+    value: function initialize() {
+      return abstractMethod('SignalsUploaderErrorReportGenerator', 'initialize');
+    }
+  }, {
+    key: 'update',
+    value: function update(_params) {
+      abstractMethod('SignalsUploaderErrorReportGenerator', 'update');
+    }
+  }, {
+    key: 'merge',
+    value: function merge(_report1, _report2) {
+      return abstractMethod('SignalsUploaderErrorReportGenerator', 'merge');
+    }
+  }]);
+
+  return SignalsUploaderErrorReportGenerator;
+}();
+
+module.exports = SignalsUploaderErrorReportGenerator;
+
+/***/ }),
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3000,7 +3506,7 @@ var SignalsUploaderJob = function () {
     }
   }, {
     key: 'onReceiveMessageFromMainThread',
-    value: function onReceiveMessageFromMainThread(message) {
+    value: function onReceiveMessageFromMainThread(_message) {
       abstractMethod('SignalsUploaderJob', 'onMessage');
     }
   }]);
@@ -3011,7 +3517,7 @@ var SignalsUploaderJob = function () {
 module.exports = SignalsUploaderJob;
 
 /***/ }),
-/* 38 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3025,18 +3531,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderTask = __webpack_require__(39);
+var SignalsUploaderTask = __webpack_require__(46);
 
 var abstractMethod = __webpack_require__(2);
-var createSignalsUploaderWorker = __webpack_require__(43);
+var createSignalsUploaderWorker = __webpack_require__(47);
 
 var SignalsUploaderSingleWorkerTask = function (_SignalsUploaderTask) {
   _inherits(SignalsUploaderSingleWorkerTask, _SignalsUploaderTask);
 
-  function SignalsUploaderSingleWorkerTask(source, chunkSize, logger) {
+  function SignalsUploaderSingleWorkerTask() {
     _classCallCheck(this, SignalsUploaderSingleWorkerTask);
 
-    return _possibleConstructorReturn(this, (SignalsUploaderSingleWorkerTask.__proto__ || Object.getPrototypeOf(SignalsUploaderSingleWorkerTask)).call(this, source, chunkSize, logger));
+    return _possibleConstructorReturn(this, (SignalsUploaderSingleWorkerTask.__proto__ || Object.getPrototypeOf(SignalsUploaderSingleWorkerTask)).apply(this, arguments));
   }
 
   _createClass(SignalsUploaderSingleWorkerTask, [{
@@ -3058,8 +3564,8 @@ var SignalsUploaderSingleWorkerTask = function (_SignalsUploaderTask) {
     value: function __onChunk(chunk) {
       if (this.__running()) {
         this._worker && this._worker.postMessage({
-          type: 'chunk-ready',
-          chunk: chunk
+          chunk: chunk,
+          type: 'chunk-ready'
         });
       }
     }
@@ -3068,8 +3574,8 @@ var SignalsUploaderSingleWorkerTask = function (_SignalsUploaderTask) {
     value: function __onEndOfStream(endOfStream) {
       if (this.__running()) {
         this._worker && this._worker.postMessage({
-          type: 'end-of-stream',
-          endOfStream: endOfStream
+          endOfStream: endOfStream,
+          type: 'end-of-stream'
         });
       }
     }
@@ -3087,7 +3593,7 @@ var SignalsUploaderSingleWorkerTask = function (_SignalsUploaderTask) {
     }
   }, {
     key: '__onReceiveMessageFromWorker',
-    value: function __onReceiveMessageFromWorker(message) {
+    value: function __onReceiveMessageFromWorker(_message) {
       abstractMethod('SignalsUploaderSingleWorkerTask', '__handleJobMessage');
     }
   }]);
@@ -3098,7 +3604,7 @@ var SignalsUploaderSingleWorkerTask = function (_SignalsUploaderTask) {
 module.exports = SignalsUploaderSingleWorkerTask;
 
 /***/ }),
-/* 39 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3109,7 +3615,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var abstractMethod = __webpack_require__(2);
-var createSignalsUploaderReader = __webpack_require__(83);
+var createSignalsUploaderReader = __webpack_require__(88);
 
 var SignalsUploaderTask = function () {
   function SignalsUploaderTask(source, chunkSize, logger) {
@@ -3127,7 +3633,7 @@ var SignalsUploaderTask = function () {
 
       return new Promise(function (resolve, reject) {
         _this.__logStart();
-        _this._promise = { resolve: resolve, reject: reject };
+        _this._promise = { reject: reject, resolve: resolve };
         _this.__initialize();
         _this.__tryToRead();
       });
@@ -3220,10 +3726,10 @@ var SignalsUploaderTask = function () {
     value: function __logStart() {}
   }, {
     key: '__logResolve',
-    value: function __logResolve(result) {}
+    value: function __logResolve(_result) {}
   }, {
     key: '__logReject',
-    value: function __logReject(error) {}
+    value: function __logReject(_error) {}
   }, {
     key: '__initialize',
     value: function __initialize() {
@@ -3241,12 +3747,12 @@ var SignalsUploaderTask = function () {
     }
   }, {
     key: '__onChunk',
-    value: function __onChunk(chunk) {
+    value: function __onChunk(_chunk) {
       abstractMethod('SignalsUploaderTask', '__onChunk');
     }
   }, {
     key: '__onEndOfStream',
-    value: function __onEndOfStream(endOfStream) {
+    value: function __onEndOfStream(_endOfStream) {
       abstractMethod('SignalsUploaderTask', '__onEndOfStream');
     }
   }]);
@@ -3258,54 +3764,13 @@ module.exports = SignalsUploaderTask;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
-/* 40 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-function getByPath(root, path, fallbackValue) {
-  var current = root;
-  for (var i = 0; i < path.length; i++) {
-    var segment = path[i];
-
-    if (current && typeof current !== 'string' && typeof current !== 'number' && segment in current) {
-      current = current[segment];
-    } else {
-      return fallbackValue;
-    }
-  }
-  return current;
-}
-
-module.exports = getByPath;
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = Object.freeze({ "REJECT": "reject", "WARNING": "warning" });
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = Object.freeze({ "INVALID": "invalid", "TOO_MANY": "too-many", "SOME_INVALID": "some-invalid" });
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsUploaderUIWorker = __webpack_require__(78);
+var SignalsUploaderUIWorker = __webpack_require__(86);
 
 function createSignalsUploaderWorker(handler) {
   return new SignalsUploaderUIWorker(handler);
@@ -3314,7 +3779,7 @@ function createSignalsUploaderWorker(handler) {
 module.exports = createSignalsUploaderWorker;
 
 /***/ }),
-/* 44 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3337,7 +3802,7 @@ function rawAsap(task) {
         requestFlush();
         flushing = true;
     }
-
+   
     queue[queue.length] = task;
 }
 
@@ -3363,18 +3828,18 @@ var capacity = 1024;
 function flush() {
     while (index < queue.length) {
         var currentIndex = index;
-
-
+       
+       
         index = index + 1;
         queue[currentIndex].call();
-
-
-
-
-
+       
+       
+       
+       
+       
         if (index > capacity) {
-
-
+           
+           
             for (var scan = 0, newLength = queue.length - index; scan < newLength; scan++) {
                 queue[scan] = queue[scan + index];
             }
@@ -3389,25 +3854,25 @@ function flush() {
 
 rawAsap.requestFlush = requestFlush;
 function requestFlush() {
-
-
-
+   
+   
+   
     var parentDomain = process.domain;
     if (parentDomain) {
         if (!domain) {
-
-
-            domain = __webpack_require__(96);
+           
+           
+            domain = __webpack_require__(101);
         }
         domain.active = process.domain = null;
     }
 
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
     if (flushing && hasSetImmediate) {
         setImmediate(flush);
     } else {
@@ -3421,7 +3886,7 @@ function requestFlush() {
 
 
 /***/ }),
-/* 45 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3461,13 +3926,13 @@ function invariant(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 /***/ }),
-/* 46 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var invariant = __webpack_require__(45);
+var invariant = __webpack_require__(49);
 
 var keyMirror = function keyMirror(obj) {
   var ret = {};
@@ -3485,7 +3950,7 @@ var keyMirror = function keyMirror(obj) {
 module.exports = keyMirror;
 
 /***/ }),
-/* 47 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
@@ -3561,19 +4026,19 @@ module.exports = keyMirror;
   var IS_INDEXED_SENTINEL = '@@__IMMUTABLE_INDEXED__@@';
   var IS_ORDERED_SENTINEL = '@@__IMMUTABLE_ORDERED__@@';
 
-
+ 
   var DELETE = 'delete';
 
-
+ 
   var SHIFT = 5;
   var SIZE = 1 << SHIFT;
   var MASK = SIZE - 1;
 
-
-
+ 
+ 
   var NOT_SET = {};
 
-
+ 
   var CHANGE_LENGTH = { value: false };
   var DID_ALTER = { value: false };
 
@@ -3586,12 +4051,12 @@ module.exports = keyMirror;
     ref && (ref.value = true);
   }
 
-
-
-
+ 
+ 
+ 
   function OwnerID() {}
 
-
+ 
   function arrCopy(arr, offset) {
     offset = offset || 0;
     var len = Math.max(0, arr.length - offset);
@@ -3610,11 +4075,11 @@ module.exports = keyMirror;
   }
 
   function wrapIndex(iter, index) {
-
-
-
-
-
+   
+   
+   
+   
+   
     if (typeof index !== 'number') {
       var uint32Index = index >>> 0;
       if ('' + uint32Index !== index || uint32Index === 4294967295) {
@@ -3747,13 +4212,13 @@ module.exports = keyMirror;
       return this;
     };
 
-
+   
 
     Seq.prototype.__iterate = function(fn, reverse) {
       return seqIterate(this, fn, reverse, true);
     };
 
-
+   
 
     Seq.prototype.__iterator = function(type, reverse) {
       return seqIterator(this, type, reverse, true);
@@ -3860,7 +4325,7 @@ module.exports = keyMirror;
       var array = this._array;
       var maxIndex = array.length - 1;
       var ii = 0;
-      return new Iterator(function()
+      return new Iterator(function() 
         {return ii > maxIndex ?
           iteratorDone() :
           iteratorValue(type, ii, array[reverse ? maxIndex - ii++ : ii++])}
@@ -4010,7 +4475,7 @@ module.exports = keyMirror;
 
 
 
-
+ 
 
   function isSeq(maybeSeq) {
     return !!(maybeSeq && maybeSeq[IS_SEQ_SENTINEL]);
@@ -4277,7 +4742,7 @@ module.exports = keyMirror;
 
     Repeat.prototype.__iterator = function(type, reverse) {var this$0 = this;
       var ii = 0;
-      return new Iterator(function()
+      return new Iterator(function() 
         {return ii < this$0.size ? iteratorValue(type, ii++, this$0._value) : iteratorDone()}
       );
     };
@@ -4433,14 +4898,14 @@ module.exports = keyMirror;
       b = b | 0;
       var c = a & 0xffff;
       var d = b & 0xffff;
-
+     
       return (c * d) + ((((a >>> 16) * d + c * (b >>> 16)) << 16) >>> 0) | 0;
     };
 
-
-
-
-
+ 
+ 
+ 
+ 
   function smi(i32) {
     return ((i32 >>> 1) & 0x40000000) | (i32 & 0xBFFFFFFF);
   }
@@ -4502,14 +4967,14 @@ module.exports = keyMirror;
     return hash;
   }
 
-
+ 
   function hashString(string) {
-
-
-
-
-
-
+   
+   
+   
+   
+   
+   
     var hash = 0;
     for (var ii = 0; ii < string.length; ii++) {
       hash = 31 * hash + string.charCodeAt(ii) | 0;
@@ -4561,19 +5026,19 @@ module.exports = keyMirror;
       });
     } else if (obj.propertyIsEnumerable !== undefined &&
                obj.propertyIsEnumerable === obj.constructor.prototype.propertyIsEnumerable) {
-
-
-
-
+     
+     
+     
+     
       obj.propertyIsEnumerable = function() {
         return this.constructor.prototype.propertyIsEnumerable.apply(this, arguments);
       };
       obj.propertyIsEnumerable[UID_HASH_KEY] = hash;
     } else if (obj.nodeType !== undefined) {
-
-
-
-
+     
+     
+     
+     
       obj[UID_HASH_KEY] = hash;
     } else {
       throw new Error('Unable to set a non-enumerable property on object.');
@@ -4582,10 +5047,10 @@ module.exports = keyMirror;
     return hash;
   }
 
-
+ 
   var isExtensible = Object.isExtensible;
 
-
+ 
   var canDefineProperty = (function() {
     try {
       Object.defineProperty({}, '@', {});
@@ -4595,8 +5060,8 @@ module.exports = keyMirror;
     }
   }());
 
-
-
+ 
+ 
   function getIENodeHash(node) {
     if (node && node.nodeType > 0) {
       switch (node.nodeType) {
@@ -4608,7 +5073,7 @@ module.exports = keyMirror;
     }
   }
 
-
+ 
   var usingWeakMap = typeof WeakMap === 'function';
   var weakMap;
   if (usingWeakMap) {
@@ -4636,7 +5101,7 @@ module.exports = keyMirror;
 
   createClass(Map, KeyedCollection);
 
-
+   
 
     function Map(value) {
       return value === null || value === undefined ? emptyMap() :
@@ -4663,7 +5128,7 @@ module.exports = keyMirror;
       return this.__toString('Map {', '}');
     };
 
-
+   
 
     Map.prototype.get = function(k, notSetValue) {
       return this._root ?
@@ -4671,7 +5136,7 @@ module.exports = keyMirror;
         notSetValue;
     };
 
-
+   
 
     Map.prototype.set = function(k, v) {
       return updateMap(this, k, v);
@@ -4723,7 +5188,7 @@ module.exports = keyMirror;
       return emptyMap();
     };
 
-
+   
 
     Map.prototype.merge = function() {
       return mergeIntoMapWith(this, undefined, arguments);
@@ -4762,16 +5227,16 @@ module.exports = keyMirror;
     };
 
     Map.prototype.sort = function(comparator) {
-
+     
       return OrderedMap(sortFactory(this, comparator));
     };
 
     Map.prototype.sortBy = function(mapper, comparator) {
-
+     
       return OrderedMap(sortFactory(this, comparator, mapper));
     };
 
-
+   
 
     Map.prototype.withMutations = function(fn) {
       var mutable = this.asMutable();
@@ -4831,7 +5296,7 @@ module.exports = keyMirror;
   MapPrototype.removeIn = MapPrototype.deleteIn;
 
 
-
+ 
 
 
 
@@ -5142,7 +5607,7 @@ module.exports = keyMirror;
 
 
 
-
+ 
 
   ArrayMapNode.prototype.iterate =
   HashCollisionNode.prototype.iterate = function (fn, reverse) {
@@ -5470,7 +5935,7 @@ module.exports = keyMirror;
 
   createClass(List, IndexedCollection);
 
-
+   
 
     function List(value) {
       var empty = emptyList();
@@ -5503,7 +5968,7 @@ module.exports = keyMirror;
       return this.__toString('List [', ']');
     };
 
-
+   
 
     List.prototype.get = function(index, notSetValue) {
       index = wrapIndex(this, index);
@@ -5515,7 +5980,7 @@ module.exports = keyMirror;
       return notSetValue;
     };
 
-
+   
 
     List.prototype.set = function(index, value) {
       return updateList(this, index, value);
@@ -5576,7 +6041,7 @@ module.exports = keyMirror;
       return setListBounds(this, 1);
     };
 
-
+   
 
     List.prototype.merge = function() {
       return mergeIntoListWith(this, undefined, arguments);
@@ -5598,7 +6063,7 @@ module.exports = keyMirror;
       return setListBounds(this, 0, size);
     };
 
-
+   
 
     List.prototype.slice = function(begin, end) {
       var size = this.size;
@@ -5677,7 +6142,7 @@ module.exports = keyMirror;
       this.ownerID = ownerID;
     }
 
-
+   
 
     VNode.prototype.removeBefore = function(ownerID, level, index) {
       if (index === level ? 1 << level : 0 || this.array.length === 0) {
@@ -5917,8 +6382,8 @@ module.exports = keyMirror;
   }
 
   function setListBounds(list, begin, end) {
-
-
+   
+   
     if (begin !== undefined) {
       begin = begin | 0;
     }
@@ -5934,7 +6399,7 @@ module.exports = keyMirror;
       return list;
     }
 
-
+   
     if (newOrigin >= newCapacity) {
       return list.clear();
     }
@@ -5942,7 +6407,7 @@ module.exports = keyMirror;
     var newLevel = list._level;
     var newRoot = list._root;
 
-
+   
     var offsetShift = 0;
     while (newOrigin + offsetShift < 0) {
       newRoot = new VNode(newRoot && newRoot.array.length ? [undefined, newRoot] : [], owner);
@@ -5959,19 +6424,19 @@ module.exports = keyMirror;
     var oldTailOffset = getTailOffset(oldCapacity);
     var newTailOffset = getTailOffset(newCapacity);
 
-
+   
     while (newTailOffset >= 1 << (newLevel + SHIFT)) {
       newRoot = new VNode(newRoot && newRoot.array.length ? [newRoot] : [], owner);
       newLevel += SHIFT;
     }
 
-
+   
     var oldTail = list._tail;
     var newTail = newTailOffset < oldTailOffset ?
       listNodeFor(list, newCapacity - 1) :
       newTailOffset > oldTailOffset ? new VNode([], owner) : oldTail;
 
-
+   
     if (oldTail && newTailOffset > oldTailOffset && newOrigin < oldCapacity && oldTail.array.length) {
       newRoot = editableVNode(newRoot, owner);
       var node = newRoot;
@@ -5982,12 +6447,12 @@ module.exports = keyMirror;
       node.array[(oldTailOffset >>> SHIFT) & MASK] = oldTail;
     }
 
-
+   
     if (newCapacity < oldCapacity) {
       newTail = newTail && newTail.removeAfter(owner, 0, newCapacity);
     }
 
-
+   
     if (newOrigin >= newTailOffset) {
       newOrigin -= newTailOffset;
       newCapacity -= newTailOffset;
@@ -5995,11 +6460,11 @@ module.exports = keyMirror;
       newRoot = null;
       newTail = newTail && newTail.removeBefore(owner, 0, newOrigin);
 
-
+   
     } else if (newOrigin > oldOrigin || newTailOffset < oldTailOffset) {
       offsetShift = 0;
 
-
+     
       while (newRoot) {
         var beginIndex = (newOrigin >>> newLevel) & MASK;
         if (beginIndex !== (newTailOffset >>> newLevel) & MASK) {
@@ -6012,7 +6477,7 @@ module.exports = keyMirror;
         newRoot = newRoot.array[beginIndex];
       }
 
-
+     
       if (newRoot && newOrigin > oldOrigin) {
         newRoot = newRoot.removeBefore(owner, newLevel, newOrigin - offsetShift);
       }
@@ -6065,7 +6530,7 @@ module.exports = keyMirror;
 
   createClass(OrderedMap, Map);
 
-
+   
 
     function OrderedMap(value) {
       return value === null || value === undefined ? emptyOrderedMap() :
@@ -6085,14 +6550,14 @@ module.exports = keyMirror;
       return this.__toString('OrderedMap {', '}');
     };
 
-
+   
 
     OrderedMap.prototype.get = function(k, notSetValue) {
       var index = this._map.get(k);
       return index !== undefined ? this._list.get(index)[1] : notSetValue;
     };
 
-
+   
 
     OrderedMap.prototype.clear = function() {
       if (this.size === 0) {
@@ -6341,8 +6806,8 @@ module.exports = keyMirror;
 
     FromEntriesSequence.prototype.__iterate = function(fn, reverse) {var this$0 = this;
       return this._iter.__iterate(function(entry ) {
-
-
+       
+       
         if (entry) {
           validateEntry(entry);
           var indexedIterable = isIterable(entry);
@@ -6364,8 +6829,8 @@ module.exports = keyMirror;
             return step;
           }
           var entry = step.value;
-
-
+         
+         
           if (entry) {
             validateEntry(entry);
             var indexedIterable = isIterable(entry);
@@ -6475,7 +6940,7 @@ module.exports = keyMirror;
         return flipSequence;
       };
     }
-    reversedSequence.get = function(key, notSetValue)
+    reversedSequence.get = function(key, notSetValue) 
       {return iterable.get(useKeys ? key : -1 - key, notSetValue)};
     reversedSequence.has = function(key )
       {return iterable.has(useKeys ? key : -1 - key)};
@@ -6565,8 +7030,8 @@ module.exports = keyMirror;
   function sliceFactory(iterable, begin, end, useKeys) {
     var originalSize = iterable.size;
 
-
-
+   
+   
     if (begin !== undefined) {
       begin = begin | 0;
     }
@@ -6585,17 +7050,17 @@ module.exports = keyMirror;
     var resolvedBegin = resolveBegin(begin, originalSize);
     var resolvedEnd = resolveEnd(end, originalSize);
 
-
-
-
+   
+   
+   
     if (resolvedBegin !== resolvedBegin || resolvedEnd !== resolvedEnd) {
       return sliceFactory(iterable.toSeq().cacheResult(), begin, end, useKeys);
     }
 
-
-
-
-
+   
+   
+   
+   
     var resolvedSize = resolvedEnd - resolvedBegin;
     var sliceSize;
     if (resolvedSize === resolvedSize) {
@@ -6604,8 +7069,8 @@ module.exports = keyMirror;
 
     var sliceSeq = makeSequence(iterable);
 
-
-
+   
+   
     sliceSeq.size = sliceSize === 0 ? sliceSize : iterable.size && sliceSize || undefined;
 
     if (!useKeys && isSeq(iterable) && sliceSize >= 0) {
@@ -6641,7 +7106,7 @@ module.exports = keyMirror;
       if (sliceSize !== 0 && reverse) {
         return this.cacheResult().__iterator(type, reverse);
       }
-
+     
       var iterator = sliceSize !== 0 && iterable.__iterator(type, reverse);
       var skipped = 0;
       var iterations = 0;
@@ -6674,7 +7139,7 @@ module.exports = keyMirror;
         return this.cacheResult().__iterate(fn, reverse);
       }
       var iterations = 0;
-      iterable.__iterate(function(v, k, c)
+      iterable.__iterate(function(v, k, c) 
         {return predicate.call(context, v, k, c) && ++iterations && fn(v, k, this$0)}
       );
       return iterations;
@@ -6865,7 +7330,7 @@ module.exports = keyMirror;
     interposedSequence.size = iterable.size && iterable.size * 2 -1;
     interposedSequence.__iterateUncached = function(fn, reverse) {var this$0 = this;
       var iterations = 0;
-      iterable.__iterate(function(v, k)
+      iterable.__iterate(function(v, k) 
         {return (!iterations || fn(separator, iterations++, this$0) !== false) &&
         fn(v, iterations++, this$0) !== false},
         reverse
@@ -6928,8 +7393,8 @@ module.exports = keyMirror;
 
   function maxCompare(comparator, a, b) {
     var comp = comparator(b, a);
-
-
+   
+   
     return (comp === 0 && b !== a && (b === undefined || b === null || b !== b)) || comp > 0;
   }
 
@@ -6937,10 +7402,10 @@ module.exports = keyMirror;
   function zipWithFactory(keyIter, zipper, iters) {
     var zipSequence = makeSequence(keyIter);
     zipSequence.size = new ArraySeq(iters).map(function(i ) {return i.size}).min();
-
-
+   
+   
     zipSequence.__iterate = function(fn, reverse) {
-
+           
       var iterator = this.__iterator(ITERATE_VALUES, reverse);
       var step;
       var iterations = 0;
@@ -6977,7 +7442,7 @@ module.exports = keyMirror;
   }
 
 
-
+ 
 
   function reify(iter, seq) {
     return isSeq(iter) ? seq : iter.constructor(seq);
@@ -7027,8 +7492,8 @@ module.exports = keyMirror;
   function forceIterator(keyPath) {
     var iter = getIterator(keyPath);
     if (!iter) {
-
-
+     
+     
       if (!isArrayLike(keyPath)) {
         throw new TypeError('Expected iterable or array-like: ' + keyPath);
       }
@@ -7071,7 +7536,7 @@ module.exports = keyMirror;
       return this.__toString(recordName(this) + ' {', '}');
     };
 
-
+   
 
     Record.prototype.has = function(k) {
       return this._defaultValues.hasOwnProperty(k);
@@ -7085,7 +7550,7 @@ module.exports = keyMirror;
       return this._map ? this._map.get(k, defaultVal) : defaultVal;
     };
 
-
+   
 
     Record.prototype.clear = function() {
       if (this.__ownerID) {
@@ -7183,7 +7648,7 @@ module.exports = keyMirror;
     try {
       names.forEach(setProp.bind(undefined, prototype));
     } catch (error) {
-
+     
     }
   }
 
@@ -7201,7 +7666,7 @@ module.exports = keyMirror;
 
   createClass(Set, SetCollection);
 
-
+   
 
     function Set(value) {
       return value === null || value === undefined ? emptySet() :
@@ -7225,13 +7690,13 @@ module.exports = keyMirror;
       return this.__toString('Set {', '}');
     };
 
-
+   
 
     Set.prototype.has = function(value) {
       return this._map.has(value);
     };
 
-
+   
 
     Set.prototype.add = function(value) {
       return updateSet(this, this._map.set(value, true));
@@ -7245,7 +7710,7 @@ module.exports = keyMirror;
       return updateSet(this, this._map.clear());
     };
 
-
+   
 
     Set.prototype.union = function() {var iters = SLICE$0.call(arguments, 0);
       iters = iters.filter(function(x ) {return x.size !== 0});
@@ -7301,12 +7766,12 @@ module.exports = keyMirror;
     };
 
     Set.prototype.sort = function(comparator) {
-
+     
       return OrderedSet(sortFactory(this, comparator));
     };
 
     Set.prototype.sortBy = function(mapper, comparator) {
-
+     
       return OrderedSet(sortFactory(this, comparator, mapper));
     };
 
@@ -7382,7 +7847,7 @@ module.exports = keyMirror;
 
   createClass(OrderedSet, Set);
 
-
+   
 
     function OrderedSet(value) {
       return value === null || value === undefined ? emptyOrderedSet() :
@@ -7434,7 +7899,7 @@ module.exports = keyMirror;
 
   createClass(Stack, IndexedCollection);
 
-
+   
 
     function Stack(value) {
       return value === null || value === undefined ? emptyStack() :
@@ -7450,7 +7915,7 @@ module.exports = keyMirror;
       return this.__toString('Stack [', ']');
     };
 
-
+   
 
     Stack.prototype.get = function(index, notSetValue) {
       var head = this._head;
@@ -7465,7 +7930,7 @@ module.exports = keyMirror;
       return this._head && this._head.value;
     };
 
-
+   
 
     Stack.prototype.push = function() {
       if (arguments.length === 0) {
@@ -7551,7 +8016,7 @@ module.exports = keyMirror;
       var resolvedBegin = resolveBegin(begin, this.size);
       var resolvedEnd = resolveEnd(end, this.size);
       if (resolvedEnd !== this.size) {
-
+       
         return IndexedCollection.prototype.slice.call(this, begin, end);
       }
       var newSize = this.size - resolvedBegin;
@@ -7569,7 +8034,7 @@ module.exports = keyMirror;
       return makeStack(newSize, head);
     };
 
-
+   
 
     Stack.prototype.__ensureOwner = function(ownerID) {
       if (ownerID === this.__ownerID) {
@@ -7583,7 +8048,7 @@ module.exports = keyMirror;
       return makeStack(this.size, this._head, ownerID, this.__hash);
     };
 
-
+   
 
     Stack.prototype.__iterate = function(fn, reverse) {
       if (reverse) {
@@ -7660,7 +8125,7 @@ module.exports = keyMirror;
 
   mixin(Iterable, {
 
-
+   
 
     toArray: function() {
       assertNotInfinite(this.size);
@@ -7690,7 +8155,7 @@ module.exports = keyMirror;
     },
 
     toMap: function() {
-
+     
       return Map(this.toKeyedSeq());
     },
 
@@ -7702,17 +8167,17 @@ module.exports = keyMirror;
     },
 
     toOrderedMap: function() {
-
+     
       return OrderedMap(this.toKeyedSeq());
     },
 
     toOrderedSet: function() {
-
+     
       return OrderedSet(isKeyed(this) ? this.valueSeq() : this);
     },
 
     toSet: function() {
-
+     
       return Set(isKeyed(this) ? this.valueSeq() : this);
     },
 
@@ -7727,17 +8192,17 @@ module.exports = keyMirror;
     },
 
     toStack: function() {
-
+     
       return Stack(isKeyed(this) ? this.valueSeq() : this);
     },
 
     toList: function() {
-
+     
       return List(isKeyed(this) ? this.valueSeq() : this);
     },
 
 
-
+   
 
     toString: function() {
       return '[Iterable]';
@@ -7751,7 +8216,7 @@ module.exports = keyMirror;
     },
 
 
-
+   
 
     concat: function() {var values = SLICE$0.call(arguments, 0);
       return reify(this, concatFactory(this, values));
@@ -7857,7 +8322,7 @@ module.exports = keyMirror;
     },
 
 
-
+   
 
     butLast: function() {
       return this.slice(0, -1);
@@ -7884,7 +8349,7 @@ module.exports = keyMirror;
     entrySeq: function() {
       var iterable = this;
       if (iterable._cache) {
-
+       
         return new ArraySeq(iterable._cache);
       }
       var entriesSequence = iterable.toSeq().map(entryMapper).toIndexedSeq();
@@ -7946,8 +8411,8 @@ module.exports = keyMirror;
 
     getIn: function(searchKeyPath, notSetValue) {
       var nested = this;
-
-
+     
+     
       var iter = forceIterator(searchKeyPath);
       var step;
       while (!(step = iter.next()).done) {
@@ -8059,24 +8524,24 @@ module.exports = keyMirror;
     },
 
 
-
+   
 
     hashCode: function() {
       return this.__hash || (this.__hash = hashIterable(this));
     }
 
 
+   
 
+   
 
-
-
-
+   
   });
 
-
-
-
-
+ 
+ 
+ 
+ 
 
   var IterablePrototype = Iterable.prototype;
   IterablePrototype[IS_ITERABLE_SENTINEL] = true;
@@ -8090,7 +8555,7 @@ module.exports = keyMirror;
 
   mixin(KeyedIterable, {
 
-
+   
 
     flip: function() {
       return reify(this, flipFactory(this));
@@ -8125,14 +8590,14 @@ module.exports = keyMirror;
 
   mixin(IndexedIterable, {
 
-
+   
 
     toKeyedSeq: function() {
       return new ToKeyedSequence(this, false);
     },
 
 
-
+   
 
     filter: function(predicate, context) {
       return reify(this, filterFactory(this, predicate, context, false));
@@ -8167,9 +8632,9 @@ module.exports = keyMirror;
       if (numArgs === 0 || (numArgs === 2 && !removeNum)) {
         return this;
       }
-
-
-
+     
+     
+     
       index = resolveBegin(index, index < 0 ? this.count() : this.size);
       var spliced = this.slice(0, index);
       return reify(
@@ -8181,7 +8646,7 @@ module.exports = keyMirror;
     },
 
 
-
+   
 
     findLastIndex: function(predicate, context) {
       var entry = this.findLastEntry(predicate, context);
@@ -8258,7 +8723,7 @@ module.exports = keyMirror;
 
   mixin(SetIterable, {
 
-
+   
 
     get: function(value, notSetValue) {
       return this.has(value) ? value : notSetValue;
@@ -8269,7 +8734,7 @@ module.exports = keyMirror;
     },
 
 
-
+   
 
     keySeq: function() {
       return this.valueSeq();
@@ -8281,7 +8746,7 @@ module.exports = keyMirror;
   SetIterable.prototype.contains = SetIterable.prototype.includes;
 
 
-
+ 
 
   mixin(KeyedSeq, KeyedIterable.prototype);
   mixin(IndexedSeq, IndexedIterable.prototype);
@@ -8292,7 +8757,7 @@ module.exports = keyMirror;
   mixin(SetCollection, SetIterable.prototype);
 
 
-
+ 
 
   function keyMapper(v, k) {
     return k;
@@ -8387,7 +8852,1297 @@ module.exports = keyMirror;
 }));
 
 /***/ }),
-/* 48 */
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = Object.freeze({
+  additionalInfoURL: 'https://www.facebook.com/help/606443329504150',
+  id: 'basic_pii_schema',
+  version: '0.0.1',
+  type: 'pii_keys',
+  exampleFiles: {
+    csv: 'https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv'
+  },
+  validIf: {
+    rule: 'minValidProps',
+    args: 1
+  },
+  transform: ['processPIISignalBeforeUpload'],
+  props: [{
+    key: 'email',
+    maxOccurrence: 3,
+    label: 'Email',
+    examples: ['Emily@example.com', 'John@example.com', 'Helena@example.com'],
+    type: 'email'
+  }, {
+    key: 'phone',
+    maxOccurrence: 3,
+    label: 'Phone Number',
+    examples: ['1(222)333-4444', '001(222)333-4444', '+12223334444'],
+    type: 'phone_number'
+  }, {
+    key: 'madid',
+    label: 'Mobile Advertiser ID',
+    formats: ["Android's Advertising ID(AAID)", "Apple's Advertising Identifier(IDFA)"],
+    type: 'string',
+    typeParams: {
+      lowercase: true,
+      strip: 'whitespace_only',
+      test: '^([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}|[a-zA-Z0-9]{6}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{13})$'
+    }
+  }, {
+    key: 'fn',
+    label: 'First Name',
+    examples: ['John', 'F.', 'Emily'],
+    type: 'string',
+    typeParams: {
+      lowercase: true,
+      strip: 'whitespace_and_punctuation'
+    }
+  }, {
+    key: 'ln',
+    label: 'Last Name',
+    examples: ['Smith', 'Sorensen', 'Jacobs-Anderson'],
+    type: 'string',
+    typeParams: {
+      lowercase: true,
+      strip: 'whitespace_and_punctuation'
+    }
+  }, {
+    key: 'zip',
+    label: 'ZIP/Postal Code',
+    examples: ['94025', '94025-3215', 'L3T 5M7'],
+    type: 'postal_code'
+  }, {
+    key: 'ct',
+    label: 'City',
+    examples: ['Menlo Park', 'Seattle', 'London'],
+    type: 'string',
+    typeParams: {
+      lowercase: true,
+      strip: 'all_non_latin_alpha_numeric',
+      test: '^[a-z]+'
+    }
+  }, {
+    key: 'st',
+    label: 'State/Province',
+    examples: ['CA', 'California', 'Texas'],
+    type: 'string',
+    typeParams: {
+      lowercase: true,
+      strip: 'all_non_latin_alpha_numeric',
+      test: '^[a-z]+'
+    }
+  }, {
+    key: 'country',
+    label: 'Country',
+    examples: ['US', 'GB', 'FR'],
+    type: 'string',
+    typeParams: {
+      lowercase: true,
+      strip: 'whitespace_only',
+      test: '^[a-zA-Z]{2,2}'
+    }
+  }, {
+    key: 'dob',
+    label: 'Date of Birth',
+    examples: ['mm/dd/yyyy', 'mm/dd/yy', 'yyyy-mm-dd', '+ 15 more'],
+    type: 'date',
+    typeParams: {
+      rejectHashed: true
+    }
+  }, {
+    key: 'doby',
+    label: 'Year of Birth',
+    type: 'string',
+    typeParams: {
+      test: '^[0-9]{4,4}$'
+    },
+    examples: ['1978', '1962', '1990']
+  }, {
+    key: 'gen',
+    label: 'Gender',
+    examples: ['M', 'F'],
+    type: 'enum',
+    typeParams: {
+      lowercase: true,
+      options: ['f', 'm']
+    }
+  }, {
+    key: 'age',
+    label: 'Age',
+    examples: [65, 42, 21],
+    type: 'number',
+    typeParams: {
+      min: 0
+    }
+  }, {
+    key: 'appuid',
+    label: 'Facebook App User ID',
+    examples: ['1234567890', '1443637309', '1234567892'],
+    type: 'fbid',
+    typeParams: {
+      scoped: true,
+      rejectHashed: true
+    }
+  }, {
+    key: 'fi',
+    noUI: true,
+    label: 'First name initial',
+    type: 'string',
+    typeParams: {
+      lowercase: true,
+      strip: 'whitespace_only',
+      test: '^[a-z]{1,1}$'
+    }
+  }, {
+    key: 'f5first',
+    noUI: true,
+    label: 'First five letters of first name',
+    type: 'string',
+    typeParams: {
+      lowercase: true,
+      strip: 'whitespace_only',
+      test: '^[a-z]{5,5}$'
+    }
+  }, {
+    key: 'f5last',
+    noUI: true,
+    label: 'First five letters of last name',
+    type: 'string',
+    typeParams: {
+      lowercase: true,
+      strip: 'whitespace_only',
+      test: '^[a-z]{5,5}$'
+    }
+  }, {
+    key: 'pageuid',
+    label: 'Facebook Page User ID',
+    examples: ['1234567890', '1443637309', '1234567892'],
+    type: 'fbid',
+    typeParams: {
+      scoped: true,
+      rejectHashed: true
+    }
+  }]
+});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = Object.freeze({
+  additionalInfoURL: 'https://www.facebook.com/help/606443329504150',
+  id: 'event_data_schema',
+  version: '0.0.2',
+  exampleFiles: {
+    csv: 'https://www.facebook.com/images/ads/signals/example_files/example_events_file.csv'
+  },
+  validIf: {
+    rule: 'meetAll',
+    args: [{
+      rule: 'meetAll',
+      args: [{
+        rule: 'propValid',
+        name: 'valid_event_time',
+        args: 'event_time'
+      }, {
+        rule: 'propValid',
+        name: 'valid_event_name',
+        args: 'event_name'
+      }, {
+        rule: 'dependentProps',
+        name: 'require_value_and_currency_if_purchase',
+        args: [{
+          rule: 'propValueIs',
+          args: ['event_name', 'Purchase']
+        }, ['value', 'currency']]
+      }, {
+        rule: 'dependentProps',
+        name: 'require_currency_if_value',
+        args: [{
+          rule: 'propValid',
+          args: 'value'
+        }, ['currency']]
+      }, {
+        rule: 'dependentProps',
+        name: 'require_value_if_currency',
+        args: [{
+          rule: 'propValid',
+          args: 'currency'
+        }, ['value']]
+      }]
+    }, {
+      rule: 'meetAll',
+      args: [{
+        rule: 'dependentProps',
+        name: 'require_country_and_state_if_ldu',
+        args: [{
+          rule: 'propValueIs',
+          args: ['data_processing_options', ['LDU']]
+        }, ['data_processing_options_country', 'data_processing_options_state']]
+      }]
+    }]
+  },
+  props: [{
+    key: 'event_time',
+    label: 'Event Time',
+    examples: ['2016-06-20T03:21:48+01:00', '2016-06-20T03:21:48', '1459315678', 'mm/dd/yyyy', '+ 15 more'],
+    typeParams: {
+      rejectTimeBefore: 63072000000
+    },
+    type: 'unix_time'
+  }, {
+    key: 'match_keys',
+    label: 'Match keys',
+    type: {
+      id: 'extended_pii_schema',
+      version: '0.2.0',
+      type: 'pii_keys',
+      validIf: {
+        rule: 'minValidProps',
+        args: 1
+      },
+      props: [{
+        key: 'email',
+        maxOccurrence: 3,
+        label: 'Email',
+        type: 'sha256'
+      }, {
+        key: 'phone',
+        maxOccurrence: 3,
+        label: 'Phone',
+        type: 'sha256'
+      }, {
+        key: 'madid',
+        label: 'Mobile advertiser ID',
+        type: 'sha256'
+      }, {
+        key: 'fn',
+        label: 'First name',
+        type: 'sha256'
+      }, {
+        key: 'fi',
+        label: 'First name initial',
+        type: 'sha256'
+      }, {
+        key: 'f5first',
+        label: 'First five letters of first name',
+        type: 'sha256'
+      }, {
+        key: 'ln',
+        label: 'Last name',
+        type: 'sha256'
+      }, {
+        key: 'f5last',
+        label: 'First five letters of last name',
+        type: 'sha256'
+      }, {
+        key: 'ct',
+        label: 'City',
+        type: 'sha256'
+      }, {
+        key: 'st',
+        label: 'State/Province',
+        type: 'sha256'
+      }, {
+        key: 'country',
+        label: 'Country',
+        type: 'sha256'
+      }, {
+        key: 'zip',
+        label: 'ZIP/Postal Code',
+        type: 'sha256'
+      }, {
+        key: 'gen',
+        label: 'Gender',
+        type: 'sha256',
+        typeParams: {
+          options: ['252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111', '62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a']
+        }
+      }, {
+        key: 'doby',
+        label: 'Year of birth',
+        type: 'sha256',
+        typeParams: {
+          options: ['e41d64db5703c6440b5c714d57251a845bc0bd241480b41a4e7fd3e052f85a82', 'a56b54e1c5933a83f79b301d0c08410a5617b868120da82b7e088c42a5a8025c', '489ca219174f91b48313c188f4c998a5413fcaf194a93fd8e24bbdb178dc8f3a', '262b06d105e1c865b01c3e0a74291cdae511ef15f3d456e14fbe2dffd9efe3b9', '90bbc9533a02213ffdf4d1482eb9b97a5feec554e33641d40f24777cbe5a8341', '56a3a46a3ba4fb713fd3e4cfa51a5748abf2c2662fefb0b5a863fdef34572255', 'a486e5558353d0a590552ea5e0b0ccf4d2d9a1ea92d319b2ad5711e9ba10deb1', '4332cd76590d0efdbd8d067acf531546da2ba0a67c538440e7defedbea48d1dc', '00f6112fe58387958ef80793a34746429f40c97fe7b51d6a576705acbf8fc6af', '8e614d39a1f1279958da1c9f7e8df51db4aabca8cc3a3e84f8c3dc5f88e1fcfb', 'a64332fe1df1790cb79d428bf5b5767ddd589b1cca825cb1b9eb30f7e9aaee03', 'dc4bc886825c446e6ae02d4d0c6a8787af0395079effcc3afc0f8bdc40cbd161', 'a991b89eed28e85e1a7238873f922290111049668c680a68ee15201a611219b3', '3b1fba0616142d348bd8a977e3aa3d65dab82a5ac11ed16d4e22ff5460458d4f', 'fb4a379d44cab4220bc5596ffa1f8eb9b169ba098d2c98b20d110881c92b9299', '811af1590c16fc90322a05ab17f360939077f63f674a7e0550732a36050444ac', 'c30c6b3aa67e27e0fc807ab96edfc920b08ca09b98c942a593aff6c832957388', '464d14ace7f6789141d13ed416c881c1bfcf7203c5965e332edda90f171815a7', '54e87e2783378cd883fb63bea84e2ecdd554b0646ec35a12d6df365ccad3c68b', '274dfec6e079fb08d6b5771537c54d3f0bd36c64c3d8ed0a4e6d2f201b489274', '6b5f40c09215713a1fa83ea2de2adcae17e605b8958a2d7379e15b561687ee8f', 'd982309a461bcc3abc15489201522c8df291aa650eabafda45f1583b03992cc9', '2c1f3f5f6523af84fde4af934caa1126ae6bcebacd36e397fbddcb8a620c1d73', 'd42ed19c0d9c80706b6b1484a97cf8634285d753ac079717aee8c651d54caef3', '3849ba084da2faea804918e8d999dee3f176659e0216debcccbf86b3e6b769ef', '80f8ded29fa2e922c77b98ea8f229ef65ea360daf5d1c9e05b80539e502b5621', '255ac64f2a9b374157860601793d61491c561c29df77cbf82d4610772937ce59', '3d5d2c29712a98874d8142d229c4bce09158a144ad376c2b68411f240878a9c1', 'aef662afc24b5edde66ab972975340f6a9963eb766261e6bf43ffdb56b6d2a3f', '639c1115ab55d139a527f7bb3c1a9570bb60cf96f5c13bdaa41a7264a74e748f', '70fa656aa0391eb9ef7bbc9c7e6771ec09e7d5d7ab1fcbbde2480d21263ee79a', '5c06e46c5e47cfacad16ce1e37f17c09fdbc7072c567613e0b8112173f688a65', '01a0123885ebec5b37b52ddc058c20d052525c654b69e7b7bfd5feb291428bba', 'c8c817e80216ce409c63a735acdd40fb7b023bcca6e87b6fc89973c447b6a858', '914c948388ae30bdb0179a2f7bc91836d6af004171af735188fc1b69c286c864', '2e355fa8b5acf07f4608835401e5a6144f25c505ed9d2689f93df6382890a79c', '3f46bdea034f311a14efe877f5592d84a7a6c97d9b917be3f55573311e6cdda7', 'c6f5c46f9e3daea6422f8a004682a5de6f6946a9cfb7c9ca71912c029a981403', '6eac02c2ab0dc9378be87d5d04da2fd747fb2340dad4977778defee7da92f657', '94ad0b5b0a595b7eaafe9404423d8543b4c8dcfc26ecffb44f6894e2ca46fd61', 'd0ab864a17dbd8a07dda05a58ac74d4894b7effa8e1c5152d71adf8b1fcc24d9', '5933b0b35d5d3e9d1f53fbce9403c5672883fff37f429dc1da26881f47415672', '7fb754c0792cd52ea50ce5b8862b5b07d5aa45af1dbfa035f862cdb6a030b427', '66a7a5807c3130eb2d0b55bb260a6a001b9d62095c94b753cbb215f3e4f099e1', 'f513a0aa4f8f39744c6fddf2b5eb18cc1eac55ca866a1b243d835362a023f243', '060672b8531404f598515957df33d6387e0647cbc382d35ef286fa3466362384', '8ba5ef4e282bf7bc5cf13f731a1b9f525bd3b1f69cbfa24c1c69c303c0ac7019', '8eec27653c19ed078b2f3bae16ff901d16347d7917d2b8e2317914e2437bf324', '03b0bd366e8184f8d871c3a7c7cc26c73c25b54ff54c64b28b10b898242cdc8a', '82887006d04d939ffca870bc268a940df6cf01dbdf12e228ccf476d07d7c9424', '3f5f3806e425deac33023e9764d08ac98397e6f1bc8599743cbb15a9cfdf8929', '3510a92fc7dd04f69b1aeeef5489ef168dbf1d9c4d528b8f4af4240a8b295ab4', '6ed701cfedb16ebd91b2d185383115c6f9ce12f2f9c744d7d605be0002109362', '592fbed6f4ef4a643b0c5dec00a9a32f69a4027aedb972265cd9237b7b31d564', '98f3aaa79f6ba1759e046f873955785d869eec78b60ff7ad2f1bb62d50ea8a0a', 'b53a7292b38e011dbe6efc79c22d028ddd364da2e6b9aa182915572742330ea9', '04aa39fcb509e7842f0bd5b135b6181b0b57c8a74422838362f430351fc364f2', 'd212b2ac736e3f60408ffe9fbc1d26ae901f8f477fb8b08ec03c9d6b0208ac2b', '522e6198a268c62c01c9944cc2c06902d8308d65e6444eb8ad10bbe98dc362b6', '5c0b1ae7ef3b0e1552cd215596a4449a8bcd5d060f18511da8e63b87f67c11f6', '6606753e5a126d7068012a526d44c3eb2f7fcd09d5faeb30c77dbfd87ca7e758', 'f7ac69722a0706c533afa393b1574a761a073df0a8280094d3500a4bbc9c2877', '9aec25da37c5143655198925302a995797eeef538933800b67b87c48de7ad120', '59279341ea59fbf34025024596b670b6df2c9f80e71b9ad19aea71ba43b083fc', 'ed823ec32c5d4e9ca9dd968bb0fe9366b7d904ce0cae615308ddd5b89f0e6a3a', 'd7c7673ba8ca7b0f04b1af4df026cbea7fed5b8acf59b27d33ef988c60eff054', 'c00cf031587d12c309358e85de8876b2738d3ef2cadd88db6b07318ea0ba8973', '50828327cbf487d99d22c77ef8f980e5d7c8b93e2a1d1b084e2dc6760240e738', 'a48622b535728587fd351763d1296c7ec9cb5bc6743d5f22b011d5b5c3ef688f', 'fd21cc3cb5062bc4ac714c489e1ca0e37a577c19ba23b0d00e9767f598d37636', 'ad1f3889d0032e7c2791053060e4c044837353325fbd42cdeeef65638ed31c2a', '2b5d2ba5803e6fe3a2bc08b5f3965f47a92918a9c44b8090618d5d5a2876cf8c', '0a95adbf8581859ae0cc477127abeaf4ad89916405c41855af8fbc482e1634e8', '9baed8fceea6e36d36670d72429d909547165efc038c293a14a41ef2edf83141', 'ec54e99514663edb97adef400fbf34a77daae108303d3da8008a7dfb4cdf0f52', '20ee235b5de5b36244da6f9aa1cbdd032a90867ba92276ccc8c38c0d0d57fcec', '4c3aada37cf7fd3819b2da502a15f78f7ce5a2ce6d584b630344ff00dffc74ac', '576c85c584f60555c2a024cbb99dfbbdb5f58c3bdcf28dbc8ea315fd46a388f3', '46635b56d3c7f0b7bb26adae2a1692debbfd145d4a0986a9137fe91e73e70360', '11d1ff4edd53407199c92b00cbc3abe8c9c5d5bed4414ad07b55c896b0e7a713', '051c2e380d07844ffaca43743957f8c0efe2bdf74c6c1e6a9dcccb8d1a3c596b', 'a78f19952edd18bf02b3c9eb704b088e2120941d6acb22f6f795c42796e60252', '48deb732e8de8fe7995bbc2816520798fcab815f62165af4d53bbc24434c963e', '52bb7cc738dbf5e5eee2c76754d87904e6750c63eda5e0a866197d2e16d9c142', '4dea5c7cb70f50322ec9d734aa4aa078be9227c05251e18991c596f387552370', '78e370b587b145920213731b7c7c725e512b3b6577c51c800218a7c764c532ae', '8f8472a2f6ec348bfc7577a035c7f34a04c62f0c757b54687e1175236dcf393b', '744b93f9950fc38dad705556931ea48193b99dcb191cc9bd77097f65fbe2f0b8', '8266498d969081c29737b8daeb5b51d60e56d008fff243a39d16c3032d42f6cf', '9113b98df80f877c7a2ee5d865a04c9514b4e9bf25a49d315b0b15f115d2f0d2', 'a7be8e1fe282a37cd666e0632b17d933fa13f21addf4798fc0455bc166e2488c', '8e9b669109df89620b94f2387dc53206a82ddc71d658f8f7a2b3a9b417370d3e', '3f83e9ad5be63bd5bf2fd009fffe6b7dd4066243975bc962edc37459c17e65b9', '8e71b24534e9f3fb3a71263359fed2b7ffb008265e0d34383e319f1b6f5c08f2', '1bc3201a9f24a2fe48f634f90d406aaf6cbf5e36e292870ecba98d74b065ee1b', 'e78f27ab3ef177a9926e6b90e572b9853ce6cf4d87512836e9ae85807ec9d7fe', '3d1e557b540ac045b3b327994a351f08a443f9216f9b2b8d3a0f42b58671ac83', '0985b889a1fe4f4e1fb925061ac6fb2247f10875f5fcbe63eec2ab55ed68970e', 'd54123de468bd42ea00dafbd777f85fe5fa1ff6404d9838c007953c25c92a1c5', 'ce8457d59078a699acb70416f88155a96a906b7b7aad43708402e3a3bcc8a4b4', '81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9', '85d6385b945c0d602103db39b0b654b2af93b5127938e26a959c123f0789b948', '6c94e35ccc352d4e9ef0b99562cff995a5741ce8de8ad11b568892934daee366', '77459b9b941bcb4714d0c121313c900ecf30541d158eb2b9b178cdb8eca6457e', '483029d526219f816e8e8f6a9de07b422633dba180ffc26faac22862a017519f', 'a20a2b7bb0842d5cf8a0c06c626421fd51ec103925c1819a51271f2779afa730', '6f6a4e56098cfd9af29e3ae549503b370211a4e94421457fe4cfd39a38a1fa08', 'f1cfa5ebb149e8099d561aae57beed6c68f990f45a910ea9d7b460dbcc5350be', 'e5e53c784d5d49de1cabb6e904bf3380026aadcb9769775a268dd304dd9aa2df', 'f37f3f2b0dc57a86dee4ba6ff855283bb4d2f0dea1c5bd1b708853444c2ffcec', '7d12ba56e9f8b3dc64f77c87318c4f37bc12cfbf1a37573cdf3e4fa683f20155', '72d1b5da6eeaf1789df86487da50ad5e9dadb5ffaecb56b6de592aa286c9c1b8', '4b9a7f50c0bb198c6f5414c5a8459f5d216d34ab521ea94c060ea35cac66f900', '7931aa2a1bed855457d1ddf6bc06ab4406a9fba0579045a4d6ff78f9c07c440f', '96da37e95d5cc34fe3bef6c89428df859b8a217630d0c664da1daf1539caacf5', 'a85e9db4851f7cd3efb8db7bf69a07cfb97bc528b72785a9cff7bdfef7e2279d', 'da6e2f539726fabd1f8cd7c9469a22b36769137975b28abc65fe2dc29e659b77', '46e67c525617663b392a53c0e94ba79e62db62a851fb175ae87756d4e73c9718', '152e69cf3c8e76c8d8b0aed924ddd1708e4c68624611af33d52c2c2814dd5df9', '023e33504ab909cf87a6f4e4e545090e40bdc0a2153e5b68b19f7fad2b737904', '73a2af8864fc500fa49048bf3003776c19938f360e56bd03663866fb3087884a', '1bea20e1df19b12013976de2b5e0e3d1fb4ba088b59fe53642c324298b21ffd9', 'b1ab1e892617f210425f658cf1d361b5489028c8771b56d845fe1c62c1fbc8b0', 'd398b29d3dbbb9bf201d4c7e1c19ff9d43c15fd45a0cec46fbe9885ec3f6e97f', '6557739a67283a8de383fc5c0997fbec7c5721a46f28f3235fc9607598d9016b', 'b2b2f104d32c638903e151a9b20d6e27b41d8c0c84cf8458738f83ca2f1dd744', '158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab', '5313e5bf17148de844ff74be3663d47c6e361ca469b30a36337701233c89a15e', '6ae9e4d22c4670b9140fc378214b3274fb3f64d16058717f974515000680b24c', '8f0f97e140e126a4404a09eb1e14a53b7c742701c4290a5d1702d14daec22ee8', '8e1f192fe25ad49be764c3f55c68beb32f7aa66f85344e026b76cfaaa1d3d88a']
+        }
+      }, {
+        key: 'dobm',
+        label: 'Month of birth',
+        type: 'sha256',
+        typeParams: {
+          options: ['938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4', 'a953f09a1b6b6725b81956e9ad0b1eb49e3ad40004c04307ef8af6246a054116', '0b8efa5a3bf104413a725c6ff0459a6be12b1fd33314cbb138745baf39504ae5', '6cd5b6e51936a442b973660c21553dd22bd72ddc8751132a943475288113b4c0', 'c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2', 'aacd834b5cdc64a329e27649143406dd068306542988dfc250d6184745894849', '19b100ab7725c612f3d80ff203ca53cea5cadaafae3bf0f88f0fb4089fe08815', '323783be9a53a31e158ec9600626a4703e99f4e183bc1acb8772cbdf5c3a1ece', '3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105', '4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5', '4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8', '6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918']
+        }
+      }, {
+        key: 'dobd',
+        label: 'Day of birth',
+        type: 'sha256',
+        typeParams: {
+          options: ['938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4', 'a953f09a1b6b6725b81956e9ad0b1eb49e3ad40004c04307ef8af6246a054116', '0b8efa5a3bf104413a725c6ff0459a6be12b1fd33314cbb138745baf39504ae5', '6cd5b6e51936a442b973660c21553dd22bd72ddc8751132a943475288113b4c0', 'c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2', 'aacd834b5cdc64a329e27649143406dd068306542988dfc250d6184745894849', '19b100ab7725c612f3d80ff203ca53cea5cadaafae3bf0f88f0fb4089fe08815', '323783be9a53a31e158ec9600626a4703e99f4e183bc1acb8772cbdf5c3a1ece', '3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105', '4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5', '4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8', '6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918', '3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278', '8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61', 'e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb', 'b17ef6d19c7a5b1ee83b907c595526dcb1eb06db8227d650d5dda0a9f4ce8cd9', '4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3', '4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a', '9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767', 'f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b', '6f4b6612125fb3a0daecd2799dfd6c9c299424fd920f9b308110a2c1fbd8f443', '785f3ec7eb32f30b90cd0fcf3657d388b5ff4297f2f9716ff66e9b69c05ddd09', '535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790', 'c2356069e9d1e79ca924378153cfbbfb4d4416b1f99d41a2940bfdb66c5319db', 'b7a56873cd771f2c446d369b649430b65a756ba278ff97ec81bb6f55b2e73569', '5f9c4ab08cac7457e9111a30e4664920607ea2c115a1433d7be98e97e64244ca', '670671cd97404156226e507973f2ab8330d3022ca96e0c93bdbdb320c41adcaf', '59e19706d51d39f66711c2653cd7eb1291c94d9b55eb14bda74ce4dc636d015a', '35135aaa6cc23891b40cb3f378c53a17a1127210ce60e125ccf03efcfdaec458', '624b60c58c9d8bfb6ff1886c2fd605d2adeb6ea4da576068201b6c6958ce93f4', 'eb1e33e8a81b697b75855af6bfcdbcbf7cbbde9f94962ceaec1ed8af21f5a50f']
+        }
+      }, {
+        key: 'appuid',
+        label: 'Facebook App User ID (Not Hashed)',
+        examples: ['1234567890', '1443637309', '1234567892'],
+        type: 'fbid',
+        typeParams: {
+          scoped: true,
+          rejectHashed: true
+        }
+      }, {
+        key: 'pageuid',
+        label: 'Facebook Page User ID (Not Hashed)',
+        examples: ['1234567890', '1443637309', '1234567892'],
+        type: 'fbid',
+        typeParams: {
+          scoped: true,
+          rejectHashed: true
+        }
+      }, {
+        key: 'extern_id',
+        label: 'External ID',
+        description: 'Advertiser-specific or third-party ID',
+        examples: ['ABX1234', '99931356', '12XYZ981'],
+        type: 'string',
+        typeParams: {
+          doNotHash: true,
+          test: '^(?!\\s*$).+'
+        }
+      }, {
+        key: 'lead_id',
+        label: 'Lead ID',
+        description: 'Facebook Lead ID',
+        examples: ['7543756327866', '4234567890123', 'l:4234567890123'],
+        type: 'fbid',
+        typeParams: {
+          rejectHashed: true,
+          stripPrefix: true
+        }
+      }],
+      baseSchema: {
+        id: 'hashed_basic_pii_schema',
+        version: '0.0.1'
+      }
+    }
+  }, {
+    key: 'custom_data',
+    label: 'CustomData',
+    type: {
+      canHaveExtraProps: true
+    }
+  }, {
+    key: 'value',
+    label: 'Value',
+    examples: ['$2534'],
+    type: 'value',
+    typeParams: {
+      moreThan: 0,
+      rejectHashed: true
+    }
+  }, {
+    key: 'currency',
+    label: 'Currency',
+    examples: ['USD', 'HUF'],
+    type: 'currency_code'
+  }, {
+    key: 'order_id',
+    label: 'Order ID',
+    examples: ['ABC123', '123DEF'],
+    type: 'string'
+  }, {
+    key: 'item_number',
+    label: 'Item Number',
+    examples: ['1', 'A2'],
+    type: 'string'
+  }, {
+    key: 'event_name',
+    label: 'Event Name',
+    formats: ['AddPaymentInfo', 'AddToCart', 'AddToWishlist', 'CompleteRegistration', 'Contact', 'CustomizeProduct', 'Donate', 'FindLocation', 'InitiateCheckout', 'Lead', 'Other', 'Purchase', 'Schedule', 'Search', 'StartTrial', 'SubmitApplication', 'Subscribe', 'ViewContent'],
+    type: 'enum',
+    typeParams: {
+      caseInsensitive: true,
+      options: ['AddPaymentInfo', 'AddToCart', 'AddToWishlist', 'CompleteRegistration', 'Contact', 'CustomizeProduct', 'Donate', 'FindLocation', 'InitiateCheckout', 'Lead', 'Other', 'Purchase', 'Schedule', 'Search', 'StartTrial', 'SubmitApplication', 'Subscribe', 'ViewContent'],
+      rejectHashed: true
+    },
+    maxCountOfExamplesToShow: 30
+  }, {
+    key: 'content_type',
+    label: 'Content Type',
+    type: 'LIST',
+    typeParams: {
+      rejectEmptyList: true,
+      rejectHashed: true,
+      caseInsensitiveElements: true,
+      options: ['product', 'product_group', 'fb_product', 'destination', 'flight', 'hotel', 'home_listing', 'home_service_provider', 'location_based_item', 'local_service_business', 'auto_market', 'automotive_model', 'vehicle', 'vehicle_offer', 'media_title', 'test_vertical', 'ticketed_experience', 'service', 'bookable_item', 'offline_product', 'ig_product']
+    },
+    examples: ['product', ['product', 'destination'], '[product]', '[product, destination]']
+  }, {
+    key: 'content_ids',
+    label: 'Content Ids',
+    examples: [['1'], ['2', 'A3']],
+    type: 'LIST',
+    typeParams: {
+      rejectEmptyList: true,
+      rejectHashed: true
+    }
+  }, {
+    key: 'contents',
+    label: 'Content Fields',
+    type: {
+      additionalInfoURL: 'https://www.facebook.com/help/606443329504150',
+      id: 'content_data_schema',
+      version: '0.0.1',
+      type: 'content_data',
+      exampleFiles: {
+        csv: 'https://www.facebook.com/images/ads/signals/example_files/example_events_file.csv'
+      },
+      validIf: {
+        rule: 'meetAll',
+        args: [{
+          rule: 'dependentProps',
+          name: 'require_content_id_if_quantity',
+          args: [{
+            rule: 'propValid',
+            args: 'quantity'
+          }, ['content_id']]
+        }, {
+          rule: 'dependentProps',
+          name: 'require_content_id_if_brand',
+          args: [{
+            rule: 'propValid',
+            args: 'brand'
+          }, ['content_id']]
+        }, {
+          rule: 'dependentProps',
+          name: 'require_content_id_if_price',
+          args: [{
+            rule: 'propValid',
+            args: 'price'
+          }, ['content_id']]
+        }, {
+          rule: 'dependentProps',
+          name: 'require_content_id_if_category',
+          args: [{
+            rule: 'propValid',
+            args: 'category'
+          }, ['content_id']]
+        }, {
+          rule: 'dependentProps',
+          name: 'require_content_id_if_description',
+          args: [{
+            rule: 'propValid',
+            args: 'description'
+          }, ['content_id']]
+        }, {
+          rule: 'dependentProps',
+          name: 'require_content_id_if_title',
+          args: [{
+            rule: 'propValid',
+            args: 'title'
+          }, ['content_id']]
+        }]
+      },
+      transform: ['transformContentFieldsToObjectArray'],
+      props: [{
+        key: 'content_id',
+        label: 'Content ID',
+        examples: ['ABC123;123DEF'],
+        type: 'LIST',
+        typeParams: {
+          delimiter: ';',
+          listContentType: 'string'
+        }
+      }, {
+        key: 'quantity',
+        label: 'Quantity',
+        examples: ['3;5'],
+        type: 'LIST',
+        typeParams: {
+          delimiter: ';',
+          listContentType: 'number',
+          listContentTypeParam: {
+            moreThan: 0,
+            rejectHashed: true
+          }
+        }
+      }, {
+        key: 'brand',
+        label: 'Brand',
+        examples: ['Adidas;Nike'],
+        type: 'LIST',
+        typeParams: {
+          delimiter: ';',
+          listContentType: 'string'
+        }
+      }, {
+        key: 'price',
+        label: 'Price',
+        examples: ['12;35'],
+        type: 'LIST',
+        typeParams: {
+          delimiter: ';',
+          listContentType: 'number',
+          listContentTypeParam: {
+            moreThan: 0,
+            rejectHashed: true
+          }
+        }
+      }, {
+        key: 'category',
+        label: 'Category',
+        description: "Predefined values (string or category ID) from Google's product taxonomy.",
+        examples: ['Animals & Pet Supplies;Apparel & Accessories > Clothing > Dresses', '2271;5082'],
+        type: 'LIST',
+        typeParams: {
+          delimiter: ';',
+          listContentType: 'string'
+        }
+      }, {
+        key: 'description',
+        label: 'Description',
+        examples: ['best shoes ever', 'the newest product in store'],
+        type: 'LIST',
+        typeParams: {
+          delimiter: ';',
+          listContentType: 'string'
+        }
+      }, {
+        key: 'title',
+        label: 'Title',
+        examples: ['Air Force', 'Yeezy'],
+        type: 'LIST',
+        typeParams: {
+          delimiter: ';',
+          listContentType: 'string'
+        }
+      }]
+    }
+  }, {
+    key: 'action_source',
+    label: 'Action Source',
+    examples: ['physical_store', 'website', 'app', 'phone_call', 'email', 'chat', 'system_generated'],
+    type: 'string',
+    typeParams: {
+      lowercase: true
+    },
+    maxCountOfExamplesToShow: 10
+  }, {
+    key: 'data_processing_options',
+    label: 'Data Processing Options',
+    type: 'LIST',
+    typeParams: {
+      rejectEmptyString: true,
+      rejectEmptyList: false,
+      rejectHashed: true,
+      caseInsensitiveElements: false,
+      options: ['LDU']
+    },
+    examples: ['[]', 'LDU', '[LDU]']
+  }, {
+    key: 'data_processing_options_country',
+    label: 'Data Processing Options Country',
+    type: 'enum',
+    typeParams: {
+      isIntegerEnum: true,
+      options: [1],
+      rejectHashed: true
+    },
+    examples: [1]
+  }, {
+    key: 'data_processing_options_state',
+    label: 'Data Processing Options State',
+    type: 'enum',
+    typeParams: {
+      isIntegerEnum: true,
+      options: [1000],
+      rejectHashed: true
+    },
+    examples: [1000]
+  }],
+  baseSchema: {
+    id: 'event_data_schema',
+    version: '0.0.1'
+  }
+});
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = Object.freeze({
+  additionalInfoURL: 'https://www.facebook.com/help/606443329504150',
+  id: 'wlal_pii_schema',
+  version: '0.0.1',
+  type: 'pii_keys',
+  exampleFiles: {
+    csv: 'https://www.facebook.com/images/ads/signals/example_files/example_value_based_audience_file.csv'
+  },
+  validIf: {
+    rule: 'meetAll',
+    args: [{
+      rule: 'propValid',
+      args: 'match_keys'
+    }, {
+      rule: 'propValid',
+      args: 'lookalike_value'
+    }]
+  },
+  props: [{
+    key: 'match_keys',
+    label: 'Match keys',
+    type: {
+      additionalInfoURL: 'https://www.facebook.com/help/606443329504150',
+      id: 'basic_pii_schema',
+      version: '0.0.1',
+      type: 'pii_keys',
+      exampleFiles: {
+        csv: 'https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv'
+      },
+      validIf: {
+        rule: 'minValidProps',
+        args: 1
+      },
+      transform: ['processPIISignalBeforeUpload'],
+      props: [{
+        key: 'email',
+        maxOccurrence: 3,
+        label: 'Email',
+        examples: ['Emily@example.com', 'John@example.com', 'Helena@example.com'],
+        type: 'email'
+      }, {
+        key: 'phone',
+        maxOccurrence: 3,
+        label: 'Phone Number',
+        examples: ['1(222)333-4444', '001(222)333-4444', '+12223334444'],
+        type: 'phone_number'
+      }, {
+        key: 'madid',
+        label: 'Mobile Advertiser ID',
+        formats: ["Android's Advertising ID(AAID)", "Apple's Advertising Identifier(IDFA)"],
+        type: 'string',
+        typeParams: {
+          lowercase: true,
+          strip: 'whitespace_only',
+          test: '^([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}|[a-zA-Z0-9]{6}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{13})$'
+        }
+      }, {
+        key: 'fn',
+        label: 'First Name',
+        examples: ['John', 'F.', 'Emily'],
+        type: 'string',
+        typeParams: {
+          lowercase: true,
+          strip: 'whitespace_and_punctuation'
+        }
+      }, {
+        key: 'ln',
+        label: 'Last Name',
+        examples: ['Smith', 'Sorensen', 'Jacobs-Anderson'],
+        type: 'string',
+        typeParams: {
+          lowercase: true,
+          strip: 'whitespace_and_punctuation'
+        }
+      }, {
+        key: 'zip',
+        label: 'ZIP/Postal Code',
+        examples: ['94025', '94025-3215', 'L3T 5M7'],
+        type: 'postal_code'
+      }, {
+        key: 'ct',
+        label: 'City',
+        examples: ['Menlo Park', 'Seattle', 'London'],
+        type: 'string',
+        typeParams: {
+          lowercase: true,
+          strip: 'all_non_latin_alpha_numeric',
+          test: '^[a-z]+'
+        }
+      }, {
+        key: 'st',
+        label: 'State/Province',
+        examples: ['CA', 'California', 'Texas'],
+        type: 'string',
+        typeParams: {
+          lowercase: true,
+          strip: 'all_non_latin_alpha_numeric',
+          test: '^[a-z]+'
+        }
+      }, {
+        key: 'country',
+        label: 'Country',
+        examples: ['US', 'GB', 'FR'],
+        type: 'string',
+        typeParams: {
+          lowercase: true,
+          strip: 'whitespace_only',
+          test: '^[a-zA-Z]{2,2}'
+        }
+      }, {
+        key: 'dob',
+        label: 'Date of Birth',
+        examples: ['mm/dd/yyyy', 'mm/dd/yy', 'yyyy-mm-dd', '+ 15 more'],
+        type: 'date',
+        typeParams: {
+          rejectHashed: true
+        }
+      }, {
+        key: 'doby',
+        label: 'Year of Birth',
+        type: 'string',
+        typeParams: {
+          test: '^[0-9]{4,4}$'
+        },
+        examples: ['1978', '1962', '1990']
+      }, {
+        key: 'gen',
+        label: 'Gender',
+        examples: ['M', 'F'],
+        type: 'enum',
+        typeParams: {
+          lowercase: true,
+          options: ['f', 'm']
+        }
+      }, {
+        key: 'age',
+        label: 'Age',
+        examples: [65, 42, 21],
+        type: 'number',
+        typeParams: {
+          min: 0
+        }
+      }, {
+        key: 'appuid',
+        label: 'Facebook App User ID',
+        examples: ['1234567890', '1443637309', '1234567892'],
+        type: 'fbid',
+        typeParams: {
+          scoped: true,
+          rejectHashed: true
+        }
+      }, {
+        key: 'fi',
+        noUI: true,
+        label: 'First name initial',
+        type: 'string',
+        typeParams: {
+          lowercase: true,
+          strip: 'whitespace_only',
+          test: '^[a-z]{1,1}$'
+        }
+      }, {
+        key: 'f5first',
+        noUI: true,
+        label: 'First five letters of first name',
+        type: 'string',
+        typeParams: {
+          lowercase: true,
+          strip: 'whitespace_only',
+          test: '^[a-z]{5,5}$'
+        }
+      }, {
+        key: 'f5last',
+        noUI: true,
+        label: 'First five letters of last name',
+        type: 'string',
+        typeParams: {
+          lowercase: true,
+          strip: 'whitespace_only',
+          test: '^[a-z]{5,5}$'
+        }
+      }, {
+        key: 'pageuid',
+        label: 'Facebook Page User ID',
+        examples: ['1234567890', '1443637309', '1234567892'],
+        type: 'fbid',
+        typeParams: {
+          scoped: true,
+          rejectHashed: true
+        }
+      }]
+    }
+  }, {
+    key: 'lookalike_value',
+    label: 'Customer Value',
+    description: 'We support a numeric value, such as customer lifetime value or predictive lifetime value.',
+    examples: [0, 0.1, 3, 20],
+    type: 'value',
+    typeParams: {
+      min: 0,
+      rejectHashed: true
+    }
+  }]
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var invariant = __webpack_require__(1);
+
+function getTestUploadResult(numRowsProcessed, mapping, normalizationErrorReport, validateResult, sftpErrorMessage) {
+  var errorReport = normalizationErrorReport;
+  invariant(errorReport.type === 'advanced', 'Invalid error report.');
+
+  var serverSideValidationResult = {
+    dataSetNotAssignedToAdAccount: validateResult.dataset_not_assigned_to_adaccount,
+    eventsBeforeAdAccountAssignment: validateResult.events_before_adaccount_assignment.map(function (warning) {
+      return {
+        assignTime: warning.assign_time,
+        count: warning.events_before_assignment,
+        id: warning.adaccount_id,
+        name: warning.adaccount_name
+      };
+    }),
+    eventsContentsWithNonstandardCategory: validateResult.events_contents_with_nonstandard_category,
+    eventsLagged2DaysCount: validateResult.events_lagged_2_days_count,
+    eventsLagged7DaysCount: validateResult.events_lagged_7_days_count,
+    eventsLagged90DaysCount: validateResult.events_lagged_90_days_count,
+    eventsWithValueCount: validateResult.events_with_value_count,
+    itemnumNoOrderidCount: validateResult.events_with_itemnum_no_orderid_count,
+    matchCount: validateResult.match_count,
+    noMatchKeysCount: validateResult.events_without_match_keys_count,
+    noOrderidCount: validateResult.no_orderid_count,
+    nonuniqueOrderidItemnumCount: validateResult.nonunique_orderid_itemnum_count,
+    orderidItemnumNonuniqueEventTimeCount: validateResult.orderid_itemnum_nonunique_event_time_count,
+    orderidNonuniqueMatchKeysCount: validateResult.orderid_nonunique_match_keys_count,
+    totalValidatedCount: validateResult.total_validated_count,
+    uniqueEventTimeOfDayCount: validateResult.unique_event_time_of_day_count,
+    uniqueValueCount: validateResult.unique_value_count
+  };
+
+  var rejectedEvents = {
+    missingPropPaths: errorReport.aggregatedMissingPropPaths,
+    numUnknownError: 0,
+    total: 0
+  };
+  var incompleteEvents = {
+    columnErrors: [],
+    total: 0
+  };
+  var columnStats = {};
+  errorReport.invalidSamples.forEach(function (sample) {
+    if (sample.rejected) {
+      rejectedEvents.total++;
+      rejectedEvents.numUnknownError += sample.uncollectedErrors.length > 0 ? 1 : 0;
+    } else {
+      incompleteEvents.total++;
+    }
+  });
+  Object.keys(errorReport.aggregatedColumnStats).forEach(function (column) {
+
+    var columnIndex = parseInt(column, 10);
+    var stats = errorReport.aggregatedColumnStats[column];
+    if (mapping[column] != null) {
+      if (stats.numInvalidAndNotRejected > 0) {
+        incompleteEvents.columnErrors.push({
+          column: columnIndex,
+          mapping: mapping[column],
+          numErrors: stats.numInvalidAndNotRejected
+        });
+      }
+      columnStats[columnIndex] = {
+        mapping: mapping[column],
+        numEmpty: stats.numEmpty,
+        numInvalid: stats.numInvalidAndRejected + stats.numInvalidAndNotRejected,
+        numValid: numRowsProcessed - stats.numEmpty - stats.numInvalidAndRejected - stats.numInvalidAndNotRejected
+      };
+    }
+  });
+
+  return {
+    columnStats: columnStats,
+    incompleteEvents: incompleteEvents,
+    invalidSamples: errorReport.invalidSamples,
+    numTotalEvents: numRowsProcessed,
+    rejectedEvents: rejectedEvents,
+    serverSideValidationResult: serverSideValidationResult,
+    sftpErrorMessage: sftpErrorMessage
+  };
+}
+
+module.exports = {
+  getTestUploadResult: getTestUploadResult
+};
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var ERROR_WEIGHT = {
+  BEFORE_AD_ACCOUNT_ASSIGNMENT: 0,
+  EVENTS_CONTENTS_WITH_NONSTANDARD_CATEGORY: 100000,
+  INACCURATE_EVENT_TIME: 0,
+  INCOMPLETE_EVENTS: 0,
+  INVALID_EVENTS: 1000000,
+  ITEMNUM_NO_ORDERID: 100000,
+  LAGGED_MORE_THAN_7_DAYS: -10000,
+  LAGGED_MORE_THAN_90_DAYS: 1000000,
+  LOW_MATCH_RATE: 800000,
+  LOW_ORDERID_RATE: -10000,
+  NO_MATCH_KEYS_HIGH: 1700000,
+  NO_MATCH_KEYS_LOW: 800000,
+  NO_VALID_EVENT: 1900000,
+  NONUNIQUE_ORDERID_ITEMNUM: 200000,
+  NOT_ASSIGNED_TO_AD_ACCOUNT: 1800000,
+  ORDERID_ITEMNUM_NONUNIQUE_EVENT_TIME: 900000,
+  ORDERID_NONUNIQUE_MATCH_KEYS: 900000,
+  SAME_VALUE_FOR_ALL_EVENTS: 0,
+  VERY_LOW_MATCH_RATE: 1600000
+};
+
+var LOW_MATCH_RATE_THRESHOLD = 75;
+var VERY_LOW_MATCH_RATE_THRESHOLD = 30;
+var UNIQUE_TIME_THRESHOLD = 0.25;
+var NO_MATCH_KEYS_THRESHOLD_HIGH = 35;
+var NO_MATCH_KEYS_THRESHOLD_LOW = 5;
+var NO_ORDERID_THRESHOLD = 25;
+
+var NoValidEventIssueChecker = function NoValidEventIssueChecker(result) {
+  return result.serverSideValidationResult.totalValidatedCount === 0 ? {
+    issue: {
+      type: 'no-events-accepted'
+    },
+    level: 'error',
+    weight: ERROR_WEIGHT.NO_VALID_EVENT
+  } : null;
+};
+
+var LowMatchRateIssueChecker = function LowMatchRateIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  if (serverResult.totalValidatedCount > 0 && serverResult.matchCount !== -1) {
+    var _matchRate = Math.round(100 * serverResult.matchCount / serverResult.totalValidatedCount);
+    if (_matchRate < LOW_MATCH_RATE_THRESHOLD) {
+      return {
+        issue: {
+          matchRate: _matchRate,
+          type: 'low-match-rate'
+        },
+        level: _matchRate < VERY_LOW_MATCH_RATE_THRESHOLD ? 'error' : 'warning',
+        weight: _matchRate < VERY_LOW_MATCH_RATE_THRESHOLD ? ERROR_WEIGHT.VERY_LOW_MATCH_RATE : ERROR_WEIGHT.LOW_MATCH_RATE
+      };
+    }
+  }
+  return null;
+};
+
+var LowPiiRateIssueChecker = function LowPiiRateIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  if (serverResult.totalValidatedCount > 0) {
+    var _noPiiRate = Math.round(100 * serverResult.noMatchKeysCount / serverResult.totalValidatedCount);
+    if (_noPiiRate > NO_MATCH_KEYS_THRESHOLD_LOW) {
+      return {
+        issue: {
+          noPiiRate: _noPiiRate,
+          type: 'low-pii-rate'
+        },
+        level: _noPiiRate > NO_MATCH_KEYS_THRESHOLD_HIGH ? 'error' : 'warning',
+        weight: _noPiiRate > NO_MATCH_KEYS_THRESHOLD_HIGH ? ERROR_WEIGHT.NO_MATCH_KEYS_HIGH : ERROR_WEIGHT.NO_MATCH_KEYS_LOW
+      };
+    }
+  }
+  return null;
+};
+
+var NotAssignedToAdAccountIssueChecker = function NotAssignedToAdAccountIssueChecker(result) {
+  return result.serverSideValidationResult.dataSetNotAssignedToAdAccount ? {
+    issue: {
+      type: 'not-assigned-to-account'
+    },
+    level: 'error',
+    weight: ERROR_WEIGHT.NOT_ASSIGNED_TO_AD_ACCOUNT
+  } : null;
+};
+
+var EventsLagged90DaysIssueChecker = function EventsLagged90DaysIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  return serverResult.eventsLagged90DaysCount > 0 ? {
+    issue: {
+      count: serverResult.eventsLagged90DaysCount,
+      type: 'events-lagged-90d'
+    },
+    level: 'error',
+    weight: ERROR_WEIGHT.LAGGED_MORE_THAN_90_DAYS + serverResult.eventsLagged90DaysCount
+  } : null;
+};
+
+var EventsLagged7DaysIssueChecker = function EventsLagged7DaysIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  return serverResult.eventsLagged7DaysCount > 0 ? {
+    issue: {
+      count: serverResult.eventsLagged7DaysCount,
+      type: 'events-lagged-7d'
+    },
+    level: 'recommendation',
+    weight: ERROR_WEIGHT.LAGGED_MORE_THAN_7_DAYS + serverResult.eventsLagged7DaysCount
+  } : null;
+};
+
+var InaccurateEventTimeIssueChecker = function InaccurateEventTimeIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  return serverResult.uniqueEventTimeOfDayCount < serverResult.totalValidatedCount * UNIQUE_TIME_THRESHOLD ? {
+    issue: {
+      type: 'inaccurate-event-time'
+    },
+    level: 'warning',
+    weight: ERROR_WEIGHT.INACCURATE_EVENT_TIME
+  } : null;
+};
+
+var SameValueIssueChecker = function SameValueIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  return serverResult.uniqueValueCount === 1 && serverResult.totalValidatedCount > 1 ? {
+    issue: {
+      type: 'same-value'
+    },
+    level: 'warning',
+    weight: ERROR_WEIGHT.SAME_VALUE_FOR_ALL_EVENTS
+  } : null;
+};
+
+var EventsBeforeAdAccountAssignmentIssueChecker = function EventsBeforeAdAccountAssignmentIssueChecker(result) {
+  return result.serverSideValidationResult.eventsBeforeAdAccountAssignment.map(function (warning) {
+    return {
+      issue: {
+        accountID: warning.id,
+        accountName: warning.name,
+        assignTime: warning.assignTime,
+        count: warning.count,
+        type: 'events-before-ad-account-assignment'
+      },
+      level: 'warning',
+      weight: ERROR_WEIGHT.BEFORE_AD_ACCOUNT_ASSIGNMENT + warning.count
+    };
+  });
+};
+
+var RejectedEventsIssueChecker = function RejectedEventsIssueChecker(result) {
+  var invalidSamples = result.invalidSamples,
+      rejectedEvents = result.rejectedEvents;
+
+  if (rejectedEvents.total > 0) {
+    var _samples = invalidSamples.filter(function (sample) {
+      return sample.rejected;
+    });
+    var _summary = [];
+    for (var _propPath in rejectedEvents.missingPropPaths) {
+      _summary.push({
+        count: rejectedEvents.missingPropPaths[_propPath],
+        propPath: _propPath
+      });
+    }
+    _summary.sort(function (s1, s2) {
+      return s2.count - s1.count;
+    });
+    return {
+      issue: {
+        count: rejectedEvents.total,
+        samples: _samples,
+        summary: _summary,
+        type: 'events-rejected'
+      },
+      level: 'error',
+      weight: ERROR_WEIGHT.INVALID_EVENTS + rejectedEvents.total
+    };
+  }
+  return null;
+};
+
+var IncompleteEventsIssueChecker = function IncompleteEventsIssueChecker(result) {
+  var invalidSamples = result.invalidSamples,
+      incompleteEvents = result.incompleteEvents;
+
+  if (incompleteEvents.total > 0) {
+    var _samples2 = invalidSamples.filter(function (sample) {
+      return !sample.rejected;
+    });
+    var _summary2 = incompleteEvents.columnErrors.map(function (error) {
+      return {
+        columnIndex: error.column,
+        count: error.numErrors,
+        mapping: error.mapping
+      };
+    });
+    _summary2.sort(function (s1, s2) {
+      return s2.count - s1.count;
+    });
+    return {
+      issue: {
+        count: incompleteEvents.total,
+        samples: _samples2,
+        summary: _summary2,
+        type: 'events-incomplete'
+      },
+      level: 'warning',
+      weight: ERROR_WEIGHT.INCOMPLETE_EVENTS + incompleteEvents.total
+    };
+  }
+  return null;
+};
+
+var LowOrderIdRateIssueChecker = function LowOrderIdRateIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  if (serverResult.totalValidatedCount > 0) {
+    var noOrderIdRate = Math.round(100 * serverResult.noOrderidCount / serverResult.totalValidatedCount);
+    if (noOrderIdRate > NO_ORDERID_THRESHOLD) {
+      return {
+        issue: {
+          count: serverResult.noOrderidCount,
+          type: 'low-orderid-rate'
+        },
+        level: 'recommendation',
+        weight: ERROR_WEIGHT.LOW_ORDERID_RATE + serverResult.noOrderidCount
+      };
+    }
+  }
+  return null;
+};
+
+var ItemNumWithoutOrderIdIssueChecker = function ItemNumWithoutOrderIdIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  return serverResult.itemnumNoOrderidCount > 0 ? {
+    issue: {
+      count: serverResult.itemnumNoOrderidCount,
+      type: 'itemnum-without-orderid'
+    },
+    level: 'warning',
+    weight: ERROR_WEIGHT.ITEMNUM_NO_ORDERID + serverResult.itemnumNoOrderidCount
+  } : null;
+};
+
+var NonUniqueOrderIdItemNumIssueChecker = function NonUniqueOrderIdItemNumIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  return serverResult.nonuniqueOrderidItemnumCount > 0 ? {
+    issue: {
+      count: serverResult.nonuniqueOrderidItemnumCount,
+      type: 'nonunique-orderid-itemnum'
+    },
+    level: 'warning',
+    weight: ERROR_WEIGHT.NONUNIQUE_ORDERID_ITEMNUM + serverResult.nonuniqueOrderidItemnumCount
+  } : null;
+};
+
+var OrderidItemnumNonuniqueEventTimeIssueChecker = function OrderidItemnumNonuniqueEventTimeIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  return serverResult.orderidItemnumNonuniqueEventTimeCount > 0 ? {
+    issue: {
+      count: serverResult.orderidItemnumNonuniqueEventTimeCount,
+      type: 'orderid-itemnum-nonunique-event-time'
+    },
+    level: 'error',
+    weight: ERROR_WEIGHT.ORDERID_ITEMNUM_NONUNIQUE_EVENT_TIME
+  } : null;
+};
+
+var OrderidNonuniqueMatchKeysIssueChecker = function OrderidNonuniqueMatchKeysIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  return serverResult.orderidNonuniqueMatchKeysCount > 0 ? {
+    issue: {
+      count: serverResult.orderidNonuniqueMatchKeysCount,
+      type: 'orderid-nonunique-match-keys'
+    },
+    level: 'error',
+    weight: ERROR_WEIGHT.ORDERID_NONUNIQUE_MATCH_KEYS
+  } : null;
+};
+
+var ContentsWithNonstandardCategoryIssueChecker = function ContentsWithNonstandardCategoryIssueChecker(result) {
+  var serverResult = result.serverSideValidationResult;
+  return serverResult.eventsContentsWithNonstandardCategory.count > 0 ? {
+    issue: {
+      count: serverResult.eventsContentsWithNonstandardCategory.count,
+      samples: serverResult.eventsContentsWithNonstandardCategory.samples,
+      type: 'events-contents-with-nonstandard-category'
+    },
+    level: 'warning',
+    weight: ERROR_WEIGHT.EVENTS_CONTENTS_WITH_NONSTANDARD_CATEGORY
+  } : null;
+};
+
+var IssueCheckers = {
+  ContentsWithNonstandardCategoryIssueChecker: ContentsWithNonstandardCategoryIssueChecker,
+  EventsBeforeAdAccountAssignmentIssueChecker: EventsBeforeAdAccountAssignmentIssueChecker,
+  EventsLagged7DaysIssueChecker: EventsLagged7DaysIssueChecker,
+  EventsLagged90DaysIssueChecker: EventsLagged90DaysIssueChecker,
+  InaccurateEventTimeIssueChecker: InaccurateEventTimeIssueChecker,
+  IncompleteEventsIssueChecker: IncompleteEventsIssueChecker,
+  ItemNumWithoutOrderIdIssueChecker: ItemNumWithoutOrderIdIssueChecker,
+  LowMatchRateIssueChecker: LowMatchRateIssueChecker,
+  LowOrderIdRateIssueChecker: LowOrderIdRateIssueChecker,
+  LowPiiRateIssueChecker: LowPiiRateIssueChecker,
+  NoValidEventIssueChecker: NoValidEventIssueChecker,
+  NonUniqueOrderIdItemNumIssueChecker: NonUniqueOrderIdItemNumIssueChecker,
+  NotAssignedToAdAccountIssueChecker: NotAssignedToAdAccountIssueChecker,
+  OrderidItemnumNonuniqueEventTimeIssueChecker: OrderidItemnumNonuniqueEventTimeIssueChecker,
+  OrderidNonuniqueMatchKeysIssueChecker: OrderidNonuniqueMatchKeysIssueChecker,
+  RejectedEventsIssueChecker: RejectedEventsIssueChecker,
+  SameValueIssueChecker: SameValueIssueChecker
+};
+
+function getWarningsFromTestUploadResult(result, checkers) {
+  var issues = [];
+  for (var checkerName in checkers) {
+    var checker = checkers[checkerName];
+    var newIssues = checker(result);
+    if (newIssues != null) {
+      if (Array.isArray(newIssues)) {
+        issues.push.apply(issues, _toConsumableArray(newIssues));
+      } else {
+        issues.push(newIssues);
+      }
+    }
+  }
+
+  issues.sort(function (i1, i2) {
+    return i2.weight - i1.weight;
+  });
+  var warnings = issues.filter(function (issue) {
+    return issue.level === 'warning';
+  }).map(function (issue) {
+    return issue.issue;
+  });
+  var errors = issues.filter(function (issue) {
+    return issue.level === 'error';
+  }).map(function (issue) {
+    return issue.issue;
+  });
+  var recommendations = issues.filter(function (issue) {
+    return issue.level === 'recommendation';
+  }).map(function (issue) {
+    return issue.issue;
+  });
+  return {
+    errors: errors,
+    recommendations: recommendations,
+    warnings: warnings
+  };
+}
+
+module.exports = {
+  IssueCheckers: IssueCheckers,
+  getWarningsFromTestUploadResult: getWarningsFromTestUploadResult
+};
+
+/***/ }),
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8438,11 +10193,11 @@ var SignalsEventDataSchema = {
       "rule": "meetAll",
       "args": [{
         "rule": "dependentProps",
-        "name": "require_content_type_if_content_ids",
+        "name": "require_country_and_state_if_ldu",
         "args": [{
-          "rule": "propValid",
-          "args": "content_ids"
-        }, ["content_type"]]
+          "rule": "propValueIs",
+          "args": ["data_processing_options", ["LDU"]]
+        }, ["data_processing_options_country", "data_processing_options_state"]]
       }]
     }]
   },
@@ -8454,17 +10209,6 @@ var SignalsEventDataSchema = {
       "rejectTimeBefore": 63072000000
     },
     "type": "unix_time"
-  }, {
-    "key": "event_name",
-    "label": "Event Name",
-    "formats": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "InitiateCheckout", "Lead", "Purchase", "Search", "ViewContent", "Other"],
-    "type": "enum",
-    "typeParams": {
-      "caseInsensitive": true,
-      "options": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "InitiateCheckout", "Lead", "Purchase", "Search", "ViewContent", "Other"],
-      "rejectHashed": true
-    },
-    "maxCountOfExamplesToShow": 30
   }, {
     "key": "match_keys",
     "label": "Match keys",
@@ -8506,7 +10250,7 @@ var SignalsEventDataSchema = {
       }, {
         "key": "fn",
         "label": "First Name",
-        "examples": ["John", "F.", "Fr&eacute;d&eacute;drique"],
+        "examples": ["John", "F.", "Emily"],
         "type": "string",
         "typeParams": {
           "lowercase": true,
@@ -8515,7 +10259,7 @@ var SignalsEventDataSchema = {
       }, {
         "key": "ln",
         "label": "Last Name",
-        "examples": ["Smith", "S&oslash;rensen", "Jacobs-Anderson"],
+        "examples": ["Smith", "Sorensen", "Jacobs-Anderson"],
         "type": "string",
         "typeParams": {
           "lowercase": true,
@@ -8539,7 +10283,7 @@ var SignalsEventDataSchema = {
       }, {
         "key": "st",
         "label": "State/Province",
-        "examples": ["CA", "Califonia", "Texas"],
+        "examples": ["CA", "California", "Texas"],
         "type": "string",
         "typeParams": {
           "lowercase": true,
@@ -8672,555 +10416,8 @@ var SignalsEventDataSchema = {
   }, {
     "key": "value",
     "label": "Value",
-    "examples": ["2534"],
-    "type": "number",
-    "typeParams": {
-      "moreThan": 0,
-      "rejectHashed": true
-    }
-  }, {
-    "key": "currency",
-    "label": "Currency",
-    "examples": ["USD", "HUF"],
-    "type": "currency_code"
-  }, {
-    "key": "order_id",
-    "label": "Order ID",
-    "examples": ["ABC123", "123DEF"],
-    "type": "string"
-  }, {
-    "key": "item_number",
-    "label": "Item Number",
-    "examples": ["1", "A2"],
-    "type": "string"
-  }, {
-    "key": "content_type",
-    "label": "Content Type",
-    "type": "LIST",
-    "typeParams": {
-      "rejectEmptyList": true,
-      "rejectHashed": true,
-      "caseInsensitiveElements": true,
-      "options": ["product", "product_group", "fb_product", "destination", "flight", "hotel", "home_listing", "home_service_provider", "auto_offer", "vehicle", "vehicle_offer", "media_title", "test_vertical"]
-    },
-    "examples": ["product", ["product", "destination"], "[product]", "[product, destination]"]
-  }, {
-    "key": "content_ids",
-    "label": "Content Ids",
-    "examples": [["1"], ["2", "A3"]],
-    "type": "LIST",
-    "typeParams": {
-      "rejectEmptyList": true,
-      "rejectHashed": true
-    }
-  }, {
-    "key": "catalog_auto_population_info",
-    "label": "Catalog Auto Population Info JSON",
-    "type": "json_list",
-    "typeParams": {
-      "maxItemsAllowed": 100,
-      "nestedPropSchema": {
-        "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
-        "id": "catalog_auto_population_info_schema",
-        "version": "0.0.1",
-        "type": "catalog_auto_population_info_keys",
-        "exampleFiles": {
-          "csv": "https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv"
-        },
-        "validIf": {
-          "rule": "meetAll",
-          "args": [{
-            "rule": "propValid",
-            "name": "valid_currency",
-            "args": "currency"
-          }, {
-            "rule": "propValid",
-            "name": "valid_description",
-            "args": "description"
-          }, {
-            "rule": "propValid",
-            "name": "valid_image_url",
-            "args": "image_url"
-          }, {
-            "rule": "propValid",
-            "name": "valid_name",
-            "args": "name"
-          }, {
-            "rule": "propValid",
-            "name": "valid_price",
-            "args": "price"
-          }, {
-            "rule": "propValid",
-            "name": "valid_retailer_id",
-            "args": "retailer_id"
-          }, {
-            "rule": "propValid",
-            "name": "valid_url",
-            "args": "url"
-          }, {
-            "rule": "meetAny",
-            "args": [{
-              "rule": "propValid",
-              "name": "valid_brand",
-              "args": "brand"
-            }, {
-              "rule": "propValid",
-              "name": "valid_gtin",
-              "args": "gtin"
-            }, {
-              "rule": "propValid",
-              "name": "valid_mpn",
-              "args": "manufacturer_part_number"
-            }]
-          }]
-        },
-        "props": [{
-          "key": "availability",
-          "label": "Product Availability",
-          "formats": ["in stock", "out of stock", "preorder", "available for order", "discontinued", ""],
-          "type": "enum",
-          "typeParams": {
-            "caseInsensitive": true,
-            "options": ["in stock", "out of stock", "preorder", "available for order", "discontinued", ""],
-            "rejectHashed": true
-          },
-          "maxCountOfExamplesToShow": 5
-        }, {
-          "key": "brand",
-          "label": "Product Brand",
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "category",
-          "label": "Google Product Category",
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "currency",
-          "label": "Product Price Currency",
-          "examples": ["USD", "HUF"],
-          "type": "currency_code"
-        }, {
-          "key": "condition",
-          "label": "Product Condition",
-          "formats": ["new", "refurbished", "used", "cpo", ""],
-          "type": "enum",
-          "typeParams": {
-            "caseInsensitive": true,
-            "options": ["new", "refurbished", "used", "cpo", ""],
-            "rejectHashed": true
-          },
-          "maxCountOfExamplesToShow": 5
-        }, {
-          "key": "description",
-          "label": "Product Description",
-          "examples": ["A Wild Pikachu", "Groot Chia Pet"],
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "gtin",
-          "label": "Product GTIN",
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "image_url",
-          "label": "Product Image URL",
-          "examples": ["https://www.facebook.com/t_shirt_image_001.jpg"],
-          "type": "string",
-          "typeParams": {
-            "test": "^https?\\:\\/\\/.*"
-          }
-        }, {
-          "key": "manufacturer_part_number",
-          "label": "Product Manufacturer Part Number",
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "name",
-          "label": "Product Name",
-          "examples": ["Product Name"],
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "price",
-          "label": "Product Price",
-          "examples": ["2534"],
-          "type": "number",
-          "typeParams": {
-            "integer": true,
-            "moreThan": 0,
-            "rejectHashed": true
-          }
-        }, {
-          "key": "product_type",
-          "label": "Product Type",
-          "examples": ["Pet Pedometers", "Drum Pedals"],
-          "type": "string"
-        }, {
-          "key": "retailer_id",
-          "label": "Unique Product ID",
-          "examples": ["retailer_item_id_1", "content_id_1"],
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "url",
-          "label": "Product URL",
-          "examples": ["https://www.facebook.com/facebook_t_shirt"],
-          "type": "string",
-          "typeParams": {
-            "test": "^https?\\:\\/\\/.*"
-          }
-        }, {
-          "key": "visibility",
-          "label": "Product Visibility",
-          "formats": ["", "staging", "published", "hidden", "whitelist_only"],
-          "type": "enum",
-          "typeParams": {
-            "caseInsensitive": true,
-            "options": ["", "staging", "published", "hidden", "whitelist_only"],
-            "rejectHashed": true
-          },
-          "maxCountOfExamplesToShow": 5
-        }]
-      }
-    },
-    "examples": ["[{\"availability\":\"in stock\",\"brand\":\"Facebook\",\"category\":\"2271\",\"condition\":\"new\",\"currency\":\"USD\",\"description\":\"A vibrant crewneck for all shapes and sizes.\",\"image_url\":\"https:\\/\\/www.facebook.com\\/t_shirt_image_001.jpg\",\"name\":\"Facebook T-Shirt (Unisex)\",\"price\":999,\"product_type\":\"Apparel & Accessories > Clothing > Shirts\",\"retailer_id\":\"FB_product_1234\",\"url\":\"https:\\/\\/www.facebook.com\\/t_shirt_001.jpg\"}]"]
-  }, {
-    "key": "contents",
-    "label": "Contents",
-    "type": "json_list",
-    "typeParams": {
-      "maxItemsAllowed": 100,
-      "nestedPropSchema": {
-        "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
-        "id": "oc_contents_schema",
-        "version": "0.0.1",
-        "exampleFiles": {
-          "csv": "https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv"
-        },
-        "validIf": {
-          "rule": "meetAll",
-          "args": [{
-            "rule": "dependentProps",
-            "name": "require_content_type_if_content_ids",
-            "args": [{
-              "rule": "propValid",
-              "args": "content_ids"
-            }, ["content_type"]]
-          }, {
-            "rule": "dependentProps",
-            "name": "require_currency_if_value",
-            "args": [{
-              "rule": "propValid",
-              "args": "value"
-            }, ["currency"]]
-          }, {
-            "rule": "dependentProps",
-            "name": "require_value_if_currency",
-            "args": [{
-              "rule": "propValid",
-              "args": "currency"
-            }, ["value"]]
-          }]
-        },
-        "props": [{
-          "key": "content_type",
-          "label": "Content Type",
-          "type": "LIST",
-          "typeParams": {
-            "rejectEmptyList": true,
-            "rejectHashed": true,
-            "caseInsensitiveElements": true,
-            "options": ["product", "product_group", "fb_product", "destination", "flight", "hotel", "home_listing", "home_service_provider", "auto_offer", "vehicle", "vehicle_offer", "media_title", "test_vertical"]
-          },
-          "examples": ["product", ["product", "destination"], "[product]", "[product, destination]"]
-        }, {
-          "key": "content_ids",
-          "label": "Content Ids",
-          "examples": [["2", "A3"]],
-          "type": "LIST",
-          "typeParams": {
-            "rejectEmptyList": true,
-            "rejectHashed": true
-          }
-        }, {
-          "key": "value",
-          "label": "Value",
-          "examples": ["2534"],
-          "type": "number",
-          "typeParams": {
-            "moreThan": 0,
-            "rejectHashed": true
-          }
-        }, {
-          "key": "currency",
-          "label": "Currency",
-          "examples": ["USD", "HUF"],
-          "type": "currency_code"
-        }, {
-          "key": "item_number",
-          "label": "Item Number",
-          "examples": ["1", "A2"],
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "quantity",
-          "label": "Quantity",
-          "examples": ["1"],
-          "type": "number",
-          "typeParams": {
-            "integer": true,
-            "moreThan": 0,
-            "rejectHashed": true
-          }
-        }]
-      }
-    },
-    "examples": ["[{\"content_type\":\"product\",\"content_ids\":\"[123, 345]\",\"item_number\":\"1\",\"value\":20,\"currency\":\"USD\",\"quantity\":1}]"]
-  }],
-  "baseSchema": {
-    "id": "event_data_schema",
-    "version": "0.0.1"
-  }
-};
-
-module.exports = SignalsEventDataSchema;
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = {
-  "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
-  "id": "event_data_schema",
-  "version": "0.0.2",
-  "exampleFiles": {
-    "csv": "https://www.facebook.com/images/ads/signals/example_files/example_events_file.csv"
-  },
-  "validIf": {
-    "rule": "meetAll",
-    "args": [{
-      "rule": "meetAll",
-      "args": [{
-        "rule": "propValid",
-        "name": "valid_event_time",
-        "args": "event_time"
-      }, {
-        "rule": "propValid",
-        "name": "valid_event_name",
-        "args": "event_name"
-      }, {
-        "rule": "dependentProps",
-        "name": "require_value_and_currency_if_purchase",
-        "args": [{
-          "rule": "propValueIs",
-          "args": ["event_name", "Purchase"]
-        }, ["value", "currency"]]
-      }, {
-        "rule": "dependentProps",
-        "name": "require_currency_if_value",
-        "args": [{
-          "rule": "propValid",
-          "args": "value"
-        }, ["currency"]]
-      }, {
-        "rule": "dependentProps",
-        "name": "require_value_if_currency",
-        "args": [{
-          "rule": "propValid",
-          "args": "currency"
-        }, ["value"]]
-      }]
-    }, {
-      "rule": "meetAll",
-      "args": [{
-        "rule": "dependentProps",
-        "name": "require_content_type_if_content_ids",
-        "args": [{
-          "rule": "propValid",
-          "args": "content_ids"
-        }, ["content_type"]]
-      }]
-    }, {
-      "rule": "meetAll",
-      "args": [{
-        "rule": "propValid",
-        "name": "valid_match_keys",
-        "args": "match_keys"
-      }]
-    }]
-  },
-  "props": [{
-    "key": "event_time",
-    "label": "Event Time",
-    "examples": ["2016-06-20T03:21:48+01:00", "2016-06-20T03:21:48", "1459315678", "mm/dd/yyyy", "+ 15 more"],
-    "typeParams": {
-      "rejectTimeBefore": 63072000000
-    },
-    "type": "unix_time"
-  }, {
-    "key": "match_keys",
-    "label": "Match keys",
-    "type": {
-      "id": "extended_pii_schema",
-      "version": "0.2.0",
-      "type": "pii_keys",
-      "validIf": {
-        "rule": "minValidProps",
-        "args": 1
-      },
-      "props": [{
-        "key": "email",
-        "maxOccurrence": 3,
-        "label": "Email",
-        "type": "sha256"
-      }, {
-        "key": "phone",
-        "maxOccurrence": 3,
-        "label": "Phone",
-        "type": "sha256"
-      }, {
-        "key": "madid",
-        "label": "Mobile advertiser ID",
-        "type": "sha256"
-      }, {
-        "key": "fn",
-        "label": "First name",
-        "type": "sha256"
-      }, {
-        "key": "fi",
-        "label": "First name initial",
-        "type": "sha256"
-      }, {
-        "key": "f5first",
-        "label": "First five letters of first name",
-        "type": "sha256"
-      }, {
-        "key": "ln",
-        "label": "Last name",
-        "type": "sha256"
-      }, {
-        "key": "f5last",
-        "label": "First five letters of last name",
-        "type": "sha256"
-      }, {
-        "key": "ct",
-        "label": "City",
-        "type": "sha256"
-      }, {
-        "key": "st",
-        "label": "State/Province",
-        "type": "sha256"
-      }, {
-        "key": "country",
-        "label": "Country",
-        "type": "sha256"
-      }, {
-        "key": "zip",
-        "label": "ZIP/Postal Code",
-        "type": "sha256"
-      }, {
-        "key": "gen",
-        "label": "Gender",
-        "type": "sha256",
-        "typeParams": {
-          "options": ["252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111", "62c66a7a5dd70c3146618063c344e531e6d4b59e379808443ce962b3abd63c5a"]
-        }
-      }, {
-        "key": "doby",
-        "label": "Year of birth",
-        "type": "sha256",
-        "typeParams": {
-          "options": ["e41d64db5703c6440b5c714d57251a845bc0bd241480b41a4e7fd3e052f85a82", "a56b54e1c5933a83f79b301d0c08410a5617b868120da82b7e088c42a5a8025c", "489ca219174f91b48313c188f4c998a5413fcaf194a93fd8e24bbdb178dc8f3a", "262b06d105e1c865b01c3e0a74291cdae511ef15f3d456e14fbe2dffd9efe3b9", "90bbc9533a02213ffdf4d1482eb9b97a5feec554e33641d40f24777cbe5a8341", "56a3a46a3ba4fb713fd3e4cfa51a5748abf2c2662fefb0b5a863fdef34572255", "a486e5558353d0a590552ea5e0b0ccf4d2d9a1ea92d319b2ad5711e9ba10deb1", "4332cd76590d0efdbd8d067acf531546da2ba0a67c538440e7defedbea48d1dc", "00f6112fe58387958ef80793a34746429f40c97fe7b51d6a576705acbf8fc6af", "8e614d39a1f1279958da1c9f7e8df51db4aabca8cc3a3e84f8c3dc5f88e1fcfb", "a64332fe1df1790cb79d428bf5b5767ddd589b1cca825cb1b9eb30f7e9aaee03", "dc4bc886825c446e6ae02d4d0c6a8787af0395079effcc3afc0f8bdc40cbd161", "a991b89eed28e85e1a7238873f922290111049668c680a68ee15201a611219b3", "3b1fba0616142d348bd8a977e3aa3d65dab82a5ac11ed16d4e22ff5460458d4f", "fb4a379d44cab4220bc5596ffa1f8eb9b169ba098d2c98b20d110881c92b9299", "811af1590c16fc90322a05ab17f360939077f63f674a7e0550732a36050444ac", "c30c6b3aa67e27e0fc807ab96edfc920b08ca09b98c942a593aff6c832957388", "464d14ace7f6789141d13ed416c881c1bfcf7203c5965e332edda90f171815a7", "54e87e2783378cd883fb63bea84e2ecdd554b0646ec35a12d6df365ccad3c68b", "274dfec6e079fb08d6b5771537c54d3f0bd36c64c3d8ed0a4e6d2f201b489274", "6b5f40c09215713a1fa83ea2de2adcae17e605b8958a2d7379e15b561687ee8f", "d982309a461bcc3abc15489201522c8df291aa650eabafda45f1583b03992cc9", "2c1f3f5f6523af84fde4af934caa1126ae6bcebacd36e397fbddcb8a620c1d73", "d42ed19c0d9c80706b6b1484a97cf8634285d753ac079717aee8c651d54caef3", "3849ba084da2faea804918e8d999dee3f176659e0216debcccbf86b3e6b769ef", "80f8ded29fa2e922c77b98ea8f229ef65ea360daf5d1c9e05b80539e502b5621", "255ac64f2a9b374157860601793d61491c561c29df77cbf82d4610772937ce59", "3d5d2c29712a98874d8142d229c4bce09158a144ad376c2b68411f240878a9c1", "aef662afc24b5edde66ab972975340f6a9963eb766261e6bf43ffdb56b6d2a3f", "639c1115ab55d139a527f7bb3c1a9570bb60cf96f5c13bdaa41a7264a74e748f", "70fa656aa0391eb9ef7bbc9c7e6771ec09e7d5d7ab1fcbbde2480d21263ee79a", "5c06e46c5e47cfacad16ce1e37f17c09fdbc7072c567613e0b8112173f688a65", "01a0123885ebec5b37b52ddc058c20d052525c654b69e7b7bfd5feb291428bba", "c8c817e80216ce409c63a735acdd40fb7b023bcca6e87b6fc89973c447b6a858", "914c948388ae30bdb0179a2f7bc91836d6af004171af735188fc1b69c286c864", "2e355fa8b5acf07f4608835401e5a6144f25c505ed9d2689f93df6382890a79c", "3f46bdea034f311a14efe877f5592d84a7a6c97d9b917be3f55573311e6cdda7", "c6f5c46f9e3daea6422f8a004682a5de6f6946a9cfb7c9ca71912c029a981403", "6eac02c2ab0dc9378be87d5d04da2fd747fb2340dad4977778defee7da92f657", "94ad0b5b0a595b7eaafe9404423d8543b4c8dcfc26ecffb44f6894e2ca46fd61", "d0ab864a17dbd8a07dda05a58ac74d4894b7effa8e1c5152d71adf8b1fcc24d9", "5933b0b35d5d3e9d1f53fbce9403c5672883fff37f429dc1da26881f47415672", "7fb754c0792cd52ea50ce5b8862b5b07d5aa45af1dbfa035f862cdb6a030b427", "66a7a5807c3130eb2d0b55bb260a6a001b9d62095c94b753cbb215f3e4f099e1", "f513a0aa4f8f39744c6fddf2b5eb18cc1eac55ca866a1b243d835362a023f243", "060672b8531404f598515957df33d6387e0647cbc382d35ef286fa3466362384", "8ba5ef4e282bf7bc5cf13f731a1b9f525bd3b1f69cbfa24c1c69c303c0ac7019", "8eec27653c19ed078b2f3bae16ff901d16347d7917d2b8e2317914e2437bf324", "03b0bd366e8184f8d871c3a7c7cc26c73c25b54ff54c64b28b10b898242cdc8a", "82887006d04d939ffca870bc268a940df6cf01dbdf12e228ccf476d07d7c9424", "3f5f3806e425deac33023e9764d08ac98397e6f1bc8599743cbb15a9cfdf8929", "3510a92fc7dd04f69b1aeeef5489ef168dbf1d9c4d528b8f4af4240a8b295ab4", "6ed701cfedb16ebd91b2d185383115c6f9ce12f2f9c744d7d605be0002109362", "592fbed6f4ef4a643b0c5dec00a9a32f69a4027aedb972265cd9237b7b31d564", "98f3aaa79f6ba1759e046f873955785d869eec78b60ff7ad2f1bb62d50ea8a0a", "b53a7292b38e011dbe6efc79c22d028ddd364da2e6b9aa182915572742330ea9", "04aa39fcb509e7842f0bd5b135b6181b0b57c8a74422838362f430351fc364f2", "d212b2ac736e3f60408ffe9fbc1d26ae901f8f477fb8b08ec03c9d6b0208ac2b", "522e6198a268c62c01c9944cc2c06902d8308d65e6444eb8ad10bbe98dc362b6", "5c0b1ae7ef3b0e1552cd215596a4449a8bcd5d060f18511da8e63b87f67c11f6", "6606753e5a126d7068012a526d44c3eb2f7fcd09d5faeb30c77dbfd87ca7e758", "f7ac69722a0706c533afa393b1574a761a073df0a8280094d3500a4bbc9c2877", "9aec25da37c5143655198925302a995797eeef538933800b67b87c48de7ad120", "59279341ea59fbf34025024596b670b6df2c9f80e71b9ad19aea71ba43b083fc", "ed823ec32c5d4e9ca9dd968bb0fe9366b7d904ce0cae615308ddd5b89f0e6a3a", "d7c7673ba8ca7b0f04b1af4df026cbea7fed5b8acf59b27d33ef988c60eff054", "c00cf031587d12c309358e85de8876b2738d3ef2cadd88db6b07318ea0ba8973", "50828327cbf487d99d22c77ef8f980e5d7c8b93e2a1d1b084e2dc6760240e738", "a48622b535728587fd351763d1296c7ec9cb5bc6743d5f22b011d5b5c3ef688f", "fd21cc3cb5062bc4ac714c489e1ca0e37a577c19ba23b0d00e9767f598d37636", "ad1f3889d0032e7c2791053060e4c044837353325fbd42cdeeef65638ed31c2a", "2b5d2ba5803e6fe3a2bc08b5f3965f47a92918a9c44b8090618d5d5a2876cf8c", "0a95adbf8581859ae0cc477127abeaf4ad89916405c41855af8fbc482e1634e8", "9baed8fceea6e36d36670d72429d909547165efc038c293a14a41ef2edf83141", "ec54e99514663edb97adef400fbf34a77daae108303d3da8008a7dfb4cdf0f52", "20ee235b5de5b36244da6f9aa1cbdd032a90867ba92276ccc8c38c0d0d57fcec", "4c3aada37cf7fd3819b2da502a15f78f7ce5a2ce6d584b630344ff00dffc74ac", "576c85c584f60555c2a024cbb99dfbbdb5f58c3bdcf28dbc8ea315fd46a388f3", "46635b56d3c7f0b7bb26adae2a1692debbfd145d4a0986a9137fe91e73e70360", "11d1ff4edd53407199c92b00cbc3abe8c9c5d5bed4414ad07b55c896b0e7a713", "051c2e380d07844ffaca43743957f8c0efe2bdf74c6c1e6a9dcccb8d1a3c596b", "a78f19952edd18bf02b3c9eb704b088e2120941d6acb22f6f795c42796e60252", "48deb732e8de8fe7995bbc2816520798fcab815f62165af4d53bbc24434c963e", "52bb7cc738dbf5e5eee2c76754d87904e6750c63eda5e0a866197d2e16d9c142", "4dea5c7cb70f50322ec9d734aa4aa078be9227c05251e18991c596f387552370", "78e370b587b145920213731b7c7c725e512b3b6577c51c800218a7c764c532ae", "8f8472a2f6ec348bfc7577a035c7f34a04c62f0c757b54687e1175236dcf393b", "744b93f9950fc38dad705556931ea48193b99dcb191cc9bd77097f65fbe2f0b8", "8266498d969081c29737b8daeb5b51d60e56d008fff243a39d16c3032d42f6cf", "9113b98df80f877c7a2ee5d865a04c9514b4e9bf25a49d315b0b15f115d2f0d2", "a7be8e1fe282a37cd666e0632b17d933fa13f21addf4798fc0455bc166e2488c", "8e9b669109df89620b94f2387dc53206a82ddc71d658f8f7a2b3a9b417370d3e", "3f83e9ad5be63bd5bf2fd009fffe6b7dd4066243975bc962edc37459c17e65b9", "8e71b24534e9f3fb3a71263359fed2b7ffb008265e0d34383e319f1b6f5c08f2", "1bc3201a9f24a2fe48f634f90d406aaf6cbf5e36e292870ecba98d74b065ee1b", "e78f27ab3ef177a9926e6b90e572b9853ce6cf4d87512836e9ae85807ec9d7fe", "3d1e557b540ac045b3b327994a351f08a443f9216f9b2b8d3a0f42b58671ac83", "0985b889a1fe4f4e1fb925061ac6fb2247f10875f5fcbe63eec2ab55ed68970e", "d54123de468bd42ea00dafbd777f85fe5fa1ff6404d9838c007953c25c92a1c5", "ce8457d59078a699acb70416f88155a96a906b7b7aad43708402e3a3bcc8a4b4", "81a83544cf93c245178cbc1620030f1123f435af867c79d87135983c52ab39d9", "85d6385b945c0d602103db39b0b654b2af93b5127938e26a959c123f0789b948", "6c94e35ccc352d4e9ef0b99562cff995a5741ce8de8ad11b568892934daee366", "77459b9b941bcb4714d0c121313c900ecf30541d158eb2b9b178cdb8eca6457e", "483029d526219f816e8e8f6a9de07b422633dba180ffc26faac22862a017519f", "a20a2b7bb0842d5cf8a0c06c626421fd51ec103925c1819a51271f2779afa730", "6f6a4e56098cfd9af29e3ae549503b370211a4e94421457fe4cfd39a38a1fa08", "f1cfa5ebb149e8099d561aae57beed6c68f990f45a910ea9d7b460dbcc5350be", "e5e53c784d5d49de1cabb6e904bf3380026aadcb9769775a268dd304dd9aa2df", "f37f3f2b0dc57a86dee4ba6ff855283bb4d2f0dea1c5bd1b708853444c2ffcec", "7d12ba56e9f8b3dc64f77c87318c4f37bc12cfbf1a37573cdf3e4fa683f20155", "72d1b5da6eeaf1789df86487da50ad5e9dadb5ffaecb56b6de592aa286c9c1b8", "4b9a7f50c0bb198c6f5414c5a8459f5d216d34ab521ea94c060ea35cac66f900", "7931aa2a1bed855457d1ddf6bc06ab4406a9fba0579045a4d6ff78f9c07c440f", "96da37e95d5cc34fe3bef6c89428df859b8a217630d0c664da1daf1539caacf5", "a85e9db4851f7cd3efb8db7bf69a07cfb97bc528b72785a9cff7bdfef7e2279d", "da6e2f539726fabd1f8cd7c9469a22b36769137975b28abc65fe2dc29e659b77", "46e67c525617663b392a53c0e94ba79e62db62a851fb175ae87756d4e73c9718", "152e69cf3c8e76c8d8b0aed924ddd1708e4c68624611af33d52c2c2814dd5df9", "023e33504ab909cf87a6f4e4e545090e40bdc0a2153e5b68b19f7fad2b737904", "73a2af8864fc500fa49048bf3003776c19938f360e56bd03663866fb3087884a", "1bea20e1df19b12013976de2b5e0e3d1fb4ba088b59fe53642c324298b21ffd9", "b1ab1e892617f210425f658cf1d361b5489028c8771b56d845fe1c62c1fbc8b0", "d398b29d3dbbb9bf201d4c7e1c19ff9d43c15fd45a0cec46fbe9885ec3f6e97f", "6557739a67283a8de383fc5c0997fbec7c5721a46f28f3235fc9607598d9016b", "b2b2f104d32c638903e151a9b20d6e27b41d8c0c84cf8458738f83ca2f1dd744", "158a323a7ba44870f23d96f1516dd70aa48e9a72db4ebb026b0a89e212a208ab", "5313e5bf17148de844ff74be3663d47c6e361ca469b30a36337701233c89a15e", "6ae9e4d22c4670b9140fc378214b3274fb3f64d16058717f974515000680b24c", "8f0f97e140e126a4404a09eb1e14a53b7c742701c4290a5d1702d14daec22ee8", "8e1f192fe25ad49be764c3f55c68beb32f7aa66f85344e026b76cfaaa1d3d88a"]
-        }
-      }, {
-        "key": "dobm",
-        "label": "Month of birth",
-        "type": "sha256",
-        "typeParams": {
-          "options": ["938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "a953f09a1b6b6725b81956e9ad0b1eb49e3ad40004c04307ef8af6246a054116", "0b8efa5a3bf104413a725c6ff0459a6be12b1fd33314cbb138745baf39504ae5", "6cd5b6e51936a442b973660c21553dd22bd72ddc8751132a943475288113b4c0", "c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2", "aacd834b5cdc64a329e27649143406dd068306542988dfc250d6184745894849", "19b100ab7725c612f3d80ff203ca53cea5cadaafae3bf0f88f0fb4089fe08815", "323783be9a53a31e158ec9600626a4703e99f4e183bc1acb8772cbdf5c3a1ece", "3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105", "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5", "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8", "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918"]
-        }
-      }, {
-        "key": "dobd",
-        "label": "Day of birth",
-        "type": "sha256",
-        "typeParams": {
-          "options": ["938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4", "a953f09a1b6b6725b81956e9ad0b1eb49e3ad40004c04307ef8af6246a054116", "0b8efa5a3bf104413a725c6ff0459a6be12b1fd33314cbb138745baf39504ae5", "6cd5b6e51936a442b973660c21553dd22bd72ddc8751132a943475288113b4c0", "c97550ce8213ef5cf6ed4ba48790c137df3ef6a5da20b48961001a634b6cead2", "aacd834b5cdc64a329e27649143406dd068306542988dfc250d6184745894849", "19b100ab7725c612f3d80ff203ca53cea5cadaafae3bf0f88f0fb4089fe08815", "323783be9a53a31e158ec9600626a4703e99f4e183bc1acb8772cbdf5c3a1ece", "3514acf61732f662da19625f7fe781c3e483f2dce8506012f3bb393f5003e105", "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5", "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8", "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918", "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278", "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61", "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb", "b17ef6d19c7a5b1ee83b907c595526dcb1eb06db8227d650d5dda0a9f4ce8cd9", "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3", "4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a", "9400f1b21cb527d7fa3d3eabba93557a18ebe7a2ca4e471cfe5e4c5b4ca7f767", "f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b", "6f4b6612125fb3a0daecd2799dfd6c9c299424fd920f9b308110a2c1fbd8f443", "785f3ec7eb32f30b90cd0fcf3657d388b5ff4297f2f9716ff66e9b69c05ddd09", "535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790", "c2356069e9d1e79ca924378153cfbbfb4d4416b1f99d41a2940bfdb66c5319db", "b7a56873cd771f2c446d369b649430b65a756ba278ff97ec81bb6f55b2e73569", "5f9c4ab08cac7457e9111a30e4664920607ea2c115a1433d7be98e97e64244ca", "670671cd97404156226e507973f2ab8330d3022ca96e0c93bdbdb320c41adcaf", "59e19706d51d39f66711c2653cd7eb1291c94d9b55eb14bda74ce4dc636d015a", "35135aaa6cc23891b40cb3f378c53a17a1127210ce60e125ccf03efcfdaec458", "624b60c58c9d8bfb6ff1886c2fd605d2adeb6ea4da576068201b6c6958ce93f4", "eb1e33e8a81b697b75855af6bfcdbcbf7cbbde9f94962ceaec1ed8af21f5a50f"]
-        }
-      }, {
-        "key": "appuid",
-        "label": "Facebook App User ID (Not Hashed)",
-        "examples": ["1234567890", "1443637309", "1234567892"],
-        "type": "fbid",
-        "typeParams": {
-          "scoped": true,
-          "rejectHashed": true
-        }
-      }, {
-        "key": "pageuid",
-        "label": "Facebook Page User ID (Not Hashed)",
-        "examples": ["1234567890", "1443637309", "1234567892"],
-        "type": "fbid",
-        "typeParams": {
-          "scoped": true,
-          "rejectHashed": true
-        }
-      }, {
-        "key": "extern_id",
-        "label": "External ID",
-        "description": "Advertiser-specific or third-party ID",
-        "examples": ["ABX1234", "99931356", "12XYZ981"],
-        "type": "string",
-        "typeParams": {
-          "doNotHash": true,
-          "test": "^(?!\\s*$).+"
-        }
-      }, {
-        "key": "lead_id",
-        "label": "Lead ID",
-        "description": "Facebook Lead ID",
-        "examples": ["7543756327866", "4234567890123", "l:4234567890123"],
-        "type": "fbid",
-        "typeParams": {
-          "rejectHashed": true,
-          "stripPrefix": true
-        }
-      }],
-      "baseSchema": {
-        "id": "hashed_basic_pii_schema",
-        "version": "0.0.1"
-      }
-    }
-  }, {
-    "key": "custom_data",
-    "label": "CustomData",
-    "type": {
-      "canHaveExtraProps": true
-    }
-  }, {
-    "key": "value",
-    "label": "Value",
-    "examples": ["2534"],
-    "type": "number",
+    "examples": ["$2534"],
+    "type": "value",
     "typeParams": {
       "moreThan": 0,
       "rejectHashed": true
@@ -9243,11 +10440,11 @@ module.exports = {
   }, {
     "key": "event_name",
     "label": "Event Name",
-    "formats": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "InitiateCheckout", "Lead", "Purchase", "Search", "ViewContent", "Other"],
+    "formats": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "Contact", "CustomizeProduct", "Donate", "FindLocation", "InitiateCheckout", "Lead", "Other", "Purchase", "Schedule", "Search", "StartTrial", "SubmitApplication", "Subscribe", "ViewContent"],
     "type": "enum",
     "typeParams": {
       "caseInsensitive": true,
-      "options": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "InitiateCheckout", "Lead", "Purchase", "Search", "ViewContent", "Other"],
+      "options": ["AddPaymentInfo", "AddToCart", "AddToWishlist", "CompleteRegistration", "Contact", "CustomizeProduct", "Donate", "FindLocation", "InitiateCheckout", "Lead", "Other", "Purchase", "Schedule", "Search", "StartTrial", "SubmitApplication", "Subscribe", "ViewContent"],
       "rejectHashed": true
     },
     "maxCountOfExamplesToShow": 30
@@ -9259,7 +10456,7 @@ module.exports = {
       "rejectEmptyList": true,
       "rejectHashed": true,
       "caseInsensitiveElements": true,
-      "options": ["product", "product_group", "fb_product", "destination", "flight", "hotel", "home_listing", "home_service_provider", "auto_offer", "vehicle", "vehicle_offer", "media_title", "test_vertical"]
+      "options": ["product", "product_group", "fb_product", "destination", "flight", "hotel", "home_listing", "home_service_provider", "location_based_item", "local_service_business", "auto_market", "automotive_model", "vehicle", "vehicle_offer", "media_title", "test_vertical", "ticketed_experience", "service", "bookable_item", "offline_product", "ig_product"]
     },
     "examples": ["product", ["product", "destination"], "[product]", "[product, destination]"]
   }, {
@@ -9272,191 +10469,178 @@ module.exports = {
       "rejectHashed": true
     }
   }, {
-    "key": "catalog_auto_population_info",
-    "label": "Catalog Auto Population Info JSON",
-    "type": "json_list",
-    "typeParams": {
-      "maxItemsAllowed": 100,
-      "nestedPropSchema": {
-        "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
-        "id": "catalog_auto_population_info_schema",
-        "version": "0.0.1",
-        "type": "catalog_auto_population_info_keys",
-        "exampleFiles": {
-          "csv": "https://www.facebook.com/images/ads/signals/example_files/example_audience_file.csv"
-        },
-        "validIf": {
-          "rule": "meetAll",
+    "key": "contents",
+    "label": "Content Fields",
+    "type": {
+      "additionalInfoURL": "https://www.facebook.com/help/606443329504150",
+      "id": "content_data_schema",
+      "version": "0.0.1",
+      "type": "content_data",
+      "exampleFiles": {
+        "csv": "https://www.facebook.com/images/ads/signals/example_files/example_events_file.csv"
+      },
+      "validIf": {
+        "rule": "meetAll",
+        "args": [{
+          "rule": "dependentProps",
+          "name": "require_content_id_if_quantity",
           "args": [{
             "rule": "propValid",
-            "name": "valid_currency",
-            "args": "currency"
-          }, {
+            "args": "quantity"
+          }, ["content_id"]]
+        }, {
+          "rule": "dependentProps",
+          "name": "require_content_id_if_brand",
+          "args": [{
             "rule": "propValid",
-            "name": "valid_description",
-            "args": "description"
-          }, {
+            "args": "brand"
+          }, ["content_id"]]
+        }, {
+          "rule": "dependentProps",
+          "name": "require_content_id_if_price",
+          "args": [{
             "rule": "propValid",
-            "name": "valid_image_url",
-            "args": "image_url"
-          }, {
-            "rule": "propValid",
-            "name": "valid_name",
-            "args": "name"
-          }, {
-            "rule": "propValid",
-            "name": "valid_price",
             "args": "price"
-          }, {
+          }, ["content_id"]]
+        }, {
+          "rule": "dependentProps",
+          "name": "require_content_id_if_category",
+          "args": [{
             "rule": "propValid",
-            "name": "valid_retailer_id",
-            "args": "retailer_id"
-          }, {
+            "args": "category"
+          }, ["content_id"]]
+        }, {
+          "rule": "dependentProps",
+          "name": "require_content_id_if_description",
+          "args": [{
             "rule": "propValid",
-            "name": "valid_url",
-            "args": "url"
-          }, {
-            "rule": "meetAny",
-            "args": [{
-              "rule": "propValid",
-              "name": "valid_brand",
-              "args": "brand"
-            }, {
-              "rule": "propValid",
-              "name": "valid_gtin",
-              "args": "gtin"
-            }, {
-              "rule": "propValid",
-              "name": "valid_mpn",
-              "args": "manufacturer_part_number"
-            }]
-          }]
-        },
-        "props": [{
-          "key": "availability",
-          "label": "Product Availability",
-          "formats": ["in stock", "out of stock", "preorder", "available for order", "discontinued", ""],
-          "type": "enum",
-          "typeParams": {
-            "caseInsensitive": true,
-            "options": ["in stock", "out of stock", "preorder", "available for order", "discontinued", ""],
-            "rejectHashed": true
-          },
-          "maxCountOfExamplesToShow": 5
+            "args": "description"
+          }, ["content_id"]]
         }, {
-          "key": "brand",
-          "label": "Product Brand",
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "category",
-          "label": "Google Product Category",
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "currency",
-          "label": "Product Price Currency",
-          "examples": ["USD", "HUF"],
-          "type": "currency_code"
-        }, {
-          "key": "condition",
-          "label": "Product Condition",
-          "formats": ["new", "refurbished", "used", "cpo", ""],
-          "type": "enum",
-          "typeParams": {
-            "caseInsensitive": true,
-            "options": ["new", "refurbished", "used", "cpo", ""],
-            "rejectHashed": true
-          },
-          "maxCountOfExamplesToShow": 5
-        }, {
-          "key": "description",
-          "label": "Product Description",
-          "examples": ["A Wild Pikachu", "Groot Chia Pet"],
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "gtin",
-          "label": "Product GTIN",
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "image_url",
-          "label": "Product Image URL",
-          "examples": ["https://www.facebook.com/t_shirt_image_001.jpg"],
-          "type": "string",
-          "typeParams": {
-            "test": "^https?\\:\\/\\/.*"
-          }
-        }, {
-          "key": "manufacturer_part_number",
-          "label": "Product Manufacturer Part Number",
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "name",
-          "label": "Product Name",
-          "examples": ["Product Name"],
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "price",
-          "label": "Product Price",
-          "examples": ["2534"],
-          "type": "number",
-          "typeParams": {
-            "integer": true,
+          "rule": "dependentProps",
+          "name": "require_content_id_if_title",
+          "args": [{
+            "rule": "propValid",
+            "args": "title"
+          }, ["content_id"]]
+        }]
+      },
+      "transform": ["transformContentFieldsToObjectArray"],
+      "props": [{
+        "key": "content_id",
+        "label": "Content ID",
+        "examples": ["ABC123;123DEF"],
+        "type": "LIST",
+        "typeParams": {
+          "delimiter": ";",
+          "listContentType": "string"
+        }
+      }, {
+        "key": "quantity",
+        "label": "Quantity",
+        "examples": ["3;5"],
+        "type": "LIST",
+        "typeParams": {
+          "delimiter": ";",
+          "listContentType": "number",
+          "listContentTypeParam": {
             "moreThan": 0,
             "rejectHashed": true
           }
-        }, {
-          "key": "product_type",
-          "label": "Product Type",
-          "examples": ["Pet Pedometers", "Drum Pedals"],
-          "type": "string"
-        }, {
-          "key": "retailer_id",
-          "label": "Unique Product ID",
-          "examples": ["retailer_item_id_1", "content_id_1"],
-          "type": "string",
-          "typeParams": {
-            "test": "\\S"
-          }
-        }, {
-          "key": "url",
-          "label": "Product URL",
-          "examples": ["https://www.facebook.com/facebook_t_shirt"],
-          "type": "string",
-          "typeParams": {
-            "test": "^https?\\:\\/\\/.*"
-          }
-        }, {
-          "key": "visibility",
-          "label": "Product Visibility",
-          "formats": ["", "staging", "published", "hidden", "whitelist_only"],
-          "type": "enum",
-          "typeParams": {
-            "caseInsensitive": true,
-            "options": ["", "staging", "published", "hidden", "whitelist_only"],
+        }
+      }, {
+        "key": "brand",
+        "label": "Brand",
+        "examples": ["Adidas;Nike"],
+        "type": "LIST",
+        "typeParams": {
+          "delimiter": ";",
+          "listContentType": "string"
+        }
+      }, {
+        "key": "price",
+        "label": "Price",
+        "examples": ["12;35"],
+        "type": "LIST",
+        "typeParams": {
+          "delimiter": ";",
+          "listContentType": "number",
+          "listContentTypeParam": {
+            "moreThan": 0,
             "rejectHashed": true
-          },
-          "maxCountOfExamplesToShow": 5
-        }]
-      }
+          }
+        }
+      }, {
+        "key": "category",
+        "label": "Category",
+        "description": "Predefined values (string or category ID) from Google's product taxonomy.",
+        "examples": ["Animals & Pet Supplies;Apparel & Accessories > Clothing > Dresses", "2271;5082"],
+        "type": "LIST",
+        "typeParams": {
+          "delimiter": ";",
+          "listContentType": "string"
+        }
+      }, {
+        "key": "description",
+        "label": "Description",
+        "examples": ["best shoes ever", "the newest product in store"],
+        "type": "LIST",
+        "typeParams": {
+          "delimiter": ";",
+          "listContentType": "string"
+        }
+      }, {
+        "key": "title",
+        "label": "Title",
+        "examples": ["Air Force", "Yeezy"],
+        "type": "LIST",
+        "typeParams": {
+          "delimiter": ";",
+          "listContentType": "string"
+        }
+      }]
+    }
+  }, {
+    "key": "action_source",
+    "label": "Action Source",
+    "examples": ["physical_store", "website", "app", "phone_call", "email", "chat", "system_generated"],
+    "type": "string",
+    "typeParams": {
+      "lowercase": true
     },
-    "examples": ["[{\"availability\":\"in stock\",\"brand\":\"Facebook\",\"category\":\"2271\",\"condition\":\"new\",\"currency\":\"USD\",\"description\":\"A vibrant crewneck for all shapes and sizes.\",\"image_url\":\"https:\\/\\/www.facebook.com\\/t_shirt_image_001.jpg\",\"name\":\"Facebook T-Shirt (Unisex)\",\"price\":999,\"product_type\":\"Apparel & Accessories > Clothing > Shirts\",\"retailer_id\":\"FB_product_1234\",\"url\":\"https:\\/\\/www.facebook.com\\/t_shirt_001.jpg\"}]"]
+    "maxCountOfExamplesToShow": 10
+  }, {
+    "key": "data_processing_options",
+    "label": "Data Processing Options",
+    "type": "LIST",
+    "typeParams": {
+      "rejectEmptyString": true,
+      "rejectEmptyList": false,
+      "rejectHashed": true,
+      "caseInsensitiveElements": false,
+      "options": ["LDU"]
+    },
+    "examples": ["[]", "LDU", "[LDU]"]
+  }, {
+    "key": "data_processing_options_country",
+    "label": "Data Processing Options Country",
+    "type": "enum",
+    "typeParams": {
+      "isIntegerEnum": true,
+      "options": [1],
+      "rejectHashed": true
+    },
+    "examples": [1]
+  }, {
+    "key": "data_processing_options_state",
+    "label": "Data Processing Options State",
+    "type": "enum",
+    "typeParams": {
+      "isIntegerEnum": true,
+      "options": [1000],
+      "rejectHashed": true
+    },
+    "examples": [1000]
   }],
   "baseSchema": {
     "id": "event_data_schema",
@@ -9464,840 +10648,19 @@ module.exports = {
   }
 };
 
+module.exports = SignalsEventDataSchema;
+
 /***/ }),
-/* 50 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = {
-    "additionalInfoURL": "https:\/\/www.facebook.com\/help\/606443329504150",
-    "id": "basic_pii_schema",
-    "version": "0.0.1",
-    "type": "pii_keys",
-    "exampleFiles": {
-        "csv": "https:\/\/www.facebook.com\/images\/ads\/signals\/example_files\/example_audience_file.csv"
-    },
-    "validIf": {
-        "rule": "minValidProps",
-        "args": 1
-    },
-    "transform": ["processPIISignalBeforeUpload"],
-    "props": [{
-        "key": "email",
-        "maxOccurrence": 3,
-        "label": "Email",
-        "examples": ["Emily@example.com", "John@example.com", "Helena@example.com"],
-        "type": "email"
-    }, {
-        "key": "phone",
-        "maxOccurrence": 3,
-        "label": "Phone Number",
-        "examples": ["1(222)333-4444", "001(222)333-4444", "+12223334444"],
-        "type": "phone_number"
-    }, {
-        "key": "madid",
-        "label": "Mobile Advertiser ID",
-        "formats": ["Android's Advertising ID(AAID)", "Apple's Advertising Identifier(IDFA)"],
-        "type": "string",
-        "typeParams": {
-            "lowercase": true,
-            "strip": "whitespace_only",
-            "test": "^([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}|[a-zA-Z0-9]{6}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{13})$"
-        }
-    }, {
-        "key": "fn",
-        "label": "First Name",
-        "examples": ["John", "F.", "Fr&eacute;d&eacute;drique"],
-        "type": "string",
-        "typeParams": {
-            "lowercase": true,
-            "strip": "whitespace_and_punctuation"
-        }
-    }, {
-        "key": "ln",
-        "label": "Last Name",
-        "examples": ["Smith", "S&oslash;rensen", "Jacobs-Anderson"],
-        "type": "string",
-        "typeParams": {
-            "lowercase": true,
-            "strip": "whitespace_and_punctuation"
-        }
-    }, {
-        "key": "zip",
-        "label": "ZIP\/Postal Code",
-        "examples": ["94025", "94025-3215", "L3T 5M7"],
-        "type": "postal_code"
-    }, {
-        "key": "ct",
-        "label": "City",
-        "examples": ["Menlo Park", "Seattle", "London"],
-        "type": "string",
-        "typeParams": {
-            "lowercase": true,
-            "strip": "all_non_latin_alpha_numeric",
-            "test": "^[a-z]+"
-        }
-    }, {
-        "key": "st",
-        "label": "State\/Province",
-        "examples": ["CA", "Califonia", "Texas"],
-        "type": "string",
-        "typeParams": {
-            "lowercase": true,
-            "strip": "all_non_latin_alpha_numeric",
-            "test": "^[a-z]+"
-        }
-    }, {
-        "key": "country",
-        "label": "Country",
-        "examples": ["US", "GB", "FR"],
-        "type": "string",
-        "typeParams": {
-            "lowercase": true,
-            "strip": "whitespace_only",
-            "test": "^[a-zA-Z]{2,2}"
-        }
-    }, {
-        "key": "dob",
-        "label": "Date of Birth",
-        "examples": ["mm\/dd\/yyyy", "mm\/dd\/yy", "yyyy-mm-dd", "+ 15 more"],
-        "type": "date",
-        "typeParams": {
-            "rejectHashed": true
-        }
-    }, {
-        "key": "doby",
-        "label": "Year of Birth",
-        "type": "string",
-        "typeParams": {
-            "test": "^[0-9]{4,4}$"
-        },
-        "examples": ["1978", "1962", "1990"]
-    }, {
-        "key": "gen",
-        "label": "Gender",
-        "examples": ["M", "F"],
-        "type": "enum",
-        "typeParams": {
-            "lowercase": true,
-            "options": ["f", "m"]
-        }
-    }, {
-        "key": "age",
-        "label": "Age",
-        "examples": [65, 42, 21],
-        "type": "number",
-        "typeParams": {
-            "min": 0
-        }
-    }, {
-        "key": "appuid",
-        "label": "Facebook App User ID",
-        "examples": ["1234567890", "1443637309", "1234567892"],
-        "type": "fbid",
-        "typeParams": {
-            "scoped": true,
-            "rejectHashed": true
-        }
-    }, {
-        "key": "fi",
-        "noUI": true,
-        "label": "First name initial",
-        "type": "string",
-        "typeParams": {
-            "lowercase": true,
-            "strip": "whitespace_only",
-            "test": "^[a-z]{1,1}$"
-        }
-    }, {
-        "key": "f5first",
-        "noUI": true,
-        "label": "First five letters of first name",
-        "type": "string",
-        "typeParams": {
-            "lowercase": true,
-            "strip": "whitespace_only",
-            "test": "^[a-z]{5,5}$"
-        }
-    }, {
-        "key": "f5last",
-        "noUI": true,
-        "label": "First five letters of last name",
-        "type": "string",
-        "typeParams": {
-            "lowercase": true,
-            "strip": "whitespace_only",
-            "test": "^[a-z]{5,5}$"
-        }
-    }, {
-        "key": "pageuid",
-        "label": "Facebook Page User ID",
-        "examples": ["1234567890", "1443637309", "1234567892"],
-        "type": "fbid",
-        "typeParams": {
-            "scoped": true,
-            "rejectHashed": true
-        }
-    }]
-};
+module.exports = Object.freeze({ "ADD_PAYMENT_INFO": "AddPaymentInfo", "ADD_TO_CART": "AddToCart", "ADD_TO_WISHLIST": "AddToWishlist", "COMPLETE_REGISTRATION": "CompleteRegistration", "INITIATE_CHECKOUT": "InitiateCheckout", "LEAD": "Lead", "OTHER": "Other", "PURCHASE": "Purchase", "SEARCH": "Search", "VIEW_CONTENT": "ViewContent" });
 
 /***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = {
-    "additionalInfoURL": "https:\/\/www.facebook.com\/help\/606443329504150",
-    "id": "wlal_pii_schema",
-    "version": "0.0.1",
-    "type": "pii_keys",
-    "exampleFiles": {
-        "csv": "https:\/\/www.facebook.com\/images\/ads\/signals\/example_files\/example_value_based_audience_file.csv"
-    },
-    "validIf": {
-        "rule": "meetAll",
-        "args": [{
-            "rule": "propValid",
-            "args": "match_keys"
-        }, {
-            "rule": "propValid",
-            "args": "lookalike_value"
-        }]
-    },
-    "props": [{
-        "key": "match_keys",
-        "label": "Match keys",
-        "type": {
-            "additionalInfoURL": "https:\/\/www.facebook.com\/help\/606443329504150",
-            "id": "basic_pii_schema",
-            "version": "0.0.1",
-            "type": "pii_keys",
-            "exampleFiles": {
-                "csv": "https:\/\/www.facebook.com\/images\/ads\/signals\/example_files\/example_audience_file.csv"
-            },
-            "validIf": {
-                "rule": "minValidProps",
-                "args": 1
-            },
-            "transform": ["processPIISignalBeforeUpload"],
-            "props": [{
-                "key": "email",
-                "maxOccurrence": 3,
-                "label": "Email",
-                "examples": ["Emily@example.com", "John@example.com", "Helena@example.com"],
-                "type": "email"
-            }, {
-                "key": "phone",
-                "maxOccurrence": 3,
-                "label": "Phone Number",
-                "examples": ["1(222)333-4444", "001(222)333-4444", "+12223334444"],
-                "type": "phone_number"
-            }, {
-                "key": "madid",
-                "label": "Mobile Advertiser ID",
-                "formats": ["Android's Advertising ID(AAID)", "Apple's Advertising Identifier(IDFA)"],
-                "type": "string",
-                "typeParams": {
-                    "lowercase": true,
-                    "strip": "whitespace_only",
-                    "test": "^([a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}|[a-zA-Z0-9]{6}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{13})$"
-                }
-            }, {
-                "key": "fn",
-                "label": "First Name",
-                "examples": ["John", "F.", "Fr&eacute;d&eacute;drique"],
-                "type": "string",
-                "typeParams": {
-                    "lowercase": true,
-                    "strip": "whitespace_and_punctuation"
-                }
-            }, {
-                "key": "ln",
-                "label": "Last Name",
-                "examples": ["Smith", "S&oslash;rensen", "Jacobs-Anderson"],
-                "type": "string",
-                "typeParams": {
-                    "lowercase": true,
-                    "strip": "whitespace_and_punctuation"
-                }
-            }, {
-                "key": "zip",
-                "label": "ZIP\/Postal Code",
-                "examples": ["94025", "94025-3215", "L3T 5M7"],
-                "type": "postal_code"
-            }, {
-                "key": "ct",
-                "label": "City",
-                "examples": ["Menlo Park", "Seattle", "London"],
-                "type": "string",
-                "typeParams": {
-                    "lowercase": true,
-                    "strip": "all_non_latin_alpha_numeric",
-                    "test": "^[a-z]+"
-                }
-            }, {
-                "key": "st",
-                "label": "State\/Province",
-                "examples": ["CA", "Califonia", "Texas"],
-                "type": "string",
-                "typeParams": {
-                    "lowercase": true,
-                    "strip": "all_non_latin_alpha_numeric",
-                    "test": "^[a-z]+"
-                }
-            }, {
-                "key": "country",
-                "label": "Country",
-                "examples": ["US", "GB", "FR"],
-                "type": "string",
-                "typeParams": {
-                    "lowercase": true,
-                    "strip": "whitespace_only",
-                    "test": "^[a-zA-Z]{2,2}"
-                }
-            }, {
-                "key": "dob",
-                "label": "Date of Birth",
-                "examples": ["mm\/dd\/yyyy", "mm\/dd\/yy", "yyyy-mm-dd", "+ 15 more"],
-                "type": "date",
-                "typeParams": {
-                    "rejectHashed": true
-                }
-            }, {
-                "key": "doby",
-                "label": "Year of Birth",
-                "type": "string",
-                "typeParams": {
-                    "test": "^[0-9]{4,4}$"
-                },
-                "examples": ["1978", "1962", "1990"]
-            }, {
-                "key": "gen",
-                "label": "Gender",
-                "examples": ["M", "F"],
-                "type": "enum",
-                "typeParams": {
-                    "lowercase": true,
-                    "options": ["f", "m"]
-                }
-            }, {
-                "key": "age",
-                "label": "Age",
-                "examples": [65, 42, 21],
-                "type": "number",
-                "typeParams": {
-                    "min": 0
-                }
-            }, {
-                "key": "appuid",
-                "label": "Facebook App User ID",
-                "examples": ["1234567890", "1443637309", "1234567892"],
-                "type": "fbid",
-                "typeParams": {
-                    "scoped": true,
-                    "rejectHashed": true
-                }
-            }, {
-                "key": "fi",
-                "noUI": true,
-                "label": "First name initial",
-                "type": "string",
-                "typeParams": {
-                    "lowercase": true,
-                    "strip": "whitespace_only",
-                    "test": "^[a-z]{1,1}$"
-                }
-            }, {
-                "key": "f5first",
-                "noUI": true,
-                "label": "First five letters of first name",
-                "type": "string",
-                "typeParams": {
-                    "lowercase": true,
-                    "strip": "whitespace_only",
-                    "test": "^[a-z]{5,5}$"
-                }
-            }, {
-                "key": "f5last",
-                "noUI": true,
-                "label": "First five letters of last name",
-                "type": "string",
-                "typeParams": {
-                    "lowercase": true,
-                    "strip": "whitespace_only",
-                    "test": "^[a-z]{5,5}$"
-                }
-            }, {
-                "key": "pageuid",
-                "label": "Facebook Page User ID",
-                "examples": ["1234567890", "1443637309", "1234567892"],
-                "type": "fbid",
-                "typeParams": {
-                    "scoped": true,
-                    "rejectHashed": true
-                }
-            }]
-        }
-    }, {
-        "key": "lookalike_value",
-        "label": "Customer Value",
-        "description": "We support a numeric value, such as customer lifetime value or predictive lifetime value.",
-        "examples": [0, 0.1, 3, 20],
-        "type": "value",
-        "typeParams": {
-            "min": 0,
-            "rejectHashed": true
-        }
-    }]
-};
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var invariant = __webpack_require__(1);
-
-function getTestUploadResult(numRowsProcessed, normalizerSettings, normalizationErrorReport, validateResult) {
-  var errorReport = normalizationErrorReport;
-  invariant(errorReport.type === 'advanced', 'Invalid error report.');
-
-  var serverSideValidationResult = {
-    totalValidatedCount: validateResult.total_validated_count,
-    noMatchKeysCount: validateResult.events_without_match_keys_count,
-    matchCount: validateResult.match_count,
-    uniqueEventTimeOfDayCount: validateResult.unique_event_time_of_day_count,
-    eventsLagged2DaysCount: validateResult.events_lagged_2_days_count,
-    eventsLagged7DaysCount: validateResult.events_lagged_7_days_count,
-    eventsLagged90DaysCount: validateResult.events_lagged_90_days_count,
-    eventsWithValueCount: validateResult.events_with_value_count,
-    uniqueValueCount: validateResult.unique_value_count,
-    noOrderidCount: validateResult.no_orderid_count,
-    itemnumNoOrderidCount: validateResult.events_with_itemnum_no_orderid_count,
-    nonuniqueOrderidItemnumCount: validateResult.nonunique_orderid_itemnum_count,
-    orderidItemnumNonuniqueEventTimeCount: validateResult.orderid_itemnum_nonunique_event_time_count,
-    orderidNonuniqueMatchKeysCount: validateResult.orderid_nonunique_match_keys_count,
-    dataSetNotAssignedToAdAccount: validateResult.dataset_not_assigned_to_adaccount,
-    eventsBeforeAdAccountAssignment: validateResult.events_before_adaccount_assignment.map(function (warning) {
-      return {
-        id: warning.adaccount_id,
-        name: warning.adaccount_name,
-        assignTime: warning.assign_time,
-        count: warning.events_before_assignment
-      };
-    })
-  };
-
-  var rejectedEvents = {
-    total: 0,
-    missingPropPaths: errorReport.aggregatedMissingPropPaths,
-    numUnknownError: 0
-  };
-  var incompleteEvents = {
-    total: 0,
-    columnErrors: []
-  };
-  var columnStats = {};
-  errorReport.invalidSamples.forEach(function (sample) {
-    if (sample.rejected) {
-      rejectedEvents.total++;
-      rejectedEvents.numUnknownError += sample.uncollectedErrors.length > 0 ? 1 : 0;
-    } else {
-      incompleteEvents.total++;
-    }
-  });
-  Object.keys(errorReport.aggregatedColumnStats).forEach(function (column) {
-
-    var columnIndex = parseInt(column, 10);
-    var stats = errorReport.aggregatedColumnStats[column];
-    var mapping = normalizerSettings.mapping[column];
-    if (mapping != null) {
-      if (stats.numInvalidAndNotRejected > 0) {
-        incompleteEvents.columnErrors.push({
-          column: columnIndex,
-          mapping: normalizerSettings.mapping[column],
-          numErrors: stats.numInvalidAndNotRejected
-        });
-      }
-      columnStats[columnIndex] = {
-        mapping: normalizerSettings.mapping[column],
-        numValid: numRowsProcessed - stats.numEmpty - stats.numInvalidAndRejected - stats.numInvalidAndNotRejected,
-        numInvalid: stats.numInvalidAndRejected + stats.numInvalidAndNotRejected,
-        numEmpty: stats.numEmpty
-      };
-    }
-  });
-
-  return {
-    numTotalEvents: numRowsProcessed,
-    rejectedEvents: rejectedEvents,
-    incompleteEvents: incompleteEvents,
-    columnStats: columnStats,
-    invalidSamples: errorReport.invalidSamples,
-    serverSideValidationResult: serverSideValidationResult
-  };
-}
-
-module.exports = {
-  getTestUploadResult: getTestUploadResult
-};
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var ERROR_WEIGHT = {
-  NO_VALID_EVENT: 1900000,
-  NOT_ASSIGNED_TO_AD_ACCOUNT: 1800000,
-  NO_MATCH_KEYS_HIGH: 1700000,
-  VERY_LOW_MATCH_RATE: 1600000,
-  LAGGED_MORE_THAN_90_DAYS: 1000000,
-  INVALID_EVENTS: 1000000,
-  ORDERID_ITEMNUM_NONUNIQUE_EVENT_TIME: 900000,
-  ORDERID_NONUNIQUE_MATCH_KEYS: 900000,
-  LOW_MATCH_RATE: 800000,
-  NO_MATCH_KEYS_LOW: 800000,
-  ITEMNUM_NO_ORDERID: 100000,
-  NONUNIQUE_ORDERID_ITEMNUM: 200000,
-  LAGGED_MORE_THAN_7_DAYS: -10000,
-  INACCURATE_EVENT_TIME: 0,
-  SAME_VALUE_FOR_ALL_EVENTS: 0,
-  BEFORE_AD_ACCOUNT_ASSIGNMENT: 0,
-  INCOMPLETE_EVENTS: 0,
-  LOW_ORDERID_RATE: -10000
-};
-
-var LOW_MATCH_RATE_THRESHOLD = 75;
-var VERY_LOW_MATCH_RATE_THRESHOLD = 30;
-var UNIQUE_TIME_THRESHOLD = 0.25;
-var NO_MATCH_KEYS_THRESHOLD_HIGH = 35;
-var NO_MATCH_KEYS_THRESHOLD_LOW = 5;
-var NO_ORDERID_THRESHOLD = 25;
-
-var NoValidEventIssueChecker = function NoValidEventIssueChecker(result) {
-  return result.serverSideValidationResult.totalValidatedCount === 0 ? {
-    level: 'error',
-    weight: ERROR_WEIGHT.NO_VALID_EVENT,
-    issue: {
-      type: 'no-events-accepted'
-    }
-  } : null;
-};
-
-var LowMatchRateIssueChecker = function LowMatchRateIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  if (serverResult.totalValidatedCount > 0) {
-    var _matchRate = Math.round(100 * serverResult.matchCount / serverResult.totalValidatedCount);
-    if (_matchRate < LOW_MATCH_RATE_THRESHOLD) {
-      return {
-        level: _matchRate < VERY_LOW_MATCH_RATE_THRESHOLD ? 'error' : 'warning',
-        weight: _matchRate < VERY_LOW_MATCH_RATE_THRESHOLD ? ERROR_WEIGHT.VERY_LOW_MATCH_RATE : ERROR_WEIGHT.LOW_MATCH_RATE,
-        issue: {
-          type: 'low-match-rate',
-          matchRate: _matchRate
-        }
-      };
-    }
-  }
-  return null;
-};
-
-var LowPiiRateIssueChecker = function LowPiiRateIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  if (serverResult.totalValidatedCount > 0) {
-    var _noPiiRate = Math.round(100 * serverResult.noMatchKeysCount / serverResult.totalValidatedCount);
-    if (_noPiiRate > NO_MATCH_KEYS_THRESHOLD_LOW) {
-      return {
-        level: _noPiiRate > NO_MATCH_KEYS_THRESHOLD_HIGH ? 'error' : 'warning',
-        weight: _noPiiRate > NO_MATCH_KEYS_THRESHOLD_HIGH ? ERROR_WEIGHT.NO_MATCH_KEYS_HIGH : ERROR_WEIGHT.NO_MATCH_KEYS_LOW,
-        issue: {
-          type: 'low-pii-rate',
-          noPiiRate: _noPiiRate
-        }
-      };
-    }
-  }
-  return null;
-};
-
-var NotAssignedToAdAccountIssueChecker = function NotAssignedToAdAccountIssueChecker(result) {
-  return result.serverSideValidationResult.dataSetNotAssignedToAdAccount ? {
-    level: 'error',
-    weight: ERROR_WEIGHT.NOT_ASSIGNED_TO_AD_ACCOUNT,
-    issue: {
-      type: 'not-assigned-to-account'
-    }
-  } : null;
-};
-
-var EventsLagged90DaysIssueChecker = function EventsLagged90DaysIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  return serverResult.eventsLagged90DaysCount > 0 ? {
-    level: 'error',
-    weight: ERROR_WEIGHT.LAGGED_MORE_THAN_90_DAYS + serverResult.eventsLagged90DaysCount,
-    issue: {
-      type: 'events-lagged-90d',
-      count: serverResult.eventsLagged90DaysCount
-    }
-  } : null;
-};
-
-var EventsLagged7DaysIssueChecker = function EventsLagged7DaysIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  return serverResult.eventsLagged7DaysCount > 0 ? {
-    level: 'recommendation',
-    weight: ERROR_WEIGHT.LAGGED_MORE_THAN_7_DAYS + serverResult.eventsLagged7DaysCount,
-    issue: {
-      type: 'events-lagged-7d',
-      count: serverResult.eventsLagged7DaysCount
-    }
-  } : null;
-};
-
-var InaccurateEventTimeIssueChecker = function InaccurateEventTimeIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  return serverResult.uniqueEventTimeOfDayCount < serverResult.totalValidatedCount * UNIQUE_TIME_THRESHOLD ? {
-    level: 'warning',
-    weight: ERROR_WEIGHT.INACCURATE_EVENT_TIME,
-    issue: {
-      type: 'inaccurate-event-time'
-    }
-  } : null;
-};
-
-var SameValueIssueChecker = function SameValueIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  return serverResult.uniqueValueCount === 1 && serverResult.totalValidatedCount > 1 ? {
-    level: 'warning',
-    weight: ERROR_WEIGHT.SAME_VALUE_FOR_ALL_EVENTS,
-    issue: {
-      type: 'same-value'
-    }
-  } : null;
-};
-
-var EventsBeforeAdAccountAssignmentIssueChecker = function EventsBeforeAdAccountAssignmentIssueChecker(result) {
-  return result.serverSideValidationResult.eventsBeforeAdAccountAssignment.map(function (warning) {
-    return {
-      level: 'warning',
-      weight: ERROR_WEIGHT.BEFORE_AD_ACCOUNT_ASSIGNMENT + warning.count,
-      issue: {
-        type: 'events-before-ad-account-assignment',
-        accountID: warning.id,
-        accountName: warning.name,
-        count: warning.count,
-        assignTime: warning.assignTime
-      }
-    };
-  });
-};
-
-var RejectedEventsIssueChecker = function RejectedEventsIssueChecker(result) {
-  var invalidSamples = result.invalidSamples,
-      rejectedEvents = result.rejectedEvents;
-
-  if (rejectedEvents.total > 0) {
-    var _samples = invalidSamples.filter(function (sample) {
-      return sample.rejected;
-    });
-    var _summary = [];
-    for (var _propPath in rejectedEvents.missingPropPaths) {
-      _summary.push({
-        propPath: _propPath,
-        count: rejectedEvents.missingPropPaths[_propPath]
-      });
-    }
-    _summary.sort(function (s1, s2) {
-      return s2.count - s1.count;
-    });
-    return {
-      level: 'error',
-      weight: ERROR_WEIGHT.INVALID_EVENTS + rejectedEvents.total,
-      issue: {
-        type: 'events-rejected',
-        count: rejectedEvents.total,
-        summary: _summary,
-        samples: _samples
-      }
-    };
-  }
-  return null;
-};
-
-var IncompleteEventsIssueChecker = function IncompleteEventsIssueChecker(result) {
-  var invalidSamples = result.invalidSamples,
-      incompleteEvents = result.incompleteEvents;
-
-  if (incompleteEvents.total > 0) {
-    var _samples2 = invalidSamples.filter(function (sample) {
-      return !sample.rejected;
-    });
-    var _summary2 = incompleteEvents.columnErrors.map(function (error) {
-      return {
-        mapping: error.mapping,
-        columnIndex: error.column,
-        count: error.numErrors
-      };
-    });
-    _summary2.sort(function (s1, s2) {
-      return s2.count - s1.count;
-    });
-    return {
-      level: 'warning',
-      weight: ERROR_WEIGHT.INCOMPLETE_EVENTS + incompleteEvents.total,
-      issue: {
-        type: 'events-incomplete',
-        count: incompleteEvents.total,
-        summary: _summary2,
-        samples: _samples2
-      }
-    };
-  }
-  return null;
-};
-
-var LowOrderIdRateIssueChecker = function LowOrderIdRateIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  if (serverResult.totalValidatedCount > 0) {
-    var noOrderIdRate = Math.round(100 * serverResult.noOrderidCount / serverResult.totalValidatedCount);
-    if (noOrderIdRate > NO_ORDERID_THRESHOLD) {
-      return {
-        level: 'recommendation',
-        weight: ERROR_WEIGHT.LOW_ORDERID_RATE + serverResult.noOrderidCount,
-        issue: {
-          type: 'low-orderid-rate',
-          count: serverResult.noOrderidCount
-        }
-      };
-    }
-  }
-  return null;
-};
-
-var ItemNumWithoutOrderIdIssueChecker = function ItemNumWithoutOrderIdIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  return serverResult.itemnumNoOrderidCount > 0 ? {
-    level: 'warning',
-    weight: ERROR_WEIGHT.ITEMNUM_NO_ORDERID + serverResult.itemnumNoOrderidCount,
-    issue: {
-      type: 'itemnum-without-orderid',
-      count: serverResult.itemnumNoOrderidCount
-    }
-  } : null;
-};
-
-var NonUniqueOrderIdItemNumIssueChecker = function NonUniqueOrderIdItemNumIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  return serverResult.nonuniqueOrderidItemnumCount > 0 ? {
-    level: 'warning',
-    weight: ERROR_WEIGHT.NONUNIQUE_ORDERID_ITEMNUM + serverResult.nonuniqueOrderidItemnumCount,
-    issue: {
-      type: 'nonunique-orderid-itemnum',
-      count: serverResult.nonuniqueOrderidItemnumCount
-    }
-  } : null;
-};
-
-var OrderidItemnumNonuniqueEventTimeIssueChecker = function OrderidItemnumNonuniqueEventTimeIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  return serverResult.orderidItemnumNonuniqueEventTimeCount > 0 ? {
-    level: 'error',
-    weight: ERROR_WEIGHT.ORDERID_ITEMNUM_NONUNIQUE_EVENT_TIME,
-    issue: {
-      type: 'orderid-itemnum-nonunique-event-time',
-      count: serverResult.orderidItemnumNonuniqueEventTimeCount
-    }
-  } : null;
-};
-
-var OrderidNonuniqueMatchKeysIssueChecker = function OrderidNonuniqueMatchKeysIssueChecker(result) {
-  var serverResult = result.serverSideValidationResult;
-  return serverResult.orderidNonuniqueMatchKeysCount > 0 ? {
-    level: 'error',
-    weight: ERROR_WEIGHT.ORDERID_NONUNIQUE_MATCH_KEYS,
-    issue: {
-      type: 'orderid-nonunique-match-keys',
-      count: serverResult.orderidNonuniqueMatchKeysCount
-    }
-  } : null;
-};
-
-var IssueCheckers = {
-  NoValidEventIssueChecker: NoValidEventIssueChecker,
-  LowMatchRateIssueChecker: LowMatchRateIssueChecker,
-  LowPiiRateIssueChecker: LowPiiRateIssueChecker,
-  NotAssignedToAdAccountIssueChecker: NotAssignedToAdAccountIssueChecker,
-  EventsLagged90DaysIssueChecker: EventsLagged90DaysIssueChecker,
-  EventsLagged7DaysIssueChecker: EventsLagged7DaysIssueChecker,
-  InaccurateEventTimeIssueChecker: InaccurateEventTimeIssueChecker,
-  SameValueIssueChecker: SameValueIssueChecker,
-  EventsBeforeAdAccountAssignmentIssueChecker: EventsBeforeAdAccountAssignmentIssueChecker,
-  RejectedEventsIssueChecker: RejectedEventsIssueChecker,
-  IncompleteEventsIssueChecker: IncompleteEventsIssueChecker,
-  LowOrderIdRateIssueChecker: LowOrderIdRateIssueChecker,
-  ItemNumWithoutOrderIdIssueChecker: ItemNumWithoutOrderIdIssueChecker,
-  NonUniqueOrderIdItemNumIssueChecker: NonUniqueOrderIdItemNumIssueChecker,
-  OrderidItemnumNonuniqueEventTimeIssueChecker: OrderidItemnumNonuniqueEventTimeIssueChecker,
-  OrderidNonuniqueMatchKeysIssueChecker: OrderidNonuniqueMatchKeysIssueChecker
-};
-
-function getWarningsFromTestUploadResult(result, checkers) {
-  var issues = [];
-  for (var checkerName in checkers) {
-    var checker = checkers[checkerName];
-    var newIssues = checker(result);
-    if (newIssues != null) {
-      if (Array.isArray(newIssues)) {
-        issues.push.apply(issues, _toConsumableArray(newIssues));
-      } else {
-        issues.push(newIssues);
-      }
-    }
-  }
-
-  issues.sort(function (i1, i2) {
-    return i2.weight - i1.weight;
-  });
-  var warnings = issues.filter(function (i) {
-    return i.level === 'warning';
-  }).map(function (i) {
-    return i.issue;
-  });
-  var errors = issues.filter(function (i) {
-    return i.level === 'error';
-  }).map(function (i) {
-    return i.issue;
-  });
-  var recommendations = issues.filter(function (i) {
-    return i.level === 'recommendation';
-  }).map(function (i) {
-    return i.issue;
-  });
-  return {
-    warnings: warnings,
-    errors: errors,
-    recommendations: recommendations
-  };
-}
-
-module.exports = {
-  IssueCheckers: IssueCheckers,
-  getWarningsFromTestUploadResult: getWarningsFromTestUploadResult
-};
-
-/***/ }),
-/* 54 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10306,7 +10669,7 @@ module.exports = {
 module.exports = ['ISO8601', 'unix_time', 'MM-DD-YYYY', 'MM/DD/YYYY', 'MMDDYYYY', 'DD-MM-YYYY', 'DD/MM/YYYY', 'DDMMYYYY', 'YYYY-MM-DD', 'YYYY/MM/DD', 'YYYYMMDD', 'MM-DD-YY', 'MM/DD/YY', 'MMDDYY', 'DD-MM-YY', 'DD/MM/YY', 'DDMMYY', 'YY-MM-DD', 'YY/MM/DD', 'YYMMDD'];
 
 /***/ }),
-/* 55 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10320,7 +10683,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderSingleWorkerTask = __webpack_require__(38);
+var SignalsUploaderSingleWorkerTask = __webpack_require__(45);
 
 var SignalsUploaderPreviewV2Task = function (_SignalsUploaderSingl) {
   _inherits(SignalsUploaderPreviewV2Task, _SignalsUploaderSingl);
@@ -10350,13 +10713,13 @@ var SignalsUploaderPreviewV2Task = function (_SignalsUploaderSingl) {
     key: '__initializeWorker',
     value: function __initializeWorker() {
       this.__postMessageToWorker({
-        type: 'initialize-preview-v2-job',
         delimiter: this._delimiter,
-        normalizerSettings: this._normalizerSettings,
-        presetValues: this._presetValues,
         errorReportConfig: this._errorReportConfig,
+        hasHeader: this._hasHeader,
+        normalizerSettings: this._normalizerSettings,
         numSampleRows: this._numSampleRows,
-        hasHeader: this._hasHeader
+        presetValues: this._presetValues,
+        type: 'initialize-preview-v2-job'
       });
     }
   }, {
@@ -10365,10 +10728,10 @@ var SignalsUploaderPreviewV2Task = function (_SignalsUploaderSingl) {
       switch (message.type) {
         case 'preview-v2-done':
           this.__stopAndResolve({
-            task: 'preview-v2',
             errorReport: message.errorReport,
+            normalizedRows: message.normalizedRows,
             numRowsProcessed: message.numRowsProcessed,
-            normalizedRows: message.normalizedRows
+            task: 'preview-v2'
           });
           break;
 
@@ -10385,7 +10748,7 @@ var SignalsUploaderPreviewV2Task = function (_SignalsUploaderSingl) {
     }
   }, {
     key: '__logResolve',
-    value: function __logResolve(result) {
+    value: function __logResolve(_result) {
 
       this.__logEvent('signals-uploader-v2-preview-v2-resolve');
     }
@@ -10402,7 +10765,7 @@ var SignalsUploaderPreviewV2Task = function (_SignalsUploaderSingl) {
 module.exports = SignalsUploaderPreviewV2Task;
 
 /***/ }),
-/* 56 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10416,7 +10779,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderSingleWorkerTask = __webpack_require__(38);
+var SignalsUploaderSingleWorkerTask = __webpack_require__(45);
 
 var SignalsUploaderSampleFetchTask = function (_SignalsUploaderSingl) {
   _inherits(SignalsUploaderSampleFetchTask, _SignalsUploaderSingl);
@@ -10442,9 +10805,9 @@ var SignalsUploaderSampleFetchTask = function (_SignalsUploaderSingl) {
     key: '__initializeWorker',
     value: function __initializeWorker() {
       this.__postMessageToWorker({
-        type: 'initialize-sample-fetch-job',
         delimiter: this._delimiter,
-        numSampleRows: this._numSampleRows
+        numSampleRows: this._numSampleRows,
+        type: 'initialize-sample-fetch-job'
       });
     }
   }, {
@@ -10453,9 +10816,9 @@ var SignalsUploaderSampleFetchTask = function (_SignalsUploaderSingl) {
       switch (message.type) {
         case 'sample-fetch-done':
           this.__stopAndResolve({
-            task: 'sample-fetch',
+            firstRowEnd: message.firstRowEnd,
             samples: message.samples,
-            firstRowEnd: message.firstRowEnd
+            task: 'sample-fetch'
           });
           break;
 
@@ -10472,7 +10835,7 @@ var SignalsUploaderSampleFetchTask = function (_SignalsUploaderSingl) {
     }
   }, {
     key: '__logResolve',
-    value: function __logResolve(result) {
+    value: function __logResolve(_result) {
 
       this.__logEvent('signals-uploader-v2-sample-fetch-resolve');
     }
@@ -10489,7 +10852,7 @@ var SignalsUploaderSampleFetchTask = function (_SignalsUploaderSingl) {
 module.exports = SignalsUploaderSampleFetchTask;
 
 /***/ }),
-/* 57 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10503,10 +10866,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderTask = __webpack_require__(39);
+var SignalsUploaderTask = __webpack_require__(46);
 
 var createSignalsUploaderErrorReportGenerator = __webpack_require__(18);
-var createSignalsUploaderWorker = __webpack_require__(43);
+var createSignalsUploaderWorker = __webpack_require__(47);
 var invariant = __webpack_require__(1);
 
 var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
@@ -10580,35 +10943,35 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
     value: function __initialize() {
       this._parserWorker = createSignalsUploaderWorker(this.__onReceiveMessageFromParserWorker.bind(this));
       this._parserWorker.postMessage({
-        type: 'initialize-construct-batch-job',
         delimiter: this._delimiter,
+        hasHeader: this._hasHeader,
         maxNumRowsPerBatch: this._maxNumRowsPerBatch,
         progressRanges: this._progressRanges,
-        hasHeader: this._hasHeader
+        type: 'initialize-construct-batch-job'
       });
 
       var numNormalizerWorkers = Math.min(global.navigator && global.navigator.hardwareConcurrency || 1, this._maxNumConcurrentNormalizer);
 
-      for (var i = 0; i < numNormalizerWorkers; i++) {
+      for (var index = 0; index < numNormalizerWorkers; index++) {
         var normalizerWorker = createSignalsUploaderWorker(this.__onReceiveMessageFromNormalizerWorker.bind(this));
         normalizerWorker.postMessage({
-          type: 'initialize-normalize-batch-job',
+          errorReportConfig: this._errorReportConfig,
           normalizerSettings: this._normalizerSettings,
           presetValues: this._presetValues,
-          errorReportConfig: this._errorReportConfig
+          type: 'initialize-normalize-batch-job'
         });
         this._normalizerWorkers.push(normalizerWorker);
       }
 
       this.__logEvent('signals-uploader-v2-upload-start', {
-        progressRanges: this._progressRanges,
-        hasHeader: this._hasHeader,
-        presetValues: this._presetValues,
-        mapping: this._normalizerSettings.mapping,
-        infoForNormalization: this._normalizerSettings.infoForNormalization,
         customTypeInfo: this._normalizerSettings.customTypeInfo,
-        schemaID: this._normalizerSettings.schema.id,
-        numNormalizerWorkers: numNormalizerWorkers
+        hasHeader: this._hasHeader,
+        infoForNormalization: this._normalizerSettings.infoForNormalization,
+        mapping: this._normalizerSettings.mapping,
+        numNormalizerWorkers: numNormalizerWorkers,
+        presetValues: this._presetValues,
+        progressRanges: this._progressRanges,
+        schemaID: this._normalizerSettings.schema.id
       });
     }
   }, {
@@ -10628,8 +10991,8 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
     value: function __onChunk(chunk) {
       if (this.__running()) {
         this._parserWorker && this._parserWorker.postMessage({
-          type: 'chunk-ready',
-          chunk: chunk
+          chunk: chunk,
+          type: 'chunk-ready'
         });
       }
     }
@@ -10638,8 +11001,8 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
     value: function __onEndOfStream(endOfStream) {
       if (this.__running()) {
         this._parserWorker && this._parserWorker.postMessage({
-          type: 'end-of-stream',
-          endOfStream: endOfStream
+          endOfStream: endOfStream,
+          type: 'end-of-stream'
         });
       }
     }
@@ -10661,11 +11024,11 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
         case 'construct-batch-batch-ready':
           this._numBatchesNormalizing++;
           this._normalizerWorkers[this._nextNormalizerWorkerIndex].postMessage({
-            type: 'normalize-batch',
+            chunkIndex: message.chunkIndex,
+            end: message.end,
             rows: message.rows,
             start: message.start,
-            end: message.end,
-            chunkIndex: message.chunkIndex
+            type: 'normalize-batch'
           });
           this._nextNormalizerWorkerIndex++;
           if (this._nextNormalizerWorkerIndex >= this._normalizerWorkers.length) {
@@ -10689,10 +11052,10 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
       this._errorReport = this._errorReportGenerator.merge(this._errorReport, message.errorReport);
       this._numBatchesNormalizing--;
       this._deferredProgresses.push({
+        chunkIndex: message.batch.chunkIndex,
         numRowsFailedToNormalize: message.numRowsFailedToNormalize,
-        numRowsUploaded: 0,
         numRowsFailedToUpload: 0,
-        chunkIndex: message.batch.chunkIndex
+        numRowsUploaded: 0
       });
       this._updateProgress();
       if (message.batch.rows.length > 0) {
@@ -10716,7 +11079,7 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
         _this2._numBatchesSending++;
         _this2._sendBatch(nextBatch, _this2._numRetriesForAPIError, _this2._numRetriesForNetworkError).then(function () {
           _this2._onBatchSent(nextBatch, true);
-        }).catch(function (error) {
+        }).catch(function (_error) {
           _this2._onBatchSent(nextBatch, false);
         });
       };
@@ -10745,8 +11108,8 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
           var numRetiresForNetworkError = _this3._numRetriesForNetworkError - retriesLeftForNetworkError;
           if (numRetriesAPIError > 0 || numRetiresForNetworkError > 0) {
             _this3.__logEvent('signals-uploader-v2-upload-retry-success', {
-              numRetriesAPIError: numRetriesAPIError,
-              numRetiresForNetworkError: numRetiresForNetworkError
+              numRetiresForNetworkError: numRetiresForNetworkError,
+              numRetriesAPIError: numRetriesAPIError
             });
           }
           resolve();
@@ -10763,8 +11126,8 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
               }, _this3._retryIntervalForNetworkError);
             } else {
               _this3.__logError('signals-uploader-v2-upload-batch-fail-network', error, {
-                retries: _this3._numRetriesForNetworkError,
-                interval: _this3._retryIntervalForNetworkError
+                interval: _this3._retryIntervalForNetworkError,
+                retries: _this3._numRetriesForNetworkError
               });
               reject(error);
             }
@@ -10784,8 +11147,8 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
               }, _this3._retryIntervalForAPIError);
             } else {
               _this3.__logError('signals-uploader-v2-upload-batch-fail-api', error, {
-                retries: _this3._numRetriesForAPIError,
-                interval: _this3._retryIntervalForAPIError
+                interval: _this3._retryIntervalForAPIError,
+                retries: _this3._numRetriesForAPIError
               });
               reject(error);
             }
@@ -10797,10 +11160,10 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
     key: '_onBatchSent',
     value: function _onBatchSent(batch, success) {
       this._deferredProgresses.push({
+        chunkIndex: batch.chunkIndex,
         numRowsFailedToNormalize: 0,
-        numRowsUploaded: success ? batch.rows.length : 0,
         numRowsFailedToUpload: success ? 0 : batch.rows.length,
-        chunkIndex: batch.chunkIndex
+        numRowsUploaded: success ? batch.rows.length : 0
       });
       this._numBatchesSending--;
       this._updateProgress();
@@ -10823,16 +11186,16 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
       });
       this._deferredProgresses = deferredProgresses;
 
-      var estimatedProgress = this._numRowsParsed == 0 || this._sourceSize == 0 ? 0 : ((this._hasHeader ? 1 : 0) + this._numRowsUploaded + this._numRowsFailedToUpload + this._numRowsFailedToNormalize + this._numRowsAlreadyUploaded) / this._numRowsParsed * Math.min(1, this._numChunksProcessed * this._chunkSize / this._sourceSize);
+      var estimatedProgress = this._numRowsParsed === 0 || this._sourceSize === 0 ? 0 : ((this._hasHeader ? 1 : 0) + this._numRowsUploaded + this._numRowsFailedToUpload + this._numRowsFailedToNormalize + this._numRowsAlreadyUploaded) / this._numRowsParsed * Math.min(1, this._numChunksProcessed * this._chunkSize / this._sourceSize);
       if (estimatedProgress > this._lastEstimatedProgress) {
         this._lastEstimatedProgress = Math.min(estimatedProgress, 1);
       }
       var progress = {
+        estimatedProgress: this._lastEstimatedProgress,
         numRowsAlreadyUploaded: this._numRowsAlreadyUploaded,
         numRowsFailedToNormalize: this._numRowsFailedToNormalize,
         numRowsFailedToUpload: this._numRowsFailedToUpload,
-        numRowsUploaded: this._numRowsUploaded,
-        estimatedProgress: this._lastEstimatedProgress
+        numRowsUploaded: this._numRowsUploaded
       };
       this._progressUpdater(progress);
     }
@@ -10841,24 +11204,25 @@ var SignalsUploaderUploadTask = function (_SignalsUploaderTask) {
     value: function _sendFinishMessage() {
       invariant((this._hasHeader ? 1 : 0) + this._numRowsAlreadyUploaded + this._numRowsFailedToNormalize + this._numRowsFailedToUpload + this._numRowsUploaded === this._numRowsParsed, 'Inconsistent progress.');
       this.__stopAndResolve({
-        task: 'upload',
+        errorReport: this._errorReport,
         progress: {
+          estimatedProgress: 1,
           numRowsAlreadyUploaded: this._numRowsAlreadyUploaded,
           numRowsFailedToNormalize: this._numRowsFailedToNormalize,
           numRowsFailedToUpload: this._numRowsFailedToUpload,
-          numRowsUploaded: this._numRowsUploaded,
-          estimatedProgress: 1
+          numRowsUploaded: this._numRowsUploaded
         },
-        errorReport: this._errorReport
+        task: 'upload'
       });
     }
   }, {
     key: '__logResolve',
     value: function __logResolve(result) {
       invariant(result.task === 'upload', 'Invalid result.');
+      var milliseconds = 1000;
       this.__logEvent('signals-uploader-v2-upload-resolve', {
-        progress: result.progress,
-        duration: (Date.now() - this._startTime) / 1000
+        duration: (Date.now() - this._startTime) / milliseconds,
+        progress: result.progress
       });
     }
   }, {
@@ -10875,16 +11239,112 @@ module.exports = SignalsUploaderUploadTask;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
-/* 58 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = Object.freeze({ "ADD_PAYMENT_INFO": "AddPaymentInfo", "ADD_TO_CART": "AddToCart", "ADD_TO_WISHLIST": "AddToWishlist", "COMPLETE_REGISTRATION": "CompleteRegistration", "INITIATE_CHECKOUT": "InitiateCheckout", "LEAD": "Lead", "OTHER": "Other", "PURCHASE": "Purchase", "SEARCH": "Search", "VIEW_CONTENT": "ViewContent" });
+var OfflineStandardEventsEnum = __webpack_require__(58);
+var SignalDateFormats = __webpack_require__(6);
+var SignalsBasicPIISchema = __webpack_require__(52);
+var SignalsCurrencyCodes = __webpack_require__(22);
+var SignalsDSDITestUploadUtils = __webpack_require__(55);
+var SignalsDSDITestUploadWarnings = __webpack_require__(56);
+var SignalsEventDataSchema = __webpack_require__(57);
+var SignalsHashedEventDataSchema = __webpack_require__(53);
+var SignalsUploaderPreviewV2Task = __webpack_require__(60);
+var SignalsUploaderSampleFetchTask = __webpack_require__(61);
+var SignalsUploaderUploadTask = __webpack_require__(62);
+var SignalsWLALExtendedPIISchema = __webpack_require__(54);
+var SignalTimestampFormats = __webpack_require__(59);
+
+var getSignalsSchemaSummary = __webpack_require__(21);
+
+module.exports = {
+  OfflineStandardEventsEnum: OfflineStandardEventsEnum,
+  SignalDateFormats: SignalDateFormats,
+  SignalsBasicPIISchema: SignalsBasicPIISchema,
+  SignalsCurrencyCodes: SignalsCurrencyCodes,
+  SignalsDSDITestUploadUtils: SignalsDSDITestUploadUtils,
+  SignalsDSDITestUploadWarnings: SignalsDSDITestUploadWarnings,
+  SignalsEventDataSchema: SignalsEventDataSchema,
+  SignalsHashedEventDataSchema: SignalsHashedEventDataSchema,
+  SignalsUploaderPreviewV2Task: SignalsUploaderPreviewV2Task,
+  SignalsUploaderSampleFetchTask: SignalsUploaderSampleFetchTask,
+  SignalsUploaderUploadTask: SignalsUploaderUploadTask,
+  SignalsWLALExtendedPIISchema: SignalsWLALExtendedPIISchema,
+  SignalTimestampFormats: SignalTimestampFormats,
+  getSignalsSchemaSummary: getSignalsSchemaSummary
+};
 
 /***/ }),
-/* 59 */
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var keyMirrorRecursive = __webpack_require__(92);
+
+var SignalsUploaderColumnMapperConstants = keyMirrorRecursive({
+  CUSTOM_COLUMN_TYPE_VALUE: '',
+  DEFAULT_COLUMN_TYPE_VALUE: '',
+  ITEM_STATUSES: {
+    MAPPED_RIGHT: '',
+    MAPPED_WITH_ERROR: '',
+    NON_MAPPED: '',
+    PENDING: '',
+    PRE_MAPPED: ''
+  },
+  SKIP_ADDITIONAL_INFO_VALUE: '',
+  UNDEFINED_ADDITIONAL_INFO_VALUE: ''
+});
+
+module.exports = SignalsUploaderColumnMapperConstants;
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = Object.freeze({ "WHITESPACE_ONLY": "whitespace_only", "WHITESPACE_AND_PUNCTUATION": "whitespace_and_punctuation", "ALL_NON_LATIN_ALPHA_NUMERIC": "all_non_latin_alpha_numeric" });
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var US_NUMBER_RE = /^1\(?\d{3}\)?\d{7}$/;
+var NORWAY_NUMBER_RE = /^47\d{8}$/;
+var INTL_NUMBER_RE = /^\d{1,4}\(?\d{2,3}\)?\d{4,}$/;
+
+function isInternationalPhoneNumber(number) {
+  var trimmedNumber = number.replace(/[\-\s]+/g, '').replace(/^\+?0{0,2}/, '');
+
+  if (trimmedNumber.startsWith('0')) {
+    return false;
+  }
+
+  if (trimmedNumber.startsWith('1')) {
+    return US_NUMBER_RE.test(trimmedNumber);
+  }
+
+  if (trimmedNumber.startsWith('47')) {
+    return NORWAY_NUMBER_RE.test(trimmedNumber);
+  }
+
+  return INTL_NUMBER_RE.test(trimmedNumber);
+}
+
+module.exports = isInternationalPhoneNumber;
+
+/***/ }),
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10894,18 +11354,18 @@ var _module$exports;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SignalBaseTypes = __webpack_require__(19);
+var SignalBaseTypes = __webpack_require__(13);
 
-module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(23)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(24)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(25)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(9)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(26)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(27)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(10)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(28)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(29)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(30)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(31)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(32)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(33)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(14)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(34)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(15)), _module$exports);
+module.exports = (_module$exports = {}, _defineProperty(_module$exports, SignalBaseTypes.ANY, __webpack_require__(28)), _defineProperty(_module$exports, SignalBaseTypes.BOOL, __webpack_require__(29)), _defineProperty(_module$exports, SignalBaseTypes.CURRENCY_CODE, __webpack_require__(30)), _defineProperty(_module$exports, SignalBaseTypes.DATE, __webpack_require__(9)), _defineProperty(_module$exports, SignalBaseTypes.DATE_MONTH, __webpack_require__(31)), _defineProperty(_module$exports, SignalBaseTypes.EMAIL, __webpack_require__(32)), _defineProperty(_module$exports, SignalBaseTypes.ENUM, __webpack_require__(10)), _defineProperty(_module$exports, SignalBaseTypes.FBID, __webpack_require__(33)), _defineProperty(_module$exports, SignalBaseTypes.LIST, __webpack_require__(34)), _defineProperty(_module$exports, SignalBaseTypes.NUMBER, __webpack_require__(11)), _defineProperty(_module$exports, SignalBaseTypes.PHONE_NUMBER, __webpack_require__(35)), _defineProperty(_module$exports, SignalBaseTypes.POSTAL_CODE, __webpack_require__(36)), _defineProperty(_module$exports, SignalBaseTypes.SHA256, __webpack_require__(37)), _defineProperty(_module$exports, SignalBaseTypes.STRING, __webpack_require__(38)), _defineProperty(_module$exports, SignalBaseTypes.TIMESTAMP, __webpack_require__(15)), _defineProperty(_module$exports, SignalBaseTypes.UNIX_TIME, __webpack_require__(39)), _defineProperty(_module$exports, SignalBaseTypes.VALUE, __webpack_require__(16)), _module$exports);
 
 /***/ }),
-/* 60 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var keyMirror = __webpack_require__(46);
+var keyMirror = __webpack_require__(50);
 
 var SignalsTimestampNormalizationErrorTypes = keyMirror({
   REJECT_TOO_EARLY: null,
@@ -10915,7 +11375,7 @@ var SignalsTimestampNormalizationErrorTypes = keyMirror({
 module.exports = SignalsTimestampNormalizationErrorTypes;
 
 /***/ }),
-/* 61 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10923,10 +11383,10 @@ module.exports = SignalsTimestampNormalizationErrorTypes;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var SignalsBaseTypeJSONListNestableNormalizers = __webpack_require__(59);
+var SignalsBaseTypeJSONListNestableNormalizers = __webpack_require__(67);
 var SignalsValidationUtils = __webpack_require__(0);
 
-var normalizeSignal = __webpack_require__(7);
+var normalizeSignal = __webpack_require__(8);
 
 var looksLikeHashed = SignalsValidationUtils.looksLikeHashed;
 
@@ -10956,7 +11416,7 @@ function normalize(input) {
             results = input.map(function (potential_result) {
               return JSON.parse(potential_result);
             });
-          } catch (err) {
+          } catch (_exception) {
             results = null;
           }
           break;
@@ -10981,7 +11441,7 @@ function normalize(input) {
           results = JSON.parse(input);
 
           results = Array.isArray(results) ? results : null;
-        } catch (err) {
+        } catch (_exception) {
           results = null;
         }
       }
@@ -11020,7 +11480,7 @@ function normalize(input) {
 module.exports = normalize;
 
 /***/ }),
-/* 62 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11030,12 +11490,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var SignalsNormalizationErrorLevel = __webpack_require__(41);
-var SignalsNormalizationErrorScope = __webpack_require__(12);
+var SignalsNormalizationErrorLevel = __webpack_require__(25);
+var SignalsNormalizationErrorScope = __webpack_require__(7);
 var SignalsValidationUtils = __webpack_require__(0);
 
-var getByPath = __webpack_require__(40);
-var nullthrows = __webpack_require__(88);
+var getByPath = __webpack_require__(27);
+var nullthrows = __webpack_require__(93);
 
 var throwFatalError = SignalsValidationUtils.throwFatalError;
 
@@ -11047,11 +11507,11 @@ function hasError(result) {
 function makeRuleError(ruleSpecs, details) {
   return {
     level: ruleSpecs.warnOnFail === true ? SignalsNormalizationErrorLevel.WARNING : SignalsNormalizationErrorLevel.REJECT,
-    where: SignalsNormalizationErrorScope.RULE,
     ruleError: {
-      ruleSpecs: ruleSpecs,
-      details: details
-    }
+      details: details,
+      ruleSpecs: ruleSpecs
+    },
+    where: SignalsNormalizationErrorScope.RULE
   };
 }
 
@@ -11062,10 +11522,11 @@ function checkPropValid(value, prop) {
 }
 
 function checkPropValueIs(value, prop, targetValue) {
-  return checkPropValid(value, prop) && getByPath(value, prop.split('.')) === targetValue;
+  var valueByPath = getByPath(value, prop.split('.'));
+  return checkPropValid(value, prop) && (Array.isArray(targetValue) ? JSON.stringify(valueByPath) === JSON.stringify(targetValue) : valueByPath === targetValue);
 }
 
-function propValid(value, schema, ruleSpecs) {
+function propValid(value, _schema, ruleSpecs) {
   var prop = ruleSpecs.args;
   if (prop == null || typeof prop !== 'string') {
     throwFatalError('invalid ruleSpecs', { ruleSpecs: ruleSpecs });
@@ -11073,7 +11534,7 @@ function propValid(value, schema, ruleSpecs) {
   return checkPropValid(value, nullthrows(prop)) ? [] : [makeRuleError(ruleSpecs)];
 }
 
-function propValueIs(value, schema, ruleSpecs) {
+function propValueIs(value, _schema, ruleSpecs) {
   var args = ruleSpecs.args;
 
   if (args == null || !Array.isArray(args) || args.length !== 2 || typeof args[0] !== 'string') {
@@ -11121,7 +11582,7 @@ function dependentProps(value, schema, ruleSpecs) {
   return invalidProps.length > 0 ? [makeRuleError(ruleSpecs, { invalidProps: invalidProps })] : [];
 }
 
-function minValidProps(value, schema, ruleSpecs) {
+function minValidProps(value, _schema, ruleSpecs) {
   var count = parseInt(ruleSpecs.args, 10);
   if (isNaN(count)) {
     throwFatalError('invalid ruleSpecs', { ruleSpecs: ruleSpecs });
@@ -11193,7 +11654,7 @@ function checkRule(value, schema, ruleSpecs) {
 module.exports = checkRule;
 
 /***/ }),
-/* 63 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11204,14 +11665,15 @@ var SignalDateFormats = __webpack_require__(6);
 module.exports = SignalDateFormats.concat(['YYMM', 'MMYY', 'YYYYMM', 'MMYYYY', 'YYYY-MM', 'MM-YYYY', 'YY-MM', 'MM-YY', 'YYYY/MM', 'MM/YYYY', 'YY/MM', 'MM/YY']);
 
 /***/ }),
-/* 64 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Immutable = __webpack_require__(47);
-var SignalsNormalizationErrorScope = __webpack_require__(12);
+var SignalsNormalizationErrorScope = __webpack_require__(7);
+
+var Immutable = __webpack_require__(51);
 
 var List = Immutable.List;
 
@@ -11228,12 +11690,12 @@ function _getErrorSummary(summary, node, path) {
             rawPositions.forEach(function (column) {
               var columnError = invalidColumns.get(column);
               if (columnError == null) {
-                invalidColumns.set(column, { propPath: path, count: 1 });
+                invalidColumns.set(column, { count: 1, propPath: path });
               } else {
                 var _propPath = columnError.propPath,
                     _count = columnError.count;
 
-                invalidColumns.set(column, { propPath: _propPath, count: _count + 1 });
+                invalidColumns.set(column, { count: _count + 1, propPath: _propPath });
               }
             });
           });
@@ -11271,10 +11733,10 @@ function _getErrorSummary(summary, node, path) {
 
 function getSignalsNormalizationErrorSummary(results) {
   var summary = {
+    fatalErrors: List(),
     invalidColumns: Immutable.Map(),
     namedRuleErrors: Immutable.Map(),
-    otherErrors: List(),
-    fatalErrors: List()
+    otherErrors: List()
   };
   results.forEach(function (result) {
     if (result.tree != null) {
@@ -11290,32 +11752,7 @@ function getSignalsNormalizationErrorSummary(results) {
 module.exports = getSignalsNormalizationErrorSummary;
 
 /***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var keyMirrorRecursive = __webpack_require__(87);
-
-var SignalsUploaderColumnMapperConstants = keyMirrorRecursive({
-  CUSTOM_COLUMN_TYPE_VALUE: '',
-  DEFAULT_COLUMN_TYPE_VALUE: '',
-  ITEM_STATUSES: {
-    MAPPED_RIGHT: '',
-    MAPPED_WITH_ERROR: '',
-    NON_MAPPED: '',
-    PENDING: '',
-    PRE_MAPPED: ''
-  },
-  SKIP_ADDITIONAL_INFO_VALUE: '',
-  UNDEFINED_ADDITIONAL_INFO_VALUE: ''
-});
-
-module.exports = SignalsUploaderColumnMapperConstants;
-
-/***/ }),
-/* 66 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11333,9 +11770,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsNormalizationErrorScope = __webpack_require__(12);
-var SignalsNormalizationPropError = __webpack_require__(42);
-var SignalsUploaderErrorReportGenerator = __webpack_require__(17);
+var SignalsNormalizationErrorScope = __webpack_require__(7);
+var SignalsNormalizationPropError = __webpack_require__(26);
+var SignalsUploaderErrorReportGenerator = __webpack_require__(43);
 
 var invariant = __webpack_require__(1);
 
@@ -11359,28 +11796,32 @@ var SignalsUploaderAdvancedErrorReportGenerator = function (_SignalsUploaderErro
     key: 'initialize',
     value: function initialize() {
       return {
-        type: 'advanced',
-        invalidSamples: [],
         aggregatedColumnStats: {},
         aggregatedMissingPropPaths: {},
-        numUnknownRejectErrors: 0
+        invalidSamples: [],
+        numUnknownRejectErrors: 0,
+        type: 'advanced'
       };
     }
   }, {
     key: 'update',
-    value: function update(report, row, normalizationResult, mapping) {
+    value: function update(params) {
+      var normalizationResult = params.normalizationResult,
+          report = params.report,
+          row = params.row;
+
       invariant(report.type === 'advanced', 'Invalid report type.');
       var sample = SignalsUploaderAdvancedErrorReportGenerator.deriveErrorSample(row.fields, row.lineNumber, normalizationResult);
       var aggregatedColumnStats = report.aggregatedColumnStats,
           aggregatedMissingPropPaths = report.aggregatedMissingPropPaths;
 
-      row.fields.forEach(function (value, i) {
-        var reverseMapping = String(i);
+      row.fields.forEach(function (value, index) {
+        var reverseMapping = String(index);
         if (aggregatedColumnStats[reverseMapping] == null) {
           aggregatedColumnStats[reverseMapping] = {
             numEmpty: 0,
-            numInvalidAndRejected: 0,
-            numInvalidAndNotRejected: 0
+            numInvalidAndNotRejected: 0,
+            numInvalidAndRejected: 0
           };
         }
         if (value.length === 0) {
@@ -11404,8 +11845,8 @@ var SignalsUploaderAdvancedErrorReportGenerator = function (_SignalsUploaderErro
         if (aggregatedColumnStats[reverseMapping] == null) {
           aggregatedColumnStats[reverseMapping] = {
             numEmpty: 0,
-            numInvalidAndRejected: 0,
-            numInvalidAndNotRejected: 0
+            numInvalidAndNotRejected: 0,
+            numInvalidAndRejected: 0
           };
         }
         if (value.length > 0) {
@@ -11442,13 +11883,13 @@ var SignalsUploaderAdvancedErrorReportGenerator = function (_SignalsUploaderErro
       }
 
       return {
-        type: 'advanced',
-        invalidSamples: [].concat(_toConsumableArray(report1.invalidSamples), _toConsumableArray(report2.invalidSamples)).sort(function (a, b) {
-          return a.rowNumber - b.rowNumber;
-        }).slice(0, this.__maxNumInvalidSamples),
         aggregatedColumnStats: aggregatedColumnStats,
         aggregatedMissingPropPaths: aggregatedMissingPropPaths,
-        numUnknownRejectErrors: report1.numUnknownRejectErrors + report2.numUnknownRejectErrors
+        invalidSamples: [].concat(_toConsumableArray(report1.invalidSamples), _toConsumableArray(report2.invalidSamples)).sort(function (sampleA, sampleB) {
+          return sampleA.rowNumber - sampleB.rowNumber;
+        }).slice(0, this.__maxNumInvalidSamples),
+        numUnknownRejectErrors: report1.numUnknownRejectErrors + report2.numUnknownRejectErrors,
+        type: 'advanced'
       };
     }
   }], [{
@@ -11517,13 +11958,13 @@ var SignalsUploaderAdvancedErrorReportGenerator = function (_SignalsUploaderErro
                   output.ignoredErrors.push(error);
                 } else {
                   output.invalidFields.push({
-                    value: badValue.value,
-                    reverseMapping: String(badValue.rawPosition),
-                    propPath: path,
-                    infoForNormalization: node.infoForNormalization && node.infoForNormalization[node.propSchema.key],
                     baseType: node.propSchema.type,
                     details: badValue.details,
-                    rawError: error
+                    infoForNormalization: node.infoForNormalization && node.infoForNormalization[node.propSchema.key],
+                    propPath: path,
+                    rawError: error,
+                    reverseMapping: String(badValue.rawPosition),
+                    value: badValue.value
                   });
                 }
               });
@@ -11542,13 +11983,13 @@ var SignalsUploaderAdvancedErrorReportGenerator = function (_SignalsUploaderErro
     key: 'deriveErrorSample',
     value: function deriveErrorSample(rowData, rowNumber, normalizationResult) {
       var result = {
-        rowData: rowData,
-        rowNumber: rowNumber,
-        rejected: !normalizationResult.valid,
+        ignoredErrors: [],
         invalidFields: [],
         missingPropPaths: [],
-        uncollectedErrors: [],
-        ignoredErrors: []
+        rejected: !normalizationResult.valid,
+        rowData: rowData,
+        rowNumber: rowNumber,
+        uncollectedErrors: []
       };
       if (normalizationResult.fatalError != null) {
         result.uncollectedErrors.push(normalizationResult.fatalError);
@@ -11570,7 +12011,7 @@ var SignalsUploaderAdvancedErrorReportGenerator = function (_SignalsUploaderErro
 module.exports = SignalsUploaderAdvancedErrorReportGenerator;
 
 /***/ }),
-/* 67 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11588,12 +12029,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SignalsNumberNormalizationErrorTypes = __webpack_require__(13);
-var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(36);
+var SignalsNumberNormalizationErrorTypes = __webpack_require__(14);
+var SignalsUploaderDefaultErrorReportGenerator = __webpack_require__(42);
 
-var getByPath = __webpack_require__(40);
+var getByPath = __webpack_require__(27);
 var invariant = __webpack_require__(1);
-var normalizeSignalsValueType = __webpack_require__(15);
+var normalizeSignalsValueType = __webpack_require__(16);
 
 var VALUE_ERROR_LABEL = (_VALUE_ERROR_LABEL = {}, _defineProperty(_VALUE_ERROR_LABEL, SignalsNumberNormalizationErrorTypes.EMPTY, 'empty cell'), _defineProperty(_VALUE_ERROR_LABEL, SignalsNumberNormalizationErrorTypes.INVALID_SEPARATOR, 'invalid separators'), _defineProperty(_VALUE_ERROR_LABEL, SignalsNumberNormalizationErrorTypes.NON_NUMERIC, 'non-numeric value'), _defineProperty(_VALUE_ERROR_LABEL, SignalsNumberNormalizationErrorTypes.TOO_SMALL, 'negative'), _VALUE_ERROR_LABEL);
 
@@ -11610,19 +12051,24 @@ var SignalsUploaderWLALErrorReportGenerator = function (_SignalsUploaderDefau) {
     key: 'initialize',
     value: function initialize() {
       return {
-        type: 'wlal',
         invalidSamples: [],
+        type: 'wlal',
         valueErrorCounts: {
           empty: 0,
+          invalidSeparator: 0,
           negative: 0,
-          nonNumeric: 0,
-          invalidSeparator: 0
+          nonNumeric: 0
         }
       };
     }
   }, {
     key: 'update',
-    value: function update(report, row, normalizationResult, mapping) {
+    value: function update(params) {
+      var mapping = params.mapping,
+          normalizationResult = params.normalizationResult,
+          report = params.report,
+          row = params.row;
+
       invariant(report.type === 'wlal', 'Invalid report type.');
       if (normalizationResult.valid || normalizationResult.tree == null) {
         return;
@@ -11645,7 +12091,7 @@ var SignalsUploaderWLALErrorReportGenerator = function (_SignalsUploaderDefau) {
           break;
       }
       if (report.invalidSamples.length < this.__maxNumInvalidSamples) {
-        error.valueError = error.valueError && VALUE_ERROR_LABEL[error.valueError] || error.valueError;
+        error.valueError = error.valueError != null && error.valueError !== '' && VALUE_ERROR_LABEL[error.valueError] || error.valueError;
         report.invalidSamples.push(error);
       }
     }
@@ -11677,9 +12123,9 @@ var SignalsUploaderWLALErrorReportGenerator = function (_SignalsUploaderDefau) {
       }
 
       return {
-        row: row.lineNumber,
-        invalidColumns: invalidColumns,
         emptyColumns: emptyColumns,
+        invalidColumns: invalidColumns,
+        row: row.lineNumber,
         valueError: valueError
       };
     }
@@ -11689,15 +12135,15 @@ var SignalsUploaderWLALErrorReportGenerator = function (_SignalsUploaderDefau) {
       invariant(report1.type === 'wlal', 'Invalid report type.');
       invariant(report2.type === 'wlal', 'Invalid report type.');
       return {
-        type: 'wlal',
-        invalidSamples: report1.invalidSamples.concat(report2.invalidSamples).sort(function (a, b) {
-          return a.row - b.row;
+        invalidSamples: report1.invalidSamples.concat(report2.invalidSamples).sort(function (sampleA, sampleB) {
+          return sampleA.row - sampleB.row;
         }).slice(0, this.__maxNumInvalidSamples),
+        type: 'wlal',
         valueErrorCounts: {
           empty: report1.valueErrorCounts.empty + report2.valueErrorCounts.empty,
+          invalidSeparator: report1.valueErrorCounts.invalidSeparator + report2.valueErrorCounts.invalidSeparator,
           negative: report1.valueErrorCounts.negative + report2.valueErrorCounts.negative,
-          nonNumeric: report1.valueErrorCounts.nonNumeric + report2.valueErrorCounts.nonNumeric,
-          invalidSeparator: report1.valueErrorCounts.invalidSeparator + report2.valueErrorCounts.invalidSeparator
+          nonNumeric: report1.valueErrorCounts.nonNumeric + report2.valueErrorCounts.nonNumeric
         }
       };
     }
@@ -11709,7 +12155,7 @@ var SignalsUploaderWLALErrorReportGenerator = function (_SignalsUploaderDefau) {
 module.exports = SignalsUploaderWLALErrorReportGenerator;
 
 /***/ }),
-/* 68 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11724,7 +12170,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
-var SignalsUploaderCSVParser = __webpack_require__(4);
+var SignalsUploaderExtendedCSVParser = __webpack_require__(19);
 
 var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
   _inherits(SignalsUploaderConstructBatchJob, _SignalsUploaderChunk);
@@ -11734,7 +12180,7 @@ var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
 
     var _this = _possibleConstructorReturn(this, (SignalsUploaderConstructBatchJob.__proto__ || Object.getPrototypeOf(SignalsUploaderConstructBatchJob)).call(this, postMessageHandler));
 
-    _this._parser = new SignalsUploaderCSVParser(delimiter);
+    _this._parser = new SignalsUploaderExtendedCSVParser(delimiter);
     _this._progressRanges = progressRanges;
     _this._maxNumRowsPerBatch = maxNumRowsPerBatch;
     _this._hasHeader = hasHeader;
@@ -11753,8 +12199,8 @@ var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
       var _this2 = this;
 
       this._numChunksProcessed++;
-      for (var i = 0; i < chunk.data.length; i++) {
-        this._parser.onNewCharacter(chunk.data[i]);
+      for (var index = 0; index < chunk.data.length; index++) {
+        this._parser.onNewCharacter(chunk.data[index]);
         var rows = this._parser.readRows();
         rows.forEach(function (row) {
           return _this2._processRow(row);
@@ -11764,7 +12210,7 @@ var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
     }
   }, {
     key: '__processEndOfStream',
-    value: function __processEndOfStream(endOfStream) {
+    value: function __processEndOfStream(_endOfStream) {
       var _this3 = this;
 
       this._parser.onEndOfStream();
@@ -11803,11 +12249,11 @@ var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
         return;
       }
       this.__postMessageToMainThread({
-        type: 'construct-batch-batch-ready',
+        chunkIndex: this._numChunksProcessed - 1,
+        end: this._rows[this._rows.length - 1].end,
         rows: this._rows,
         start: this._rows[0].start,
-        end: this._rows[this._rows.length - 1].end,
-        chunkIndex: this._numChunksProcessed - 1
+        type: 'construct-batch-batch-ready'
       });
       this._rows = [];
     }
@@ -11815,10 +12261,10 @@ var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
     key: '_sendProgressUpdate',
     value: function _sendProgressUpdate() {
       this.__postMessageToMainThread({
-        type: 'construct-batch-chunk-processed',
         numChunksProcessed: this._numChunksProcessed,
         numRowsAlreadyUploaded: this._numRowsAlreadyUploaded,
-        numRowsParsed: this._numRowsParsed
+        numRowsParsed: this._numRowsParsed,
+        type: 'construct-batch-chunk-processed'
       });
     }
   }, {
@@ -11836,7 +12282,7 @@ var SignalsUploaderConstructBatchJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderConstructBatchJob;
 
 /***/ }),
-/* 69 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11851,7 +12297,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
-var SignalsUploaderCSVParser = __webpack_require__(4);
+var SignalsUploaderCSVParser = __webpack_require__(12);
 
 var DELIMITERS = [',', '\t', ' ', '|', ';'];
 
@@ -11923,7 +12369,7 @@ var SignalsUploaderDelimiterDetectJob = function (_SignalsUploaderChunk) {
     }
   }, {
     key: '__processEndOfStream',
-    value: function __processEndOfStream(endOfStream) {
+    value: function __processEndOfStream(_endOfStream) {
       this.__postMessageToMainThread({
         type: 'delimiter-detect',
         delimiter: null
@@ -11937,7 +12383,7 @@ var SignalsUploaderDelimiterDetectJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderDelimiterDetectJob;
 
 /***/ }),
-/* 70 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11947,13 +12393,83 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var SignalsUploaderConstructBatchJob = __webpack_require__(68);
-var SignalsUploaderDelimiterDetectJob = __webpack_require__(69);
-var SignalsUploaderMappingDetectJob = __webpack_require__(71);
-var SignalsUploaderNormalizeBatchJob = __webpack_require__(72);
-var SignalsUploaderPreviewJob = __webpack_require__(73);
-var SignalsUploaderPreviewV2Job = __webpack_require__(74);
-var SignalsUploaderSampleFetchJob = __webpack_require__(75);
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SignalsUploaderChunkDigestJob = __webpack_require__(3);
+
+var END_OF_ROW_CHARS = ['\r', '\n'];
+
+var SignalsUploaderFileRowNumberEstimationJob = function (_SignalsUploaderChunk) {
+  _inherits(SignalsUploaderFileRowNumberEstimationJob, _SignalsUploaderChunk);
+
+  function SignalsUploaderFileRowNumberEstimationJob(maxBytesToProcess, postMessageHandler) {
+    _classCallCheck(this, SignalsUploaderFileRowNumberEstimationJob);
+
+    var _this = _possibleConstructorReturn(this, (SignalsUploaderFileRowNumberEstimationJob.__proto__ || Object.getPrototypeOf(SignalsUploaderFileRowNumberEstimationJob)).call(this, postMessageHandler));
+
+    _this._numberRows = 0;
+    _this._bytesProcessed = 0;
+    _this._maxBytesToProcess = maxBytesToProcess;
+    return _this;
+  }
+
+  _createClass(SignalsUploaderFileRowNumberEstimationJob, [{
+    key: '__processChunk',
+    value: function __processChunk(chunk) {
+      var chunkData = chunk.data;
+      var currentIndex = 0;
+      while (currentIndex < this._maxBytesToProcess && currentIndex < chunkData.length) {
+        var currentChar = chunkData.charAt(currentIndex);
+        if (END_OF_ROW_CHARS.includes(currentChar)) {
+          this._numberRows = currentIndex > 0 && END_OF_ROW_CHARS.includes(chunkData.charAt(currentIndex - 1)) ? this._numberRows : this._numberRows + 1;
+        }
+        currentIndex++;
+        this._bytesProcessed++;
+      }
+      this._finishJob();
+    }
+  }, {
+    key: '__processEndOfStream',
+    value: function __processEndOfStream(_endOfStream) {
+      this._finishJob();
+    }
+  }, {
+    key: '_finishJob',
+    value: function _finishJob() {
+      this.__postMessageToMainThread({
+        type: 'file-row-number-estimation-done',
+        numberRows: this._numberRows,
+        bytesProcessed: this._bytesProcessed
+      });
+    }
+  }]);
+
+  return SignalsUploaderFileRowNumberEstimationJob;
+}(SignalsUploaderChunkDigestJob);
+
+module.exports = SignalsUploaderFileRowNumberEstimationJob;
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SignalsUploaderConstructBatchJob = __webpack_require__(75);
+var SignalsUploaderDelimiterDetectJob = __webpack_require__(76);
+var SignalsUploaderFileRowNumberEstimationJob = __webpack_require__(77);
+var SignalsUploaderMappingDetectJob = __webpack_require__(79);
+var SignalsUploaderNormalizeBatchJob = __webpack_require__(80);
+var SignalsUploaderPreviewJob = __webpack_require__(81);
+var SignalsUploaderPreviewV2Job = __webpack_require__(82);
+var SignalsUploaderSampleFetchJob = __webpack_require__(83);
 
 var invariant = __webpack_require__(1);
 
@@ -11974,6 +12490,10 @@ var SignalsUploaderJobManager = function () {
 
         case 'initialize-sample-fetch-job':
           this._job = new SignalsUploaderSampleFetchJob(message.delimiter, message.numSampleRows, this._workerMessageHandler);
+          break;
+
+        case 'initialize-file-row-number-estimation-job':
+          this._job = new SignalsUploaderFileRowNumberEstimationJob(message.maxBytesToProcess, this._workerMessageHandler);
           break;
 
         case 'initialize-preview-job':
@@ -12011,7 +12531,7 @@ var SignalsUploaderJobManager = function () {
 module.exports = SignalsUploaderJobManager;
 
 /***/ }),
-/* 71 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12029,11 +12549,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SignalBaseTypes = __webpack_require__(19);
+var SignalBaseTypes = __webpack_require__(13);
 var SignalDateFormats = __webpack_require__(6);
-var SignalsBaseTypeNormalizers = __webpack_require__(8);
+var SignalsBaseTypeNormalizers = __webpack_require__(5);
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
-var SignalsUploaderCSVParser = __webpack_require__(4);
+var SignalsUploaderCSVParser = __webpack_require__(12);
 
 var UNIX_TIME = SignalBaseTypes.UNIX_TIME,
     DATE = SignalBaseTypes.DATE,
@@ -12076,8 +12596,8 @@ var SignalsUploaderMappingDetectJob = function (_SignalsUploaderChunk) {
   _createClass(SignalsUploaderMappingDetectJob, [{
     key: '__processChunk',
     value: function __processChunk(chunk) {
-      for (var i = 0; i < chunk.data.length; i++) {
-        this._parser.onNewCharacter(chunk.data[i]);
+      for (var index = 0; index < chunk.data.length; index++) {
+        this._parser.onNewCharacter(chunk.data[index]);
       }
       this._processRows(this._parser.readRows());
       if (this._numProcessedRows >= this._numSampleRows) {
@@ -12088,7 +12608,7 @@ var SignalsUploaderMappingDetectJob = function (_SignalsUploaderChunk) {
     }
   }, {
     key: '__processEndOfStream',
-    value: function __processEndOfStream(endOfStream) {
+    value: function __processEndOfStream(_endOfStream) {
       this._parser.onEndOfStream();
       this._processRows(this._parser.readRows());
       this._finishJob();
@@ -12119,9 +12639,8 @@ var SignalsUploaderMappingDetectJob = function (_SignalsUploaderChunk) {
       row.fields.forEach(function (field) {
         var possibleMappings = {};
         for (var key in keySchemas) {
-          var isPreset = key === field.toLowerCase();
-          _this3._hasHeader = _this3._hasHeader || isPreset;
-          possibleMappings[key] = _this3._getMappingSetting(key, isPreset);
+          possibleMappings[key] = _this3._getMappingSetting(key, field);
+          _this3._hasHeader = _this3._hasHeader || possibleMappings[key].isPreset;
         }
         _this3._possibleMappingSettings.push(possibleMappings);
         _this3._sampleCounts.push(0);
@@ -12133,21 +12652,23 @@ var SignalsUploaderMappingDetectJob = function (_SignalsUploaderChunk) {
     }
   }, {
     key: '_getMappingSetting',
-    value: function _getMappingSetting(propKey, isPreset) {
+    value: function _getMappingSetting(propKey, field) {
       var propSchema = this._schemaSummary.schemasForSimplePropsInSchema[propKey] || {};
       var propPath = this._schemaSummary.pathForSimplePropKeys[propKey];
       var additionalInfoOptions = ADDITIONAL_INFO_OPTIONS[propSchema.type];
 
+      var isPreset = propKey === field.toLowerCase() || propPath === field.toLowerCase();
+
       return {
-        propKey: propKey,
-        propPath: propPath,
-        isPreset: isPreset,
         additionalInfos: (additionalInfoOptions || [null]).map(function (additionalInfo) {
           return {
             info: additionalInfo,
             numInvalidSamples: 0
           };
-        })
+        }),
+        isPreset: isPreset,
+        propKey: propKey,
+        propPath: propPath
       };
     }
   }, {
@@ -12229,10 +12750,10 @@ var SignalsUploaderMappingDetectJob = function (_SignalsUploaderChunk) {
       });
 
       this.__postMessageToMainThread({
-        type: 'mapping-detect-done',
+        hasHeader: this._hasHeader,
         possibleMappings: possibleMappings,
         sampleCounts: this._sampleCounts,
-        hasHeader: this._hasHeader
+        type: 'mapping-detect-done'
       });
     }
   }, {
@@ -12255,7 +12776,7 @@ var SignalsUploaderMappingDetectJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderMappingDetectJob;
 
 /***/ }),
-/* 72 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12269,13 +12790,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsBaseTypeNormalizers = __webpack_require__(8);
-var SignalsUploaderJob = __webpack_require__(37);
-var SignalsUploaderUtils = __webpack_require__(16);
+var SignalsBaseTypeNormalizers = __webpack_require__(5);
+var SignalsUploaderJob = __webpack_require__(44);
+var SignalsUploaderUtils = __webpack_require__(17);
 
 var createSignalsUploaderErrorReportGenerator = __webpack_require__(18);
-var normalizeSignal = __webpack_require__(7);
-var processPIISignalBeforeUpload = __webpack_require__(35);
+var normalizeSignal = __webpack_require__(8);
+var processPIISignalBeforeUpload = __webpack_require__(40);
+var transformContentFieldsToObjectArray = __webpack_require__(41);
 
 var arrayToObject = SignalsUploaderUtils.arrayToObject,
     getMappingWithPreset = SignalsUploaderUtils.getMappingWithPreset,
@@ -12283,7 +12805,8 @@ var arrayToObject = SignalsUploaderUtils.arrayToObject,
 
 
 var TRANSFORMERS = {
-  processPIISignalBeforeUpload: processPIISignalBeforeUpload
+  processPIISignalBeforeUpload: processPIISignalBeforeUpload,
+  transformContentFieldsToObjectArray: transformContentFieldsToObjectArray
 };
 
 var SignalsUploaderNormalizeBatchJob = function (_SignalsUploaderJob) {
@@ -12323,19 +12846,24 @@ var SignalsUploaderNormalizeBatchJob = function (_SignalsUploaderJob) {
         if (normalizedValue != null) {
           normalizedRows.push(normalizedValue);
         }
-        errorReportGenerator.update(errorReport, row, normalizationResult, _this2._normalizerSettings.mapping);
+        errorReportGenerator.update({
+          mapping: _this2._normalizerSettings.mapping,
+          normalizationResult: normalizationResult,
+          report: errorReport,
+          row: row
+        });
       });
 
       this.__postMessageToMainThread({
-        type: 'normalize-batch-processed',
         batch: {
-          start: message.start,
+          chunkIndex: message.chunkIndex,
           end: message.end,
           rows: normalizedRows,
-          chunkIndex: message.chunkIndex
+          start: message.start
         },
         errorReport: errorReport,
-        numRowsFailedToNormalize: message.rows.length - normalizedRows.length
+        numRowsFailedToNormalize: message.rows.length - normalizedRows.length,
+        type: 'normalize-batch-processed'
       });
     }
   }]);
@@ -12346,7 +12874,7 @@ var SignalsUploaderNormalizeBatchJob = function (_SignalsUploaderJob) {
 module.exports = SignalsUploaderNormalizeBatchJob;
 
 /***/ }),
-/* 73 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12360,15 +12888,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsBaseTypeNormalizers = __webpack_require__(8);
+var SignalsBaseTypeNormalizers = __webpack_require__(5);
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
-var SignalsUploaderCSVParser = __webpack_require__(4);
-var SignalsUploaderUtils = __webpack_require__(16);
+var SignalsUploaderCSVParser = __webpack_require__(12);
+var SignalsUploaderUtils = __webpack_require__(17);
 
 var arrayToObject = SignalsUploaderUtils.arrayToObject;
 
 
-var normalizeSignal = __webpack_require__(7);
+var normalizeSignal = __webpack_require__(8);
 
 var SignalsUploaderPreviewJob = function (_SignalsUploaderChunk) {
   _inherits(SignalsUploaderPreviewJob, _SignalsUploaderChunk);
@@ -12402,7 +12930,7 @@ var SignalsUploaderPreviewJob = function (_SignalsUploaderChunk) {
     }
   }, {
     key: '__processEndOfStream',
-    value: function __processEndOfStream(endOfStream) {
+    value: function __processEndOfStream(_endOfStream) {
       this._parser.onEndOfStream();
       this._processRows(this._parser.readRows());
       this._finishJob();
@@ -12451,7 +12979,7 @@ var SignalsUploaderPreviewJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderPreviewJob;
 
 /***/ }),
-/* 74 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12465,15 +12993,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsBaseTypeNormalizers = __webpack_require__(8);
+var SignalsBaseTypeNormalizers = __webpack_require__(5);
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
-var SignalsUploaderCSVParser = __webpack_require__(4);
-var SignalsUploaderErrorReportGenerator = __webpack_require__(17);
-var SignalsUploaderUtils = __webpack_require__(16);
+var SignalsUploaderExtendedCSVParser = __webpack_require__(19);
+var SignalsUploaderUtils = __webpack_require__(17);
 
 var createSignalsUploaderErrorReportGenerator = __webpack_require__(18);
-var normalizeSignal = __webpack_require__(7);
-var processPIISignalBeforeUpload = __webpack_require__(35);
+var normalizeSignal = __webpack_require__(8);
+var processPIISignalBeforeUpload = __webpack_require__(40);
+var transformContentFieldsToObjectArray = __webpack_require__(41);
 
 var arrayToObject = SignalsUploaderUtils.arrayToObject,
     getMappingWithPreset = SignalsUploaderUtils.getMappingWithPreset,
@@ -12481,7 +13009,8 @@ var arrayToObject = SignalsUploaderUtils.arrayToObject,
 
 
 var TRANSFORMERS = {
-  processPIISignalBeforeUpload: processPIISignalBeforeUpload
+  processPIISignalBeforeUpload: processPIISignalBeforeUpload,
+  transformContentFieldsToObjectArray: transformContentFieldsToObjectArray
 };
 
 var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
@@ -12492,7 +13021,7 @@ var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
 
     var _this = _possibleConstructorReturn(this, (SignalsUploaderPreviewV2Job.__proto__ || Object.getPrototypeOf(SignalsUploaderPreviewV2Job)).call(this, postMessageHandler));
 
-    _this._parser = new SignalsUploaderCSVParser(delimiter);
+    _this._parser = new SignalsUploaderExtendedCSVParser(delimiter);
     _this._normalizerSettings = normalizerSettings;
     _this._presetValueConfig = getPresetValueConfigFromObject(presetValues);
     _this._errorReportGenerator = createSignalsUploaderErrorReportGenerator(errorReportConfig);
@@ -12508,8 +13037,8 @@ var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
   _createClass(SignalsUploaderPreviewV2Job, [{
     key: '__processChunk',
     value: function __processChunk(chunk) {
-      for (var i = 0; i < chunk.data.length; i++) {
-        this._parser.onNewCharacter(chunk.data[i]);
+      for (var index = 0; index < chunk.data.length; index++) {
+        this._parser.onNewCharacter(chunk.data[index]);
       }
       this._processRows(this._parser.readRows());
       if (this._numRowsProcessed >= this._numSampleRows) {
@@ -12537,7 +13066,12 @@ var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
         var signalWithPreset = arrayToObject(row.fields.concat(_this2._presetValueConfig.values));
         var mappingWithPreset = getMappingWithPreset(_this2._normalizerSettings.mapping, offset, _this2._presetValueConfig.mappings);
         var normalizationResult = normalizeSignal(signalWithPreset, _this2._normalizerSettings.schema, SignalsBaseTypeNormalizers, TRANSFORMERS, mappingWithPreset, _this2._normalizerSettings.infoForNormalization, _this2._normalizerSettings.customTypeInfo);
-        _this2._errorReportGenerator.update(_this2._errorReport, row, normalizationResult, _this2._normalizerSettings.mapping);
+        _this2._errorReportGenerator.update({
+          mapping: _this2._normalizerSettings.mapping,
+          normalizationResult: normalizationResult,
+          report: _this2._errorReport,
+          row: row
+        });
         var normalizedValue = normalizationResult.normalizedValue;
 
         if (normalizedValue != null) {
@@ -12547,7 +13081,7 @@ var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
     }
   }, {
     key: '__processEndOfStream',
-    value: function __processEndOfStream(endOfStream) {
+    value: function __processEndOfStream(_endOfStream) {
       this._parser.onEndOfStream();
       this._processRows(this._parser.readRows());
       this._finishJob();
@@ -12556,10 +13090,10 @@ var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
     key: '_finishJob',
     value: function _finishJob() {
       this.__postMessageToMainThread({
-        type: 'preview-v2-done',
         errorReport: this._errorReport,
+        normalizedRows: this._normalizedRows,
         numRowsProcessed: this._numRowsProcessed,
-        normalizedRows: this._normalizedRows
+        type: 'preview-v2-done'
       });
     }
   }, {
@@ -12577,7 +13111,7 @@ var SignalsUploaderPreviewV2Job = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderPreviewV2Job;
 
 /***/ }),
-/* 75 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12594,7 +13128,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var SignalsUploaderChunkDigestJob = __webpack_require__(3);
-var SignalsUploaderCSVParser = __webpack_require__(4);
+var SignalsUploaderExtendedCSVParser = __webpack_require__(19);
 
 var SignalsUploaderSampleFetchJob = function (_SignalsUploaderChunk) {
   _inherits(SignalsUploaderSampleFetchJob, _SignalsUploaderChunk);
@@ -12604,7 +13138,7 @@ var SignalsUploaderSampleFetchJob = function (_SignalsUploaderChunk) {
 
     var _this = _possibleConstructorReturn(this, (SignalsUploaderSampleFetchJob.__proto__ || Object.getPrototypeOf(SignalsUploaderSampleFetchJob)).call(this, postMessageHandler));
 
-    _this._parser = new SignalsUploaderCSVParser(delimiter);
+    _this._parser = new SignalsUploaderExtendedCSVParser(delimiter);
     _this._numSampleRows = numSampleRows;
     _this._rows = [];
     _this._firstRowEnd = null;
@@ -12616,8 +13150,8 @@ var SignalsUploaderSampleFetchJob = function (_SignalsUploaderChunk) {
     value: function __processChunk(chunk) {
       var _rows;
 
-      for (var i = 0; i < chunk.data.length; i++) {
-        this._parser.onNewCharacter(chunk.data[i]);
+      for (var index = 0; index < chunk.data.length; index++) {
+        this._parser.onNewCharacter(chunk.data[index]);
       }
       var rows = this._parser.readRows();
       this._updateFirstRowEnd(rows);
@@ -12632,7 +13166,7 @@ var SignalsUploaderSampleFetchJob = function (_SignalsUploaderChunk) {
     }
   }, {
     key: '__processEndOfStream',
-    value: function __processEndOfStream(endOfStream) {
+    value: function __processEndOfStream(_endOfStream) {
       var _rows2;
 
       this._parser.onEndOfStream();
@@ -12666,9 +13200,9 @@ var SignalsUploaderSampleFetchJob = function (_SignalsUploaderChunk) {
         });
       }
       this.__postMessageToMainThread({
-        type: 'sample-fetch-done',
+        firstRowEnd: this._firstRowEnd,
         samples: samples,
-        firstRowEnd: this._firstRowEnd
+        type: 'sample-fetch-done'
       });
     }
   }, {
@@ -12686,7 +13220,7 @@ var SignalsUploaderSampleFetchJob = function (_SignalsUploaderChunk) {
 module.exports = SignalsUploaderSampleFetchJob;
 
 /***/ }),
-/* 76 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12700,15 +13234,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderReader = __webpack_require__(77);
+var SignalsUploaderReader = __webpack_require__(85);
 
 var invariant = __webpack_require__(1);
 
 var SignalsUploaderNodeJSFileReader = function (_SignalsUploaderReade) {
   _inherits(SignalsUploaderNodeJSFileReader, _SignalsUploaderReade);
 
-  function SignalsUploaderNodeJSFileReader(path, chunkSize, encoding, fs) {
+  function SignalsUploaderNodeJSFileReader(params) {
     _classCallCheck(this, SignalsUploaderNodeJSFileReader);
+
+    var chunkSize = params.chunkSize,
+        encoding = params.encoding,
+        fs = params.fs,
+        path = params.path;
 
     var _this = _possibleConstructorReturn(this, (SignalsUploaderNodeJSFileReader.__proto__ || Object.getPrototypeOf(SignalsUploaderNodeJSFileReader)).call(this, chunkSize));
 
@@ -12739,10 +13278,10 @@ var SignalsUploaderNodeJSFileReader = function (_SignalsUploaderReade) {
 
       return new Promise(function (resolve, reject) {
         _this2._pendingReads.push({
-          start: start,
           end: end,
+          reject: reject,
           resolve: resolve,
-          reject: reject
+          start: start
         });
 
         _this2._resolvePendingReads();
@@ -12759,7 +13298,7 @@ var SignalsUploaderNodeJSFileReader = function (_SignalsUploaderReade) {
           return;
         }
         if (typeof data === 'string') {
-          nextRead.resolve({ start: nextRead.start, end: nextRead.end, data: data });
+          nextRead.resolve({ data: data, end: nextRead.end, start: nextRead.start });
         } else {
 
           nextRead.reject(new Error('Encoding not set.'));
@@ -12781,7 +13320,7 @@ module.exports = SignalsUploaderNodeJSFileReader;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(20)))
 
 /***/ }),
-/* 77 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12835,7 +13374,7 @@ var SignalsUploaderReader = function () {
 module.exports = SignalsUploaderReader;
 
 /***/ }),
-/* 78 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12849,8 +13388,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var SignalsUploaderJobManager = __webpack_require__(70);
-var SignalsUploaderWorker = __webpack_require__(79);
+var SignalsUploaderJobManager = __webpack_require__(78);
+var SignalsUploaderWorker = __webpack_require__(87);
 
 var SignalsUploaderUIWorker = function (_SignalsUploaderWorke) {
   _inherits(SignalsUploaderUIWorker, _SignalsUploaderWorke);
@@ -12881,7 +13420,7 @@ var SignalsUploaderUIWorker = function (_SignalsUploaderWorke) {
 module.exports = SignalsUploaderUIWorker;
 
 /***/ }),
-/* 79 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12900,7 +13439,7 @@ var SignalsUploaderWorker = function () {
 
   _createClass(SignalsUploaderWorker, [{
     key: 'postMessage',
-    value: function postMessage(message) {
+    value: function postMessage(_message) {
       abstractMethod('SignalsUploaderWorker', 'postMessage');
     }
   }, {
@@ -12916,110 +13455,35 @@ var SignalsUploaderWorker = function () {
 module.exports = SignalsUploaderWorker;
 
 /***/ }),
-/* 80 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var US_NUMBER_RE = /^1\(?\d{3}\)?\d{7}$/;
-var NORWAY_NUMBER_RE = /^47\d{8}$/;
-var INTL_NUMBER_RE = /^\d{1,4}\(?\d{2,3}\)?\d{4,}$/;
+var SignalsUploaderNodeJSFileReader = __webpack_require__(84);
 
-function isInternationalPhoneNumber(number) {
-  var trimmedNumber = number.replace(/[\-\s]+/g, '').replace(/^\+?0{0,2}/, '');
-
-  if (trimmedNumber.startsWith('0')) {
-    return false;
-  }
-
-  if (trimmedNumber.startsWith('1')) {
-    return US_NUMBER_RE.test(trimmedNumber);
-  }
-
-  if (trimmedNumber.startsWith('47')) {
-    return NORWAY_NUMBER_RE.test(trimmedNumber);
-  }
-
-  return INTL_NUMBER_RE.test(trimmedNumber);
-}
-
-module.exports = isInternationalPhoneNumber;
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = Object.freeze({ "WHITESPACE_ONLY": "whitespace_only", "WHITESPACE_AND_PUNCTUATION": "whitespace_and_punctuation", "ALL_NON_LATIN_ALPHA_NUMERIC": "all_non_latin_alpha_numeric" });
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var OfflineStandardEventsEnum = __webpack_require__(58);
-var SignalDateFormats = __webpack_require__(6);
-var SignalsBasicPIISchema = __webpack_require__(50);
-var SignalsCurrencyCodes = __webpack_require__(22);
-var SignalsDSDITestUploadUtils = __webpack_require__(52);
-var SignalsDSDITestUploadWarnings = __webpack_require__(53);
-var SignalsEventDataSchema = __webpack_require__(48);
-var SignalsHashedEventDataSchema = __webpack_require__(49);
-var SignalsUploaderPreviewV2Task = __webpack_require__(55);
-var SignalsUploaderSampleFetchTask = __webpack_require__(56);
-var SignalsUploaderUploadTask = __webpack_require__(57);
-var SignalsWLALExtendedPIISchema = __webpack_require__(51);
-var SignalTimestampFormats = __webpack_require__(54);
-
-var getSignalsSchemaSummary = __webpack_require__(21);
-
-module.exports = {
-  OfflineStandardEventsEnum: OfflineStandardEventsEnum,
-  SignalDateFormats: SignalDateFormats,
-  SignalsBasicPIISchema: SignalsBasicPIISchema,
-  SignalsCurrencyCodes: SignalsCurrencyCodes,
-  SignalsDSDITestUploadUtils: SignalsDSDITestUploadUtils,
-  SignalsDSDITestUploadWarnings: SignalsDSDITestUploadWarnings,
-  SignalsEventDataSchema: SignalsEventDataSchema,
-  SignalsHashedEventDataSchema: SignalsHashedEventDataSchema,
-  SignalsUploaderPreviewV2Task: SignalsUploaderPreviewV2Task,
-  SignalsUploaderSampleFetchTask: SignalsUploaderSampleFetchTask,
-  SignalsUploaderUploadTask: SignalsUploaderUploadTask,
-  SignalsWLALExtendedPIISchema: SignalsWLALExtendedPIISchema,
-  SignalTimestampFormats: SignalTimestampFormats,
-  getSignalsSchemaSummary: getSignalsSchemaSummary
-};
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var SignalsUploaderNodeJSFileReader = __webpack_require__(76);
-
-var fs = __webpack_require__(97);
+var fs = __webpack_require__(102);
 
 function createSignalsUploaderReader(source, chunkSize) {
-  return new SignalsUploaderNodeJSFileReader(source, chunkSize, 'utf8', fs);
+  return new SignalsUploaderNodeJSFileReader({
+    chunkSize: chunkSize,
+    encoding: 'utf8',
+    fs: fs,
+    path: source
+  });
 }
 
 module.exports = createSignalsUploaderReader;
 
 /***/ }),
-/* 84 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var rawAsap = __webpack_require__(44);
+var rawAsap = __webpack_require__(48);
 var freeTasks = [];
 
 module.exports = asap;
@@ -13048,24 +13512,24 @@ RawTask.prototype.call = function () {
     try {
         this.task.call();
         threw = false;
-
-
+       
+       
         if (this.domain) {
             this.domain.exit();
         }
     } finally {
-
-
+       
+       
         if (threw) {
-
-
-
-
-
+           
+           
+           
+           
+           
             rawAsap.requestFlush();
         }
-
-
+       
+       
         this.task = null;
         this.domain = null;
         freeTasks.push(this);
@@ -13075,7 +13539,7 @@ RawTask.prototype.call = function () {
 
 
 /***/ }),
-/* 85 */
+/* 90 */
 /***/ (function(module, exports) {
 
 !function(globals) {
@@ -13114,7 +13578,7 @@ if (typeof module !== 'undefined' && module.exports) {
 }(this);
 
 /***/ }),
-/* 86 */
+/* 91 */
 /***/ (function(module, exports) {
 
 !function(globals) {
@@ -13148,13 +13612,13 @@ if (typeof module !== 'undefined' && module.exports) {
 }(this);
 
 /***/ }),
-/* 87 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var invariant = __webpack_require__(45);
+var invariant = __webpack_require__(49);
 
 function keyMirrorRecursive(obj, prefix) {
   return keyMirrorRecursiveInternal(obj, prefix);
@@ -13195,7 +13659,7 @@ function isObject(obj) {
 module.exports = keyMirrorRecursive;
 
 /***/ }),
-/* 88 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13211,13 +13675,13 @@ var nullthrows = function nullthrows(x) {
 module.exports = nullthrows;
 
 /***/ }),
-/* 89 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Promise = __webpack_require__(5);
+var Promise = __webpack_require__(4);
 
 module.exports = Promise;
 Promise.prototype.done = function (onFulfilled, onRejected) {
@@ -13231,7 +13695,7 @@ Promise.prototype.done = function (onFulfilled, onRejected) {
 
 
 /***/ }),
-/* 90 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13239,7 +13703,7 @@ Promise.prototype.done = function (onFulfilled, onRejected) {
 
 
 
-var Promise = __webpack_require__(5);
+var Promise = __webpack_require__(4);
 
 module.exports = Promise;
 
@@ -13341,13 +13805,13 @@ Promise.prototype['catch'] = function (onRejected) {
 
 
 /***/ }),
-/* 91 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Promise = __webpack_require__(5);
+var Promise = __webpack_require__(4);
 
 module.exports = Promise;
 Promise.prototype['finally'] = function (f) {
@@ -13364,22 +13828,22 @@ Promise.prototype['finally'] = function (f) {
 
 
 /***/ }),
-/* 92 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(5);
-__webpack_require__(89);
-__webpack_require__(91);
-__webpack_require__(90);
-__webpack_require__(93);
+module.exports = __webpack_require__(4);
 __webpack_require__(94);
+__webpack_require__(96);
+__webpack_require__(95);
+__webpack_require__(98);
+__webpack_require__(99);
 
 
 /***/ }),
-/* 93 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13388,8 +13852,8 @@ __webpack_require__(94);
 
 
 
-var Promise = __webpack_require__(5);
-var asap = __webpack_require__(84);
+var Promise = __webpack_require__(4);
+var asap = __webpack_require__(89);
 
 module.exports = Promise;
 
@@ -13461,7 +13925,7 @@ function denodeifyWithoutCount(fn) {
     'args[argLength] = cb;',
     'res = fn.apply(self, args);',
     '}',
-
+    
     'if (res &&',
     '(typeof res === "object" || typeof res === "function") &&',
     'typeof res.then === "function"',
@@ -13514,13 +13978,13 @@ Promise.prototype.nodeify = function (callback, ctx) {
 
 
 /***/ }),
-/* 94 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Promise = __webpack_require__(5);
+var Promise = __webpack_require__(4);
 
 module.exports = Promise;
 Promise.enableSynchronous = function () {
@@ -13583,7 +14047,7 @@ Promise.disableSynchronous = function() {
 
 
 /***/ }),
-/* 95 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(globals) {
@@ -13592,8 +14056,8 @@ Promise.disableSynchronous = function() {
 var _imports = {}
 
 if (typeof module !== 'undefined' && module.exports) {
-  _imports.bytesToHex = __webpack_require__(85).bytesToHex
-  _imports.convertString = __webpack_require__(86)
+  _imports.bytesToHex = __webpack_require__(90).bytesToHex
+  _imports.convertString = __webpack_require__(91)
   module.exports = sha256
 } else {
   _imports.bytesToHex = globals.convertHex.bytesToHex
@@ -13651,11 +14115,11 @@ var wordsToBytes = function (words) {
 var W = []
 
 var processBlock = function (H, M, offset) {
-
+ 
   var a = H[0], b = H[1], c = H[2], d = H[3]
   var e = H[4], f = H[5], g = H[6], h = H[7]
 
-
+   
   for (var i = 0; i < 64; i++) {
     if (i < 16) {
       W[i] = M[offset + i] | 0
@@ -13692,7 +14156,7 @@ var processBlock = function (H, M, offset) {
     a = (t1 + t2) | 0;
   }
 
-
+ 
   H[0] = (H[0] + a) | 0;
   H[1] = (H[1] + b) | 0;
   H[2] = (H[2] + c) | 0;
@@ -13735,13 +14199,13 @@ sha256.x2 = function(message, options) {
 
 
 /***/ }),
-/* 96 */
+/* 101 */
 /***/ (function(module, exports) {
 
 module.exports = require("domain");
 
 /***/ }),
-/* 97 */
+/* 102 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
