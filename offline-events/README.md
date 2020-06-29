@@ -104,7 +104,7 @@ Here is a list of all options we support. See previous section for options suppo
 | skipRowsAlreadyUploaded | Rows will be skipped if part of the same file was already uploaded before. | CLI or Config JSON | `false` | `true` |
 | apiVersion | Graph API version to use. See [here](https://developers.facebook.com/docs/graph-api/changelog/). | CLI or Config JSON | *No default* | `v4.0` |
 
-### Mapping for Offilne Events
+### Mapping for Offline Events
 
 The `mapping` field is a dictionary that maps the index of a column to offline event schema. Here is an example:
 
@@ -115,9 +115,12 @@ The `mapping` field is a dictionary that maps the index of a column to offline e
   "2": "event_time",
   "3": "event_name",
   "4": "value",
-  "5": "currency",
-  "7": "custom_data.sales_type",
-  "9": "custom_data.department"
+  "6": "currency",
+  "7": "data_processing_options",
+  "8": "data_processing_options_country",
+  "10": "data_processing_options_state",
+  "11": "custom_data.sales_type",
+  "12": "custom_data.department"
 }
 ```
 
@@ -130,6 +133,9 @@ The key of `mapping` is the index of column, starting with 0. The value of mappi
 | event_name        | Required. Can be either specified in `mapping` or in `presetValues`. | See `event_name` row in the [data parameters table](https://developers.facebook.com/docs/marketing-api/offline-conversions/#data-parameters). |
 | value             | Required if exists event having `Purchase` as `event_name`. Optional for other cases. | Value of conversion event. Required for Purchase event. We do not accept 0 and negative values. Example: `16.00`. |
 | currency          | Required if `value` is mapped. Can be either specified in `mapping` of in `presetValues`. | Three-letter ISO currency for this conversion event. Required when and only when value presents. |
+| data_processing_options | Required from July 1, 2020 to August 1, 2020. | How you want your events to be processed. An empty array indicates an event shouldn't be processed with Limited Data Use Restrictions. Current accepted values are `[]` and `['LDU']`. [Learn more about Data Processing Options.](https://developers.facebook.com/docs/marketing-apis/data-processing-options)
+| data_processing_options_country | Required if `data_processing_options` does not equal `[]`. | The country you want associated with an event's Data Processing Options. Current accepted value is `1` to represent USA. [Learn more about Data Processing Options.](https://developers.facebook.com/docs/marketing-apis/data-processing-options)
+| data_processing_options_state | Required if `data_processing_options` does not equal `[]`. | The state you want associated with an event's Data Processing Options. Current accepted value is `1000` to represent California. [Learn more about Data Processing Options.](https://developers.facebook.com/docs/marketing-apis/data-processing-options)
 | order_id          | Optional but recommended. Required if `item_number` is mapped. | The unique ID associated with each of your transactions.     |
 | item_number       | Optional.                                                    | Item number is to distinguish different items within same order. |
 | custom_data.XXXXX | Optional.                                                    | Additional information about the conversion event. For example, send store location ID as custom_data.location_id. |
