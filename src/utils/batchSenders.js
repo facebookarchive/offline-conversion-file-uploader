@@ -57,6 +57,10 @@ function getGraphAPICallbacks(
         `Batch [${batch.start}, ${batch.end}): API error: ` +
         `${error.message || 'Unknown error'}`,
       );
+      if ((error: Object).error_data != null) {
+        winston.warn(`Error Details: `);
+        winston.warn(error.error_data);
+      }
     }
     reject(error);
   };
