@@ -11,7 +11,7 @@ import type { SSEvent } from './dataUtils';
 program
   .option('-i, --input <path>', 'Input csv file path', 'events.csv')
   .option('-c, --config <path>', 'Configuration file path', 'config.json')
-  .option('-t, --test-mode', 'Send test_id in parameters to test using Events Manager')
+  .option('-t, --test-mode', 'Send test_id in parameters to test live using Events Manager')
   .option('-d, --debug', 'debug mode');
 
 program.parse(process.argv);

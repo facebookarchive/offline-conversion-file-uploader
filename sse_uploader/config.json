@@ -1,6 +1,6 @@
 {
-    "app_id": "Here goes your app id",
-    "access_token": "Here goes your app access token",
     "pixel_id": "Here goes your pixel id",
-    "test_id": "Here goes the test_id in case you want to use the Test Events tool in Events Manager"
+    "access_token": "Here goes your app access token",
+    "test_id": "Here goes the test_id in case you want to use the Test Events tool in Events Manager",
+    "batch_size": "Here goes the max number of events to be sent in one batch, max 1000"
 }

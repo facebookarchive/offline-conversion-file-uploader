@@ -1,7 +1,7 @@
 // @flow
 const crypto = require('crypto');
 
-const SERVER_EVENT_PARAMS = ['event_name', 'event_time', 'event_source_url', 'event_id'];
+const SERVER_EVENT_PARAMS = ['event_name', 'event_time', 'event_source_url', 'event_id', 'action_source', 'opt_out'];
 
 const USER_PARAMS_MAPPINGS = {
   'email': 'em',
@@ -62,7 +62,10 @@ export type SSEvent = {
   event_source_url?: string,
   event_id?: string,
   user_data?: UserData,
-  custom_data?: CustomData
+  custom_data?: CustomData,
+  opt_out?: boolean,
+  action_source: string,
+  data_processing_options: []
 };
 
 function getEventData(row: any): SSEvent {

@@ -1,2 +1,2 @@
-event_name,event_time,user.email,user.phone,user.gender,custom.value,custom.currency,custom.content_name
-Purchase,1571855346,joe@example.com,16505551212,m,140.12,USD,lettuce
+event_name,event_time,user.email,user.phone,user.gender,user.client_ip_address,user.client_user_agent,user.fbc,user.fbp,custom.value,custom.currency,custom.content_name,event_source_url,action_source,opt_out
+Purchase,1627406670,joe@example.com,16505551212,m,10.1.2.3,UserAgentString,fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890,fb.1.1558571054389.1098115397,140.12,USD,lettuce,www.yourpage.com/checkout,website,false

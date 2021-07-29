@@ -1,6 +1,6 @@
 {
   "name": "sse_uploader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "dependencies": {
     "commander": "^3.0.2",
     "csv-parser": "^2.3.1",
-    "facebook-nodejs-business-sdk": "^6.0.2",
+    "facebook-nodejs-business-sdk": "^11.0.0",
     "fs": "0.0.1-security",
     "winston": "^3.2.1"
   },
@@ -22,11 +22,11 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
-    "babel-jest": "^22.0.6",
+    "babel-jest": "^27.0.6",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.109.0",
-    "jest": "^23.6.0"
+    "jest": "^27.0.6"
   }
 }
